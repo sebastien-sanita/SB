@@ -1,0 +1,146 @@
+:root {
+  /* ═══════════════════════════════════════════════
+     COULEURS — Fusion Ayocin warmth + Aker sophistication
+     ═══════════════════════════════════════════════ */
+
+  /* Couleurs principales */
+  --color-primary-warm: #F5EFE7;       /* Beige sable (Ayocin) - warmth */
+  --color-primary-dark: #1A1A1A;       /* Noir corporate (Aker) - sérieux */
+  --color-background: #FDFBF7;         /* Blanc cassé - fond principal */
+
+  /* Accents */
+  --color-accent-gold: #C9A87C;        /* Or champagne - luxe/prestige */
+  --color-accent-brown: #8B7355;       /* Brun matériaux - craftsmanship */
+  --color-accent-green: #2D5C3F;       /* Vert forêt - durabilité */
+
+  /* Texte */
+  --color-text: #1A1A1A;              /* Noir - lisibilité */
+  --color-text-secondary: #6B6B6B;    /* Gris - secondaire */
+  --color-text-light: rgba(26, 26, 26, 0.7); /* Texte sur fond clair */
+
+  /* Bordures */
+  --color-border: #E8E8E6;            /* Bordures ultra-subtiles */
+  --color-white: #FFFFFF;             /* Blanc pur (overlays) */
+  --color-footer: #F5F7F9;            /* Footer gris clair (KS ART) */
+
+  /* ═══════════════════════════════════════════════
+     TYPOGRAPHIE — Serif (chaleur) + Sans-serif (modernité)
+     ═══════════════════════════════════════════════ */
+
+  /* Titres émotionnels (style Ayocin) */
+  --font-display: 'Playfair Display', serif;
+
+  /* Titres corporate (style Aker) */
+  --font-heading: 'Inter', sans-serif;
+
+  /* Corps de texte */
+  --font-body: 'Inter', sans-serif;
+
+  /* Tailles de texte */
+  --text-xs: 0.75rem;      /* 12px */
+  --text-sm: 0.8125rem;    /* 13px */
+  --text-base: 1rem;       /* 16px */
+  --text-lg: 1.125rem;     /* 18px */
+  --text-xl: 1.25rem;      /* 20px */
+  --text-2xl: 1.5rem;      /* 24px */
+  --text-3xl: 1.875rem;    /* 30px */
+  --text-4xl: 2.25rem;     /* 36px */
+  --text-5xl: 3rem;        /* 48px */
+  --text-6xl: 3.75rem;     /* 60px */
+  --text-7xl: 4.5rem;      /* 72px */
+  --text-8xl: 6rem;        /* 96px */
+
+  /* Line heights — ultra-généreux (architectural) */
+  --leading-tight: 1.2;
+  --leading-snug: 1.35;
+  --leading-normal: 1.6;
+  --leading-relaxed: 1.85;
+  --leading-loose: 2.0;
+
+  /* Font weights */
+  --weight-light: 300;
+  --weight-normal: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* Letter spacing — architectural */
+  --tracking-tight: -0.01em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.1em;
+  --tracking-wider: 0.2em;
+  --tracking-widest: 0.3em;
+  --tracking-ultra: 0.5em;
+
+  /* ═══════════════════════════════════════════════
+     SPACING — Ultra-généreux (Ayocin)
+     ═══════════════════════════════════════════════ */
+
+  /* Système basé sur 4px */
+  --space-1: 0.25rem;    /* 4px */
+  --space-2: 0.5rem;     /* 8px */
+  --space-3: 0.75rem;    /* 12px */
+  --space-4: 1rem;       /* 16px */
+  --space-5: 1.25rem;    /* 20px */
+  --space-6: 1.5rem;     /* 24px */
+  --space-8: 2rem;       /* 32px */
+  --space-10: 2.5rem;    /* 40px */
+  --space-12: 3rem;      /* 48px */
+  --space-16: 4rem;      /* 64px */
+  --space-20: 5rem;      /* 80px */
+  --space-24: 6rem;      /* 96px */
+  --space-32: 8rem;      /* 128px */
+  --space-36: 8.75rem;   /* 140px */
+  --space-40: 10rem;     /* 160px */
+
+  /* Sections padding vertical — ultra-généreux */
+  --section-padding-mobile: 80px;
+  --section-padding-desktop: 200px;
+
+  /* Container */
+  --container-max: 1400px;
+  --container-padding: 40px;
+  --container-padding-mobile: 24px;
+
+  /* Grid gaps */
+  --grid-gap-sm: 24px;
+  --grid-gap-md: 32px;
+  --grid-gap-lg: 36px;
+  --grid-gap-xl: 64px;
+
+  /* ═══════════════════════════════════════════════
+     SHADOWS — Supprimées (flat architectural)
+     ═══════════════════════════════════════════════ */
+
+  /* ═══════════════════════════════════════════════
+     BORDER RADIUS — Carré (architectural minimaliste)
+     ═══════════════════════════════════════════════ */
+  --radius-sm: 0px;
+  --radius-md: 2px;
+  --radius-lg: 2px;
+  --radius-xl: 2px;
+  --radius-full: 0px;
+
+  /* ═══════════════════════════════════════════════
+     TRANSITIONS — Lentes et architecturales
+     ═══════════════════════════════════════════════ */
+  --transition-fast: 300ms ease-in-out;
+  --transition-base: 600ms cubic-bezier(0.25, 1, 0.5, 1);
+  --transition-slow: 1000ms cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+
+  /* ═══════════════════════════════════════════════
+     Z-INDEX
+     ═══════════════════════════════════════════════ */
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+  --z-page-border: 9990;
+  --z-page-loader: 9999;
+}

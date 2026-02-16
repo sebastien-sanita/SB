@@ -1,0 +1,125 @@
+---
+/**
+ * ProcessTimeline — Section 04 (Editorial Luxe)
+ * Timeline zigzag verticale, numeros surdimensionnes,
+ * ligne centrale avec dots dores, alternance gauche/droite
+ */
+import Section from '@components/ui/Section.astro';
+import Container from '@components/ui/Container.astro';
+
+const steps = [
+  {
+    number: '01',
+    title: 'Consultation',
+    description: 'Rencontre, analyse de vos besoins et premieres esquisses de votre projet sur-mesure.',
+  },
+  {
+    number: '02',
+    title: 'Conception',
+    description: 'Plans 3D, devis precis et selection minutieuse des materiaux nobles.',
+  },
+  {
+    number: '03',
+    title: 'Realisation',
+    description: 'Travaux executes avec precision, suivi quotidien et controle qualite rigoureux.',
+  },
+  {
+    number: '04',
+    title: 'Livraison',
+    description: 'Reception soignee, garanties completes et service apres-vente dedie.',
+  },
+];
+---
+
+<Section padding="lg">
+  <Container>
+
+    {/* En-tete */}
+    <div class="relative mb-16 md:mb-24" data-reveal>
+      <span class="section-number-xl">04</span>
+      <span class="section-number">04</span>
+      <h2 class="text-section text-primary-dark mt-6">
+        <span class="font-display font-normal">Notre</span> <span class="font-heading font-light">Processus</span>
+      </h2>
+      <p class="font-body text-lg font-light text-[var(--color-text-light)] mt-4 max-w-xl">
+        Un accompagnement sur-mesure a chaque etape de votre projet
+      </p>
+    </div>
+
+    {/* Timeline zigzag */}
+    <div class="max-w-4xl mx-auto" data-reveal-stagger="0.15">
+      {steps.map((step, i) => (
+        <div
+          data-reveal-child
+          class="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-6 md:gap-10 items-start mb-16 md:mb-0"
+        >
+          {/* Colonne gauche */}
+          <div class:list={[
+            'hidden md:block',
+            i % 2 === 0 ? 'text-right' : '',
+          ]}>
+            {i % 2 === 0 ? (
+              <div>
+                <span class="font-display text-[64px] md:text-[80px] font-normal text-accent-gold/15 leading-none block">
+                  {step.number}
+                </span>
+                <h3 class="font-display text-2xl font-normal text-primary-dark mt-2 mb-3">
+                  {step.title}
+                </h3>
+                <p class="font-body text-sm font-light text-[var(--color-text-light)] leading-relaxed max-w-[280px] ml-auto">
+                  {step.description}
+                </p>
+              </div>
+            ) : (
+              <div />
+            )}
+          </div>
+
+          {/* Centre : ligne + dot */}
+          <div class="hidden md:flex flex-col items-center">
+            <div class="w-3 h-3 bg-accent-gold border-4 border-background relative z-10" />
+            {i < steps.length - 1 && (
+              <div class="w-px h-32 bg-accent-gold/20" />
+            )}
+          </div>
+
+          {/* Colonne droite */}
+          <div class:list={[
+            'hidden md:block',
+            i % 2 === 1 ? 'text-left' : '',
+          ]}>
+            {i % 2 === 1 ? (
+              <div>
+                <span class="font-display text-[64px] md:text-[80px] font-normal text-accent-gold/15 leading-none block">
+                  {step.number}
+                </span>
+                <h3 class="font-display text-2xl font-normal text-primary-dark mt-2 mb-3">
+                  {step.title}
+                </h3>
+                <p class="font-body text-sm font-light text-[var(--color-text-light)] leading-relaxed max-w-[280px]">
+                  {step.description}
+                </p>
+              </div>
+            ) : (
+              <div />
+            )}
+          </div>
+
+          {/* Mobile : layout lineaire */}
+          <div class="md:hidden">
+            <span class="font-display text-[48px] font-normal text-accent-gold/15 leading-none block">
+              {step.number}
+            </span>
+            <h3 class="font-display text-xl font-normal text-primary-dark mt-2 mb-3">
+              {step.title}
+            </h3>
+            <p class="font-body text-sm font-light text-[var(--color-text-light)] leading-relaxed">
+              {step.description}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </Container>
+</Section>

@@ -1,23 +1,136 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+---
+/**
+ * Layout principal — Shell HTML5 avec SEO, Header, Footer
+ * + Page Loader, Page Border, GSAP/Lenis scripts
+ */
+import '@/styles/global.css';
+import Header from '@components/Header.astro';
+import Footer from '@components/Footer.astro';
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+  class?: string;
+}
+
+const {
+  title,
+  description = "Studio SB Design — Architecte d'interieur a Lyon et dans le Var. Renovation, construction et mobilier sur mesure haut de gamme.",
+  ogImage,
+  class: className,
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL.href} />
+
+    <!-- Schema.org LocalBusiness -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Studio SB Design",
+      "description": "Architecte d'interieur a Lyon et dans le Var. Renovation d'appartements et maisons, construction neuve, mobilier sur mesure.",
+      "url": "https://www.sbdesign.fr",
+      "telephone": ["+33609459245", "+33699142214"],
+      "email": "info@sbdesign.fr",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "8 rue Pierre et Marie Curie",
+        "addressLocality": "Chassieu",
+        "postalCode": "69680",
+        "addressRegion": "Auvergne-Rhone-Alpes",
+        "addressCountry": "FR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 45.7387,
+        "longitude": 4.9579
+      },
+      "areaServed": [
+        {"@type": "City", "name": "Lyon"},
+        {"@type": "City", "name": "Chassieu"},
+        {"@type": "City", "name": "Villeurbanne"},
+        {"@type": "AdministrativeArea", "name": "Var"}
+      ],
+      "priceRange": "€€€",
+      "openingHours": "Mo-Fr 09:00-18:00"
+    })} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    {ogImage && <meta property="og:image" content={ogImage} />}
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {ogImage && <meta name="twitter:image" content={ogImage} />}
+
+    <!-- Preload fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  </head>
+
+  <body class:list={['bg-background text-text-primary is-loading', className]}>
+
+    <!-- Page Loader — Aker-style entry animation -->
+    <div
+      id="page-loader"
+      class="fixed inset-0 z-[9999] bg-background flex flex-col items-center justify-center"
+    >
+      <span id="page-loader-logo" class="font-display text-3xl text-primary-dark mb-8">
+        SB Design
+      </span>
+      <div class="w-32 h-px bg-border overflow-hidden">
+        <div
+          id="page-loader-bar"
+          class="w-full h-full bg-accent-gold origin-left"
+          style="transform: scaleX(0);"
+        ></div>
+      </div>
+    </div>
+
+    <Header />
+
+    <main>
+      <slot />
+    </main>
+
+    <Footer />
+
+    <!-- GSAP + Lenis + Animations -->
+    <script>
+      import '../scripts/lenis';
+      import '../scripts/animations';
+      import '../scripts/page-loader';
+
+      // Footer reveal — fixed footer with main scrolling over it
+      function initFooterReveal() {
+        const footer = document.getElementById('main-footer');
+        const main = document.querySelector('main');
+        if (footer && main) {
+          const footerHeight = footer.offsetHeight;
+          (main as HTMLElement).style.marginBottom = `${footerHeight}px`;
+        }
+      }
+      window.addEventListener('load', initFooterReveal);
+      window.addEventListener('resize', initFooterReveal);
+    </script>
+  </body>
+</html>

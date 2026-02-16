@@ -1,0 +1,95 @@
+---
+/**
+ * Manifeste — Section 01 (Editorial Luxe)
+ * Layout editorial asymetrique : texte storytelling a gauche,
+ * double image chevauchee a droite, decorations dorees
+ */
+import Section from '@components/ui/Section.astro';
+import Container from '@components/ui/Container.astro';
+---
+
+<Section background="warm" padding="lg">
+  <Container>
+
+    {/* Numero Aker + numero surdimensionne */}
+    <div class="relative mb-16 md:mb-20" data-reveal>
+      <span class="section-number-xl">01</span>
+      <span class="section-number">01</span>
+    </div>
+
+    {/* Grid editorial asymetrique */}
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-16 items-start">
+
+      {/* Colonne gauche : Texte storytelling */}
+      <div>
+        <h2 class="text-section font-normal text-primary-dark mb-8" data-split-words>
+          <span class="font-display">L'art de</span> <span class="font-display italic">transformer</span><br /><span class="font-heading font-light">les espaces</span>
+        </h2>
+
+        <div class="space-y-6">
+          <p class="font-body text-lg font-light text-[var(--color-text-light)] leading-[1.75]" data-reveal data-reveal-delay="0.1">
+            Depuis plus de 35 ans, trois generations de Bisciglia donnent vie a des interieurs
+            d'exception. Nes d'un heritage artisanal transmis par Luigi, macon et entrepreneur,
+            Saverio et Roberto ont bati une entreprise ou chaque projet est une rencontre entre
+            votre vision et notre savoir-faire.
+          </p>
+          <p class="font-body text-lg font-light text-[var(--color-text-light)] leading-[1.75]" data-reveal data-reveal-delay="0.2">
+            Installes au coeur de Lyon depuis 2010, nous conjuguons maitrise technique
+            et sensibilite esthetique. Du choix d'une poignee a la courbe d'un plafond,
+            chaque detail porte la meme exigence absolue — celle d'artisans passionnes
+            qui croient que l'espace faconne le quotidien.
+          </p>
+        </div>
+
+        {/* Citation — bordure doree */}
+        <blockquote class="mt-10 pl-6 border-l-2 border-accent-gold" data-reveal data-reveal-delay="0.3">
+          <p class="font-display text-xl md:text-2xl italic font-normal text-primary-dark leading-relaxed">
+            &laquo; Des agencements de caractere, a la hauteur de vos ambitions. &raquo;
+          </p>
+          <cite class="block mt-4 font-heading text-sm font-medium text-accent-brown not-italic uppercase tracking-wider">
+            — Studio Bisciglia Design
+          </cite>
+        </blockquote>
+
+        {/* Image accent paysage sous le texte */}
+        <div class="mt-12 overflow-hidden" data-clip-reveal="bottom">
+          <img
+            src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1600&q=90"
+            alt="Detail finition architecturale"
+            class="w-full h-[220px] lg:h-[280px] object-cover transition-transform duration-700 ease-smooth hover:scale-[1.05]"
+            loading="lazy"
+          />
+        </div>
+      </div>
+
+      {/* Colonne droite : Double image chevauchee */}
+      <div class="relative mt-8 lg:mt-16" data-clip-reveal="left">
+        {/* Image principale */}
+        <div class="overflow-hidden overflow-hidden">
+          <img
+            src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1600&q=90"
+            alt="Salon lumineux et contemporain"
+            class="w-full h-[500px] lg:h-[75vh] lg:min-h-[600px] object-cover transition-transform duration-700 ease-smooth hover:scale-[1.05]"
+            data-parallax="0.15"
+            loading="lazy"
+          />
+        </div>
+
+        {/* Image secondaire — chevauchement editorial (desktop only) */}
+        <div class="hidden lg:block absolute -bottom-16 -left-20 w-[280px] h-[380px] overflow-hidden z-10">
+          <img
+            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=90"
+            alt="Detail materiaux nobles"
+            class="w-full h-full object-cover"
+            loading="lazy"
+          />
+        </div>
+
+        {/* Element decoratif — lignes dorees en L */}
+        <div class="hidden lg:block absolute -top-6 -right-6 w-32 h-px bg-accent-gold/40" />
+        <div class="hidden lg:block absolute -top-6 -right-6 w-px h-32 bg-accent-gold/40" />
+      </div>
+
+    </div>
+  </Container>
+</Section>

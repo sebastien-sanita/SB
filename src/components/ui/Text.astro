@@ -1,0 +1,69 @@
+---
+/**
+ * Text — Typographie corps de texte (Ayocin × Aker)
+ * Body par défaut : Inter light (300), line-height 1.75
+ * Variante "large" pour storytelling (20px, line-height 1.8)
+ */
+import { cn } from '@utils/cn';
+
+interface Props {
+  as?: 'p' | 'span' | 'div';
+  size?: 'sm' | 'base' | 'lg' | 'xl';
+  weight?: 'light' | 'normal' | 'medium' | 'semibold';
+  color?: 'primary' | 'secondary' | 'light' | 'white';
+  align?: 'left' | 'center' | 'right';
+  class?: string;
+  [key: string]: any;
+}
+
+const {
+  as: Tag = 'p',
+  size = 'base',
+  weight = 'light',
+  color = 'light',
+  align = 'left',
+  class: className,
+  ...rest
+} = Astro.props;
+
+const sizeClasses: Record<string, string> = {
+  sm: 'text-[15px] leading-relaxed',
+  base: 'text-lg leading-relaxed',          /* 18px, 1.75 */
+  lg: 'text-xl leading-loose',              /* 20px, 1.8 — storytelling */
+  xl: 'text-2xl leading-relaxed',           /* 24px — intro large */
+};
+
+const weightClasses: Record<string, string> = {
+  light: 'font-light',
+  normal: 'font-normal',
+  medium: 'font-medium',
+  semibold: 'font-semibold',
+};
+
+const colorClasses: Record<string, string> = {
+  primary: 'text-text-primary',
+  secondary: 'text-text-secondary',
+  light: 'text-[var(--color-text-light)]',
+  white: 'text-white',
+};
+
+const alignClasses: Record<string, string> = {
+  left: 'text-left',
+  center: 'text-center',
+  right: 'text-right',
+};
+
+const classes = cn(
+  'font-body',
+  Tag === 'p' ? 'mb-4' : '',
+  sizeClasses[size],
+  weightClasses[weight],
+  colorClasses[color],
+  alignClasses[align],
+  className,
+);
+---
+
+<Tag class={classes} {...rest}>
+  <slot />
+</Tag>

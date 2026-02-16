@@ -1,0 +1,28 @@
+---
+/**
+ * FlipLink — MAFCOhouse-style hover text flip
+ * Text duplicated in overflow:hidden container
+ * On hover, both texts translateY(-100%) revealing copy below
+ */
+interface Props {
+  href: string;
+  label: string;
+  class?: string;
+  [key: string]: any;
+}
+
+const { href, label, class: className, ...rest } = Astro.props;
+---
+
+<a
+  href={href}
+  class:list={['inline-block overflow-hidden relative group', className]}
+  {...rest}
+>
+  <span class="block transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:-translate-y-full">
+    {label}
+  </span>
+  <span class="block absolute top-full left-0 w-full transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:-translate-y-full" aria-hidden="true">
+    {label}
+  </span>
+</a>

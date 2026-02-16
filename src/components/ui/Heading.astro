@@ -1,0 +1,62 @@
+---
+/**
+ * Heading — Titre avec système de numérotation Aker
+ * Règle : Émotionnel = Serif (Playfair), Corporate = Sans-serif (Inter)
+ * Prop "number" pour ajouter un numéro de section (01, 02, etc.)
+ */
+import { cn } from '@utils/cn';
+
+interface Props {
+  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+  font?: 'display' | 'heading';
+  align?: 'left' | 'center' | 'right';
+  number?: string;
+  class?: string;
+  [key: string]: any;
+}
+
+const {
+  as: Tag = 'h2',
+  font = 'heading',
+  align = 'left',
+  number,
+  class: className,
+  ...rest
+} = Astro.props;
+
+/* Tailles responsive par niveau — plus contenues que la V1 */
+const tagClasses: Record<string, string> = {
+  h1: 'text-hero',
+  h2: 'text-section',
+  h3: 'text-subsection',
+  h4: 'text-2xl md:text-3xl',
+  h5: 'text-xl md:text-2xl',
+  h6: 'text-lg md:text-xl',
+};
+
+const fontClasses: Record<string, string> = {
+  display: 'font-display font-normal',     /* Playfair 400 — émotionnel */
+  heading: 'font-heading font-light',       /* Inter 300 — corporate */
+};
+
+const alignClasses: Record<string, string> = {
+  left: 'text-left',
+  center: 'text-center',
+  right: 'text-right',
+};
+
+const classes = cn(
+  'leading-snug tracking-normal text-text-primary mb-4',
+  tagClasses[Tag],
+  fontClasses[font],
+  alignClasses[align],
+  className,
+);
+---
+
+{number && (
+  <span class={cn('section-number', align === 'center' && 'text-center')}>{number}</span>
+)}
+<Tag class={classes} {...rest}>
+  <slot />
+</Tag>

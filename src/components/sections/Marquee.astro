@@ -1,0 +1,17 @@
+---
+/**
+ * Marquee — Bande scrollante editoriale
+ * Texte horizontal en boucle infinie, style magazine luxe
+ * Place entre sections pour casser le rythme vertical
+ */
+---
+
+<div class="py-6 md:py-8 bg-primary-dark overflow-hidden">
+  <div class="marquee-track flex whitespace-nowrap">
+    {[...Array(4)].map(() => (
+      <span class="font-display text-[clamp(40px,6vw,80px)] font-normal text-white/[0.08] mx-8 inline-block">
+        Renovation &mdash; Design &mdash; Prestige &mdash; Savoir-faire &mdash;
+      </span>
+    ))}
+  </div>
+</div>

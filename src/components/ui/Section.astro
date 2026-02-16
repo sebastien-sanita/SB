@@ -1,0 +1,47 @@
+---
+/**
+ * Section — Bloc de page avec spacing ultra-généreux (Ayocin)
+ * 140px padding desktop, 80px mobile
+ * 3 backgrounds stratégiques : warm (storytelling), white (corporate), dark (contrast)
+ */
+import { cn } from '@utils/cn';
+import Container from './Container.astro';
+
+interface Props {
+  background?: 'white' | 'warm' | 'dark';
+  padding?: 'sm' | 'md' | 'lg' | 'xl' | 'none';
+  containerSize?: 'narrow' | 'md' | 'lg' | 'full';
+  class?: string;
+  [key: string]: any;
+}
+
+const {
+  background = 'white',
+  padding = 'lg',
+  containerSize = 'lg',
+  class: className,
+  ...rest
+} = Astro.props;
+
+const bgClasses: Record<string, string> = {
+  white: 'bg-background',
+  warm: 'bg-primary-warm',
+  dark: 'bg-primary-dark text-white',
+};
+
+const paddingClasses: Record<string, string> = {
+  none: '',
+  sm: 'py-16 md:py-24',
+  md: 'py-20 md:py-32',
+  lg: 'py-24 md:py-50',      /* 96px mobile, 200px desktop */
+  xl: 'py-32 md:py-60',      /* 128px mobile, 240px desktop */
+};
+
+const classes = cn(bgClasses[background], paddingClasses[padding], className);
+---
+
+<section class={classes} {...rest}>
+  <Container size={containerSize}>
+    <slot />
+  </Container>
+</section>

@@ -1,0 +1,51 @@
+---
+/**
+ * Page Projets — Portfolio complet avec filtres (Editorial Luxe)
+ */
+import Layout from '@layouts/Layout.astro';
+import Section from '@components/ui/Section.astro';
+import Container from '@components/ui/Container.astro';
+import ProjectGrid from '@components/react/ProjectGrid';
+import { projects } from '../../data/projects';
+---
+
+<Layout
+  title="Nos Realisations — Renovation & Construction a Lyon | SB Design"
+  description="Decouvrez les realisations du studio SB Design : renovation d'appartements, construction de villas, mobilier sur mesure a Lyon et dans le Var."
+>
+
+  <!-- Hero full-bleed image -->
+  <div class="relative w-full h-[55vh] min-h-[400px] lg:h-[65vh] overflow-hidden">
+    <img
+      src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=1920&q=90"
+      alt="Nos realisations"
+      class="w-full h-full object-cover"
+      loading="eager"
+    />
+    <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/70" />
+    <div class="absolute inset-0 flex items-end pb-16 md:pb-24">
+      <Container>
+        <div class="relative max-w-3xl" data-reveal>
+          <span class="section-number text-white/60">Portfolio</span>
+          <h1 class="font-display text-hero font-normal text-white mt-6 mb-6" data-split-words>
+            <span class="font-heading font-light">Nos</span> <span class="font-display italic">Realisations</span>
+          </h1>
+          <p class="font-body text-lg font-light text-white/70 max-w-xl leading-[1.75]">
+            Chaque projet est une histoire unique. Decouvrez notre savoir-faire
+            a travers une selection de renovations d'exception.
+          </p>
+        </div>
+      </Container>
+    </div>
+  </div>
+
+  <!-- Portfolio avec filtres -->
+  <Section padding="lg">
+    <Container>
+      <div data-reveal>
+        <ProjectGrid projects={projects} client:load />
+      </div>
+    </Container>
+  </Section>
+
+</Layout>

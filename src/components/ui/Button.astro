@@ -1,0 +1,63 @@
+---
+/**
+ * Button — Bouton premium Ayocin × Aker
+ * Pill shape (rounded-full), transitions lentes, 4 variants
+ * Rend un <a> si href est fourni, sinon un <button>
+ */
+import { cn } from '@utils/cn';
+
+interface Props {
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
+  size?: 'sm' | 'md' | 'lg';
+  href?: string;
+  class?: string;
+  type?: 'button' | 'submit' | 'reset';
+  disabled?: boolean;
+  [key: string]: any;
+}
+
+const {
+  variant = 'primary',
+  size = 'md',
+  href,
+  class: className,
+  type = 'button',
+  disabled = false,
+  ...rest
+} = Astro.props;
+
+const baseClasses = [
+  'inline-flex items-center justify-center gap-2',
+  'font-heading font-medium',
+  'rounded-none',
+  'transition-all duration-500 ease-smooth',
+  'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-gold',
+  'disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none',
+  'btn-sweep',
+];
+
+const variantClasses: Record<string, string> = {
+  primary: 'bg-accent-gold text-white hover:bg-accent-brown',
+  secondary: 'bg-primary-dark text-white hover:bg-[#333333]',
+  outline: 'border-2 border-accent-gold text-accent-gold hover:bg-accent-gold/10',
+  ghost: 'bg-transparent text-primary-dark hover:bg-primary-warm',
+};
+
+const sizeClasses: Record<string, string> = {
+  sm: 'px-5 py-2 text-sm',
+  md: 'px-7 py-3 text-[15px]',
+  lg: 'px-8 py-4 text-base',
+};
+
+const classes = cn(baseClasses, variantClasses[variant], sizeClasses[size], className);
+---
+
+{href ? (
+  <a href={href} class={classes} {...rest}>
+    <span class="relative z-[1]"><slot /></span>
+  </a>
+) : (
+  <button type={type} class={classes} disabled={disabled} {...rest}>
+    <span class="relative z-[1]"><slot /></span>
+  </button>
+)}

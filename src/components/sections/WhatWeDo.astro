@@ -1,0 +1,130 @@
+---
+/**
+ * WhatWeDo — Section 02 (Editorial Luxe)
+ * 3 services avec layouts differents : full-width, asymetrique, bleed
+ * Numerotation subsection, liens "En savoir plus"
+ */
+import Section from '@components/ui/Section.astro';
+import Container from '@components/ui/Container.astro';
+---
+
+<Section padding="lg">
+  <Container>
+
+    {/* En-tete */}
+    <div class="relative mb-16 md:mb-24" data-reveal>
+      <span class="section-number-xl">02</span>
+      <span class="section-number">02</span>
+      <h2 class="text-section text-primary-dark mt-6">
+        <span class="font-display font-normal">Ce que</span> <span class="font-heading font-light">nous faisons</span>
+      </h2>
+      <p class="font-body text-lg font-light text-[var(--color-text-light)] mt-4 max-w-xl">
+        Trois expertises complementaires pour donner vie a votre projet
+      </p>
+    </div>
+
+    {/* Service 2.1 — Renovation : Image full-width + texte offset droite */}
+    <div class="mb-24 md:mb-32" data-reveal>
+      <div class="overflow-hidden mb-8 -mx-6 md:-mx-10" data-clip-reveal="bottom">
+        <img
+          src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=90"
+          alt="Renovation interieure haut de gamme"
+          class="w-full h-[400px] lg:h-[65vh] lg:min-h-[500px] object-cover transition-transform duration-700 ease-smooth hover:scale-[1.05]"
+          data-parallax="0.12"
+          loading="lazy"
+        />
+      </div>
+      <div class="lg:ml-auto lg:max-w-[55%]">
+        <span class="subsection-number">2.1</span>
+        <h3 class="font-display text-subsection font-normal text-primary-dark mt-4 mb-6">
+          Renovation complete
+        </h3>
+        <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.75] mb-8">
+          De la conception a la livraison, nous orchestrons chaque etape de votre renovation.
+          Nos equipes coordonnent tous les corps de metier pour un resultat impeccable,
+          dans les delais et le budget convenus.
+        </p>
+        <a
+          href="/expertise#renovation"
+          class="inline-flex items-center gap-2 font-heading text-[15px] font-medium text-accent-brown hover:text-primary-dark transition-colors duration-500"
+        >
+          En savoir plus
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    {/* Service 2.2 — Design : Grille asymetrique 40/60 */}
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-10 lg:gap-16 items-end mb-24 md:mb-32" data-reveal>
+      {/* Texte gauche, aligne en bas */}
+      <div>
+        <span class="subsection-number">2.2</span>
+        <h3 class="font-display text-subsection font-normal text-primary-dark mt-4 mb-6">
+          Design d'interieur
+        </h3>
+        <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.75] mb-8">
+          Notre regard creatif transforme vos espaces. Selection de materiaux nobles,
+          harmonie des couleurs, mobilier sur-mesure — chaque element est pense pour
+          creer une atmosphere unique qui vous ressemble.
+        </p>
+        <a
+          href="/expertise#design"
+          class="inline-flex items-center gap-2 font-heading text-[15px] font-medium text-accent-brown hover:text-primary-dark transition-colors duration-500"
+        >
+          En savoir plus
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+      {/* Image plus grande a droite */}
+      <div class="overflow-hidden" data-clip-reveal="right">
+        <img
+          src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1920&q=90"
+          alt="Design interieur contemporain"
+          class="w-full h-[450px] lg:h-[70vh] lg:min-h-[560px] object-cover transition-transform duration-700 ease-smooth hover:scale-[1.05]"
+          data-parallax="0.12"
+          loading="lazy"
+        />
+      </div>
+    </div>
+
+    {/* Service 2.3 — Prestige : Grille 50/50 avec image bleed gauche */}
+    <div class="grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] gap-10 lg:gap-20 items-center" data-reveal>
+      {/* Image avec debordement gauche */}
+      <div class="lg:-ml-10 overflow-hidden" data-clip-reveal="left">
+        <img
+          src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1920&q=90"
+          alt="Residence de prestige renovee"
+          class="w-full h-[500px] lg:h-[80vh] lg:min-h-[600px] object-cover transition-transform duration-700 ease-smooth hover:scale-[1.05]"
+          data-parallax="0.12"
+          loading="lazy"
+        />
+      </div>
+      {/* Texte droite */}
+      <div>
+        <span class="subsection-number">2.3</span>
+        <h3 class="font-display text-subsection font-normal text-primary-dark mt-4 mb-6">
+          Espaces de prestige
+        </h3>
+        <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.75] mb-8">
+          Appartements haussmanniens, villas contemporaines, penthouses — nous maitrisons
+          les codes du luxe. Notre expertise technique et notre sensibilite esthetique
+          garantissent des realisations d'exception.
+        </p>
+        <a
+          href="/expertise#prestige"
+          class="inline-flex items-center gap-2 font-heading text-[15px] font-medium text-accent-brown hover:text-primary-dark transition-colors duration-500"
+        >
+          En savoir plus
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+
+  </Container>
+</Section>

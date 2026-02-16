@@ -1,11 +1,141 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+/**
+ * Page d'accueil — SB Design
+ * 7 sections : Hero, Manifeste, Stats, Portfolio, Process, Témoignages, CTA
+ */
+import Layout from '@layouts/Layout.astro';
+import Section from '@components/ui/Section.astro';
+import Container from '@components/ui/Container.astro';
+import Heading from '@components/ui/Heading.astro';
+import Text from '@components/ui/Text.astro';
+import Button from '@components/ui/Button.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+/* Composants React (interactifs) */
+import HeroMinimal from '@components/react/HeroMinimal';
+import StatsCounter from '@components/react/StatsCounter';
+import TestimonialsSlider from '@components/react/TestimonialsSlider';
+
+/* Sections Astro */
+import Manifeste from '@components/sections/Manifeste.astro';
+import WhatWeDo from '@components/sections/WhatWeDo.astro';
+import PortfolioPreview from '@components/sections/PortfolioPreview.astro';
+import ProcessTimeline from '@components/sections/ProcessTimeline.astro';
+import Marquee from '@components/sections/Marquee.astro';
 ---
 
-<Layout>
-	<Welcome />
+<Layout
+  title="SB Design — Architecte d'interieur Lyon | Renovation & Construction haut de gamme"
+  description="Studio SB Design, architecte d'interieur a Lyon et dans le Var. Renovation d'appartements et maisons, construction neuve, mobilier sur mesure, cuisines et salles de bains haut de gamme."
+>
+
+  <!-- SECTION 1 : Hero KS ART — fullscreen, Ken Burns -->
+  <HeroMinimal client:load />
+
+  <!-- SECTION 01 : Manifeste / Philosophie -->
+  <Manifeste />
+
+  <!-- SECTION 02 : Ce que nous faisons -->
+  <WhatWeDo />
+
+  <!-- Bande image full-bleed — transition visuelle -->
+  <div class="relative w-full h-[50vh] min-h-[350px] lg:h-[60vh] overflow-hidden">
+    <img
+      src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1920&q=90"
+      alt="Detail architectural"
+      class="w-full h-full object-cover"
+      data-parallax="0.15"
+      loading="lazy"
+    />
+    <div class="absolute inset-0 bg-black/10" />
+  </div>
+
+  <!-- SECTION 03 : Portfolio -->
+  <PortfolioPreview />
+
+  <!-- Bande image full-bleed -->
+  <div class="relative w-full h-[45vh] min-h-[320px] lg:h-[55vh] overflow-hidden">
+    <img
+      src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1920&q=90"
+      alt="Design interieur contemporain"
+      class="w-full h-full object-cover"
+      data-parallax="0.1"
+      loading="lazy"
+    />
+  </div>
+
+  <!-- Marquee editorial -->
+  <Marquee />
+
+  <!-- SECTION 04 : Processus -->
+  <ProcessTimeline />
+
+  <!-- SECTION 05 : Chiffres clés animés -->
+  <Section background="warm" padding="lg">
+    <Container>
+      <div class="mb-16 md:mb-24" data-reveal>
+        <span class="section-number">05</span>
+        <h2 class="font-heading text-section font-light text-primary-dark mt-6">
+          En chiffres
+        </h2>
+      </div>
+      <StatsCounter client:visible />
+    </Container>
+  </Section>
+
+  <!-- SECTION 06 : Témoignages -->
+  <Section padding="lg">
+    <Container>
+      <div class="mb-16 md:mb-24" data-reveal>
+        <span class="section-number">06</span>
+        <h2 class="font-display text-section font-normal text-primary-dark mt-6">
+          Ce que disent nos clients
+        </h2>
+        <p class="font-body text-lg font-light text-[var(--color-text-light)] mt-4 max-w-xl">
+          La satisfaction de nos clients est notre plus belle récompense
+        </p>
+      </div>
+      <TestimonialsSlider client:visible />
+    </Container>
+  </Section>
+
+  <!-- SECTION 07 : CTA Final -->
+  <section class="relative py-28 md:py-50 overflow-hidden">
+    <!-- Image de fond avec overlay -->
+    <div class="absolute inset-0">
+      <img
+        src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1920&q=90"
+        alt="Interieur luxueux"
+        class="w-full h-full object-cover"
+        loading="lazy"
+      />
+      <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/55 to-black/65" />
+    </div>
+
+    <!-- Contenu -->
+    <Container>
+      <div class="relative z-10 text-center max-w-3xl mx-auto" data-reveal>
+        <span class="font-heading text-xs font-semibold text-accent-gold uppercase tracking-[0.2em] mb-6 block">
+          07 — Votre projet
+        </span>
+        <h2 class="font-display text-[clamp(32px,5vw,56px)] font-normal text-white leading-[1.3] mb-6">
+          Pret a transformer<br />votre espace ?
+        </h2>
+        <p class="font-body text-lg font-light text-white/70 mb-12 max-w-xl mx-auto leading-[1.8]">
+          Chaque projet commence par une conversation. Parlons du votre.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button href="/contact" variant="primary" size="lg">
+            Demander un devis gratuit
+          </Button>
+          <a
+            href="tel:+33609459245"
+            class="inline-flex items-center justify-center px-8 py-4 border border-white/30 text-white font-heading text-[15px] font-medium uppercase tracking-wider hover:bg-white/10 transition-all duration-500"
+          >
+            06 09 45 92 45
+          </a>
+        </div>
+      </div>
+    </Container>
+  </section>
+
 </Layout>

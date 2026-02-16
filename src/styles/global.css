@@ -1,0 +1,264 @@
+/* Import tokens & animations */
+@import './tokens.css';
+@import './animations.css';
+
+/* Import Google Fonts — Playfair Display (émotionnel) + Inter (corporate) */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Tailwind directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════════════════════════════════════════
+   RESET & BASE — Fusion Ayocin × Aker
+   ═══════════════════════════════════════════════ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: var(--weight-light);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text);
+  background-color: var(--color-background);
+  overflow-x: hidden;
+}
+
+/* ═══════════════════════════════════════════════
+   HEADINGS — Règle : Émotionnel = Serif, Corporate = Sans
+   ═══════════════════════════════════════════════ */
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: var(--weight-normal);
+  line-height: var(--leading-snug);
+  color: var(--color-text);
+  letter-spacing: 0em;
+}
+
+/* h1 = Toujours Playfair Display (émotionnel / hero) */
+h1 {
+  font-family: var(--font-display);
+}
+
+/* h2-h6 = Inter par défaut (corporate), overridable par class */
+h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+/* ═══════════════════════════════════════════════
+   LINKS — Transitions lentes (Ayocin)
+   ═══════════════════════════════════════════════ */
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: opacity var(--transition-fast), color var(--transition-fast);
+}
+
+a:hover {
+  opacity: 0.6;
+}
+
+/* ═══════════════════════════════════════════════
+   MEDIA
+   ═══════════════════════════════════════════════ */
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* ═══════════════════════════════════════════════
+   FORMS
+   ═══════════════════════════════════════════════ */
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* ═══════════════════════════════════════════════
+   SELECTION — Or champagne
+   ═══════════════════════════════════════════════ */
+
+::selection {
+  background-color: var(--color-accent-gold);
+  color: var(--color-white);
+}
+
+/* ═══════════════════════════════════════════════
+   FOCUS — Accessible et élégant
+   ═══════════════════════════════════════════════ */
+
+:focus-visible {
+  outline: 2px solid var(--color-accent-gold);
+  outline-offset: 2px;
+}
+
+/* ═══════════════════════════════════════════════
+   MAIN — Z-index layer for fixed footer reveal
+   ═══════════════════════════════════════════════ */
+
+main {
+  position: relative;
+  z-index: 2;
+  background-color: var(--color-background);
+}
+
+/* ═══════════════════════════════════════════════
+   SCROLL REVEALS — Handled by GSAP ScrollTrigger
+   Base state for elements before GSAP initializes
+   ═══════════════════════════════════════════════ */
+
+[data-reveal],
+[data-reveal-child] {
+  opacity: 0;
+  transform: translateY(60px);
+  filter: blur(16px);
+  will-change: opacity, transform, filter;
+}
+
+/* Clip-path reveal base state */
+[data-clip-reveal] {
+  clip-path: inset(0 100% 0 0);
+}
+
+[data-clip-reveal="right"] {
+  clip-path: inset(0 0 0 100%);
+}
+
+[data-clip-reveal="bottom"] {
+  clip-path: inset(100% 0 0 0);
+}
+
+[data-clip-reveal="top"] {
+  clip-path: inset(0 0 100% 0);
+}
+
+/* ═══════════════════════════════════════════════
+   UTILITY CLASSES — Ayocin × Aker
+   ═══════════════════════════════════════════════ */
+
+/* Section number — Aker signature */
+@layer components {
+  .section-number {
+    font-family: var(--font-heading);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.4;
+    margin-bottom: 16px;
+    display: block;
+    color: var(--color-text);
+  }
+
+  .subsection-number {
+    font-family: var(--font-heading);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    opacity: 0.35;
+    margin-bottom: 12px;
+    display: block;
+    color: var(--color-text);
+  }
+
+  /* Label — Corporate style (Aker) */
+  .label {
+    font-family: var(--font-heading);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+  }
+
+  /* Oversized section number — editorial background numeral */
+  .section-number-xl {
+    font-family: var(--font-display);
+    font-size: clamp(80px, 10vw, 140px);
+    font-weight: 400;
+    line-height: 1;
+    color: var(--color-primary-dark);
+    opacity: 0.03;
+    position: absolute;
+    top: -20px;
+    left: -10px;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  /* Image hover — slow transition, no border-radius */
+  .image-hover {
+    overflow: hidden;
+  }
+
+  /* SectionTitle with animated gold line */
+  .section-title-line {
+    position: relative;
+    display: inline-block;
+  }
+
+  .section-title-line::before {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--color-accent-gold);
+    transition: width 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  .section-title-line.is-visible::before {
+    width: 100%;
+  }
+
+  /* Vertical separator lines */
+  .vertical-separator {
+    width: 1px;
+    background-color: var(--color-primary-dark);
+    opacity: 0.08;
+    transform: scaleY(0);
+    transform-origin: top center;
+  }
+
+  .vertical-separator.is-visible {
+    transform: scaleY(1);
+    transition: transform 1.5s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  .image-hover img {
+    transition:
+      transform 800ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      filter 800ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .image-hover:hover img {
+    transform: scale(1.05);
+    filter: brightness(1.08);
+  }
+}
