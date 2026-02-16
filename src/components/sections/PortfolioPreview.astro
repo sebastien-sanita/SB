@@ -70,11 +70,11 @@ const projects = [
     </div>
 
     {/* Grille bento asymetrique */}
-    <div class="-mx-6 md:-mx-10 grid grid-cols-1 md:grid-cols-4 md:grid-rows-[420px_420px_380px] gap-2 md:gap-3" data-reveal-stagger="0.1">
+    <div class="-mx-6 md:-mx-10 grid grid-cols-1 md:grid-cols-4 md:grid-rows-[420px_420px_380px] gap-2 md:gap-3" data-mosaic>
       {projects.map((project) => (
         <a
           href={project.slug}
-          data-reveal-child
+          data-mosaic-item
           class:list={[
             'group relative overflow-hidden cursor-pointer block',
             project.gridClass,

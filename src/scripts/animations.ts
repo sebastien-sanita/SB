@@ -226,7 +226,71 @@ function initClipReveals() {
 }
 
 // ─────────────────────────────────────────────
-// 6. MAGNETIC BUTTONS — subtle attraction on hover
+// 6. MOSAIC IMAGE REVEALS — puzzle slide-in from alternating directions
+// ─────────────────────────────────────────────
+function initMosaicReveals() {
+  const clipFrom: Record<string, string> = {
+    left: 'inset(0 100% 0 0)',
+    right: 'inset(0 0 0 100%)',
+    bottom: 'inset(100% 0 0 0)',
+    top: 'inset(0 0 100% 0)',
+  };
+
+  // Alternating directions for the puzzle/mosaic feel
+  const directions = ['left', 'right', 'bottom', 'right', 'left', 'top'];
+
+  // Mosaic groups — children slide in from alternating directions with stagger
+  const mosaicGroups = document.querySelectorAll('[data-mosaic]');
+
+  mosaicGroups.forEach((group) => {
+    const items = group.querySelectorAll('[data-mosaic-item]');
+
+    items.forEach((item, i) => {
+      const dir = directions[i % directions.length];
+
+      gsap.fromTo(item,
+        { clipPath: clipFrom[dir], opacity: 0.3 },
+        {
+          clipPath: 'inset(0 0 0 0)',
+          opacity: 1,
+          duration: 1.2,
+          ease: 'power2.inOut',
+          scrollTrigger: {
+            trigger: group,
+            start: 'top 90%',
+            toggleActions: 'play none none none',
+          },
+          delay: i * 0.12,
+        }
+      );
+    });
+  });
+
+  // Standalone slide-in images (full-bleed bands, individual images)
+  const slideImages = document.querySelectorAll('[data-slide-in]');
+
+  slideImages.forEach((el) => {
+    const direction = (el as HTMLElement).dataset.slideIn || 'bottom';
+
+    gsap.fromTo(el,
+      { clipPath: clipFrom[direction] || clipFrom.bottom, opacity: 0.3 },
+      {
+        clipPath: 'inset(0 0 0 0)',
+        opacity: 1,
+        duration: 1.4,
+        ease: 'power2.inOut',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 92%',
+          toggleActions: 'play none none none',
+        },
+      }
+    );
+  });
+}
+
+// ─────────────────────────────────────────────
+// 7. MAGNETIC BUTTONS — subtle attraction on hover
 // ─────────────────────────────────────────────
 function initMagneticButtons() {
   // Skip on touch devices
@@ -301,6 +365,11 @@ function init() {
     document.querySelectorAll('[data-clip-reveal]').forEach((el) => {
       (el as HTMLElement).style.clipPath = 'none';
     });
+    // Also reveal mosaic/slide-in elements
+    document.querySelectorAll('[data-mosaic-item], [data-slide-in]').forEach((el) => {
+      (el as HTMLElement).style.clipPath = 'none';
+      (el as HTMLElement).style.opacity = '1';
+    });
     return;
   }
 
@@ -309,6 +378,7 @@ function init() {
   initTextSplit();
   initLineDraws();
   initClipReveals();
+  initMosaicReveals();
   initMagneticButtons();
   initSectionTitleLines();
   initVerticalSeparators();

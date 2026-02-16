@@ -24,6 +24,18 @@ const styleLabels: Record<string, string> = {
   contemporain: 'Contemporain',
 };
 
+// Alternating clip-path directions for mosaic/puzzle slide-in
+const clipDirections = [
+  'inset(0 100% 0 0)',   // from left
+  'inset(0 0 0 100%)',   // from right
+  'inset(100% 0 0 0)',   // from bottom
+  'inset(0 0 0 100%)',   // from right
+  'inset(0 100% 0 0)',   // from left
+  'inset(0 0 100% 0)',   // from top
+  'inset(100% 0 0 0)',   // from bottom
+  'inset(0 0 0 100%)',   // from right
+];
+
 /* Pattern cyclique de tailles pour varier la grille — formats mixtes */
 const sizePattern = [
   { colSpan: 'md:col-span-2', aspect: 'aspect-[16/10]' },   // Wide hero
@@ -62,10 +74,10 @@ export default function ProjectGrid({ projects }: Props) {
                 key={project.id}
                 href={`/projets/${project.slug}`}
                 layout
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.5, delay: i * 0.05, ease: [0.25, 0.46, 0.45, 0.94] }}
+                initial={{ opacity: 0.3, clipPath: clipDirections[i % clipDirections.length] }}
+                animate={{ opacity: 1, clipPath: 'inset(0 0 0 0)' }}
+                exit={{ opacity: 0, clipPath: clipDirections[i % clipDirections.length] }}
+                transition={{ duration: 1.0, delay: i * 0.1, ease: [0.76, 0, 0.24, 1] }}
                 className={`group relative overflow-hidden cursor-pointer block ${size.colSpan}`}
               >
                 <div className={`${size.aspect} relative overflow-hidden`}>
