@@ -14,6 +14,6 @@ export default defineConfig({
     sitemap(),
   ],
   image: {
-    domains: ['images.unsplash.com'],
+    domains: [],
   },
 });

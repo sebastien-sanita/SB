@@ -25,10 +25,10 @@ export const projects: Project[] = [
     location: 'Lyon 6e',
     description:
       "Renovation complete d'un appartement haussmannien au coeur du 6e arrondissement. Moulures restaurees, parquet massif, materiaux nobles.",
-    coverImage: 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=1600&q=90',
+    coverImage: '/images/projets/projeta-proja1.jpg',
     images: [
-      'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=1600&q=90',
-      'https://images.unsplash.com/photo-1600210492493-0946911123ea?w=1600&q=90',
+      '/images/projets/projeta-proja1.jpg',
+      '/images/projets/projeta-proja2.jpg',
     ],
     featured: true,
   },
@@ -43,10 +43,10 @@ export const projects: Project[] = [
     location: 'Lyon 6e',
     description:
       "Agencement sur-mesure d'un appartement haussmannien. Alliance du cachet ancien et du design contemporain, cuisine ouverte, salle de bains en marbre.",
-    coverImage: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1600&q=90',
+    coverImage: '/images/projets/RSD-Agencements-Architecte-interieur-Lyon-15.jpg',
     images: [
-      'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1600&q=90',
-      'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1600&q=90',
+      '/images/projets/RSD-Agencements-Architecte-interieur-Lyon-15.jpg',
+      '/images/projets/Archi-interieure-renovation-appartement-ancien-Lyon-6.jpg',
     ],
     featured: true,
   },
@@ -61,8 +61,8 @@ export const projects: Project[] = [
     location: 'Lyon 8e',
     description:
       "Renovation d'un appartement des annees 1930 dans le 8e. Ouverture des espaces, jeux de lumiere naturelle, materiaux chaleureux.",
-    coverImage: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&q=90',
-    images: ['https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&q=90'],
+    coverImage: '/images/projets/Architecture-interieure-appartement-haut-de-gamme-Lyon-8.jpg',
+    images: ['/images/projets/Architecture-interieure-appartement-haut-de-gamme-Lyon-8.jpg'],
     featured: true,
   },
   {
@@ -76,8 +76,8 @@ export const projects: Project[] = [
     location: 'Lyon Ouest',
     description:
       "Renovation interieure et exterieure d'une villa d'exception. Espaces de vie ouverts sur le jardin, terrasse amenagee, piscine.",
-    coverImage: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&q=90',
-    images: ['https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&q=90'],
+    coverImage: '/images/projets/projetc-projc1.jpg',
+    images: ['/images/projets/projetc-projc1.jpg'],
     featured: true,
   },
   {
@@ -91,8 +91,8 @@ export const projects: Project[] = [
     location: 'Lyon 6e',
     description:
       "Appartement de prestige face au Parc de la Tete d'Or. Restauration des elements d'epoque, dressing sur-mesure, domotique integree.",
-    coverImage: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1600&q=90',
-    images: ['https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1600&q=90'],
+    coverImage: '/images/projets/Archi-interieure-renovation-appartement-Tete-d-Or-Lyon.jpg',
+    images: ['/images/projets/Archi-interieure-renovation-appartement-Tete-d-Or-Lyon.jpg'],
     featured: false,
   },
   {
@@ -106,8 +106,8 @@ export const projects: Project[] = [
     location: 'Lyon 6e',
     description:
       "Optimisation d'un espace compact en garconniere elegante. Solutions sur-mesure, rangements integres, design fonctionnel et raffine.",
-    coverImage: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1600&q=90',
-    images: ['https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1600&q=90'],
+    coverImage: '/images/projets/Renovation-appartement-Haussmannien-Lyon-06.jpg',
+    images: ['/images/projets/Renovation-appartement-Haussmannien-Lyon-06.jpg'],
     featured: true,
   },
   {
@@ -121,8 +121,8 @@ export const projects: Project[] = [
     location: 'Lyon 2e',
     description:
       "Renovation d'une residence bourgeoise pres de la Place Bellecour. Parquets restaures, cheminees en marbre, cuisine de chef.",
-    coverImage: 'https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=1600&q=90',
-    images: ['https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=1600&q=90'],
+    coverImage: '/images/projets/projeta-proja5.jpg',
+    images: ['/images/projets/projeta-proja5.jpg'],
     featured: false,
   },
   {
@@ -136,8 +136,8 @@ export const projects: Project[] = [
     location: 'Caluire-et-Cuire',
     description:
       "Extension et renovation contemporaine d'une maison familiale. Verriere, cuisine ouverte, suite parentale avec terrasse.",
-    coverImage: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=1600&q=90',
-    images: ['https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=1600&q=90'],
+    coverImage: '/images/projets/projetc-projc3.jpg',
+    images: ['/images/projets/projetc-projc3.jpg'],
     featured: false,
   },
   {
@@ -151,8 +151,8 @@ export const projects: Project[] = [
     location: 'Lyon 2e',
     description:
       "Design contemporain pour un appartement neuf au quartier Confluence. Lignes epurees, beton cire, mobilier sur-mesure.",
-    coverImage: 'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=1600&q=90',
-    images: ['https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=1600&q=90'],
+    coverImage: '/images/projets/projetb-projb1.jpg',
+    images: ['/images/projets/projetb-projb1.jpg'],
     featured: false,
   },
   {
@@ -166,8 +166,8 @@ export const projects: Project[] = [
     location: 'Lyon 4e',
     description:
       "Transformation d'un atelier canut en duplex lumineux. Volumes genereux, mezzanine, esprit loft avec cachet lyonnais.",
-    coverImage: 'https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=1600&q=90',
-    images: ['https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=1600&q=90'],
+    coverImage: '/images/projets/projeta-proja4.jpg',
+    images: ['/images/projets/projeta-proja4.jpg'],
     featured: false,
   },
   {
@@ -181,8 +181,8 @@ export const projects: Project[] = [
     location: 'Monts d\'Or',
     description:
       "Residence familiale d'exception avec home cinema, cave a vin et salle de sport. Materiaux nobles, domotique integree.",
-    coverImage: 'https://images.unsplash.com/photo-1617806118233-18e1de247200?w=1600&q=90',
-    images: ['https://images.unsplash.com/photo-1617806118233-18e1de247200?w=1600&q=90'],
+    coverImage: '/images/projets/projetc-projc7.jpg',
+    images: ['/images/projets/projetc-projc7.jpg'],
     featured: false,
   },
   {
@@ -196,8 +196,8 @@ export const projects: Project[] = [
     location: 'Ecully',
     description:
       "Renovation integrale avec extension jardin. Escalier sur-mesure, cuisine de chef, suite parentale avec dressing.",
-    coverImage: 'https://images.unsplash.com/photo-1600566753151-384129cf4e3e?w=1600&q=90',
-    images: ['https://images.unsplash.com/photo-1600566753151-384129cf4e3e?w=1600&q=90'],
+    coverImage: '/images/projets/projetb-projb3.jpg',
+    images: ['/images/projets/projetb-projb3.jpg'],
     featured: false,
   },
 ];

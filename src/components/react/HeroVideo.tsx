@@ -16,7 +16,7 @@ export default function HeroVideo() {
         className="absolute inset-0"
       >
         <img
-          src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1920&q=90"
+          src="/images/projets/RSD-Agencements-Architecte-interieur-Lyon-14.jpg"
           alt="Intérieur luxueux avec lumière naturelle"
           className="w-full h-full object-cover"
           loading="eager"

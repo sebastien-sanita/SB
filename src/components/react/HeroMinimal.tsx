@@ -8,9 +8,9 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const heroImages = [
-  'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1920&q=90',
-  'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=90',
-  'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1920&q=90',
+  '/images/projets/RSD-Agencements-Architecte-interieur-Lyon-14.jpg',
+  '/images/projets/Renovation-villa-bord-de-mer.jpg',
+  '/images/projets/RSD-Agencements-Architecte-interieur-Lyon-16.jpg',
 ];
 
 const easeOutQuart = [0.25, 1, 0.5, 1] as const;
