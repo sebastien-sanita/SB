@@ -6,6 +6,7 @@
  */
 import Section from '@components/ui/Section.astro';
 import Container from '@components/ui/Container.astro';
+import TextMorph from '@components/react/TextMorph';
 
 const steps = [
   {
@@ -39,7 +40,7 @@ const steps = [
       <span class="section-number-xl">04</span>
       <span class="section-number">04</span>
       <h2 class="text-section text-primary-dark mt-6">
-        <span class="font-display font-normal">Notre</span> <span class="font-heading font-light">Processus</span>
+        <span class="font-display font-normal">Notre</span> <TextMorph client:visible words={['Processus', 'Methode', 'Approche']} className="font-heading font-light" />
       </h2>
       <p class="font-body text-lg font-light text-[var(--color-text-light)] mt-4 max-w-xl">
         Un accompagnement sur-mesure a chaque etape de votre projet

@@ -7,6 +7,7 @@
 import Section from '@components/ui/Section.astro';
 import Container from '@components/ui/Container.astro';
 import Button from '@components/ui/Button.astro';
+import TextMorph from '@components/react/TextMorph';
 
 const projects = [
   {
@@ -62,7 +63,7 @@ const projects = [
       <span class="section-number-xl">03</span>
       <span class="section-number">03</span>
       <h2 class="text-section text-primary-dark mt-6">
-        <span class="font-heading font-light">Nos</span> <span class="font-display italic font-normal">Realisations</span>
+        <span class="font-heading font-light">Nos</span> <TextMorph client:visible words={['Realisations', 'Oeuvres', 'Creations']} className="font-display italic font-normal" />
       </h2>
       <p class="font-body text-lg font-light text-[var(--color-text-light)] mt-4 max-w-xl">
         Decouvrez une selection de nos projets les plus emblematiques

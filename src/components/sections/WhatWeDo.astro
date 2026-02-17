@@ -6,6 +6,7 @@
  */
 import Section from '@components/ui/Section.astro';
 import Container from '@components/ui/Container.astro';
+import TextMorph from '@components/react/TextMorph';
 ---
 
 <Section padding="lg">
@@ -16,7 +17,7 @@ import Container from '@components/ui/Container.astro';
       <span class="section-number-xl">02</span>
       <span class="section-number">02</span>
       <h2 class="text-section text-primary-dark mt-6">
-        <span class="font-display font-normal">Ce que</span> <span class="font-heading font-light">nous faisons</span>
+        <span class="font-display font-normal">Ce que</span> <TextMorph client:visible words={['nous faisons', 'nous creons', 'nous imaginons']} className="font-heading font-light" />
       </h2>
       <p class="font-body text-lg font-light text-[var(--color-text-light)] mt-4 max-w-xl">
         Trois expertises complementaires pour donner vie a votre projet
