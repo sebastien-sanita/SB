@@ -157,6 +157,32 @@ main {
   clip-path: inset(0 0 100% 0);
 }
 
+/* Slide-in reveal base state (mosaic system) */
+[data-slide-in] {
+  clip-path: inset(100% 0 0 0);
+  opacity: 0.3;
+  will-change: clip-path, opacity;
+}
+
+[data-slide-in="left"] {
+  clip-path: inset(0 100% 0 0);
+}
+
+[data-slide-in="right"] {
+  clip-path: inset(0 0 0 100%);
+}
+
+[data-slide-in="top"] {
+  clip-path: inset(0 0 100% 0);
+}
+
+/* Mosaic item base state — hidden before GSAP assigns direction */
+[data-mosaic-item] {
+  clip-path: inset(0 100% 0 0);
+  opacity: 0;
+  will-change: clip-path, opacity;
+}
+
 /* ═══════════════════════════════════════════════
    UTILITY CLASSES — Ayocin × Aker
    ═══════════════════════════════════════════════ */
