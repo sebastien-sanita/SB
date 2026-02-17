@@ -136,8 +136,8 @@ export const projects: Project[] = [
     location: 'Caluire-et-Cuire',
     description:
       "Extension et renovation contemporaine d'une maison familiale. Verriere, cuisine ouverte, suite parentale avec terrasse.",
-    coverImage: '/images/projets/projetc-projc3.jpg',
-    images: ['/images/projets/projetc-projc3.jpg'],
+    coverImage: '/images/projets/projetb-projb5.jpg',
+    images: ['/images/projets/projetb-projb5.jpg', '/images/projets/projetc-projc3.jpg'],
     featured: false,
   },
   {
