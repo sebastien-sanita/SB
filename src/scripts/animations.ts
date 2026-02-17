@@ -387,10 +387,19 @@ function init() {
   ScrollTrigger.refresh();
 }
 
+function start() {
+  // If page loader is still visible, wait for it to finish
+  if (document.body.classList.contains('is-loading')) {
+    window.addEventListener('loaderComplete', () => init(), { once: true });
+  } else {
+    init();
+  }
+}
+
 if (document.readyState === 'complete') {
-  init();
+  start();
 } else {
-  window.addEventListener('load', init);
+  window.addEventListener('load', start);
 }
 
 export {};

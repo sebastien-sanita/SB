@@ -15,6 +15,7 @@ function initPageLoader() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     loader.style.display = 'none';
     document.body.classList.remove('is-loading');
+    window.dispatchEvent(new CustomEvent('loaderComplete'));
     return;
   }
 
@@ -22,6 +23,7 @@ function initPageLoader() {
     onComplete: () => {
       loader.style.display = 'none';
       document.body.classList.remove('is-loading');
+      window.dispatchEvent(new CustomEvent('loaderComplete'));
     },
   });
 
