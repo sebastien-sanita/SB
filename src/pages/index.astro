@@ -38,26 +38,26 @@ import Marquee from '@components/sections/Marquee.astro';
   <WhatWeDo />
 
   <!-- Bande image full-bleed — transition visuelle -->
-  <div class="relative w-full h-[50vh] min-h-[350px] lg:h-[60vh] overflow-hidden" data-slide-in="bottom">
+  <div class="group relative w-full h-[50vh] min-h-[350px] lg:h-[60vh] overflow-hidden" data-slide-in="bottom">
     <img
       src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1920&q=90"
       alt="Detail architectural"
-      class="w-full h-full object-cover"
+      class="w-full h-full object-cover transition-transform duration-[1.2s] ease-smooth group-hover:scale-[1.05]"
       data-parallax="0.15"
       loading="lazy"
     />
-    <div class="absolute inset-0 bg-black/10" />
+    <div class="absolute inset-0 bg-black/10 group-hover:bg-black/5 transition-colors duration-700" />
   </div>
 
   <!-- SECTION 03 : Portfolio -->
   <PortfolioPreview />
 
   <!-- Bande image full-bleed -->
-  <div class="relative w-full h-[45vh] min-h-[320px] lg:h-[55vh] overflow-hidden" data-slide-in="right">
+  <div class="group relative w-full h-[45vh] min-h-[320px] lg:h-[55vh] overflow-hidden" data-slide-in="right">
     <img
       src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1920&q=90"
       alt="Design interieur contemporain"
-      class="w-full h-full object-cover"
+      class="w-full h-full object-cover transition-transform duration-[1.2s] ease-smooth group-hover:scale-[1.05]"
       data-parallax="0.1"
       loading="lazy"
     />

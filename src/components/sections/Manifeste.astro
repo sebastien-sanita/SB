@@ -76,11 +76,11 @@ import Container from '@components/ui/Container.astro';
         </div>
 
         {/* Image secondaire — chevauchement editorial (desktop only) */}
-        <div class="hidden lg:block absolute -bottom-16 -left-20 w-[280px] h-[380px] overflow-hidden z-10">
+        <div class="hidden lg:block absolute -bottom-16 -left-20 w-[280px] h-[380px] overflow-hidden z-10 group/secondary">
           <img
             src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=90"
             alt="Detail materiaux nobles"
-            class="w-full h-full object-cover"
+            class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover/secondary:scale-[1.08]"
             loading="lazy"
           />
         </div>

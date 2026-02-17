@@ -7,6 +7,7 @@ import Layout from '@layouts/Layout.astro';
 import Section from '@components/ui/Section.astro';
 import Container from '@components/ui/Container.astro';
 import Button from '@components/ui/Button.astro';
+import HeroInner from '@components/react/HeroInner';
 
 const values = [
   {
@@ -37,29 +38,18 @@ const values = [
   description="Depuis plus de 35 ans, Studio SB Design transforme des espaces en lieux d'exception a Lyon. Une histoire familiale d'artisans passionnes, trois generations de savoir-faire."
 >
 
-  <!-- Hero full-bleed image -->
-  <div class="relative w-full h-[50vh] min-h-[400px] lg:h-[60vh] overflow-hidden">
-    <img
-      src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=90"
-      alt="Interieur d'exception"
-      class="w-full h-full object-cover"
-      loading="eager"
-    />
-    <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/70" />
-    <div class="absolute inset-0 flex items-end pb-16 md:pb-24">
-      <Container>
-        <div class="relative max-w-3xl" data-reveal>
-          <span class="section-number text-white/60">A propos</span>
-          <h1 class="font-display text-hero font-normal text-white mt-6 mb-6" data-split-words>
-            <span class="font-display">Notre</span> <span class="font-display italic">histoire</span>
-          </h1>
-          <p class="font-body text-lg font-light text-white/70 max-w-xl leading-[1.75]">
-            Depuis plus de 35 ans, une famille d'artisans transforme des espaces en lieux de vie d'exception.
-          </p>
-        </div>
-      </Container>
-    </div>
-  </div>
+  <!-- Hero dynamique -->
+  <HeroInner
+    client:load
+    images={[
+      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=90',
+      'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1920&q=90',
+      'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1920&q=90',
+    ]}
+    label="A propos"
+    title='<span class="font-[Playfair_Display]">Notre</span> <span class="font-[Playfair_Display] italic">histoire</span>'
+    subtitle="Depuis plus de 35 ans, une famille d'artisans transforme des espaces en lieux de vie d'exception."
+  />
 
   <!-- Histoire -->
   <Section padding="lg">
@@ -115,11 +105,11 @@ const values = [
           </div>
 
           {/* Image secondaire chevauchee (desktop only) */}
-          <div class="hidden lg:block absolute -bottom-14 -left-16 w-[260px] h-[360px] overflow-hidden z-10">
+          <div class="hidden lg:block absolute -bottom-14 -left-16 w-[260px] h-[360px] overflow-hidden z-10 group/secondary">
             <img
               src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=90"
               alt="Detail materiaux nobles"
-              class="w-full h-full object-cover"
+              class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover/secondary:scale-[1.08]"
               loading="lazy"
             />
           </div>
@@ -130,11 +120,11 @@ const values = [
   </Section>
 
   <!-- Bande image full-bleed -->
-  <div class="relative w-full h-[45vh] min-h-[300px] overflow-hidden" data-slide-in="bottom">
+  <div class="group relative w-full h-[45vh] min-h-[300px] overflow-hidden" data-slide-in="bottom">
     <img
       src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1920&q=90"
       alt="Detail materiaux nobles"
-      class="w-full h-full object-cover"
+      class="w-full h-full object-cover transition-transform duration-[1.2s] ease-smooth group-hover:scale-[1.05]"
       data-parallax="0.12"
       loading="lazy"
     />
