@@ -16,6 +16,7 @@ const categoryLabels: Record<string, string> = {
   appartement: 'Appartement',
   residence: 'Residence',
   maison: 'Maison',
+  'salle-de-bains': 'Salle de bains',
 };
 
 const styleLabels: Record<string, string> = {

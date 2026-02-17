@@ -226,22 +226,16 @@ function initClipReveals() {
 }
 
 // ─────────────────────────────────────────────
-// 6. MOSAIC IMAGE REVEALS — puzzle slide-in from alternating directions
+// 6. MOSAIC IMAGE REVEALS — slide-in from alternating directions
+// Uses only opacity + translate for smooth, reliable animations
+// (clip-path removed: caused single-frame flash conflicts with CSS)
 // ─────────────────────────────────────────────
 function initMosaicReveals() {
-  const clipFrom: Record<string, string> = {
-    left: 'inset(0 100% 0 0)',
-    right: 'inset(0 0 0 100%)',
-    bottom: 'inset(100% 0 0 0)',
-    top: 'inset(0 0 100% 0)',
-  };
-
-  // Physical translate offset per direction (real sliding motion)
   const translateFrom: Record<string, { x: number; y: number }> = {
-    left: { x: -60, y: 0 },
-    right: { x: 60, y: 0 },
-    bottom: { x: 0, y: 60 },
-    top: { x: 0, y: -60 },
+    left: { x: -80, y: 0 },
+    right: { x: 80, y: 0 },
+    bottom: { x: 0, y: 80 },
+    top: { x: 0, y: -80 },
   };
 
   // Alternating directions for the puzzle/mosaic feel
@@ -258,9 +252,8 @@ function initMosaicReveals() {
       const t = translateFrom[dir];
 
       gsap.fromTo(item,
-        { clipPath: clipFrom[dir], opacity: 0, x: t.x, y: t.y },
+        { opacity: 0, x: t.x, y: t.y },
         {
-          clipPath: 'inset(0 0 0 0)',
           opacity: 1,
           x: 0,
           y: 0,
@@ -271,7 +264,7 @@ function initMosaicReveals() {
             start: 'top 85%',
             toggleActions: 'play none none none',
           },
-          delay: i * 0.12,
+          delay: i * 0.15,
         }
       );
     });
@@ -285,9 +278,8 @@ function initMosaicReveals() {
     const t = translateFrom[direction] || translateFrom.bottom;
 
     gsap.fromTo(el,
-      { clipPath: clipFrom[direction] || clipFrom.bottom, opacity: 0, x: t.x, y: t.y },
+      { opacity: 0, x: t.x, y: t.y },
       {
-        clipPath: 'inset(0 0 0 0)',
         opacity: 1,
         x: 0,
         y: 0,
@@ -381,7 +373,6 @@ function init() {
     });
     // Also reveal mosaic/slide-in elements
     document.querySelectorAll('[data-mosaic-item], [data-slide-in]').forEach((el) => {
-      (el as HTMLElement).style.clipPath = 'none';
       (el as HTMLElement).style.opacity = '1';
       (el as HTMLElement).style.transform = 'none';
     });

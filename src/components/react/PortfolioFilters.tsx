@@ -19,6 +19,7 @@ const categories = [
   { value: 'appartement', label: 'Appartement' },
   { value: 'residence', label: 'Résidence' },
   { value: 'maison', label: 'Maison' },
+  { value: 'salle-de-bains', label: 'Salle de bains' },
 ];
 
 const styles = [

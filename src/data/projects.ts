@@ -2,7 +2,7 @@ export interface Project {
   id: string;
   slug: string;
   title: string;
-  category: 'appartement' | 'residence' | 'maison';
+  category: 'appartement' | 'residence' | 'maison' | 'salle-de-bains';
   style: 'moderne' | 'classique' | 'contemporain';
   surface: number;
   year: number;
@@ -198,6 +198,161 @@ export const projects: Project[] = [
       "Renovation integrale avec extension jardin. Escalier sur-mesure, cuisine de chef, suite parentale avec dressing.",
     coverImage: '/images/projets/projetb-projb3.jpg',
     images: ['/images/projets/projetb-projb3.jpg'],
+    featured: false,
+  },
+  {
+    id: '13',
+    slug: 'loft-anatole',
+    title: 'Loft Anatole',
+    category: 'appartement',
+    style: 'contemporain',
+    surface: 200,
+    year: 2024,
+    location: 'Lyon 6e',
+    description:
+      "Renovation haut de gamme d'un loft sur trois niveaux. Escalier reprofile sur-mesure avec marches en ceramique effet pierre, ilot central, cuisine italienne en Olme Toscan avec retroeclairage, revetements grand format gres Ceram.",
+    coverImage: '/images/projets/loft-lyonnais-1.jpg',
+    images: [
+      '/images/projets/loft-lyonnais-1.jpg',
+      '/images/projets/loft-lyonnais-2.jpg',
+      '/images/projets/loft-lyonnais-3.jpg',
+    ],
+    featured: true,
+  },
+  {
+    id: '14',
+    slug: 'appartement-signature',
+    title: 'Appartement Signature',
+    category: 'appartement',
+    style: 'classique',
+    surface: 130,
+    year: 2023,
+    location: 'Lyon 6e',
+    description:
+      "Renovation d'un appartement haussmannien de 130 m2 avec vue traversante sur les toits de la Croix-Rousse. Creation d'une quatrieme chambre, cuisine integree avec bois massif tabac, douches a l'italienne, luminaires decoratifs et mobilier intemporel.",
+    coverImage: '/images/projets/signature-haussmannien-1.jpg',
+    images: [
+      '/images/projets/signature-haussmannien-1.jpg',
+      '/images/projets/signature-haussmannien-2.jpg',
+      '/images/projets/signature-haussmannien-3.jpg',
+    ],
+    featured: false,
+  },
+  {
+    id: '15',
+    slug: 'appartement-menton',
+    title: 'Appartement Menton',
+    category: 'appartement',
+    style: 'contemporain',
+    surface: 75,
+    year: 2024,
+    location: 'Menton',
+    description:
+      "Renovation complete d'un appartement annees 70 en bord de mer. Electricite, plomberie et chauffage remplaces, climatisation ajoutee. Agencement concu comme un meuble avec rangements integres, sols grand format imitation marbre et lames bois massif.",
+    coverImage: '/images/projets/menton-1.jpg',
+    images: [
+      '/images/projets/menton-1.jpg',
+      '/images/projets/menton-2.jpg',
+      '/images/projets/menton-3.jpg',
+    ],
+    featured: false,
+  },
+  {
+    id: '16',
+    slug: 'salon-baccarat',
+    title: 'Salon Baccarat',
+    category: 'maison',
+    style: 'classique',
+    surface: 80,
+    year: 2023,
+    location: 'Sainte-Foy-les-Lyon',
+    description:
+      "Agencement d'un salon dans une maison bourgeoise. Habillage de cheminee sur-mesure en bois massif et laque brillante, murs en stuc bicolore, sol en marbre Marfil recristallise, details en verre et bronze.",
+    coverImage: '/images/projets/baccarat-1.jpg',
+    images: [
+      '/images/projets/baccarat-1.jpg',
+      '/images/projets/baccarat-2.jpg',
+      '/images/projets/baccarat-3.jpg',
+    ],
+    featured: false,
+  },
+  {
+    id: '17',
+    slug: 'maison-des-gasses',
+    title: 'Maison des Gasses',
+    category: 'maison',
+    style: 'contemporain',
+    surface: 100,
+    year: 2023,
+    location: 'Saint-Cyr-au-Mont-d\'Or',
+    description:
+      "Renovation d'une maison de village aux Monts d'Or. Cuisine laquee vert argile avec pierre au sol en chevrons, credence en gres ceram, salle de bains sous combles, revetements lin et enduits chaux, mobilier ethnique refletant les voyages des proprietaires.",
+    coverImage: '/images/projets/maison-gasses-1.jpg',
+    images: [
+      '/images/projets/maison-gasses-1.jpg',
+      '/images/projets/maison-gasses-2.jpg',
+      '/images/projets/maison-gasses-3.jpg',
+    ],
+    featured: false,
+  },
+  {
+    id: '18',
+    slug: 'spa-reves-bleus',
+    title: 'Reves Bleus',
+    category: 'maison',
+    style: 'contemporain',
+    surface: 40,
+    year: 2024,
+    location: 'Lyon',
+    description:
+      "Transformation d'un sous-sol de maison de ville en espace bien-etre de 40 m2. Hammam maconne sur-mesure, bassin avec nage a contre-courant et buses massantes, chromotherapie, ceramique imitation onyx bleu, 8 mois de realisation.",
+    coverImage: '/images/projets/Projet-SPA-creation-sur-mesure-Lyon.jpg',
+    images: [
+      '/images/projets/Projet-SPA-creation-sur-mesure-Lyon.jpg',
+      '/images/projets/spa-reves-bleus-1.jpg',
+      '/images/projets/spa-reves-bleus-2.jpg',
+      '/images/projets/spa-reves-bleus-3.jpg',
+    ],
+    featured: true,
+  },
+  {
+    id: '19',
+    slug: 'ethnic',
+    title: 'Ethnic',
+    category: 'salle-de-bains',
+    style: 'contemporain',
+    surface: 35,
+    year: 2024,
+    location: 'Lyon',
+    description:
+      "Salle de bains d'exception de 35 m2 concue comme extension d'une suite parentale. Douche a l'italienne, baignoire balneotherapie, double vasque monolithe, sauna italien en bois d'acajou. Gres Ceram noir avec motif ethnic incise de bronze, facades laque metal bronze.",
+    coverImage: '/images/projets/Projet-Salle-de-bains-sur-mesure-renovation-Lyon.jpg',
+    images: [
+      '/images/projets/Projet-Salle-de-bains-sur-mesure-renovation-Lyon.jpg',
+      '/images/projets/ethnic-sdb-1.jpg',
+      '/images/projets/ethnic-sdb-2.jpg',
+      '/images/projets/ethnic-sdb-3.jpg',
+    ],
+    featured: true,
+  },
+  {
+    id: '20',
+    slug: 'onyx-perle',
+    title: 'Onyx Perle',
+    category: 'salle-de-bains',
+    style: 'moderne',
+    surface: 20,
+    year: 2023,
+    location: 'Lyon',
+    description:
+      "Renovation d'une salle de bains haut de gamme de 20 m2. Douche a l'italienne 120 cm, plan double vasque en solid surface, plaques ceramique effet Onyx Brillant grand format, mobilier italien en chene massif teinte acajou, grand dressing integre.",
+    coverImage: '/images/projets/Projet-renovation-salle-de-bains-haut-de-gamme-Lyon.jpg',
+    images: [
+      '/images/projets/Projet-renovation-salle-de-bains-haut-de-gamme-Lyon.jpg',
+      '/images/projets/onyx-perle-1.jpg',
+      '/images/projets/onyx-perle-2.jpg',
+      '/images/projets/onyx-perle-3.jpg',
+    ],
     featured: false,
   },
 ];

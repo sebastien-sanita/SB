@@ -157,35 +157,28 @@ main {
   clip-path: inset(0 0 100% 0);
 }
 
-/* Slide-in reveal base state (mosaic system) — clip + translate */
+/* Slide-in reveal base state — smooth opacity + translate (no clip-path) */
 [data-slide-in] {
-  clip-path: inset(100% 0 0 0);
   opacity: 0;
-  transform: translateY(60px);
-  will-change: clip-path, opacity, transform;
+  transform: translateY(80px);
 }
 
 [data-slide-in="left"] {
-  clip-path: inset(0 100% 0 0);
-  transform: translateX(-60px);
+  transform: translateX(-80px);
 }
 
 [data-slide-in="right"] {
-  clip-path: inset(0 0 0 100%);
-  transform: translateX(60px);
+  transform: translateX(80px);
 }
 
 [data-slide-in="top"] {
-  clip-path: inset(0 0 100% 0);
-  transform: translateY(-60px);
+  transform: translateY(-80px);
 }
 
-/* Mosaic item base state — hidden before GSAP assigns direction */
+/* Mosaic item base state — hidden before GSAP animates */
 [data-mosaic-item] {
-  clip-path: inset(0 100% 0 0);
   opacity: 0;
-  transform: translateX(-60px);
-  will-change: clip-path, opacity, transform;
+  transform: translateY(50px);
 }
 
 /* ═══════════════════════════════════════════════

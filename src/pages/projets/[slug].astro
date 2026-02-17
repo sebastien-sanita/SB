@@ -1,0 +1,238 @@
+---
+/**
+ * Page projet individuelle — Editorial Luxe
+ * Route dynamique : /projets/[slug]
+ * Hero plein ecran, metadata, description, galerie, projets lies, CTA
+ */
+import Layout from '@layouts/Layout.astro';
+import Section from '@components/ui/Section.astro';
+import Container from '@components/ui/Container.astro';
+import Button from '@components/ui/Button.astro';
+import { projects } from '../../data/projects';
+import type { Project } from '../../data/projects';
+
+export function getStaticPaths() {
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+
+const categoryLabels: Record<string, string> = {
+  appartement: 'Appartement',
+  residence: 'Residence',
+  maison: 'Maison',
+  'salle-de-bains': 'Salle de bains',
+};
+
+const styleLabels: Record<string, string> = {
+  moderne: 'Moderne',
+  classique: 'Classique',
+  contemporain: 'Contemporain',
+};
+
+// Related projects: same category first, then others, exclude current
+const related = [
+  ...projects.filter((p) => p.id !== project.id && p.category === project.category),
+  ...projects.filter((p) => p.id !== project.id && p.category !== project.category),
+].slice(0, 3);
+---
+
+<Layout
+  title={`${project.title} — ${categoryLabels[project.category]} ${project.location} | SB Design`}
+  description={project.description}
+>
+
+  <!-- Hero plein ecran avec cover image -->
+  <section class="relative w-full h-[60vh] min-h-[400px] lg:h-[70vh] overflow-hidden">
+    <img
+      src={project.coverImage}
+      alt={project.title}
+      class="w-full h-full object-cover"
+      loading="eager"
+    />
+    <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-black/15 to-black/60" />
+
+    <!-- Contenu hero -->
+    <div class="absolute inset-0 flex items-end pb-12 md:pb-20">
+      <div class="w-full max-w-[1400px] mx-auto px-6 md:px-10">
+        <div class="relative max-w-3xl">
+          <span class="block font-heading text-xs font-semibold uppercase tracking-[0.2em] text-accent-gold mb-4">
+            {categoryLabels[project.category]} — {styleLabels[project.style]}
+          </span>
+          <h1 class="font-display text-[clamp(40px,7vw,88px)] font-normal text-white leading-[1.1] tracking-[0.02em]">
+            {project.title}
+          </h1>
+        </div>
+      </div>
+    </div>
+
+    <!-- Retour projets -->
+    <a
+      href="/projets"
+      class="absolute top-6 left-6 md:top-10 md:left-10 z-10 inline-flex items-center gap-2 font-heading text-xs font-medium text-white/70 uppercase tracking-[0.15em] hover:text-white transition-colors duration-300"
+    >
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19l-7-7 7-7" />
+      </svg>
+      Tous les projets
+    </a>
+  </section>
+
+  <!-- Details du projet -->
+  <Section padding="lg" background="white">
+    <Container>
+      <div class="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-12 lg:gap-20" data-reveal>
+
+        <!-- Gauche : Metadata -->
+        <div class="space-y-6">
+          <div>
+            <span class="font-heading text-xs font-semibold uppercase tracking-[0.15em] text-[var(--color-text-light)]">Lieu</span>
+            <p class="font-body text-lg font-light text-primary-dark mt-1">{project.location}</p>
+          </div>
+          <div class="w-full h-px bg-border" />
+          <div>
+            <span class="font-heading text-xs font-semibold uppercase tracking-[0.15em] text-[var(--color-text-light)]">Surface</span>
+            <p class="font-body text-lg font-light text-primary-dark mt-1">{project.surface} m&sup2;</p>
+          </div>
+          <div class="w-full h-px bg-border" />
+          <div>
+            <span class="font-heading text-xs font-semibold uppercase tracking-[0.15em] text-[var(--color-text-light)]">Annee</span>
+            <p class="font-body text-lg font-light text-primary-dark mt-1">{project.year}</p>
+          </div>
+          <div class="w-full h-px bg-border" />
+          <div>
+            <span class="font-heading text-xs font-semibold uppercase tracking-[0.15em] text-[var(--color-text-light)]">Style</span>
+            <p class="font-body text-lg font-light text-primary-dark mt-1">{styleLabels[project.style]}</p>
+          </div>
+          <div class="w-full h-px bg-border" />
+          <div>
+            <span class="font-heading text-xs font-semibold uppercase tracking-[0.15em] text-[var(--color-text-light)]">Categorie</span>
+            <p class="font-body text-lg font-light text-primary-dark mt-1">{categoryLabels[project.category]}</p>
+          </div>
+        </div>
+
+        <!-- Droite : Description -->
+        <div>
+          <h2 class="font-display text-subsection font-normal text-primary-dark mb-8">
+            <span class="font-display italic">A propos</span> <span class="font-heading font-light">du projet</span>
+          </h2>
+          <p class="font-body text-lg font-light text-[var(--color-text-light)] leading-[1.85] max-w-2xl">
+            {project.description}
+          </p>
+        </div>
+
+      </div>
+    </Container>
+  </Section>
+
+  <!-- Galerie d'images -->
+  {project.images.length > 0 && (
+    <Section padding="lg" background="warm">
+      <Container>
+        <div class="mb-12 md:mb-16" data-reveal>
+          <h2 class="font-display text-subsection font-normal text-primary-dark">
+            <span class="font-display italic">Galerie</span> <span class="font-heading font-light">photos</span>
+          </h2>
+        </div>
+
+        <div
+          class:list={[
+            "grid gap-3 md:gap-4",
+            project.images.length === 1 ? "grid-cols-1" : "grid-cols-1 md:grid-cols-2",
+          ]}
+          data-reveal
+        >
+          {project.images.map((img, i) => (
+            <div
+              class:list={[
+                "group overflow-hidden",
+                i === 0 && project.images.length > 2 ? "md:col-span-2" : "",
+              ]}
+            >
+              <img
+                src={img}
+                alt={`${project.title} — Photo ${i + 1}`}
+                class:list={[
+                  "w-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.05]",
+                  i === 0 && project.images.length > 2
+                    ? "h-[350px] lg:h-[60vh] lg:min-h-[450px]"
+                    : project.images.length === 1
+                      ? "h-[400px] lg:h-[70vh] lg:min-h-[500px]"
+                      : "h-[300px] lg:h-[50vh] lg:min-h-[400px]",
+                ]}
+                loading="lazy"
+              />
+            </div>
+          ))}
+        </div>
+      </Container>
+    </Section>
+  )}
+
+  <!-- Autres realisations -->
+  <Section padding="lg" background="white">
+    <Container>
+      <div class="mb-12 md:mb-16" data-reveal>
+        <h2 class="font-display text-subsection font-normal text-primary-dark">
+          <span class="font-display italic">Autres</span> <span class="font-heading font-light">realisations</span>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4" data-reveal>
+        {related.map((p) => (
+          <a
+            href={`/projets/${p.slug}`}
+            class="group relative overflow-hidden block h-[280px] lg:h-[380px]"
+          >
+            <img
+              src={p.coverImage}
+              alt={p.title}
+              class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent group-hover:from-black/70 transition-all duration-500" />
+            <div class="absolute bottom-0 left-0 right-0 p-5">
+              <span class="text-[11px] font-heading font-medium text-accent-gold uppercase tracking-[0.15em]">
+                {categoryLabels[p.category]}
+              </span>
+              <h3 class="font-display text-xl font-normal text-white mt-1">
+                {p.title}
+              </h3>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <div class="text-center mt-12 md:mt-16">
+        <Button href="/projets" variant="outline" size="lg">
+          Voir tous les projets
+        </Button>
+      </div>
+    </Container>
+  </Section>
+
+  <!-- CTA -->
+  <Section background="dark" padding="lg">
+    <Container>
+      <div class="text-center max-w-2xl mx-auto" data-reveal>
+        <h2 class="font-display text-section font-normal text-white mb-6">
+          <span class="font-display italic">Un projet</span> <span class="font-heading font-light">similaire ?</span>
+        </h2>
+        <p class="font-body text-lg font-light text-white/70 mb-10 leading-relaxed">
+          Discutons de votre projet de renovation. Consultation gratuite et sans engagement.
+        </p>
+        <Button href="/contact" variant="primary" size="lg">
+          Prendre rendez-vous
+        </Button>
+      </div>
+    </Container>
+  </Section>
+
+</Layout>
