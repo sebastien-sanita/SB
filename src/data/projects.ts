@@ -76,8 +76,8 @@ export const projects: Project[] = [
     location: 'Lyon Ouest',
     description:
       "Renovation interieure et exterieure d'une villa d'exception. Espaces de vie ouverts sur le jardin, terrasse amenagee, piscine.",
-    coverImage: '/images/projets/projetc-projc1.jpg',
-    images: ['/images/projets/projetc-projc1.jpg'],
+    coverImage: '/images/projets/Renovation-villa-bord-de-mer.jpg',
+    images: ['/images/projets/Renovation-villa-bord-de-mer.jpg'],
     featured: true,
   },
   {
