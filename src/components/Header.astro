@@ -93,15 +93,15 @@ function isActive(href: string) {
   {/* Menu mobile — fullscreen overlay */}
   <div
     id="mobile-menu"
-    class="lg:hidden fixed inset-0 top-0 bg-[#FDFBF7] opacity-0 pointer-events-none transition-all duration-500 ease-out"
-    style="z-index: 1040;"
+    class="lg:hidden fixed inset-0 z-[1040] invisible pointer-events-none"
+    style="background: #FDFBF7;"
   >
-    <div class="flex flex-col items-center justify-center h-full gap-6 px-6">
+    <div id="mobile-menu-inner" class="flex flex-col items-center justify-center h-full gap-5 md:gap-7 px-6 opacity-0 transition-opacity duration-300 ease-out">
       {navLinks.map((link, i) => (
         <a
           href={link.href}
           class:list={[
-            'mobile-nav-link font-heading text-[clamp(24px,6vw,38px)] font-light uppercase tracking-widest transition-all duration-300 translate-y-4 opacity-0',
+            'mobile-nav-link font-heading text-[clamp(22px,5vw,36px)] font-light uppercase tracking-[0.15em] transition-all duration-300 translate-y-4 opacity-0',
             isActive(link.href)
               ? 'text-accent-brown'
               : 'text-primary-dark hover:text-accent-brown',
@@ -111,10 +111,10 @@ function isActive(href: string) {
           {link.label}
         </a>
       ))}
-      <div class="mt-6 w-full max-w-xs mobile-nav-link translate-y-4 opacity-0" data-delay="5">
+      <div class="mt-4 w-full max-w-xs mobile-nav-link translate-y-4 opacity-0" data-delay="5">
         <a
           href="/contact"
-          class="inline-flex items-center justify-center w-full px-8 py-4 bg-primary-dark text-white font-heading text-base font-medium uppercase tracking-wider hover:bg-accent-brown transition-colors duration-300"
+          class="inline-flex items-center justify-center w-full px-8 py-4 bg-primary-dark text-white font-heading text-[15px] font-medium uppercase tracking-wider hover:bg-accent-brown transition-colors duration-300"
         >
           Demander un devis
         </a>
@@ -129,43 +129,58 @@ function isActive(href: string) {
 <script>
   const toggle = document.getElementById('mobile-menu-toggle');
   const menu = document.getElementById('mobile-menu');
+  const menuInner = document.getElementById('mobile-menu-inner');
   const iconOpen = document.getElementById('menu-icon-open');
   const iconClose = document.getElementById('menu-icon-close');
   const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+  let isMenuOpen = false;
 
   function closeMenu() {
-    if (!menu || !iconOpen || !iconClose || !toggle) return;
+    if (!menu || !menuInner || !iconOpen || !iconClose || !toggle) return;
+    isMenuOpen = false;
 
-    // Stagger links out
+    // Fade out links
     mobileLinks.forEach((link) => {
       (link as HTMLElement).style.opacity = '0';
       (link as HTMLElement).style.transform = 'translateY(16px)';
     });
 
+    // Fade out inner content
+    menuInner.classList.remove('opacity-100');
+    menuInner.classList.add('opacity-0');
+
     setTimeout(() => {
-      menu.classList.remove('opacity-100', 'pointer-events-auto');
-      menu.classList.add('opacity-0', 'pointer-events-none');
+      menu.classList.add('invisible', 'pointer-events-none');
+      menu.classList.remove('pointer-events-auto');
       iconOpen.classList.remove('hidden');
       iconClose.classList.add('hidden');
       toggle.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = '';
-    }, 200);
+    }, 300);
   }
 
   function openMenu() {
-    if (!menu || !iconOpen || !iconClose || !toggle) return;
+    if (!menu || !menuInner || !iconOpen || !iconClose || !toggle) return;
+    isMenuOpen = true;
 
-    menu.classList.remove('opacity-0', 'pointer-events-none');
-    menu.classList.add('opacity-100', 'pointer-events-auto');
+    // Show overlay immediately (solid bg, no opacity on container)
+    menu.classList.remove('invisible', 'pointer-events-none');
+    menu.classList.add('pointer-events-auto');
     iconOpen.classList.add('hidden');
     iconClose.classList.remove('hidden');
     toggle.setAttribute('aria-expanded', 'true');
     document.body.style.overflow = 'hidden';
 
+    // Fade in inner content
+    requestAnimationFrame(() => {
+      menuInner.classList.remove('opacity-0');
+      menuInner.classList.add('opacity-100');
+    });
+
     // Stagger links in
     mobileLinks.forEach((link, i) => {
       const el = link as HTMLElement;
-      const delay = parseInt(el.dataset.delay || '0') * 80 + 100;
+      const delay = parseInt(el.dataset.delay || '0') * 80 + 150;
       setTimeout(() => {
         el.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
         el.style.opacity = '1';
@@ -176,8 +191,7 @@ function isActive(href: string) {
 
   if (toggle && menu) {
     toggle.addEventListener('click', () => {
-      const isOpen = menu.classList.contains('opacity-100');
-      if (isOpen) closeMenu();
+      if (isMenuOpen) closeMenu();
       else openMenu();
     });
   }
