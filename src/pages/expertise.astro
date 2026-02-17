@@ -26,6 +26,8 @@ import HeroInner from '@components/react/HeroInner';
     ]}
     label="Expertise"
     title='<span class="font-[Playfair_Display]">Notre</span> <span class="font-[Playfair_Display] italic">savoir-faire</span>'
+    titlePrefix="Notre"
+    titleMorphWords={['savoir-faire', 'difference', 'excellence']}
     subtitle="Trois expertises complementaires pour transformer vos espaces en lieux d'exception qui vous ressemblent."
   />
 
@@ -35,14 +37,38 @@ import HeroInner from '@components/react/HeroInner';
       <div class="relative mb-24 md:mb-32" id="renovation" data-reveal>
         <span class="section-number-xl">01</span>
 
-        <div class="overflow-hidden mb-8 -mx-6 md:-mx-10" data-clip-reveal="bottom">
-          <img
-            src="/images/projets/Archi-interieure-renovation-appartement-ancien-Lyon-6.jpg"
-            alt="Renovation appartement ancien Lyon 6e"
-            class="w-full h-[400px] lg:h-[65vh] lg:min-h-[500px] object-cover transition-transform duration-700 ease-smooth hover:scale-[1.05]"
-            data-parallax="0.12"
-            loading="lazy"
-          />
+        {/* Mosaique bento — projets renovation */}
+        <div class="grid grid-cols-4 grid-rows-2 gap-2 mb-8 -mx-6 md:-mx-10 h-[350px] lg:h-[55vh] lg:min-h-[420px]" data-reveal>
+          <a href="/projets/canopee" class="group relative col-span-2 row-span-2 overflow-hidden">
+            <img src="/images/projets/projeta-proja1.jpg" alt="Canopee" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent group-hover:from-black/70 transition-all duration-500" />
+            <div class="absolute bottom-0 left-0 p-4">
+              <span class="text-[10px] font-heading font-medium text-accent-gold uppercase tracking-[0.15em]">Appartement</span>
+              <h4 class="font-display text-lg text-white mt-1">Canopee</h4>
+            </div>
+          </a>
+          <a href="/projets/appartement-signature" class="group relative col-span-2 overflow-hidden">
+            <img src="/images/projets/signature-haussmannien-1.jpg" alt="Appartement Signature" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent group-hover:from-black/70 transition-all duration-500" />
+            <div class="absolute bottom-0 left-0 p-4">
+              <span class="text-[10px] font-heading font-medium text-accent-gold uppercase tracking-[0.15em]">Appartement</span>
+              <h4 class="font-display text-lg text-white mt-1">Signature</h4>
+            </div>
+          </a>
+          <a href="/projets/loft-anatole" class="group relative overflow-hidden">
+            <img src="/images/projets/loft-lyonnais-1.jpg" alt="Loft Anatole" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent group-hover:from-black/70 transition-all duration-500" />
+            <div class="absolute bottom-0 left-0 p-3">
+              <h4 class="font-display text-sm text-white">Loft Anatole</h4>
+            </div>
+          </a>
+          <a href="/projets/garconniere-edgar" class="group relative overflow-hidden">
+            <img src="/images/projets/Renovation-appartement-Haussmannien-Lyon-06.jpg" alt="Garconniere Edgar" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent group-hover:from-black/70 transition-all duration-500" />
+            <div class="absolute bottom-0 left-0 p-3">
+              <h4 class="font-display text-sm text-white">Edgar</h4>
+            </div>
+          </a>
         </div>
         <div class="lg:ml-auto lg:max-w-[60%]" data-reveal>
           <span class="subsection-number">01</span>
@@ -141,15 +167,38 @@ import HeroInner from '@components/react/HeroInner';
               </li>
             </ul>
           </div>
-          {/* Image plus grande a droite */}
-          <div class="overflow-hidden" data-clip-reveal="right">
-            <img
-              src="/images/projets/Archi-interieure-renovation-appartement-Tete-d-Or-Lyon.jpg"
-              alt="Design interieur contemporain Tete d'Or Lyon"
-              class="w-full h-[500px] lg:h-[75vh] lg:min-h-[600px] object-cover transition-transform duration-700 ease-smooth hover:scale-[1.05]"
-              data-parallax="0.12"
-              loading="lazy"
-            />
+          {/* Mosaique bento — projets design */}
+          <div class="grid grid-cols-2 grid-rows-3 gap-2 h-[500px] lg:h-[75vh] lg:min-h-[600px]" data-reveal>
+            <a href="/projets/amani" class="group relative row-span-2 overflow-hidden">
+              <img src="/images/projets/projetc-projc1.jpg" alt="Amani" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent group-hover:from-black/70 transition-all duration-500" />
+              <div class="absolute bottom-0 left-0 p-4">
+                <span class="text-[10px] font-heading font-medium text-accent-gold uppercase tracking-[0.15em]">Appartement</span>
+                <h4 class="font-display text-lg text-white mt-1">Amani</h4>
+              </div>
+            </a>
+            <a href="/projets/tete-dor" class="group relative overflow-hidden">
+              <img src="/images/projets/Archi-interieure-renovation-appartement-Tete-d-Or-Lyon.jpg" alt="Tete d'Or" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent group-hover:from-black/70 transition-all duration-500" />
+              <div class="absolute bottom-0 left-0 p-3">
+                <h4 class="font-display text-sm text-white">Tete d'Or</h4>
+              </div>
+            </a>
+            <a href="/projets/salon-baccarat" class="group relative overflow-hidden">
+              <img src="/images/projets/baccarat-1.jpg" alt="Salon Baccarat" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent group-hover:from-black/70 transition-all duration-500" />
+              <div class="absolute bottom-0 left-0 p-3">
+                <h4 class="font-display text-sm text-white">Baccarat</h4>
+              </div>
+            </a>
+            <a href="/projets/appartement-menton" class="group relative col-span-2 overflow-hidden">
+              <img src="/images/projets/menton-1.jpg" alt="Appartement Menton" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent group-hover:from-black/70 transition-all duration-500" />
+              <div class="absolute bottom-0 left-0 p-4">
+                <span class="text-[10px] font-heading font-medium text-accent-gold uppercase tracking-[0.15em]">Appartement</span>
+                <h4 class="font-display text-lg text-white mt-1">Menton</h4>
+              </div>
+            </a>
           </div>
         </div>
       </div>
@@ -174,15 +223,30 @@ import HeroInner from '@components/react/HeroInner';
         <span class="section-number-xl">03</span>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center" data-reveal>
-          {/* Image avec debordement gauche */}
-          <div class="lg:-ml-8 overflow-hidden" data-clip-reveal="left">
-            <img
-              src="/images/projets/Renovation-villa-bord-de-mer.jpg"
-              alt="Salle a manger villa de prestige"
-              class="w-full h-[500px] lg:h-[85vh] lg:min-h-[650px] object-cover transition-transform duration-700 ease-smooth hover:scale-[1.05]"
-              data-parallax="0.12"
-              loading="lazy"
-            />
+          {/* Mosaique bento — projets prestige */}
+          <div class="lg:-ml-8 grid grid-cols-3 grid-rows-2 gap-2 h-[500px] lg:h-[85vh] lg:min-h-[650px]" data-reveal>
+            <a href="/projets/villa-paradise" class="group relative col-span-2 row-span-2 overflow-hidden">
+              <img src="/images/projets/Renovation-villa-bord-de-mer.jpg" alt="Villa Paradise" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent group-hover:from-black/70 transition-all duration-500" />
+              <div class="absolute bottom-0 left-0 p-4">
+                <span class="text-[10px] font-heading font-medium text-accent-gold uppercase tracking-[0.15em]">Maison</span>
+                <h4 class="font-display text-lg text-white mt-1">Villa Paradise</h4>
+              </div>
+            </a>
+            <a href="/projets/ethnic" class="group relative overflow-hidden">
+              <img src="/images/projets/ethnic-sdb-1.jpg" alt="Ethnic" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent group-hover:from-black/70 transition-all duration-500" />
+              <div class="absolute bottom-0 left-0 p-3">
+                <h4 class="font-display text-sm text-white">Ethnic</h4>
+              </div>
+            </a>
+            <a href="/projets/spa-reves-bleus" class="group relative overflow-hidden">
+              <img src="/images/projets/spa-reves-bleus-1.jpg" alt="Reves Bleus" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent group-hover:from-black/70 transition-all duration-500" />
+              <div class="absolute bottom-0 left-0 p-3">
+                <h4 class="font-display text-sm text-white">Reves Bleus</h4>
+              </div>
+            </a>
           </div>
           {/* Texte droite */}
           <div>

@@ -6,6 +6,7 @@
  */
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import TextMorph from './TextMorph';
 
 const heroImages = [
   '/images/projets/RSD-Agencements-Architecte-interieur-Lyon-14.jpg',
@@ -72,7 +73,7 @@ export default function HeroMinimal() {
             transition={{ duration: 1.5, delay: 0.2, ease: easeOutQuart }}
             className="font-display text-[clamp(36px,7vw,80px)] font-normal text-white uppercase tracking-[0.15em] md:tracking-[0.3em] leading-[1.4] mb-8"
           >
-            Creer des espaces
+            <TextMorph words={['Creer', 'Renover', 'Sublimer', 'Imaginer']} interval={4000} /> des espaces
             <br />
             qui inspirent
           </motion.h1>

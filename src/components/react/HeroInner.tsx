@@ -5,17 +5,20 @@
  */
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import TextMorph from './TextMorph';
 
 interface Props {
   images: string[];
   label: string;
   title: string;
   subtitle: string;
+  titlePrefix?: string;
+  titleMorphWords?: string[];
 }
 
 const easeOutQuart = [0.25, 1, 0.5, 1] as const;
 
-export default function HeroInner({ images, label, title, subtitle }: Props) {
+export default function HeroInner({ images, label, title, subtitle, titlePrefix, titleMorphWords }: Props) {
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
@@ -65,13 +68,29 @@ export default function HeroInner({ images, label, title, subtitle }: Props) {
             >
               {label}
             </motion.span>
-            <motion.h1
-              initial={{ opacity: 0, y: 30, filter: 'blur(8px)' }}
-              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-              transition={{ duration: 1.2, delay: 0.15, ease: easeOutQuart }}
-              className="font-display text-[clamp(48px,8vw,96px)] font-normal text-white leading-[1.2] tracking-[0.02em] mb-6"
-              dangerouslySetInnerHTML={{ __html: title }}
-            />
+            {titlePrefix && titleMorphWords ? (
+              <motion.h1
+                initial={{ opacity: 0, y: 30, filter: 'blur(8px)' }}
+                animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                transition={{ duration: 1.2, delay: 0.15, ease: easeOutQuart }}
+                className="font-display text-[clamp(48px,8vw,96px)] font-normal text-white leading-[1.2] tracking-[0.02em] mb-6"
+              >
+                <span className="font-['Playfair_Display']">{titlePrefix}</span>{' '}
+                <TextMorph
+                  words={titleMorphWords}
+                  interval={4500}
+                  className="font-['Playfair_Display'] italic"
+                />
+              </motion.h1>
+            ) : (
+              <motion.h1
+                initial={{ opacity: 0, y: 30, filter: 'blur(8px)' }}
+                animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                transition={{ duration: 1.2, delay: 0.15, ease: easeOutQuart }}
+                className="font-display text-[clamp(48px,8vw,96px)] font-normal text-white leading-[1.2] tracking-[0.02em] mb-6"
+                dangerouslySetInnerHTML={{ __html: title }}
+              />
+            )}
             <motion.p
               initial={{ opacity: 0, y: 20, filter: 'blur(4px)' }}
               animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
