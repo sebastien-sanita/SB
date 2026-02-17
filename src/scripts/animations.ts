@@ -236,6 +236,14 @@ function initMosaicReveals() {
     top: 'inset(0 0 100% 0)',
   };
 
+  // Physical translate offset per direction (real sliding motion)
+  const translateFrom: Record<string, { x: number; y: number }> = {
+    left: { x: -60, y: 0 },
+    right: { x: 60, y: 0 },
+    bottom: { x: 0, y: 60 },
+    top: { x: 0, y: -60 },
+  };
+
   // Alternating directions for the puzzle/mosaic feel
   const directions = ['left', 'right', 'bottom', 'right', 'left', 'top'];
 
@@ -247,17 +255,20 @@ function initMosaicReveals() {
 
     items.forEach((item, i) => {
       const dir = directions[i % directions.length];
+      const t = translateFrom[dir];
 
       gsap.fromTo(item,
-        { clipPath: clipFrom[dir], opacity: 0.3 },
+        { clipPath: clipFrom[dir], opacity: 0, x: t.x, y: t.y },
         {
           clipPath: 'inset(0 0 0 0)',
           opacity: 1,
+          x: 0,
+          y: 0,
           duration: 1.2,
-          ease: 'power2.inOut',
+          ease: 'power2.out',
           scrollTrigger: {
             trigger: group,
-            start: 'top 90%',
+            start: 'top 85%',
             toggleActions: 'play none none none',
           },
           delay: i * 0.12,
@@ -271,17 +282,20 @@ function initMosaicReveals() {
 
   slideImages.forEach((el) => {
     const direction = (el as HTMLElement).dataset.slideIn || 'bottom';
+    const t = translateFrom[direction] || translateFrom.bottom;
 
     gsap.fromTo(el,
-      { clipPath: clipFrom[direction] || clipFrom.bottom, opacity: 0.3 },
+      { clipPath: clipFrom[direction] || clipFrom.bottom, opacity: 0, x: t.x, y: t.y },
       {
         clipPath: 'inset(0 0 0 0)',
         opacity: 1,
+        x: 0,
+        y: 0,
         duration: 1.4,
-        ease: 'power2.inOut',
+        ease: 'power2.out',
         scrollTrigger: {
           trigger: el,
-          start: 'top 92%',
+          start: 'top 85%',
           toggleActions: 'play none none none',
         },
       }
@@ -369,6 +383,7 @@ function init() {
     document.querySelectorAll('[data-mosaic-item], [data-slide-in]').forEach((el) => {
       (el as HTMLElement).style.clipPath = 'none';
       (el as HTMLElement).style.opacity = '1';
+      (el as HTMLElement).style.transform = 'none';
     });
     return;
   }
