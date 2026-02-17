@@ -121,8 +121,8 @@ export const projects: Project[] = [
     location: 'Lyon 2e',
     description:
       "Renovation d'une residence bourgeoise pres de la Place Bellecour. Parquets restaures, cheminees en marbre, cuisine de chef.",
-    coverImage: '/images/projets/projeta-proja5.jpg',
-    images: ['/images/projets/projeta-proja5.jpg'],
+    coverImage: '/images/projets/projeta-proja3.jpg',
+    images: ['/images/projets/projeta-proja3.jpg'],
     featured: false,
   },
   {
@@ -166,8 +166,8 @@ export const projects: Project[] = [
     location: 'Lyon 4e',
     description:
       "Transformation d'un atelier canut en duplex lumineux. Volumes genereux, mezzanine, esprit loft avec cachet lyonnais.",
-    coverImage: '/images/projets/projeta-proja4.jpg',
-    images: ['/images/projets/projeta-proja4.jpg'],
+    coverImage: '/images/projets/projeta-proja6.jpg',
+    images: ['/images/projets/projeta-proja6.jpg'],
     featured: false,
   },
   {
