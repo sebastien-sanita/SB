@@ -1,21 +1,27 @@
 ---
 /**
- * Header — Navigation minimaliste architecturale
- * Glassmorphism subtil, pas de SVG corners, boutons carres
+ * Header — Navigation épurée luxe
+ * Position fixed top, fond transparent → warm blur au scroll
+ * Liens fins, soulignement or au hover, switcher langue discret
  */
-import Container from '@components/ui/Container.astro';
+import { t, getLocalizedPath, getLangFromUrl, getBasePathname } from '@i18n/index';
+import { locales, localeShortLabels, type Locale } from '@i18n/languages';
+
+interface Props { lang?: Locale; }
+const lang = Astro.props.lang ?? getLangFromUrl(Astro.url);
 
 const pathname = Astro.url.pathname;
+const basePath = getBasePathname(pathname);
+
 const navLinks = [
-  { href: '/', label: 'Accueil' },
-  { href: '/projets', label: 'Projets' },
-  { href: '/expertise', label: 'Expertise' },
-  { href: '/a-propos', label: 'A propos' },
-  { href: '/contact', label: 'Contact' },
+  { href: getLocalizedPath('/projets', lang),   label: t('nav', 'projets', lang) },
+  { href: getLocalizedPath('/expertise', lang),  label: t('nav', 'studio', lang) },
+  { href: getLocalizedPath('/a-propos', lang),   label: t('nav', 'processus', lang) },
+  { href: getLocalizedPath('/contact', lang),    label: t('nav', 'contact', lang) },
 ];
 
 function isActive(href: string) {
-  if (href === '/') return pathname === '/';
+  if (href === '/' || href === `/${lang}`) return pathname === '/' || pathname === `/${lang}` || pathname === `/${lang}/`;
   return pathname.startsWith(href);
 }
 ---
@@ -23,109 +29,158 @@ function isActive(href: string) {
 <header
   id="main-nav"
   class="fixed top-0 left-0 right-0 z-sticky transition-all duration-500"
-  style="background: rgba(253,251,247,0.95); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(0,0,0,0.06);"
 >
-  <Container>
-    <nav class="flex items-center justify-between h-[88px]">
+  <div class="flex items-center justify-between px-6 md:px-10 lg:px-14 py-5 lg:py-6">
 
-      {/* Logo */}
-      <a href="/" class="font-display text-2xl text-primary-dark hover:opacity-100 relative z-[1050]">
-        SB Design
-      </a>
+    {/* Logo */}
+    <a href={getLocalizedPath('/', lang)} class="hover:opacity-100 relative z-[1050] flex flex-col">
+      <span class="font-display text-xl md:text-2xl text-primary-dark leading-none">SB Design Riviera</span>
+      <span class="font-heading text-[9px] md:text-[10px] font-medium uppercase tracking-[0.2em] text-accent-brown mt-1">Architecture & Property Enhancement</span>
+    </a>
 
-      {/* Navigation desktop */}
-      <ul class="hidden lg:flex items-center gap-10">
-        {navLinks.map((link) => (
-          <li>
-            <a
-              href={link.href}
-              class:list={[
-                'inline-block overflow-hidden relative group font-heading text-[15px] font-medium transition-opacity duration-300',
-                isActive(link.href)
-                  ? 'text-accent-brown'
-                  : 'text-primary-dark hover:opacity-60',
-              ]}
-              aria-current={isActive(link.href) ? 'page' : undefined}
-            >
-              <span class="block transition-transform duration-500 ease-out-quart group-hover:-translate-y-full">
-                {link.label}
-              </span>
-              <span class="block absolute top-full left-0 w-full transition-transform duration-500 ease-out-quart group-hover:-translate-y-full" aria-hidden="true">
-                {link.label}
-              </span>
-            </a>
-          </li>
-        ))}
-      </ul>
+    {/* Navigation desktop — liens simples + langue */}
+    <nav class="hidden lg:flex items-center gap-10">
 
-      {/* CTA — square architectural */}
-      <div class="hidden lg:block">
+      {navLinks.map((link) => (
         <a
-          href="/contact"
-          class="inline-flex items-center px-7 py-3 bg-primary-dark text-white font-heading text-[15px] font-medium hover:bg-[#333] transition-colors duration-500"
+          href={link.href}
+          class:list={[
+            'group relative font-heading text-[13px] font-medium uppercase tracking-[0.12em] transition-colors duration-300',
+            isActive(link.href)
+              ? 'text-accent-brown'
+              : 'text-primary-dark/70 hover:text-primary-dark',
+          ]}
+          aria-current={isActive(link.href) ? 'page' : undefined}
         >
-          Demander un devis
+          {link.label}
+          <span
+            class:list={[
+              'absolute -bottom-1 left-0 h-px bg-accent-gold transition-all duration-300',
+              isActive(link.href) ? 'w-full' : 'w-0 group-hover:w-full',
+            ]}
+          />
         </a>
+      ))}
+
+      {/* Séparateur */}
+      <span class="w-px h-4 bg-primary-dark/15" />
+
+      {/* Language switcher */}
+      <div class="flex items-center gap-1">
+        {locales.map((loc) => (
+          <a
+            href={getLocalizedPath(basePath || '/', loc)}
+            class:list={[
+              'px-1.5 py-0.5 font-heading text-[11px] font-semibold uppercase tracking-wider transition-colors duration-300',
+              loc === lang
+                ? 'text-accent-brown'
+                : 'text-primary-dark/30 hover:text-primary-dark/60',
+            ]}
+            aria-label={`Switch to ${localeShortLabels[loc]}`}
+          >
+            {localeShortLabels[loc]}
+          </a>
+        ))}
       </div>
 
-      {/* Hamburger mobile */}
-      <button
-        id="mobile-menu-toggle"
-        class="lg:hidden relative z-[1050] p-2 -mr-2"
-        aria-label="Ouvrir le menu"
-        aria-expanded="false"
+      {/* CTA — lien bordé fin */}
+      <a
+        href={getLocalizedPath('/contact', lang)}
+        class="ml-2 px-6 py-2.5 border border-primary-dark/20 font-heading text-[12px] font-semibold uppercase tracking-[0.15em] text-primary-dark hover:border-accent-gold hover:text-accent-brown transition-all duration-300"
       >
-        <div id="menu-icon-open" class="flex flex-col gap-[6px] w-6 transition-all duration-300">
-          <span class="block w-full h-[1.5px] bg-primary-dark transition-all duration-300 origin-center" />
-          <span class="block w-full h-[1.5px] bg-primary-dark transition-all duration-300" />
-          <span class="block w-2/3 h-[1.5px] bg-primary-dark transition-all duration-300 ml-auto origin-center" />
-        </div>
-        <div id="menu-icon-close" class="hidden">
-          <svg class="w-6 h-6 text-primary-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </div>
-      </button>
-
+        {t('nav', 'rdv', lang)}
+      </a>
     </nav>
-  </Container>
+
+    {/* Hamburger mobile */}
+    <button
+      id="mobile-menu-toggle"
+      class="lg:hidden relative z-[1050] p-2 -mr-2"
+      aria-label="Ouvrir le menu"
+      aria-expanded="false"
+    >
+      <div id="menu-icon-open" class="flex flex-col gap-[6px] w-6 transition-all duration-300">
+        <span class="block w-full h-[1.5px] bg-primary-dark transition-all duration-300 origin-center" />
+        <span class="block w-full h-[1.5px] bg-primary-dark transition-all duration-300" />
+        <span class="block w-2/3 h-[1.5px] bg-primary-dark transition-all duration-300 ml-auto origin-center" />
+      </div>
+      <div id="menu-icon-close" class="hidden">
+        <svg class="w-6 h-6 text-primary-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </div>
+    </button>
+
+  </div>
+
+  {/* Ligne dorée subtile en bas du header au scroll */}
+  <div id="nav-border" class="absolute bottom-0 left-0 right-0 h-px bg-accent-gold/0 transition-all duration-500" />
 </header>
 
-{/* Menu mobile — HORS du header pour eviter le stacking context de backdrop-filter */}
+{/* Menu mobile fullscreen */}
 <div
   id="mobile-menu"
   class="lg:hidden"
-  style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; z-index:1040; background-color:#FDFBF7;"
+  style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; z-index:1040; background-color:rgba(253,251,247,0.98);"
 >
-  <div class="flex flex-col items-center justify-center h-full gap-5 md:gap-7 px-6">
+  <div class="flex flex-col items-center justify-center h-full gap-8 px-6">
+    <a
+      href={getLocalizedPath('/', lang)}
+      class="mobile-nav-link font-display text-[clamp(24px,5vw,38px)] italic font-normal text-primary-dark/40 hover:text-accent-brown transition-all duration-300"
+      data-delay="0"
+      style="opacity:0; transform:translateY(16px);"
+    >
+      {t('nav', 'accueil', lang)}
+    </a>
     {navLinks.map((link, i) => (
       <a
         href={link.href}
         class:list={[
-          'mobile-nav-link font-heading text-[clamp(22px,5vw,36px)] font-light uppercase tracking-[0.15em] transition-all duration-300',
+          'mobile-nav-link font-display text-[clamp(24px,5vw,38px)] italic font-normal transition-all duration-300',
           isActive(link.href)
             ? 'text-accent-brown'
-            : 'text-primary-dark hover:text-accent-brown',
+            : 'text-primary-dark/40 hover:text-accent-brown',
         ]}
-        data-delay={i}
+        data-delay={i + 1}
         style="opacity:0; transform:translateY(16px);"
       >
         {link.label}
       </a>
     ))}
-    <div class="mt-4 w-full max-w-xs mobile-nav-link" data-delay="5" style="opacity:0; transform:translateY(16px);">
+
+    {/* Séparateur */}
+    <div class="w-12 h-px bg-accent-gold/30 my-2 mobile-nav-link" data-delay="5" style="opacity:0; transform:translateY(16px);" />
+
+    {/* Language switcher mobile */}
+    <div class="flex items-center gap-6 mobile-nav-link" data-delay="5" style="opacity:0; transform:translateY(16px);">
+      {locales.map((loc) => (
+        <a
+          href={getLocalizedPath(basePath || '/', loc)}
+          class:list={[
+            'font-heading text-sm font-medium uppercase tracking-[0.15em] transition-all duration-300',
+            loc === lang
+              ? 'text-accent-brown'
+              : 'text-primary-dark/30 hover:text-primary-dark/60',
+          ]}
+        >
+          {localeShortLabels[loc]}
+        </a>
+      ))}
+    </div>
+
+    <div class="mt-2 mobile-nav-link" data-delay="6" style="opacity:0; transform:translateY(16px);">
       <a
-        href="/contact"
-        class="inline-flex items-center justify-center w-full px-8 py-4 bg-primary-dark text-white font-heading text-[15px] font-medium uppercase tracking-wider hover:bg-accent-brown transition-colors duration-300"
+        href={getLocalizedPath('/contact', lang)}
+        class="inline-flex items-center justify-center px-10 py-4 border border-primary-dark/20 font-heading text-[13px] font-semibold uppercase tracking-[0.15em] text-primary-dark hover:border-accent-gold hover:text-accent-brown transition-all duration-300"
       >
-        Demander un devis
+        {t('nav', 'prendreRdv', lang)}
       </a>
     </div>
   </div>
 </div>
 
-{/* Spacer pour compenser le header fixed */}
-<div class="h-[88px]"></div>
+{/* Spacer pour compenser le header */}
+<div class="h-[80px]"></div>
 
 <script>
   const toggle = document.getElementById('mobile-menu-toggle');
@@ -139,7 +194,6 @@ function isActive(href: string) {
     if (!menu || !iconOpen || !iconClose || !toggle) return;
     isMenuOpen = false;
 
-    // Fade out links
     mobileLinks.forEach((link) => {
       (link as HTMLElement).style.opacity = '0';
       (link as HTMLElement).style.transform = 'translateY(16px)';
@@ -158,14 +212,12 @@ function isActive(href: string) {
     if (!menu || !iconOpen || !iconClose || !toggle) return;
     isMenuOpen = true;
 
-    // Show overlay
     menu.style.display = 'block';
     iconOpen.classList.add('hidden');
     iconClose.classList.remove('hidden');
     toggle.setAttribute('aria-expanded', 'true');
     document.body.style.overflow = 'hidden';
 
-    // Stagger links in
     mobileLinks.forEach((link, i) => {
       const el = link as HTMLElement;
       const delay = parseInt(el.dataset.delay || '0') * 80 + 100;
@@ -184,20 +236,25 @@ function isActive(href: string) {
     });
   }
 
-  // Close menu when clicking a link
   mobileLinks.forEach((link) => {
     link.addEventListener('click', () => closeMenu());
   });
 
-  // Scroll state — border opacity increases on scroll
+  // Scroll state — background + border
   const nav = document.getElementById('main-nav');
-
+  const navBorder = document.getElementById('nav-border');
   if (nav) {
     const onScroll = (scrollY: number) => {
-      if (scrollY > 100) {
-        nav.style.borderBottomColor = 'rgba(0,0,0,0.12)';
+      if (scrollY > 80) {
+        nav.style.background = 'rgba(253,251,247,0.95)';
+        nav.style.backdropFilter = 'blur(20px)';
+        (nav.style as any).webkitBackdropFilter = 'blur(20px)';
+        if (navBorder) navBorder.style.background = 'rgba(200,175,130,0.15)';
       } else {
-        nav.style.borderBottomColor = 'rgba(0,0,0,0.06)';
+        nav.style.background = 'transparent';
+        nav.style.backdropFilter = 'none';
+        (nav.style as any).webkitBackdropFilter = 'none';
+        if (navBorder) navBorder.style.background = 'transparent';
       }
     };
 

@@ -1,289 +1,173 @@
 ---
 /**
- * Page Expertise — Editorial Luxe
- * 3 layouts varies (full-width, asymetrique, bleed) comme WhatWeDo
- * Clip-reveals, parallax, headings mixtes, numeros surdimensionnes
+ * Page Expertise — Editorial Luxe (FR)
+ * 3 layouts variés (full-width, asymétrique, bleed) comme WhatWeDo
  */
 import Layout from '@layouts/Layout.astro';
 import Section from '@components/ui/Section.astro';
 import Container from '@components/ui/Container.astro';
 import Button from '@components/ui/Button.astro';
 import HeroInner from '@components/react/HeroInner';
+import { t, tArray, getLocalizedPath } from '@i18n/index';
+import type { Locale } from '@i18n/languages';
+
+const lang: Locale = 'fr';
+const p = 'expertisePage' as const;
 ---
 
 <Layout
-  title="Notre Expertise — Renovation, Design & Prestige | SB Design Lyon"
-  description="Renovation complete, design d'interieur et espaces de prestige a Lyon. SB Design vous accompagne de la conception a la livraison cle en main. Devis gratuit."
+  lang={lang}
+  title={t(p, 'metaTitle', lang)}
+  description={t(p, 'metaDesc', lang)}
 >
 
-  <!-- Hero dynamique -->
   <HeroInner
     client:load
     images={[
-      '/images/projets/Architecture-interieure-appartement-haussmannien-Lyon-6.jpg',
-      '/images/projets/RSD-Agencements-Architecte-interieur-Lyon-15.jpg',
-      '/images/projets/Archi-interieure-renovation-appartement-Tete-d-Or-Lyon.jpg',
+      '/images/expertise/hero-riviera-1.jpg',
+      '/images/expertise/hero-riviera-2.jpg',
+      '/images/expertise/hero-riviera-3.jpg',
     ]}
-    label="Expertise"
-    title='<span class="font-[Playfair_Display]">Notre</span> <span class="font-[Playfair_Display] italic">savoir-faire</span>'
-    titlePrefix="Notre"
-    titleMorphWords={['savoir-faire', 'difference', 'excellence']}
-    subtitle="Trois expertises complementaires pour transformer vos espaces en lieux d'exception qui vous ressemblent."
+    label={t(p, 'heroLabel', lang)}
+    title=""
+    titlePrefix={t(p, 'heroPrefix', lang)}
+    titleMorphWords={tArray(p, 'heroMorphWords', lang)}
+    subtitle={t(p, 'heroSubtitle', lang)}
   />
 
-  <!-- Service 01 — Renovation : Image full-width + texte offset droite -->
+  <!-- Service 01 — Conception Architecturale -->
   <Section padding="lg" background="white">
     <Container>
-      <div class="relative mb-24 md:mb-32" id="renovation" data-reveal>
+      <div class="relative" id="renovation">
         <span class="section-number-xl">01</span>
-
-        {/* Mosaique bento — projets renovation */}
-        <div class="grid grid-cols-4 grid-rows-2 gap-2 mb-8 -mx-6 md:-mx-10 h-[350px] lg:h-[55vh] lg:min-h-[420px]" data-reveal>
-          <a href="/projets/canopee" class="group relative col-span-2 row-span-2 overflow-hidden">
-            <img src="/images/projets/projeta-proja1.jpg" alt="Canopee" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent group-hover:from-black/70 transition-all duration-500" />
-            <div class="absolute bottom-0 left-0 p-4">
-              <span class="text-[10px] font-heading font-medium text-accent-gold uppercase tracking-[0.15em]">Appartement</span>
-              <h4 class="font-display text-lg text-white mt-1">Canopee</h4>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center" data-reveal>
+          {/* Images — grille bento à gauche */}
+          <div class="grid grid-cols-2 grid-rows-3 gap-2 h-[500px] lg:h-[75vh] lg:min-h-[600px]" data-reveal>
+            <div class="group relative col-span-2 row-span-2 overflow-hidden">
+              <img src="/images/expertise/conception-villa-1.jpg" alt="Villa contemporaine Côte d'Azur" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
             </div>
-          </a>
-          <a href="/projets/appartement-signature" class="group relative col-span-2 overflow-hidden">
-            <img src="/images/projets/signature-haussmannien-1.jpg" alt="Appartement Signature" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent group-hover:from-black/70 transition-all duration-500" />
-            <div class="absolute bottom-0 left-0 p-4">
-              <span class="text-[10px] font-heading font-medium text-accent-gold uppercase tracking-[0.15em]">Appartement</span>
-              <h4 class="font-display text-lg text-white mt-1">Signature</h4>
+            <div class="group relative overflow-hidden">
+              <img src="/images/expertise/conception-villa-2.jpg" alt="Architecture résidentielle premium" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
             </div>
-          </a>
-          <a href="/projets/loft-anatole" class="group relative overflow-hidden">
-            <img src="/images/projets/loft-lyonnais-1.jpg" alt="Loft Anatole" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent group-hover:from-black/70 transition-all duration-500" />
-            <div class="absolute bottom-0 left-0 p-3">
-              <h4 class="font-display text-sm text-white">Loft Anatole</h4>
+            <div class="group relative overflow-hidden">
+              <img src="/images/expertise/conception-villa-3.jpg" alt="Conception architecturale villa" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
             </div>
-          </a>
-          <a href="/projets/garconniere-edgar" class="group relative overflow-hidden">
-            <img src="/images/projets/Renovation-appartement-Haussmannien-Lyon-06.jpg" alt="Garconniere Edgar" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent group-hover:from-black/70 transition-all duration-500" />
-            <div class="absolute bottom-0 left-0 p-3">
-              <h4 class="font-display text-sm text-white">Edgar</h4>
-            </div>
-          </a>
-        </div>
-        <div class="lg:ml-auto lg:max-w-[60%]" data-reveal>
-          <span class="subsection-number">01</span>
-          <h2 class="font-display text-subsection font-normal text-primary-dark mt-4 mb-6">
-            <span class="font-display italic">Renovation</span> <span class="font-heading font-light">complete</span>
-          </h2>
-          <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.75] mb-8">
-            De la conception a la livraison, nous orchestrons chaque etape de votre renovation.
-            Coordination des corps de metier, respect des delais et du budget, suivi quotidien
-            de l'avancement des travaux.
-          </p>
-          <ul class="space-y-3 mb-8" data-reveal data-reveal-delay="0.1">
-            <li class="flex items-start gap-3">
-              <svg class="w-5 h-5 text-accent-gold mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7" />
-              </svg>
-              <span class="font-body text-sm font-light text-[var(--color-text-light)]">Etude de faisabilite et conception architecturale</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-5 h-5 text-accent-gold mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7" />
-              </svg>
-              <span class="font-body text-sm font-light text-[var(--color-text-light)]">Selection et coordination des artisans qualifies</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-5 h-5 text-accent-gold mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7" />
-              </svg>
-              <span class="font-body text-sm font-light text-[var(--color-text-light)]">Suivi de chantier quotidien et controle qualite</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <svg class="w-5 h-5 text-accent-gold mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7" />
-              </svg>
-              <span class="font-body text-sm font-light text-[var(--color-text-light)]">Livraison cle en main avec garanties completes</span>
-            </li>
-          </ul>
+          </div>
+          {/* Texte — à droite */}
+          <div data-reveal data-reveal-delay="0.1">
+            <span class="subsection-number">01</span>
+            <h2 class="font-display text-subsection font-normal text-primary-dark mt-4 mb-6">
+              <span class="font-display italic">{t(p, 's1Title1', lang)}</span> <span class="font-heading font-light">{t(p, 's1Title2', lang)}</span>
+            </h2>
+            <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.75] mb-8">
+              {t(p, 's1Desc', lang)}
+            </p>
+            <ul class="space-y-3 mb-8">
+              {[t(p, 's1B1', lang), t(p, 's1B2', lang), t(p, 's1B3', lang), t(p, 's1B4', lang)].map((item) => (
+                <li class="flex items-start gap-3">
+                  <svg class="w-5 h-5 text-accent-gold mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span class="font-body text-sm font-light text-[var(--color-text-light)]">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </Container>
   </Section>
 
-  <!-- Bande image full-bleed -->
   <div class="group relative w-full h-[40vh] min-h-[280px] overflow-hidden" data-slide-in="left">
-    <img
-      src="/images/projets/RSD-salle-de-bains-Lyon-6-renovation-agencement-21.jpg"
-      alt="Douche marbre vert renovation Lyon"
-      class="w-full h-full object-cover transition-transform duration-[1.2s] ease-smooth group-hover:scale-[1.05]"
-      data-parallax="0.1"
-      loading="lazy"
-    />
+    <img src="/images/hero/luxury-interior-living.jpg" alt="" class="w-full h-full object-cover transition-transform duration-[1.2s] ease-smooth group-hover:scale-[1.05]" data-parallax="0.1" loading="lazy" />
   </div>
 
-  <!-- Service 02 — Design : Grille asymetrique 40/60 -->
+  <!-- Service 02 — Interior Refinement -->
   <Section padding="lg" background="warm">
     <Container>
       <div class="relative" id="design">
         <span class="section-number-xl">02</span>
-
         <div class="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-10 lg:gap-16 items-end" data-reveal>
-          {/* Texte gauche, aligne en bas */}
           <div>
             <span class="subsection-number">02</span>
             <h2 class="font-display text-subsection font-normal text-primary-dark mt-4 mb-6">
-              <span class="font-display italic">Design</span> <span class="font-heading font-light">d'interieur</span>
+              <span class="font-display italic">{t(p, 's2Title1', lang)}</span> <span class="font-heading font-light">{t(p, 's2Title2', lang)}</span>
             </h2>
             <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.75] mb-8">
-              Notre regard creatif transforme vos espaces. Harmonie des couleurs,
-              selection de materiaux nobles, mobilier sur-mesure — chaque element est pense pour
-              creer une atmosphere unique.
+              {t(p, 's2Desc', lang)}
             </p>
             <ul class="space-y-3 mb-8" data-reveal data-reveal-delay="0.1">
-              <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-accent-gold mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7" />
-                </svg>
-                <span class="font-body text-sm font-light text-[var(--color-text-light)]">Moodboards et planches d'ambiance personnalisees</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-accent-gold mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7" />
-                </svg>
-                <span class="font-body text-sm font-light text-[var(--color-text-light)]">Selection de materiaux nobles et durables</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-accent-gold mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7" />
-                </svg>
-                <span class="font-body text-sm font-light text-[var(--color-text-light)]">Mobilier et luminaires sur-mesure</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-accent-gold mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7" />
-                </svg>
-                <span class="font-body text-sm font-light text-[var(--color-text-light)]">Mise en scene et decoration finale</span>
-              </li>
+              {[t(p, 's2B1', lang), t(p, 's2B2', lang), t(p, 's2B3', lang), t(p, 's2B4', lang)].map((item) => (
+                <li class="flex items-start gap-3">
+                  <svg class="w-5 h-5 text-accent-gold mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span class="font-body text-sm font-light text-[var(--color-text-light)]">{item}</span>
+                </li>
+              ))}
             </ul>
           </div>
-          {/* Mosaique bento — projets design */}
           <div class="grid grid-cols-2 grid-rows-3 gap-2 h-[500px] lg:h-[75vh] lg:min-h-[600px]" data-reveal>
-            <a href="/projets/amani" class="group relative row-span-2 overflow-hidden">
-              <img src="/images/projets/RSD-Agencements-Architecte-interieur-Lyon-15.jpg" alt="Amani" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent group-hover:from-black/70 transition-all duration-500" />
-              <div class="absolute bottom-0 left-0 p-4">
-                <span class="text-[10px] font-heading font-medium text-accent-gold uppercase tracking-[0.15em]">Appartement</span>
-                <h4 class="font-display text-lg text-white mt-1">Amani</h4>
-              </div>
-            </a>
-            <a href="/projets/tete-dor" class="group relative overflow-hidden">
-              <img src="/images/projets/Archi-interieure-renovation-appartement-Tete-d-Or-Lyon.jpg" alt="Tete d'Or" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent group-hover:from-black/70 transition-all duration-500" />
-              <div class="absolute bottom-0 left-0 p-3">
-                <h4 class="font-display text-sm text-white">Tete d'Or</h4>
-              </div>
-            </a>
-            <a href="/projets/salon-baccarat" class="group relative overflow-hidden">
-              <img src="/images/projets/baccarat-1.jpg" alt="Salon Baccarat" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent group-hover:from-black/70 transition-all duration-500" />
-              <div class="absolute bottom-0 left-0 p-3">
-                <h4 class="font-display text-sm text-white">Baccarat</h4>
-              </div>
-            </a>
-            <a href="/projets/appartement-menton" class="group relative col-span-2 overflow-hidden">
-              <img src="/images/projets/menton-1.jpg" alt="Appartement Menton" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent group-hover:from-black/70 transition-all duration-500" />
-              <div class="absolute bottom-0 left-0 p-4">
-                <span class="text-[10px] font-heading font-medium text-accent-gold uppercase tracking-[0.15em]">Appartement</span>
-                <h4 class="font-display text-lg text-white mt-1">Menton</h4>
-              </div>
-            </a>
+            <div class="group relative row-span-2 overflow-hidden">
+              <img src="/images/expertise/interior-salon-1.jpg" alt="Salon design villa Côte d'Azur" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+            </div>
+            <div class="group relative overflow-hidden">
+              <img src="/images/expertise/interior-cuisine-1.jpg" alt="Cuisine sur-mesure haut de gamme" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+            </div>
+            <div class="group relative overflow-hidden">
+              <img src="/images/expertise/interior-chambre-1.jpg" alt="Suite parentale luxe" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+            </div>
+            <div class="group relative col-span-2 overflow-hidden">
+              <img src="/images/expertise/interior-sdb-1.jpg" alt="Salle de bains d'exception" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+            </div>
           </div>
         </div>
       </div>
     </Container>
   </Section>
 
-  <!-- Bande image full-bleed -->
   <div class="group relative w-full h-[40vh] min-h-[280px] overflow-hidden" data-slide-in="right">
-    <img
-      src="/images/projets/Projet-salle-de-bains-marbre-Lyon.jpg"
-      alt="Salle de bains en marbre Lyon"
-      class="w-full h-full object-cover transition-transform duration-[1.2s] ease-smooth group-hover:scale-[1.05]"
-      data-parallax="0.1"
-      loading="lazy"
-    />
+    <img src="/images/hero/luxury-architecture-detail.jpg" alt="" class="w-full h-full object-cover transition-transform duration-[1.2s] ease-smooth group-hover:scale-[1.05]" data-parallax="0.1" loading="lazy" />
   </div>
 
-  <!-- Service 03 — Prestige : Grille 50/50 avec image bleed gauche -->
+  <!-- Service 03 — Valorisation Patrimoniale -->
   <Section padding="lg" background="white">
     <Container>
       <div class="relative" id="prestige">
         <span class="section-number-xl">03</span>
-
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center" data-reveal>
-          {/* Mosaique bento — projets prestige */}
           <div class="lg:-ml-8 grid grid-cols-3 grid-rows-2 gap-2 h-[500px] lg:h-[85vh] lg:min-h-[650px]" data-reveal>
-            <a href="/projets/villa-paradise" class="group relative col-span-2 row-span-2 overflow-hidden">
-              <img src="/images/projets/Renovation-villa-bord-de-mer.jpg" alt="Villa Paradise" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent group-hover:from-black/70 transition-all duration-500" />
-              <div class="absolute bottom-0 left-0 p-4">
-                <span class="text-[10px] font-heading font-medium text-accent-gold uppercase tracking-[0.15em]">Maison</span>
-                <h4 class="font-display text-lg text-white mt-1">Villa Paradise</h4>
-              </div>
-            </a>
-            <a href="/projets/ethnic" class="group relative overflow-hidden">
-              <img src="/images/projets/ethnic-sdb-1.jpg" alt="Ethnic" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent group-hover:from-black/70 transition-all duration-500" />
-              <div class="absolute bottom-0 left-0 p-3">
-                <h4 class="font-display text-sm text-white">Ethnic</h4>
-              </div>
-            </a>
-            <a href="/projets/spa-reves-bleus" class="group relative overflow-hidden">
-              <img src="/images/projets/spa-reves-bleus-1.jpg" alt="Reves Bleus" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent group-hover:from-black/70 transition-all duration-500" />
-              <div class="absolute bottom-0 left-0 p-3">
-                <h4 class="font-display text-sm text-white">Reves Bleus</h4>
-              </div>
-            </a>
+            <div class="group relative col-span-2 row-span-2 overflow-hidden">
+              <img src="/images/expertise/valorisation-terrasse-1.jpg" alt="Villa avec terrasse et piscine Côte d'Azur" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+            </div>
+            <div class="group relative overflow-hidden">
+              <img src="/images/expertise/valorisation-pool-1.jpg" alt="Villa moderne avec piscine" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+            </div>
+            <div class="group relative overflow-hidden">
+              <img src="/images/expertise/valorisation-vue-mer-1.jpg" alt="Résidence haut de gamme vue mer" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+            </div>
           </div>
-          {/* Texte droite */}
           <div>
             <span class="subsection-number">03</span>
             <h2 class="font-display text-subsection font-normal text-primary-dark mt-4 mb-6">
-              <span class="font-display italic">Espaces</span> <span class="font-heading font-light">de prestige</span>
+              <span class="font-display italic">{t(p, 's3Title1', lang)}</span> <span class="font-heading font-light">{t(p, 's3Title2', lang)}</span>
             </h2>
             <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.75] mb-8">
-              Appartements haussmanniens, villas contemporaines, penthouses — nous maitrisons
-              les codes du luxe. Expertise technique et sensibilite esthetique au service
-              de realisations d'exception.
+              {t(p, 's3Desc', lang)}
             </p>
             <ul class="space-y-3 mb-8" data-reveal data-reveal-delay="0.1">
-              <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-accent-gold mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7" />
-                </svg>
-                <span class="font-body text-sm font-light text-[var(--color-text-light)]">Restauration de patrimoine et elements d'epoque</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-accent-gold mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7" />
-                </svg>
-                <span class="font-body text-sm font-light text-[var(--color-text-light)]">Domotique et technologies intelligentes</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-accent-gold mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7" />
-                </svg>
-                <span class="font-body text-sm font-light text-[var(--color-text-light)]">Espaces wellness : spa, piscine, hammam</span>
-              </li>
-              <li class="flex items-start gap-3">
-                <svg class="w-5 h-5 text-accent-gold mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7" />
-                </svg>
-                <span class="font-body text-sm font-light text-[var(--color-text-light)]">Amenagements exterieurs et paysagisme</span>
-              </li>
+              {[t(p, 's3B1', lang), t(p, 's3B2', lang), t(p, 's3B3', lang), t(p, 's3B4', lang)].map((item) => (
+                <li class="flex items-start gap-3">
+                  <svg class="w-5 h-5 text-accent-gold mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span class="font-body text-sm font-light text-[var(--color-text-light)]">{item}</span>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
@@ -296,14 +180,13 @@ import HeroInner from '@components/react/HeroInner';
     <Container>
       <div class="text-center max-w-2xl mx-auto" data-reveal>
         <h2 class="font-display text-section font-normal text-white mb-6">
-          <span class="font-display italic">Parlons de</span> <span class="font-heading font-light">votre projet</span>
+          <span class="font-display italic">{t(p, 'ctaTitle1', lang)}</span> <span class="font-heading font-light">{t(p, 'ctaTitle2', lang)}</span>
         </h2>
         <p class="font-body text-lg font-light text-white/70 mb-10 leading-relaxed">
-          Chaque espace merite une attention particuliere. Contactez-nous pour
-          une consultation personnalisee.
+          {t(p, 'ctaDesc', lang)}
         </p>
-        <Button href="/contact" variant="primary" size="lg">
-          Prendre rendez-vous
+        <Button href={getLocalizedPath('/contact', lang)} variant="primary" size="lg">
+          {t(p, 'ctaBtn', lang)}
         </Button>
       </div>
     </Container>

@@ -235,9 +235,10 @@ main {
     user-select: none;
   }
 
-  /* Image hover — slow transition, no border-radius */
+  /* Image hover — slow transition, rounded */
   .image-hover {
     overflow: hidden;
+    border-radius: var(--radius-md);
   }
 
   /* SectionTitle with animated gold line */

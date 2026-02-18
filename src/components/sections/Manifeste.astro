@@ -1,95 +1,50 @@
 ---
 /**
- * Manifeste — Section 01 (Editorial Luxe)
- * Layout editorial asymetrique : texte storytelling a gauche,
- * double image chevauchee a droite, decorations dorees
+ * Manifeste — Section 01 (Vision & Positionnement)
+ * Layout compact : titre + 2 colonnes de texte + 3 valeurs en ligne
  */
 import Section from '@components/ui/Section.astro';
 import Container from '@components/ui/Container.astro';
+import { t, type Locale } from '@i18n/index';
+
+interface Props { lang?: Locale; }
+const lang = Astro.props.lang ?? 'fr';
 ---
 
-<Section background="warm" padding="lg">
+<Section background="warm" padding="md">
   <Container>
 
-    {/* Numero Aker + numero surdimensionne */}
-    <div class="relative mb-16 md:mb-20" data-reveal>
+    {/* En-tête : numéro + titre */}
+    <div class="relative mb-8 md:mb-10" data-reveal>
       <span class="section-number-xl">01</span>
-      <span class="section-number">01</span>
+      <span class="section-number">{t('manifeste', 'number', lang)}</span>
+      <h2 class="font-display text-section font-normal text-primary-dark mt-3">
+        {t('manifeste', 'title', lang)}
+      </h2>
     </div>
 
-    {/* Grid editorial asymetrique */}
-    <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-16 items-start">
-
-      {/* Colonne gauche : Texte storytelling */}
-      <div>
-        <h2 class="text-section font-normal text-primary-dark mb-8" data-split-words>
-          <span class="font-display">L'art de</span> <span class="font-display italic">transformer</span><br /><span class="font-heading font-light">les espaces</span>
-        </h2>
-
-        <div class="space-y-6">
-          <p class="font-body text-lg font-light text-[var(--color-text-light)] leading-[1.75]" data-reveal data-reveal-delay="0.1">
-            Depuis plus de 35 ans, trois generations de Bisciglia donnent vie a des interieurs
-            d'exception. Nes d'un heritage artisanal transmis par Luigi, macon et entrepreneur,
-            Saverio et Roberto ont bati une entreprise ou chaque projet est une rencontre entre
-            votre vision et notre savoir-faire.
-          </p>
-          <p class="font-body text-lg font-light text-[var(--color-text-light)] leading-[1.75]" data-reveal data-reveal-delay="0.2">
-            Installes au coeur de Lyon depuis 2010, nous conjuguons maitrise technique
-            et sensibilite esthetique. Du choix d'une poignee a la courbe d'un plafond,
-            chaque detail porte la meme exigence absolue — celle d'artisans passionnes
-            qui croient que l'espace faconne le quotidien.
-          </p>
-        </div>
-
-        {/* Citation — bordure doree */}
-        <blockquote class="mt-10 pl-6 border-l-2 border-accent-gold" data-reveal data-reveal-delay="0.3">
-          <p class="font-display text-xl md:text-2xl italic font-normal text-primary-dark leading-relaxed">
-            &laquo; Des agencements de caractere, a la hauteur de vos ambitions. &raquo;
-          </p>
-          <cite class="block mt-4 font-heading text-sm font-medium text-accent-brown not-italic uppercase tracking-wider">
-            — Studio Bisciglia Design
-          </cite>
-        </blockquote>
-
-        {/* Image accent paysage sous le texte */}
-        <div class="mt-12 overflow-hidden" data-slide-in="bottom">
-          <img
-            src="/images/projets/RSD-Agencements-Architecte-interieur-Lyon-17.jpg"
-            alt="Detail finition architecturale"
-            class="w-full h-[220px] lg:h-[280px] object-cover transition-transform duration-700 ease-smooth hover:scale-[1.05]"
-            loading="lazy"
-          />
-        </div>
+    {/* 2 colonnes : vision (Playfair) | détail (Inter) */}
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-5" data-reveal data-reveal-delay="0.1">
+      <div class="space-y-4">
+        <p class="font-display text-lg md:text-xl font-light text-primary-dark leading-[1.75]" set:html={t('manifeste', 'p1', lang)} />
+        <p class="font-display text-lg md:text-xl font-light text-primary-dark leading-[1.75]" set:html={t('manifeste', 'p2', lang)} />
       </div>
-
-      {/* Colonne droite : Double image chevauchee */}
-      <div class="relative mt-8 lg:mt-16" data-slide-in="left">
-        {/* Image principale */}
-        <div class="overflow-hidden overflow-hidden">
-          <img
-            src="/images/projets/Architecture-interieure-appartement-haussmannien-Lyon-6.jpg"
-            alt="Salon lumineux et contemporain"
-            class="w-full h-[500px] lg:h-[75vh] lg:min-h-[600px] object-cover transition-transform duration-700 ease-smooth hover:scale-[1.05]"
-            data-parallax="0.15"
-            loading="lazy"
-          />
-        </div>
-
-        {/* Image secondaire — chevauchement editorial (desktop only) */}
-        <div class="hidden lg:block absolute -bottom-16 -left-20 w-[280px] h-[380px] overflow-hidden z-10 group/secondary">
-          <img
-            src="/images/projets/RSD-salle-de-bains-Lyon-6-renovation-agencement-05.jpg"
-            alt="Detail materiaux nobles"
-            class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover/secondary:scale-[1.08]"
-            loading="lazy"
-          />
-        </div>
-
-        {/* Element decoratif — lignes dorees en L */}
-        <div class="hidden lg:block absolute -top-6 -right-6 w-32 h-px bg-accent-gold/40" />
-        <div class="hidden lg:block absolute -top-6 -right-6 w-px h-32 bg-accent-gold/40" />
+      <div class="space-y-4">
+        <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.8]">
+          {t('manifeste', 'p3', lang)}
+        </p>
+        <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.8]">
+          {t('manifeste', 'p4', lang)}
+        </p>
       </div>
-
     </div>
+
+    {/* Citation — accent visuel */}
+    <blockquote class="mt-10 md:mt-14 pt-8 border-t border-accent-gold/20 text-center" data-reveal data-reveal-delay="0.15">
+      <p class="font-display text-xl md:text-2xl italic font-normal text-accent-brown leading-relaxed max-w-2xl mx-auto">
+        &laquo; {t('manifeste', 'quote', lang)} &raquo;
+      </p>
+    </blockquote>
+
   </Container>
 </Section>

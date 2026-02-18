@@ -1,0 +1,46 @@
+---
+/**
+ * Page Projets — Portfolio complet avec filtres (EN)
+ */
+import Layout from '@layouts/Layout.astro';
+import Section from '@components/ui/Section.astro';
+import Container from '@components/ui/Container.astro';
+import ProjectGrid from '@components/react/ProjectGrid';
+import HeroInner from '@components/react/HeroInner';
+import { projects } from '../../../data/projects';
+import { t, tArray } from '@i18n/index';
+import type { Locale } from '@i18n/languages';
+
+const lang: Locale = 'en';
+const p = 'projetsPage' as const;
+---
+
+<Layout
+  lang={lang}
+  title={t(p, 'metaTitle', lang)}
+  description={t(p, 'metaDesc', lang)}
+>
+
+  <HeroInner
+    client:load
+    images={[
+      '/images/expertise/villa-panoramic-view.jpg',
+      '/images/expertise/villa-garden-pool.jpg',
+      '/images/expertise/luxury-living-modern.jpg',
+    ]}
+    label={t(p, 'heroLabel', lang)}
+    title=""
+    titlePrefix={t(p, 'heroPrefix', lang)}
+    titleMorphWords={tArray(p, 'heroMorphWords', lang)}
+    subtitle={t(p, 'heroSubtitle', lang)}
+  />
+
+  <Section padding="lg">
+    <Container>
+      <div data-reveal>
+        <ProjectGrid projects={projects} basePath="/en/projets" client:load />
+      </div>
+    </Container>
+  </Section>
+
+</Layout>

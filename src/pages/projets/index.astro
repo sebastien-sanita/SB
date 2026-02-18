@@ -1,6 +1,6 @@
 ---
 /**
- * Page Projets — Portfolio complet avec filtres (Editorial Luxe)
+ * Page Projets — Portfolio complet avec filtres (FR)
  */
 import Layout from '@layouts/Layout.astro';
 import Section from '@components/ui/Section.astro';
@@ -8,29 +8,33 @@ import Container from '@components/ui/Container.astro';
 import ProjectGrid from '@components/react/ProjectGrid';
 import HeroInner from '@components/react/HeroInner';
 import { projects } from '../../data/projects';
+import { t, tArray } from '@i18n/index';
+import type { Locale } from '@i18n/languages';
+
+const lang: Locale = 'fr';
+const p = 'projetsPage' as const;
 ---
 
 <Layout
-  title="Nos Realisations — Renovation & Construction a Lyon | SB Design"
-  description="Decouvrez les realisations du studio SB Design : renovation d'appartements, construction de villas, mobilier sur mesure a Lyon et dans le Var."
+  lang={lang}
+  title={t(p, 'metaTitle', lang)}
+  description={t(p, 'metaDesc', lang)}
 >
 
-  <!-- Hero dynamique -->
   <HeroInner
     client:load
     images={[
-      '/images/projets/Architecture-interieure-appartement-haut-de-gamme-Lyon-8.jpg',
-      '/images/projets/Renovation-villa-bord-de-mer.jpg',
-      '/images/projets/projetb-projb1.jpg',
+      '/images/expertise/villa-panoramic-view.jpg',
+      '/images/expertise/villa-garden-pool.jpg',
+      '/images/expertise/luxury-living-modern.jpg',
     ]}
-    label="Portfolio"
-    title='<span style="font-family:Inter;font-weight:300">Nos</span> <span class="font-[Playfair_Display] italic">Realisations</span>'
-    titlePrefix="Nos"
-    titleMorphWords={['Realisations', 'Oeuvres', 'Creations']}
-    subtitle="Chaque projet est une histoire unique. Decouvrez notre savoir-faire a travers une selection de renovations d'exception."
+    label={t(p, 'heroLabel', lang)}
+    title=""
+    titlePrefix={t(p, 'heroPrefix', lang)}
+    titleMorphWords={tArray(p, 'heroMorphWords', lang)}
+    subtitle={t(p, 'heroSubtitle', lang)}
   />
 
-  <!-- Portfolio avec filtres -->
   <Section padding="lg">
     <Container>
       <div data-reveal>

@@ -1,135 +1,91 @@
 ---
 /**
- * Page A propos — Editorial Luxe
- * Histoire familiale Bisciglia, valeurs, images chevauchees, reveals complets
+ * Page À propos — Editorial Luxe (FR)
+ * Histoire familiale Bisciglia, valeurs, images chevauchées
  */
 import Layout from '@layouts/Layout.astro';
 import Section from '@components/ui/Section.astro';
 import Container from '@components/ui/Container.astro';
 import Button from '@components/ui/Button.astro';
 import HeroInner from '@components/react/HeroInner';
+import { t, tArray, getLocalizedPath } from '@i18n/index';
+import type { Locale } from '@i18n/languages';
+
+const lang: Locale = 'fr';
+const p = 'aproposPage' as const;
 
 const values = [
-  {
-    number: '01',
-    title: 'Excellence',
-    description: "Chaque detail compte. Nous visons la perfection dans l'execution, du choix des materiaux a la finition la plus subtile.",
-  },
-  {
-    number: '02',
-    title: 'Sur-mesure',
-    description: "Aucun projet ne se ressemble. Nous creons des espaces uniques qui refletent la personnalite et le mode de vie de chaque client.",
-  },
-  {
-    number: '03',
-    title: 'Transparence',
-    description: "Communication claire, devis detailles, suivi en temps reel. Vous etes informe et implique a chaque etape de votre projet.",
-  },
-  {
-    number: '04',
-    title: 'Engagement',
-    description: "Respect des delais, du budget et de vos attentes. Notre reputation repose sur la confiance que nos clients nous accordent.",
-  },
+  { number: '01', title: t(p, 'value1Title', lang), description: t(p, 'value1Desc', lang) },
+  { number: '02', title: t(p, 'value2Title', lang), description: t(p, 'value2Desc', lang) },
+  { number: '03', title: t(p, 'value3Title', lang), description: t(p, 'value3Desc', lang) },
+  { number: '04', title: t(p, 'value4Title', lang), description: t(p, 'value4Desc', lang) },
 ];
 ---
 
 <Layout
-  title="A Propos — SB Design architecte d'interieur Lyon | Depuis 35 ans"
-  description="Depuis plus de 35 ans, Studio SB Design transforme des espaces en lieux d'exception a Lyon. Une histoire familiale d'artisans passionnes, trois generations de savoir-faire."
+  lang={lang}
+  title={t(p, 'metaTitle', lang)}
+  description={t(p, 'metaDesc', lang)}
 >
 
-  <!-- Hero dynamique -->
   <HeroInner
     client:load
     images={[
-      '/images/projets/RSD-Equipe-architectes-Lyon.jpg',
-      '/images/projets/RSD-Agencements-de-caractere-Lyon.jpg',
-      '/images/projets/Architecture-interieure-appartement-haussmannien-Lyon-6.jpg',
+      '/images/expertise/villa-garden-pool.jpg',
+      '/images/expertise/luxury-dining-room.jpg',
+      '/images/expertise/modern-kitchen-luxury.jpg',
     ]}
-    label="A propos"
-    title='<span class="font-[Playfair_Display]">Notre</span> <span class="font-[Playfair_Display] italic">histoire</span>'
-    titlePrefix="Notre"
-    titleMorphWords={['histoire', 'famille', 'passion']}
-    subtitle="Depuis plus de 35 ans, une famille d'artisans transforme des espaces en lieux de vie d'exception."
+    label={t(p, 'heroLabel', lang)}
+    title=""
+    titlePrefix={t(p, 'heroPrefix', lang)}
+    titleMorphWords={tArray(p, 'heroMorphWords', lang)}
+    subtitle={t(p, 'heroSubtitle', lang)}
   />
 
   <!-- Histoire -->
   <Section padding="lg">
     <Container>
       <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] gap-12 lg:gap-20 items-start">
-
-        {/* Texte gauche */}
         <div class="relative" data-reveal>
-          {/* Lignes decoratives dorees en L */}
           <div class="hidden lg:block absolute -top-6 -left-6 w-28 h-px bg-accent-gold/30" />
           <div class="hidden lg:block absolute -top-6 -left-6 w-px h-28 bg-accent-gold/30" />
 
-          <span class="subsection-number">Notre parcours</span>
+          <span class="subsection-number">{t(p, 'historyLabel', lang)}</span>
           <h2 class="font-display text-subsection font-normal text-primary-dark mt-4 mb-8">
-            <span class="font-display">Une histoire</span> <span class="font-display italic">familiale</span><br /><span class="font-heading font-light">un savoir-faire d'exception</span>
+            <span class="font-display">{t(p, 'historyTitle1', lang)}</span> <span class="font-display italic">{t(p, 'historyTitle2', lang)}</span><br /><span class="font-heading font-light">{t(p, 'historyTitle3', lang)}</span>
           </h2>
           <div class="space-y-6">
             <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.75]" data-reveal data-reveal-delay="0.1">
-              L'histoire commence avec Luigi Bisciglia, macon et entrepreneur, qui a transmis
-              a ses fils Saverio et Roberto la passion du beau et du bien-fait.
-              Ensemble, les deux freres fondent l'entreprise et batissent, projet apres projet,
-              une reputation d'excellence dans l'agencement et la renovation haut de gamme.
+              {t(p, 'historyP1', lang)}
             </p>
             <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.75]" data-reveal data-reveal-delay="0.2">
-              En 2010, l'entreprise s'installe en plein coeur de Lyon, au 148 Rue Vendome (6e),
-              en reprenant le showroom Decosanit. Deborah Bisciglia, architecte d'interieur,
-              rejoint l'equipe familiale et apporte une vision contemporaine qui enrichit
-              le savoir-faire artisanal herite de trois generations.
+              {t(p, 'historyP2', lang)}
             </p>
             <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.75]" data-reveal data-reveal-delay="0.3">
-              Aujourd'hui, l'equipe — Saverio, Roberto, Deborah, Frederic, Sebastien et Carlos —
-              conjugue maitrise technique et sensibilite esthetique pour creer des interieurs
-              uniques, a la hauteur des exigences de chaque client.
+              {t(p, 'historyP3', lang)}
             </p>
           </div>
           <blockquote class="mt-10 pl-6 border-l-2 border-accent-gold" data-reveal data-reveal-delay="0.35">
             <p class="font-display text-xl italic font-normal text-primary-dark leading-relaxed">
-              &laquo; Notre ambition : des agencements de caractere qui subliment chaque espace de vie. &raquo;
+              &laquo; {t(p, 'historyQuote', lang)} &raquo;
             </p>
           </blockquote>
         </div>
 
-        {/* Image droite — chevauchement editorial */}
         <div class="relative mt-8 lg:mt-16" data-clip-reveal="right">
           <div class="overflow-hidden">
-            <img
-              src="/images/projets/RSD-Equipe-architectes-Lyon.jpg"
-              alt="L'equipe SB Design architectes Lyon"
-              class="w-full h-[500px] lg:h-[75vh] lg:min-h-[600px] object-cover transition-transform duration-700 ease-smooth hover:scale-[1.05]"
-              data-parallax="0.12"
-              loading="lazy"
-            />
+            <img src="/images/expertise/villa-garden-pool.jpg" alt="" class="w-full h-[500px] lg:h-[75vh] lg:min-h-[600px] object-cover transition-transform duration-700 ease-smooth hover:scale-[1.05]" data-parallax="0.12" loading="lazy" />
           </div>
-
-          {/* Image secondaire chevauchee (desktop only) */}
           <div class="hidden lg:block absolute -bottom-14 -left-16 w-[260px] h-[360px] overflow-hidden z-10 group/secondary">
-            <img
-              src="/images/projets/RSD-Agencements-de-caractere-Lyon.jpg"
-              alt="Agencements de caractere SB Design Lyon"
-              class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover/secondary:scale-[1.08]"
-              loading="lazy"
-            />
+            <img src="/images/expertise/luxury-dining-room.jpg" alt="" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover/secondary:scale-[1.08]" loading="lazy" />
           </div>
         </div>
-
       </div>
     </Container>
   </Section>
 
-  <!-- Bande image full-bleed -->
   <div class="group relative w-full h-[45vh] min-h-[300px] overflow-hidden" data-slide-in="bottom">
-    <img
-      src="/images/projets/RSD-Agencements-Architecte-interieur-Lyon-17.jpg"
-      alt="Detail design etagere architecte interieur Lyon"
-      class="w-full h-full object-cover transition-transform duration-[1.2s] ease-smooth group-hover:scale-[1.05]"
-      data-parallax="0.12"
-      loading="lazy"
-    />
+    <img src="/images/expertise/villa-terrace-sea.jpg" alt="" class="w-full h-full object-cover transition-transform duration-[1.2s] ease-smooth group-hover:scale-[1.05]" data-parallax="0.12" loading="lazy" />
   </div>
 
   <!-- Valeurs -->
@@ -137,47 +93,30 @@ const values = [
     <Container>
       <div class="relative mb-16 md:mb-24" data-reveal>
         <span class="section-number-xl">V</span>
-        <span class="section-number">Valeurs</span>
+        <span class="section-number">{t(p, 'valuesLabel', lang)}</span>
         <h2 class="font-heading text-section text-primary-dark mt-6" data-split-words>
-          <span class="font-heading font-light">Ce qui</span> <span class="font-display italic font-normal">nous guide</span>
+          <span class="font-heading font-light">{t(p, 'valuesTitle1', lang)}</span> <span class="font-display italic font-normal">{t(p, 'valuesTitle2', lang)}</span>
         </h2>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16">
         {values.map((value, i) => (
           <div class="flex gap-6" data-reveal data-reveal-delay={`${i * 0.1}`}>
-            <span class="font-heading text-3xl font-light text-accent-gold/40 shrink-0">
-              {value.number}
-            </span>
+            <span class="font-heading text-3xl font-light text-accent-gold/40 shrink-0">{value.number}</span>
             <div>
-              <h3 class="font-display text-xl font-normal text-primary-dark mb-3">
-                {value.title}
-              </h3>
-              <p class="font-body text-sm font-light text-[var(--color-text-light)] leading-relaxed">
-                {value.description}
-              </p>
+              <h3 class="font-display text-xl font-normal text-primary-dark mb-3">{value.title}</h3>
+              <p class="font-body text-sm font-light text-[var(--color-text-light)] leading-relaxed">{value.description}</p>
             </div>
           </div>
         ))}
       </div>
 
-      <!-- Images accent sous les valeurs -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-20" data-mosaic>
         <div class="overflow-hidden" data-mosaic-item>
-          <img
-            src="/images/projets/projeta-proja6.jpg"
-            alt="Savoir-faire artisanal renovation haussmannien"
-            class="w-full h-[280px] lg:h-[360px] object-cover transition-transform duration-700 ease-smooth hover:scale-[1.05]"
-            loading="lazy"
-          />
+          <img src="/images/expertise/villa-panoramic-view.jpg" alt="" class="w-full h-[280px] lg:h-[360px] object-cover transition-transform duration-700 ease-smooth hover:scale-[1.05]" loading="lazy" />
         </div>
         <div class="overflow-hidden" data-mosaic-item>
-          <img
-            src="/images/projets/RSD-salle-de-bains-Lyon-6-renovation-agencement-20.jpg"
-            alt="Salle de bains materiaux d'exception Lyon"
-            class="w-full h-[280px] lg:h-[360px] object-cover transition-transform duration-700 ease-smooth hover:scale-[1.05]"
-            loading="lazy"
-          />
+          <img src="/images/expertise/interior-chambre-1.jpg" alt="" class="w-full h-[280px] lg:h-[360px] object-cover transition-transform duration-700 ease-smooth hover:scale-[1.05]" loading="lazy" />
         </div>
       </div>
     </Container>
@@ -188,13 +127,13 @@ const values = [
     <Container>
       <div class="text-center max-w-2xl mx-auto" data-reveal>
         <h2 class="font-display text-section font-normal text-primary-dark mb-6">
-          <span class="font-display">Envie de</span> <span class="font-display italic">travailler</span> <span class="font-heading font-light">ensemble ?</span>
+          <span class="font-display">{t(p, 'ctaTitle1', lang)}</span> <span class="font-display italic">{t(p, 'ctaTitle2', lang)}</span> <span class="font-heading font-light">{t(p, 'ctaTitle3', lang)}</span>
         </h2>
         <p class="font-body text-lg font-light text-[var(--color-text-light)] mb-10 leading-relaxed">
-          Rencontrons-nous pour discuter de votre projet
+          {t(p, 'ctaDesc', lang)}
         </p>
-        <Button href="/contact" variant="primary" size="lg">
-          Nous contacter
+        <Button href={getLocalizedPath('/contact', lang)} variant="primary" size="lg">
+          {t(p, 'ctaBtn', lang)}
         </Button>
       </div>
     </Container>

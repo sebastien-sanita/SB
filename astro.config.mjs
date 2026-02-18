@@ -8,6 +8,13 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://www.sbdesign.fr',
   output: 'static',
+  i18n: {
+    defaultLocale: 'fr',
+    locales: ['fr', 'en', 'it'],
+    routing: {
+      prefixDefaultLocale: false,
+    },
+  },
   integrations: [
     react(),
     tailwind({ applyBaseStyles: false }),

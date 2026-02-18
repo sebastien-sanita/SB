@@ -1,13 +1,12 @@
 ---
 /**
- * Page d'accueil — SB Design
- * 7 sections : Hero, Manifeste, Stats, Portfolio, Process, Témoignages, CTA
+ * Page d'accueil — SB Design Riviera (FR)
+ * 9 sections : Hero, Manifeste, Services, Portfolio, Processus, Métriques, Pour Qui, Témoignages, CTA
+ * Structure alignée sur le positionnement "Architecture & Property Enhancement"
  */
 import Layout from '@layouts/Layout.astro';
 import Section from '@components/ui/Section.astro';
 import Container from '@components/ui/Container.astro';
-import Heading from '@components/ui/Heading.astro';
-import Text from '@components/ui/Text.astro';
 import Button from '@components/ui/Button.astro';
 
 /* Composants React (interactifs) */
@@ -21,118 +20,150 @@ import Manifeste from '@components/sections/Manifeste.astro';
 import WhatWeDo from '@components/sections/WhatWeDo.astro';
 import PortfolioPreview from '@components/sections/PortfolioPreview.astro';
 import ProcessTimeline from '@components/sections/ProcessTimeline.astro';
+import WhoWeServe from '@components/sections/WhoWeServe.astro';
+import FeaturedProjects from '@components/sections/FeaturedProjects.astro';
 import Marquee from '@components/sections/Marquee.astro';
+
+/* i18n */
+import { t, tArray, getLocalizedPath } from '@i18n/index';
+import type { Locale } from '@i18n/languages';
+
+const lang: Locale = 'fr';
 ---
 
 <Layout
-  title="SB Design — Architecte d'interieur Lyon | Renovation & Construction haut de gamme"
-  description="Studio SB Design, architecte d'interieur a Lyon et dans le Var. Renovation d'appartements et maisons, construction neuve, mobilier sur mesure, cuisines et salles de bains haut de gamme."
+  lang={lang}
+  title="SB Design Riviera — Architecture & Property Enhancement | Cote d'Azur"
+  description="SB Design Riviera, cabinet d'architecture specialise dans la conception et la valorisation de residences secondaires haut de gamme sur la Cote d'Azur. Design, renovation et property enhancement."
 >
 
-  <!-- SECTION 1 : Hero KS ART — fullscreen, Ken Burns -->
-  <HeroMinimal client:load />
+  <!-- HERO : Cinématique 100vh -->
+  <HeroMinimal lang={lang} client:load />
 
-  <!-- SECTION 01 : Manifeste / Philosophie -->
-  <Manifeste />
+  <!-- SECTION 01 : Manifeste / Vision -->
+  <Manifeste lang={lang} />
 
-  <!-- SECTION 02 : Ce que nous faisons -->
-  <WhatWeDo />
+  <!-- SHOWCASE : Réalisations phares -->
+  <FeaturedProjects lang={lang} />
 
-  <!-- Bande image full-bleed — transition visuelle -->
-  <div class="group relative w-full h-[50vh] min-h-[350px] lg:h-[60vh] overflow-hidden" data-slide-in="bottom">
+  <!-- Bande visuelle — Rénovation & Construction -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
+    <a href={getLocalizedPath('/projets', lang) + '?type=renovation'} class="group relative block h-[35vh] min-h-[260px] lg:h-[45vh] overflow-hidden">
+      <img
+        src="/images/expertise/luxury-entrance-hall.jpg"
+        alt={t('manifeste', 'imgLabel1', lang)}
+        class="w-full h-full object-cover transition-transform duration-[1.5s] ease-smooth group-hover:scale-[1.05]"
+        loading="lazy"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent group-hover:from-black/70 transition-all duration-500" />
+      <div class="absolute bottom-0 left-0 right-0 p-8 md:p-10">
+        <span class="font-heading text-[11px] font-medium text-accent-gold uppercase tracking-[0.2em] mb-2 block">{t('manifeste', 'imgDiscover', lang)}</span>
+        <h3 class="font-display text-2xl md:text-3xl font-normal text-white">{t('manifeste', 'imgLabel1', lang)}</h3>
+      </div>
+    </a>
+    <a href={getLocalizedPath('/projets', lang) + '?type=construction'} class="group relative block h-[35vh] min-h-[260px] lg:h-[45vh] overflow-hidden">
+      <img
+        src="/images/expertise/villa-garden-pool.jpg"
+        alt={t('manifeste', 'imgLabel2', lang)}
+        class="w-full h-full object-cover transition-transform duration-[1.5s] ease-smooth group-hover:scale-[1.05]"
+        loading="lazy"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent group-hover:from-black/70 transition-all duration-500" />
+      <div class="absolute bottom-0 left-0 right-0 p-8 md:p-10">
+        <span class="font-heading text-[11px] font-medium text-accent-gold uppercase tracking-[0.2em] mb-2 block">{t('manifeste', 'imgDiscover', lang)}</span>
+        <h3 class="font-display text-2xl md:text-3xl font-normal text-white">{t('manifeste', 'imgLabel2', lang)}</h3>
+      </div>
+    </a>
+  </div>
+
+  <!-- SECTION 02 : Ce que nous faisons (3 services) -->
+  <WhatWeDo lang={lang} />
+
+  <!-- SECTION 03 : Portfolio -->
+  <PortfolioPreview lang={lang} />
+
+  <!-- Marquee editorial -->
+  <Marquee lang={lang} />
+
+  <!-- SECTION 04 : Processus -->
+  <ProcessTimeline lang={lang} />
+
+  <!-- Bande image full-bleed — transition visuelle processus → métriques -->
+  <div class="group relative w-full h-[45vh] min-h-[300px] lg:h-[55vh] overflow-hidden" data-slide-in="bottom">
     <img
-      src="/images/projets/RSD-salle-de-bains-Lyon-6-renovation-agencement-18.jpg"
-      alt="Salle de bains renovation Lyon"
+      src="/images/expertise/villa-riviera-aerial.jpg"
+      alt=""
       class="w-full h-full object-cover transition-transform duration-[1.2s] ease-smooth group-hover:scale-[1.05]"
-      data-parallax="0.15"
+      data-parallax="0.12"
       loading="lazy"
     />
     <div class="absolute inset-0 bg-black/10 group-hover:bg-black/5 transition-colors duration-700" />
   </div>
 
-  <!-- SECTION 03 : Portfolio -->
-  <PortfolioPreview />
-
-  <!-- Bande image full-bleed -->
-  <div class="group relative w-full h-[45vh] min-h-[320px] lg:h-[55vh] overflow-hidden" data-slide-in="right">
-    <img
-      src="/images/projets/Projet-salle-de-bains-marbre-Lyon.jpg"
-      alt="Salle de bains en marbre Lyon"
-      class="w-full h-full object-cover transition-transform duration-[1.2s] ease-smooth group-hover:scale-[1.05]"
-      data-parallax="0.1"
-      loading="lazy"
-    />
-  </div>
-
-  <!-- Marquee editorial -->
-  <Marquee />
-
-  <!-- SECTION 04 : Processus -->
-  <ProcessTimeline />
-
   <!-- SECTION 05 : Chiffres clés animés -->
   <Section background="warm" padding="lg">
     <Container>
-      <div class="mb-16 md:mb-24" data-reveal>
-        <span class="section-number">05</span>
+      <div class="relative mb-16 md:mb-24" data-reveal>
+        <span class="section-number-xl">05</span>
+        <span class="section-number">{t('stats', 'number', lang)}</span>
         <h2 class="font-heading text-section font-light text-primary-dark mt-6">
-          En <TextMorph client:visible words={['chiffres', 'bref', 'resume']} className="font-heading font-light" />
+          {t('stats', 'title', lang)} <TextMorph client:visible words={tArray('stats', 'morphWords', lang)} className="font-heading font-light" />
         </h2>
       </div>
-      <StatsCounter client:visible />
+      <StatsCounter lang={lang} client:visible />
     </Container>
   </Section>
 
-  <!-- SECTION 06 : Témoignages -->
+  <!-- SECTION 06 : Pour Qui ? — DIFFÉRENCIATEUR -->
+  <WhoWeServe lang={lang} />
+
+  <!-- SECTION 07 : Témoignages -->
   <Section padding="lg">
     <Container>
-      <div class="mb-16 md:mb-24" data-reveal>
-        <span class="section-number">06</span>
+      <div class="relative mb-16 md:mb-24" data-reveal>
+        <span class="section-number-xl">07</span>
+        <span class="section-number">{t('temoignages', 'number', lang)}</span>
         <h2 class="font-display text-section font-normal text-primary-dark mt-6">
-          Ce que disent <TextMorph client:visible words={['nos clients', 'nos partenaires', 'ceux qui nous font confiance']} className="font-display font-normal" />
+          {t('temoignages', 'title1', lang)} <TextMorph client:visible words={tArray('temoignages', 'morphWords', lang)} className="font-display font-normal" />
         </h2>
         <p class="font-body text-lg font-light text-[var(--color-text-light)] mt-4 max-w-xl">
-          La satisfaction de nos clients est notre plus belle récompense
+          {t('temoignages', 'subtitle', lang)}
         </p>
       </div>
       <TestimonialsSlider client:visible />
     </Container>
   </Section>
 
-  <!-- SECTION 07 : CTA Final -->
+  <!-- SECTION 08 : CTA Final -->
   <section class="relative py-28 md:py-50 overflow-hidden">
-    <!-- Image de fond avec overlay -->
     <div class="absolute inset-0">
       <img
-        src="/images/projets/RSD-Agencements-Architecte-interieur-Lyon-16.jpg"
-        alt="Interieur haussmannien elegant Lyon"
+        src="/images/expertise/terrace-sunset-riviera.jpg"
+        alt="Villa d'exception Côte d'Azur"
         class="w-full h-full object-cover"
         loading="lazy"
       />
-      <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/55 to-black/65" />
+      <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/55 to-black/70" />
     </div>
 
-    <!-- Contenu -->
     <Container>
       <div class="relative z-10 text-center max-w-3xl mx-auto" data-reveal>
         <span class="font-heading text-xs font-semibold text-accent-gold uppercase tracking-[0.2em] mb-6 block">
-          07 — Votre projet
+          {t('cta', 'label', lang)}
         </span>
-        <h2 class="font-display text-[clamp(32px,5vw,56px)] font-normal text-white leading-[1.3] mb-6">
-          Pret a transformer<br />votre espace ?
-        </h2>
+        <h2 class="font-display text-[clamp(32px,5vw,56px)] font-normal text-white leading-[1.3] mb-6" set:html={t('cta', 'title', lang).replace('\n', '<br />')} />
         <p class="font-body text-lg font-light text-white/70 mb-12 max-w-xl mx-auto leading-[1.8]">
-          Chaque projet commence par une conversation. Parlons du votre.
+          {t('cta', 'subtitle', lang)}
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button href="/contact" variant="primary" size="lg">
-            Demander un devis gratuit
+          <Button href={getLocalizedPath('/contact', lang)} variant="primary" size="lg">
+            {t('cta', 'primary', lang)}
           </Button>
           <a
-            href="tel:+33609459245"
-            class="inline-flex items-center justify-center px-8 py-4 border border-white/30 text-white font-heading text-[15px] font-medium uppercase tracking-wider hover:bg-white/10 transition-all duration-500"
+            href={getLocalizedPath('/projets', lang)}
+            class="inline-flex items-center justify-center px-8 py-4 border border-white/30 text-white font-heading text-[15px] font-medium uppercase tracking-wider rounded-pill hover:bg-white/10 transition-all duration-base"
           >
-            06 09 45 92 45
+            {t('cta', 'secondary', lang)}
           </a>
         </div>
       </div>

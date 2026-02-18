@@ -1,122 +1,95 @@
 ---
 /**
- * ProcessTimeline — Section 04 (Editorial Luxe)
- * Timeline zigzag verticale, numeros surdimensionnes,
- * ligne centrale avec dots dores, alternance gauche/droite
+ * ProcessTimeline — Section 04 (Processus stratégique)
+ * Layout éditorial luxe : grille 2×2 desktop, numéros Playfair,
+ * séparateurs dorés, sans icônes techniques
  */
 import Section from '@components/ui/Section.astro';
 import Container from '@components/ui/Container.astro';
 import TextMorph from '@components/react/TextMorph';
+import { t, tArray, type Locale } from '@i18n/index';
+
+interface Props { lang?: Locale; }
+const lang = Astro.props.lang ?? 'fr';
 
 const steps = [
-  {
-    number: '01',
-    title: 'Consultation',
-    description: 'Rencontre, analyse de vos besoins et premieres esquisses de votre projet sur-mesure.',
-  },
-  {
-    number: '02',
-    title: 'Conception',
-    description: 'Plans 3D, devis precis et selection minutieuse des materiaux nobles.',
-  },
-  {
-    number: '03',
-    title: 'Realisation',
-    description: 'Travaux executes avec precision, suivi quotidien et controle qualite rigoureux.',
-  },
-  {
-    number: '04',
-    title: 'Livraison',
-    description: 'Reception soignee, garanties completes et service apres-vente dedie.',
-  },
+  { number: '01', title: t('processus', 'step1Title', lang), description: t('processus', 'step1Desc', lang) },
+  { number: '02', title: t('processus', 'step2Title', lang), description: t('processus', 'step2Desc', lang) },
+  { number: '03', title: t('processus', 'step3Title', lang), description: t('processus', 'step3Desc', lang) },
+  { number: '04', title: t('processus', 'step4Title', lang), description: t('processus', 'step4Desc', lang) },
 ];
 ---
 
-<Section padding="lg">
+<Section background="warm" padding="lg">
   <Container>
 
-    {/* En-tete */}
-    <div class="relative mb-16 md:mb-24" data-reveal>
+    {/* En-tête */}
+    <div class="relative mb-20 md:mb-32" data-reveal>
       <span class="section-number-xl">04</span>
-      <span class="section-number">04</span>
+      <span class="section-number">{t('processus', 'number', lang)}</span>
       <h2 class="text-section text-primary-dark mt-6">
-        <span class="font-display font-normal">Notre</span> <TextMorph client:visible words={['Processus', 'Methode', 'Approche']} className="font-heading font-light" />
+        <span class="font-display font-normal">{t('processus', 'title', lang)}</span> <TextMorph client:visible words={tArray('processus', 'morphWords', lang)} className="font-heading font-light" />
       </h2>
-      <p class="font-body text-lg font-light text-[var(--color-text-light)] mt-4 max-w-xl">
-        Un accompagnement sur-mesure a chaque etape de votre projet
+      <p class="font-body text-lg font-light text-[var(--color-text-light)] mt-4 max-w-xl leading-[1.8]">
+        {t('processus', 'subtitle', lang)}
       </p>
     </div>
 
-    {/* Timeline zigzag */}
-    <div class="max-w-4xl mx-auto" data-reveal-stagger="0.15">
+    {/* Grille 2×2 desktop — éditorial luxe */}
+    <div class="hidden md:grid grid-cols-2 gap-0 border border-accent-gold/10" data-reveal-stagger="0.12">
       {steps.map((step, i) => (
         <div
+          class:list={[
+            'relative p-10 lg:p-14',
+            i === 0 ? 'border-r border-b border-accent-gold/10' : '',
+            i === 1 ? 'border-b border-accent-gold/10' : '',
+            i === 2 ? 'border-r border-accent-gold/10' : '',
+          ]}
           data-reveal-child
-          class="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-6 md:gap-10 items-start mb-16 md:mb-0"
         >
-          {/* Colonne gauche */}
-          <div class:list={[
-            'hidden md:block',
-            i % 2 === 0 ? 'text-right' : '',
-          ]}>
-            {i % 2 === 0 ? (
-              <div>
-                <span class="font-display text-[64px] md:text-[80px] font-normal text-accent-gold/15 leading-none block">
-                  {step.number}
-                </span>
-                <h3 class="font-display text-2xl font-normal text-primary-dark mt-2 mb-3">
-                  {step.title}
-                </h3>
-                <p class="font-body text-sm font-light text-[var(--color-text-light)] leading-relaxed max-w-[280px] ml-auto">
-                  {step.description}
-                </p>
-              </div>
-            ) : (
-              <div />
-            )}
-          </div>
+          {/* Grand numéro Playfair — ancrage visuel */}
+          <span class="font-display text-[72px] lg:text-[88px] font-light text-accent-gold/15 leading-none block mb-6 select-none">
+            {step.number}
+          </span>
 
-          {/* Centre : ligne + dot */}
-          <div class="hidden md:flex flex-col items-center">
-            <div class="w-3 h-3 bg-accent-gold border-4 border-background relative z-10" />
-            {i < steps.length - 1 && (
-              <div class="w-px h-32 bg-accent-gold/20" />
-            )}
-          </div>
+          {/* Ligne dorée */}
+          <div class="w-10 h-px bg-accent-gold/40 mb-6" />
 
-          {/* Colonne droite */}
-          <div class:list={[
-            'hidden md:block',
-            i % 2 === 1 ? 'text-left' : '',
-          ]}>
-            {i % 2 === 1 ? (
-              <div>
-                <span class="font-display text-[64px] md:text-[80px] font-normal text-accent-gold/15 leading-none block">
-                  {step.number}
-                </span>
-                <h3 class="font-display text-2xl font-normal text-primary-dark mt-2 mb-3">
-                  {step.title}
-                </h3>
-                <p class="font-body text-sm font-light text-[var(--color-text-light)] leading-relaxed max-w-[280px]">
-                  {step.description}
-                </p>
-              </div>
-            ) : (
-              <div />
-            )}
-          </div>
+          {/* Titre */}
+          <h3 class="font-display text-xl lg:text-2xl font-normal text-primary-dark mb-4 leading-[1.3]">
+            {step.title}
+          </h3>
 
-          {/* Mobile : layout lineaire */}
-          <div class="md:hidden">
-            <span class="font-display text-[48px] font-normal text-accent-gold/15 leading-none block">
+          {/* Description */}
+          <p class="font-body text-sm font-light text-text-secondary leading-[1.8] max-w-sm">
+            {step.description}
+          </p>
+        </div>
+      ))}
+    </div>
+
+    {/* Mobile — empilé élégant */}
+    <div class="md:hidden space-y-0" data-reveal-stagger="0.12">
+      {steps.map((step, i) => (
+        <div
+          class:list={[
+            'py-10',
+            i < steps.length - 1 ? 'border-b border-accent-gold/15' : '',
+          ]}
+          data-reveal-child
+        >
+          <div class="flex items-start gap-6">
+            <span class="font-display text-[48px] font-light text-accent-gold/20 leading-none shrink-0 select-none">
               {step.number}
             </span>
-            <h3 class="font-display text-xl font-normal text-primary-dark mt-2 mb-3">
-              {step.title}
-            </h3>
-            <p class="font-body text-sm font-light text-[var(--color-text-light)] leading-relaxed">
-              {step.description}
-            </p>
+            <div class="pt-2">
+              <h3 class="font-display text-lg font-normal text-primary-dark mb-2 leading-[1.3]">
+                {step.title}
+              </h3>
+              <p class="font-body text-sm font-light text-text-secondary leading-[1.8]">
+                {step.description}
+              </p>
+            </div>
           </div>
         </div>
       ))}

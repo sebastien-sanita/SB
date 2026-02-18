@@ -1,224 +1,149 @@
 ---
 /**
- * WhatWeDo — Section 02 (Editorial Luxe)
- * 3 services avec layouts differents, decorations dorees,
- * typographie mixte, tags, CTA animes
+ * WhatWeDo — Section 02 (Services stratégiques)
+ * 3 services compacts en 50/50 alternants, hover overlay sur images
  */
 import Section from '@components/ui/Section.astro';
 import Container from '@components/ui/Container.astro';
 import TextMorph from '@components/react/TextMorph';
+import { t, tArray, getLocalizedPath, type Locale } from '@i18n/index';
+
+interface Props { lang?: Locale; }
+const lang = Astro.props.lang ?? 'fr';
+
+const services = [
+  {
+    num: '01',
+    title1Key: 's1Title1' as const,
+    title2Key: 's1Title2' as const,
+    descKey: 's1Desc' as const,
+    bullets: ['s1Bullet1', 's1Bullet2', 's1Bullet3'] as const,
+    image: '/images/expertise/conception-villa-1.jpg',
+    imageAlt: 'Conception architecturale villa Côte d\'Azur',
+    href: '/expertise#renovation',
+    direction: 'normal' as const,
+  },
+  {
+    num: '02',
+    title1Key: 's2Title1' as const,
+    title2Key: 's2Title2' as const,
+    descKey: 's2Desc' as const,
+    bullets: ['s2Bullet1', 's2Bullet2', 's2Bullet3'] as const,
+    image: '/images/expertise/interior-salon-1.jpg',
+    imageAlt: 'Interior Refinement haut de gamme',
+    href: '/expertise#design',
+    direction: 'reverse' as const,
+  },
+  {
+    num: '03',
+    title1Key: 's3Title1' as const,
+    title2Key: 's3Title2' as const,
+    descKey: 's3Desc' as const,
+    bullets: ['s3Bullet1', 's3Bullet2', 's3Bullet3'] as const,
+    image: '/images/expertise/valorisation-terrasse-1.jpg',
+    imageAlt: 'Villa valorisée sur la Côte d\'Azur',
+    href: '/expertise#prestige',
+    direction: 'normal' as const,
+    stat: { valueKey: 's3StatValue' as const, labelKey: 's3StatLabel' as const },
+  },
+];
 ---
 
 <Section padding="lg">
   <Container>
 
-    {/* En-tete */}
-    <div class="relative mb-16 md:mb-24" data-reveal>
+    {/* En-tête compact */}
+    <div class="relative mb-12 md:mb-16" data-reveal>
       <span class="section-number-xl">02</span>
-      <span class="section-number">02</span>
-      <h2 class="text-section text-primary-dark mt-6">
-        <span class="font-display font-normal">Ce que</span> <TextMorph client:visible words={['nous faisons', 'nous creons', 'nous imaginons']} className="font-heading font-light" />
+      <span class="section-number">{t('approche', 'number', lang)}</span>
+      <h2 class="text-section text-primary-dark mt-4">
+        <span class="font-display font-normal">{t('approche', 'title', lang)}</span> <TextMorph client:visible words={tArray('approche', 'morphWords', lang)} className="font-heading font-light" />
       </h2>
-      <p class="font-body text-lg font-light text-[var(--color-text-light)] mt-4 max-w-xl">
-        Trois expertises complementaires pour donner vie a votre projet
-      </p>
     </div>
 
-    {/* Service 2.1 — Renovation : Image full-width avec cadre dore + texte offset */}
-    <div class="mb-28 md:mb-40" data-reveal>
-      {/* Image avec cadre graphique */}
-      <div class="relative mb-12 -mx-6 md:-mx-10">
-        <div class="overflow-hidden" data-slide-in="bottom">
-          <img
-            src="/images/projets/Archi-interieure-renovation-appartement-ancien-Lyon-6.jpg"
-            alt="Renovation appartement ancien Lyon 6e"
-            class="w-full aspect-[21/9] lg:aspect-auto lg:h-[60vh] lg:min-h-[450px] object-cover transition-transform duration-700 ease-smooth hover:scale-[1.05]"
-            data-parallax="0.12"
-            loading="lazy"
-          />
-        </div>
-        {/* Cadre dore decoratif */}
-        <div class="hidden lg:block absolute -bottom-5 -right-5 w-[40%] h-[60%] border border-accent-gold/20 pointer-events-none" />
-        {/* Numero surdimensionne sur l'image */}
-        <span class="absolute bottom-4 left-6 md:bottom-6 md:left-10 font-heading text-[80px] md:text-[120px] font-extralight text-white/10 leading-none select-none pointer-events-none">
-          01
-        </span>
-      </div>
-      {/* Contenu offset a droite */}
-      <div class="lg:ml-auto lg:max-w-[55%]" data-reveal data-reveal-delay="0.1">
-        <div class="flex items-center gap-4 mb-6">
-          <div class="w-8 h-px bg-accent-gold" />
-          <span class="subsection-number">2.1</span>
-        </div>
-        <h3 class="font-display text-subsection font-normal text-primary-dark mb-4">
-          <span class="font-display italic">Renovation</span> <span class="font-heading font-light">complete</span>
-        </h3>
-        {/* Tags */}
-        <div class="flex flex-wrap gap-2 mb-6">
-          <span class="px-3 py-1 text-[11px] font-heading font-medium uppercase tracking-[0.12em] text-accent-brown/80 border border-accent-gold/20 bg-accent-gold/5">
-            Conception
-          </span>
-          <span class="px-3 py-1 text-[11px] font-heading font-medium uppercase tracking-[0.12em] text-accent-brown/80 border border-accent-gold/20 bg-accent-gold/5">
-            Coordination
-          </span>
-          <span class="px-3 py-1 text-[11px] font-heading font-medium uppercase tracking-[0.12em] text-accent-brown/80 border border-accent-gold/20 bg-accent-gold/5">
-            Cle en main
-          </span>
-        </div>
-        <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.8] mb-8">
-          De la conception a la livraison, nous orchestrons chaque etape de votre renovation.
-          Nos equipes coordonnent tous les corps de metier pour un resultat impeccable,
-          dans les delais et le budget convenus.
-        </p>
-        <a
-          href="/expertise#renovation"
-          class="group/link inline-flex items-center gap-3 font-heading text-[15px] font-medium text-accent-brown transition-colors duration-500"
-        >
-          <span class="relative">
-            En savoir plus
-            <span class="absolute bottom-0 left-0 w-0 h-px bg-accent-brown group-hover/link:w-full transition-all duration-500" />
-          </span>
-          <svg class="w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-          </svg>
-        </a>
-      </div>
-    </div>
+    {/* 3 Services — layout 50/50 alternants */}
+    <div class="space-y-16 md:space-y-24">
+      {services.map((service, i) => (
+        <div class:list={[
+          'grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-14 items-center',
+        ]}>
 
-    {/* Separateur dore */}
-    <div class="flex items-center gap-4 mb-28 md:mb-40 max-w-sm mx-auto" data-reveal>
-      <div class="flex-1 h-px bg-gradient-to-r from-transparent to-accent-gold/30" />
-      <div class="w-1.5 h-1.5 rotate-45 border border-accent-gold/40" />
-      <div class="flex-1 h-px bg-gradient-to-l from-transparent to-accent-gold/30" />
-    </div>
+          {/* Image avec hover overlay */}
+          <a
+            href={getLocalizedPath(service.href, lang)}
+            class:list={[
+              'group relative block overflow-hidden rounded-lg',
+              service.direction === 'reverse' ? 'order-1 lg:order-2' : '',
+            ]}
+            data-slide-in={service.direction === 'reverse' ? 'right' : 'left'}
+          >
+            <img
+              src={service.image}
+              alt={service.imageAlt}
+              class="w-full aspect-[5/4] object-cover transition-transform duration-[1.2s] ease-smooth group-hover:scale-[1.05]"
+              loading="lazy"
+            />
+            {/* Hover overlay */}
+            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-all duration-500 flex items-center justify-center">
+              <div class="opacity-0 group-hover:opacity-100 translate-y-3 group-hover:translate-y-0 transition-all duration-500 text-center">
+                <span class="font-heading text-[11px] font-medium text-accent-gold uppercase tracking-[0.2em] block mb-2">
+                  {t('approche', service.title1Key, lang)} {t('approche', service.title2Key, lang)}
+                </span>
+                <span class="inline-flex items-center gap-2 font-heading text-sm font-medium text-white uppercase tracking-wider">
+                  {t('approche', 'learnMore', lang)}
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </span>
+              </div>
+            </div>
+          </a>
 
-    {/* Service 2.2 — Design : Grille asymetrique avec decoration */}
-    <div class="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-10 lg:gap-20 items-end mb-28 md:mb-40" data-reveal>
-      {/* Texte gauche, aligne en bas */}
-      <div>
-        <div class="flex items-center gap-4 mb-6">
-          <div class="w-8 h-px bg-accent-gold" />
-          <span class="subsection-number">2.2</span>
-        </div>
-        <h3 class="font-display text-subsection font-normal text-primary-dark mb-4">
-          <span class="font-display italic">Design</span> <span class="font-heading font-light">d'interieur</span>
-        </h3>
-        {/* Tags */}
-        <div class="flex flex-wrap gap-2 mb-6">
-          <span class="px-3 py-1 text-[11px] font-heading font-medium uppercase tracking-[0.12em] text-accent-brown/80 border border-accent-gold/20 bg-accent-gold/5">
-            Moodboard
-          </span>
-          <span class="px-3 py-1 text-[11px] font-heading font-medium uppercase tracking-[0.12em] text-accent-brown/80 border border-accent-gold/20 bg-accent-gold/5">
-            Materiaux
-          </span>
-          <span class="px-3 py-1 text-[11px] font-heading font-medium uppercase tracking-[0.12em] text-accent-brown/80 border border-accent-gold/20 bg-accent-gold/5">
-            Sur mesure
-          </span>
-        </div>
-        <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.8] mb-8">
-          Notre regard creatif transforme vos espaces. Selection de materiaux nobles,
-          harmonie des couleurs, mobilier sur-mesure — chaque element est pense pour
-          creer une atmosphere unique qui vous ressemble.
-        </p>
-        <a
-          href="/expertise#design"
-          class="group/link inline-flex items-center gap-3 font-heading text-[15px] font-medium text-accent-brown transition-colors duration-500"
-        >
-          <span class="relative">
-            En savoir plus
-            <span class="absolute bottom-0 left-0 w-0 h-px bg-accent-brown group-hover/link:w-full transition-all duration-500" />
-          </span>
-          <svg class="w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-          </svg>
-        </a>
-      </div>
-      {/* Image plus grande a droite avec cadre */}
-      <div class="relative" data-slide-in="right">
-        <div class="overflow-hidden">
-          <img
-            src="/images/projets/Archi-interieure-renovation-appartement-Tete-d-Or-Lyon.jpg"
-            alt="Design interieur contemporain appartement Tete d'Or Lyon"
-            class="w-full aspect-[3/4] lg:aspect-auto lg:h-[75vh] lg:min-h-[560px] object-cover transition-transform duration-700 ease-smooth hover:scale-[1.05]"
-            data-parallax="0.12"
-            loading="lazy"
-          />
-        </div>
-        {/* Cadre dore en bas a gauche */}
-        <div class="hidden lg:block absolute -bottom-5 -left-5 w-[50%] h-[40%] border border-accent-gold/20 pointer-events-none" />
-        {/* Numero overlay */}
-        <span class="absolute top-4 right-6 md:top-6 md:right-10 font-heading text-[80px] md:text-[120px] font-extralight text-white/10 leading-none select-none pointer-events-none">
-          02
-        </span>
-      </div>
-    </div>
+          {/* Texte */}
+          <div class:list={[
+            service.direction === 'reverse' ? 'order-2 lg:order-1' : '',
+          ]} data-reveal data-reveal-delay="0.1">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="font-heading text-[40px] font-extralight text-accent-gold/25 leading-none">{service.num}</span>
+            </div>
+            <h3 class="font-display text-2xl md:text-3xl font-normal text-primary-dark mb-4">
+              <span class="italic">{t('approche', service.title1Key, lang)}</span> <span class="font-heading font-light">{t('approche', service.title2Key, lang)}</span>
+            </h3>
+            <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.8] mb-5">
+              {t('approche', service.descKey, lang)}
+            </p>
+            <ul class="space-y-2 mb-6">
+              {service.bullets.map((bulletKey) => (
+                <li class="flex items-start gap-3 text-[14px] font-light text-[var(--color-text-light)]">
+                  <svg class="w-4 h-4 text-accent-gold mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  {t('approche', bulletKey, lang)}
+                </li>
+              ))}
+            </ul>
+            {service.stat && (
+              <div class="flex items-baseline gap-3 mb-6">
+                <span class="font-display text-3xl font-light text-accent-gold">{t('approche', service.stat.valueKey, lang)}</span>
+                <span class="font-body text-sm font-light text-text-secondary">{t('approche', service.stat.labelKey, lang)}</span>
+              </div>
+            )}
+            <a
+              href={getLocalizedPath(service.href, lang)}
+              class="group/link inline-flex items-center gap-2 font-heading text-[14px] font-medium text-accent-brown"
+            >
+              <span class="relative">
+                {t('approche', 'learnMore', lang)}
+                <span class="absolute bottom-0 left-0 w-0 h-px bg-accent-brown group-hover/link:w-full transition-all duration-base" />
+              </span>
+              <svg class="w-4 h-4 transition-transform duration-fast group-hover/link:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+          </div>
 
-    {/* Separateur dore */}
-    <div class="flex items-center gap-4 mb-28 md:mb-40 max-w-sm mx-auto" data-reveal>
-      <div class="flex-1 h-px bg-gradient-to-r from-transparent to-accent-gold/30" />
-      <div class="w-1.5 h-1.5 rotate-45 border border-accent-gold/40" />
-      <div class="flex-1 h-px bg-gradient-to-l from-transparent to-accent-gold/30" />
-    </div>
-
-    {/* Service 2.3 — Prestige : Grille avec image bleed gauche + decoration */}
-    <div class="grid grid-cols-1 lg:grid-cols-[1.3fr_1fr] gap-10 lg:gap-20 items-center" data-reveal>
-      {/* Image avec debordement gauche et cadre */}
-      <div class="relative lg:-ml-10" data-slide-in="left">
-        <div class="overflow-hidden">
-          <img
-            src="/images/projets/Renovation-villa-bord-de-mer.jpg"
-            alt="Salle a manger villa de prestige"
-            class="w-full aspect-[4/5] lg:aspect-auto lg:h-[85vh] lg:min-h-[600px] object-cover transition-transform duration-700 ease-smooth hover:scale-[1.05]"
-            data-parallax="0.12"
-            loading="lazy"
-          />
         </div>
-        {/* Cadre dore en haut a droite */}
-        <div class="hidden lg:block absolute -top-5 -right-5 w-[35%] h-[50%] border border-accent-gold/20 pointer-events-none" />
-        {/* Numero overlay */}
-        <span class="absolute bottom-4 right-6 md:bottom-6 md:right-10 font-heading text-[80px] md:text-[120px] font-extralight text-white/10 leading-none select-none pointer-events-none">
-          03
-        </span>
-      </div>
-      {/* Texte droite */}
-      <div data-reveal data-reveal-delay="0.1">
-        <div class="flex items-center gap-4 mb-6">
-          <div class="w-8 h-px bg-accent-gold" />
-          <span class="subsection-number">2.3</span>
-        </div>
-        <h3 class="font-display text-subsection font-normal text-primary-dark mb-4">
-          <span class="font-display italic">Espaces</span> <span class="font-heading font-light">de prestige</span>
-        </h3>
-        {/* Tags */}
-        <div class="flex flex-wrap gap-2 mb-6">
-          <span class="px-3 py-1 text-[11px] font-heading font-medium uppercase tracking-[0.12em] text-accent-brown/80 border border-accent-gold/20 bg-accent-gold/5">
-            Haussmannien
-          </span>
-          <span class="px-3 py-1 text-[11px] font-heading font-medium uppercase tracking-[0.12em] text-accent-brown/80 border border-accent-gold/20 bg-accent-gold/5">
-            Domotique
-          </span>
-          <span class="px-3 py-1 text-[11px] font-heading font-medium uppercase tracking-[0.12em] text-accent-brown/80 border border-accent-gold/20 bg-accent-gold/5">
-            Wellness
-          </span>
-        </div>
-        <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.8] mb-8">
-          Appartements haussmanniens, villas contemporaines, penthouses — nous maitrisons
-          les codes du luxe. Notre expertise technique et notre sensibilite esthetique
-          garantissent des realisations d'exception.
-        </p>
-        <a
-          href="/expertise#prestige"
-          class="group/link inline-flex items-center gap-3 font-heading text-[15px] font-medium text-accent-brown transition-colors duration-500"
-        >
-          <span class="relative">
-            En savoir plus
-            <span class="absolute bottom-0 left-0 w-0 h-px bg-accent-brown group-hover/link:w-full transition-all duration-500" />
-          </span>
-          <svg class="w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-          </svg>
-        </a>
-      </div>
+      ))}
     </div>
 
   </Container>

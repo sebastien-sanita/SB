@@ -6,26 +6,37 @@
 import '@/styles/global.css';
 import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
+import { getLangFromUrl, getHreflangAlternates } from '@i18n/utils';
+import type { Locale } from '@i18n/languages';
 
 interface Props {
   title: string;
   description?: string;
   ogImage?: string;
   class?: string;
+  lang?: Locale;
 }
 
+const defaultDescriptions: Record<Locale, string> = {
+  fr: "SB Design Riviera — Architecture & Property Enhancement. Conception et valorisation de résidences secondaires haut de gamme sur la Côte d'Azur.",
+  en: "SB Design Riviera — Architecture & Property Enhancement. Design and enhancement of high-end secondary residences on the French Riviera.",
+  it: "SB Design Riviera — Architecture & Property Enhancement. Progettazione e valorizzazione di residenze secondarie di lusso sulla Costa Azzurra.",
+};
+
+const currentLang = Astro.props.lang ?? getLangFromUrl(Astro.url);
 const {
   title,
-  description = "Studio SB Design — Architecte d'interieur a Lyon et dans le Var. Renovation, construction et mobilier sur mesure haut de gamme.",
+  description = defaultDescriptions[currentLang],
   ogImage,
   class: className,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const hreflangAlternates = getHreflangAlternates(Astro.url.pathname, Astro.site?.toString().replace(/\/$/, '') ?? '');
 ---
 
 <!doctype html>
-<html lang="fr">
+<html lang={currentLang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -38,36 +49,35 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL.href} />
 
+    <!-- Hreflang alternates for i18n SEO -->
+    {hreflangAlternates.map(({ lang, href }) => (
+      <link rel="alternate" hreflang={lang} href={href} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={hreflangAlternates.find(a => a.lang === 'fr')?.href ?? canonicalURL.href} />
+
     <!-- Schema.org LocalBusiness -->
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
-      "name": "Studio SB Design",
-      "description": "Architecte d'interieur a Lyon et dans le Var. Renovation d'appartements et maisons, construction neuve, mobilier sur mesure.",
+      "name": "SB Design Riviera",
+      "description": "Architecture & Property Enhancement — Conception et valorisation de résidences secondaires haut de gamme sur la Côte d'Azur.",
       "url": "https://www.sbdesign.fr",
-      "telephone": ["+33609459245", "+33699142214"],
-      "email": "info@sbdesign.fr",
+      "telephone": ["+33609459245"],
+      "email": "contact@sbdesignriviera.fr",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "8 rue Pierre et Marie Curie",
         "addressLocality": "Chassieu",
-        "postalCode": "69680",
-        "addressRegion": "Auvergne-Rhone-Alpes",
+        "addressRegion": "Côte d'Azur",
         "addressCountry": "FR"
       },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 45.7387,
-        "longitude": 4.9579
-      },
       "areaServed": [
-        {"@type": "City", "name": "Lyon"},
-        {"@type": "City", "name": "Chassieu"},
-        {"@type": "City", "name": "Villeurbanne"},
-        {"@type": "AdministrativeArea", "name": "Var"}
+        {"@type": "AdministrativeArea", "name": "Côte d'Azur"},
+        {"@type": "AdministrativeArea", "name": "Var"},
+        {"@type": "AdministrativeArea", "name": "Alpes-Maritimes"}
       ],
-      "priceRange": "€€€",
-      "openingHours": "Mo-Fr 09:00-18:00"
+      "priceRange": "€€€€",
+      "openingHours": "Mo-Fr 09:00-18:00",
+      "knowsLanguage": ["fr", "en", "it"]
     })} />
 
     <!-- Open Graph / Facebook -->
@@ -106,13 +116,13 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       </div>
     </div>
 
-    <Header />
+    <Header lang={currentLang} />
 
     <main>
       <slot />
     </main>
 
-    <Footer />
+    <Footer lang={currentLang} />
 
     <!-- GSAP + Lenis + Animations -->
     <script>

@@ -1,0 +1,77 @@
+---
+/**
+ * WhoWeServe — Section 06 (Différenciateur clé)
+ * "Pour Qui ?" — Layout éditorial luxe sur fond noir
+ * Grands numéros Playfair, lignes dorées, typographie raffinée
+ */
+import Container from '@components/ui/Container.astro';
+import TextMorph from '@components/react/TextMorph';
+import { t, tArray, type Locale } from '@i18n/index';
+
+interface Props { lang?: Locale; }
+const lang = Astro.props.lang ?? 'fr';
+
+const cards = [
+  { number: '01', titleKey: 'card1Title' as const, descKey: 'card1Desc' as const, tagKey: 'card1Tag' as const },
+  { number: '02', titleKey: 'card2Title' as const, descKey: 'card2Desc' as const, tagKey: 'card2Tag' as const },
+  { number: '03', titleKey: 'card3Title' as const, descKey: 'card3Desc' as const, tagKey: 'card3Tag' as const },
+];
+---
+
+<section class="bg-primary-dark py-24 md:py-50 relative overflow-hidden">
+
+  {/* Coins décoratifs subtils */}
+  <div class="absolute top-8 left-8 w-16 h-px bg-accent-gold/10 hidden lg:block" />
+  <div class="absolute top-8 left-8 w-px h-16 bg-accent-gold/10 hidden lg:block" />
+  <div class="absolute bottom-8 right-8 w-16 h-px bg-accent-gold/10 hidden lg:block" />
+  <div class="absolute bottom-8 right-8 w-px h-16 bg-accent-gold/10 hidden lg:block" />
+
+  <Container>
+
+    {/* En-tête */}
+    <div class="relative mb-20 md:mb-32" data-reveal>
+      <span class="section-number-xl !text-white">06</span>
+      <span class="section-number !text-white/40">{t('pourQui', 'number', lang)}</span>
+      <h2 class="font-display text-section font-normal text-white mt-6">
+        {t('pourQui', 'title', lang)} <TextMorph client:visible words={tArray('pourQui', 'morphWords', lang)} className="font-display font-normal" />
+      </h2>
+      <p class="font-body text-lg font-light text-white/50 mt-4 max-w-xl leading-[1.8]">
+        {t('pourQui', 'subtitle', lang)}
+      </p>
+    </div>
+
+    {/* 3 profils — layout éditorial vertical */}
+    <div class="space-y-0">
+      {cards.map((card, i) => (
+        <div
+          class:list={[
+            'group grid grid-cols-1 md:grid-cols-[auto_1fr] gap-8 md:gap-16 items-start py-12 md:py-16',
+            i < cards.length - 1 ? 'border-b border-white/[0.06]' : '',
+          ]}
+          data-reveal
+          data-reveal-delay={`${i * 0.1}`}
+        >
+          {/* Numéro Playfair — ancrage visuel */}
+          <span class="font-display text-[64px] md:text-[80px] font-light text-accent-gold/25 leading-none select-none shrink-0 md:w-24">
+            {card.number}
+          </span>
+
+          {/* Contenu */}
+          <div class="max-w-2xl">
+            <h3 class="font-display text-2xl md:text-3xl font-normal text-white mb-4 leading-[1.3]">
+              {t('pourQui', card.titleKey, lang)}
+            </h3>
+            <div class="w-10 h-px bg-accent-gold/40 mb-6" />
+            <p class="font-body text-[15px] font-light text-white/55 leading-[1.85] mb-6">
+              {t('pourQui', card.descKey, lang)}
+            </p>
+            <span class="inline-block font-heading text-[11px] font-medium text-accent-gold/80 uppercase tracking-[0.2em] border-b border-accent-gold/20 pb-1">
+              {t('pourQui', card.tagKey, lang)}
+            </span>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </Container>
+</section>

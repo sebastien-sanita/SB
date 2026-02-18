@@ -109,24 +109,28 @@
   --grid-gap-xl: 64px;
 
   /* ═══════════════════════════════════════════════
-     SHADOWS — Supprimées (flat architectural)
+     SHADOWS — Ultra-subtiles (Ayocin warmth)
      ═══════════════════════════════════════════════ */
+  --shadow-subtle: 0 4px 16px rgba(0,0,0,0.04);
+  --shadow-medium: 0 8px 32px rgba(0,0,0,0.08);
+  --shadow-large: 0 16px 48px rgba(0,0,0,0.12);
+  --shadow-hover: 0 20px 60px rgba(0,0,0,0.15);
 
   /* ═══════════════════════════════════════════════
-     BORDER RADIUS — Carré (architectural minimaliste)
+     BORDER RADIUS — Douceur Ayocin
      ═══════════════════════════════════════════════ */
-  --radius-sm: 0px;
-  --radius-md: 2px;
-  --radius-lg: 2px;
-  --radius-xl: 2px;
-  --radius-full: 0px;
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-pill: 48px;
 
   /* ═══════════════════════════════════════════════
      TRANSITIONS — Lentes et architecturales
      ═══════════════════════════════════════════════ */
-  --transition-fast: 300ms ease-in-out;
-  --transition-base: 600ms cubic-bezier(0.25, 1, 0.5, 1);
-  --transition-slow: 1000ms cubic-bezier(0.25, 1, 0.5, 1);
+  --transition-fast: 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --transition-base: 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --transition-slow: 800ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --ease-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --ease-out: cubic-bezier(0, 0, 0.2, 1);
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);

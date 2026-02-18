@@ -1,0 +1,129 @@
+---
+/**
+ * FeaturedProjects — Showcase cinématique des réalisations phares
+ * Placé entre Hero et Manifeste — impact visuel immédiat
+ * 3 projets pleine largeur, images immersives, texte minimal en overlay
+ */
+import Container from '@components/ui/Container.astro';
+import Button from '@components/ui/Button.astro';
+import { t, getLocalizedPath, type Locale } from '@i18n/index';
+
+interface Props { lang?: Locale; }
+const lang = Astro.props.lang ?? 'fr';
+
+const featured = [
+  {
+    slug: 'villa-azur',
+    image: '/images/projets/villa-azur-1.jpg',
+    titleKey: 'fp1Title' as const,
+    tagKey: 'fp1Tag' as const,
+    metaKey: 'fp1Meta' as const,
+  },
+  {
+    slug: 'penthouse-croisette',
+    image: '/images/projets/penthouse-croisette-1.jpg',
+    titleKey: 'fp2Title' as const,
+    tagKey: 'fp2Tag' as const,
+    metaKey: 'fp2Meta' as const,
+  },
+  {
+    slug: 'ecrin-monaco',
+    image: '/images/projets/ecrin-monaco-1.jpg',
+    titleKey: 'fp3Title' as const,
+    tagKey: 'fp3Tag' as const,
+    metaKey: 'fp3Meta' as const,
+  },
+];
+---
+
+<section class="relative bg-primary-dark">
+
+  {/* 3 projets empilés — label intégré au premier */}
+  {featured.map((project, i) => (
+    <a
+      href={getLocalizedPath(`/projets/${project.slug}`, lang)}
+      class="group relative block w-full h-[50vh] min-h-[350px] lg:h-[55vh] overflow-hidden"
+      data-featured-project
+    >
+      {/* Image avec parallax et zoom hover */}
+      <img
+        src={project.image}
+        alt={t('featured', project.titleKey, lang)}
+        class="w-full h-full object-cover transition-transform duration-[1.5s] ease-smooth group-hover:scale-[1.04]"
+        data-parallax="0.08"
+        loading={i === 0 ? 'eager' : 'lazy'}
+      />
+
+      {/* Gradient bas pour lisibilité */}
+      <div class="absolute inset-0 bg-gradient-to-t from-black/65 via-black/15 to-transparent" />
+
+      {/* Ligne de séparation dorée subtile */}
+      {i > 0 && (
+        <div class="absolute top-0 left-0 right-0 h-px bg-accent-gold/15" />
+      )}
+
+      {/* Label section — uniquement sur la première image, en haut à gauche */}
+      {i === 0 && (
+        <div class="absolute top-0 left-0 right-0 pt-8 md:pt-12">
+          <Container>
+            <span class="font-heading text-[11px] font-medium text-accent-gold/70 uppercase tracking-[0.25em]">
+              {t('featured', 'label', lang)}
+            </span>
+          </Container>
+        </div>
+      )}
+
+      {/* Contenu texte — bas de l'image */}
+      <div class="absolute bottom-0 left-0 right-0 pb-10 md:pb-14 lg:pb-16">
+        <Container>
+          <div class="flex items-end justify-between gap-8">
+
+            {/* Infos projet */}
+            <div class="max-w-2xl">
+              <span class="font-heading text-[11px] font-medium text-accent-gold uppercase tracking-[0.2em] mb-3 block translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                {t('featured', project.tagKey, lang)}
+              </span>
+              <h3 class="font-display text-3xl md:text-5xl lg:text-[3.5rem] font-normal text-white leading-[1.15]">
+                {t('featured', project.titleKey, lang)}
+              </h3>
+              <p class="font-body text-sm md:text-base font-light text-white/50 mt-3 tracking-wide">
+                {t('featured', project.metaKey, lang)}
+              </p>
+            </div>
+
+            {/* Indicateur "Voir le projet" au hover */}
+            <span class="hidden md:flex items-center gap-3 shrink-0 font-heading text-[11px] font-medium text-white/60 uppercase tracking-[0.15em] opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500">
+              {t('featured', 'viewProject', lang)}
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+              </svg>
+            </span>
+
+          </div>
+        </Container>
+      </div>
+    </a>
+  ))}
+
+  {/* CTA — bandeau éditorial avec filigrane */}
+  <div class="relative py-12 md:py-16 overflow-hidden">
+    {/* Texte filigrane décoratif */}
+    <div class="absolute inset-0 flex items-center justify-center pointer-events-none select-none" aria-hidden="true">
+      <span class="font-display text-[clamp(60px,12vw,160px)] font-normal text-white/[0.03] uppercase tracking-[0.1em] whitespace-nowrap">
+        Portfolio
+      </span>
+    </div>
+
+    <Container>
+      <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+        <p class="font-display text-lg md:text-xl italic font-normal text-white/40 text-center md:text-left">
+          {t('featured', 'ctaLine', lang)}
+        </p>
+        <Button href={getLocalizedPath('/projets', lang)} variant="outline" size="lg">
+          {t('featured', 'viewAll', lang)}
+        </Button>
+      </div>
+    </Container>
+  </div>
+
+</section>

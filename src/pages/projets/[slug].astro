@@ -1,8 +1,7 @@
 ---
 /**
- * Page projet individuelle — Editorial Luxe
+ * Page projet individuelle — Editorial Luxe (FR)
  * Route dynamique : /projets/[slug]
- * Hero plein ecran, metadata, description, galerie, projets lies, CTA
  */
 import Layout from '@layouts/Layout.astro';
 import Section from '@components/ui/Section.astro';
@@ -10,6 +9,11 @@ import Container from '@components/ui/Container.astro';
 import Button from '@components/ui/Button.astro';
 import { projects } from '../../data/projects';
 import type { Project } from '../../data/projects';
+import { t, getLocalizedPath } from '@i18n/index';
+import type { Locale } from '@i18n/languages';
+
+const lang: Locale = 'fr';
+const d = 'projetDetail' as const;
 
 export function getStaticPaths() {
   return projects.map((project) => ({
@@ -25,19 +29,18 @@ interface Props {
 const { project } = Astro.props;
 
 const categoryLabels: Record<string, string> = {
-  appartement: 'Appartement',
-  residence: 'Residence',
-  maison: 'Maison',
-  'salle-de-bains': 'Salle de bains',
+  appartement: t(d, 'catAppartement', lang),
+  residence: t(d, 'catResidence', lang),
+  maison: t(d, 'catMaison', lang),
+  'salle-de-bains': t(d, 'catSalleDeBains', lang),
 };
 
 const styleLabels: Record<string, string> = {
-  moderne: 'Moderne',
-  classique: 'Classique',
-  contemporain: 'Contemporain',
+  moderne: t(d, 'styleModerne', lang),
+  classique: t(d, 'styleClassique', lang),
+  contemporain: t(d, 'styleContemporain', lang),
 };
 
-// Related projects: same category first, then others, exclude current
 const related = [
   ...projects.filter((p) => p.id !== project.id && p.category === project.category),
   ...projects.filter((p) => p.id !== project.id && p.category !== project.category),
@@ -45,21 +48,15 @@ const related = [
 ---
 
 <Layout
-  title={`${project.title} — ${categoryLabels[project.category]} ${project.location} | SB Design`}
+  lang={lang}
+  title={`${project.title} — ${categoryLabels[project.category]} ${project.location} | SB Design Riviera`}
   description={project.description}
 >
 
-  <!-- Hero plein ecran avec cover image -->
+  <!-- Hero plein écran -->
   <section class="relative w-full h-[60vh] min-h-[400px] lg:h-[70vh] overflow-hidden">
-    <img
-      src={project.coverImage}
-      alt={project.title}
-      class="w-full h-full object-cover"
-      loading="eager"
-    />
+    <img src={project.coverImage} alt={project.title} class="w-full h-full object-cover" loading="eager" />
     <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-black/15 to-black/60" />
-
-    <!-- Contenu hero -->
     <div class="absolute inset-0 flex items-end pb-12 md:pb-20">
       <div class="w-full max-w-[1400px] mx-auto px-6 md:px-10">
         <div class="relative max-w-3xl">
@@ -72,76 +69,68 @@ const related = [
         </div>
       </div>
     </div>
-
-    <!-- Retour projets -->
     <a
-      href="/projets"
+      href={getLocalizedPath('/projets', lang)}
       class="absolute top-6 left-6 md:top-10 md:left-10 z-10 inline-flex items-center gap-2 font-heading text-xs font-medium text-white/70 uppercase tracking-[0.15em] hover:text-white transition-colors duration-300"
     >
       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19l-7-7 7-7" />
       </svg>
-      Tous les projets
+      {t(d, 'backToProjects', lang)}
     </a>
   </section>
 
-  <!-- Details du projet -->
+  <!-- Détails -->
   <Section padding="lg" background="white">
     <Container>
       <div class="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-12 lg:gap-20" data-reveal>
-
-        <!-- Gauche : Metadata -->
         <div class="space-y-6">
           <div>
-            <span class="font-heading text-xs font-semibold uppercase tracking-[0.15em] text-[var(--color-text-light)]">Lieu</span>
+            <span class="font-heading text-xs font-semibold uppercase tracking-[0.15em] text-[var(--color-text-light)]">{t(d, 'labelLieu', lang)}</span>
             <p class="font-body text-lg font-light text-primary-dark mt-1">{project.location}</p>
           </div>
           <div class="w-full h-px bg-border" />
           <div>
-            <span class="font-heading text-xs font-semibold uppercase tracking-[0.15em] text-[var(--color-text-light)]">Surface</span>
+            <span class="font-heading text-xs font-semibold uppercase tracking-[0.15em] text-[var(--color-text-light)]">{t(d, 'labelSurface', lang)}</span>
             <p class="font-body text-lg font-light text-primary-dark mt-1">{project.surface} m&sup2;</p>
           </div>
           <div class="w-full h-px bg-border" />
           <div>
-            <span class="font-heading text-xs font-semibold uppercase tracking-[0.15em] text-[var(--color-text-light)]">Annee</span>
+            <span class="font-heading text-xs font-semibold uppercase tracking-[0.15em] text-[var(--color-text-light)]">{t(d, 'labelAnnee', lang)}</span>
             <p class="font-body text-lg font-light text-primary-dark mt-1">{project.year}</p>
           </div>
           <div class="w-full h-px bg-border" />
           <div>
-            <span class="font-heading text-xs font-semibold uppercase tracking-[0.15em] text-[var(--color-text-light)]">Style</span>
+            <span class="font-heading text-xs font-semibold uppercase tracking-[0.15em] text-[var(--color-text-light)]">{t(d, 'labelStyle', lang)}</span>
             <p class="font-body text-lg font-light text-primary-dark mt-1">{styleLabels[project.style]}</p>
           </div>
           <div class="w-full h-px bg-border" />
           <div>
-            <span class="font-heading text-xs font-semibold uppercase tracking-[0.15em] text-[var(--color-text-light)]">Categorie</span>
+            <span class="font-heading text-xs font-semibold uppercase tracking-[0.15em] text-[var(--color-text-light)]">{t(d, 'labelCategorie', lang)}</span>
             <p class="font-body text-lg font-light text-primary-dark mt-1">{categoryLabels[project.category]}</p>
           </div>
         </div>
-
-        <!-- Droite : Description -->
         <div>
           <h2 class="font-display text-subsection font-normal text-primary-dark mb-8">
-            <span class="font-display italic">A propos</span> <span class="font-heading font-light">du projet</span>
+            <span class="font-display italic">{t(d, 'aboutTitle1', lang)}</span> <span class="font-heading font-light">{t(d, 'aboutTitle2', lang)}</span>
           </h2>
           <p class="font-body text-lg font-light text-[var(--color-text-light)] leading-[1.85] max-w-2xl">
             {project.description}
           </p>
         </div>
-
       </div>
     </Container>
   </Section>
 
-  <!-- Galerie d'images -->
+  <!-- Galerie -->
   {project.images.length > 0 && (
     <Section padding="lg" background="warm">
       <Container>
         <div class="mb-12 md:mb-16" data-reveal>
           <h2 class="font-display text-subsection font-normal text-primary-dark">
-            <span class="font-display italic">Galerie</span> <span class="font-heading font-light">photos</span>
+            <span class="font-display italic">{t(d, 'galleryTitle1', lang)}</span> <span class="font-heading font-light">{t(d, 'galleryTitle2', lang)}</span>
           </h2>
         </div>
-
         <div
           class:list={[
             "grid gap-3 md:gap-4",
@@ -176,43 +165,29 @@ const related = [
     </Section>
   )}
 
-  <!-- Autres realisations -->
+  <!-- Autres réalisations -->
   <Section padding="lg" background="white">
     <Container>
       <div class="mb-12 md:mb-16" data-reveal>
         <h2 class="font-display text-subsection font-normal text-primary-dark">
-          <span class="font-display italic">Autres</span> <span class="font-heading font-light">realisations</span>
+          <span class="font-display italic">{t(d, 'relatedTitle1', lang)}</span> <span class="font-heading font-light">{t(d, 'relatedTitle2', lang)}</span>
         </h2>
       </div>
-
       <div class="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4" data-reveal>
         {related.map((p) => (
-          <a
-            href={`/projets/${p.slug}`}
-            class="group relative overflow-hidden block h-[280px] lg:h-[380px]"
-          >
-            <img
-              src={p.coverImage}
-              alt={p.title}
-              class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]"
-              loading="lazy"
-            />
+          <a href={getLocalizedPath(`/projets/${p.slug}`, lang)} class="group relative overflow-hidden block h-[280px] lg:h-[380px]">
+            <img src={p.coverImage} alt={p.title} class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
             <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent group-hover:from-black/70 transition-all duration-500" />
             <div class="absolute bottom-0 left-0 right-0 p-5">
-              <span class="text-[11px] font-heading font-medium text-accent-gold uppercase tracking-[0.15em]">
-                {categoryLabels[p.category]}
-              </span>
-              <h3 class="font-display text-xl font-normal text-white mt-1">
-                {p.title}
-              </h3>
+              <span class="text-[11px] font-heading font-medium text-accent-gold uppercase tracking-[0.15em]">{categoryLabels[p.category]}</span>
+              <h3 class="font-display text-xl font-normal text-white mt-1">{p.title}</h3>
             </div>
           </a>
         ))}
       </div>
-
       <div class="text-center mt-12 md:mt-16">
-        <Button href="/projets" variant="outline" size="lg">
-          Voir tous les projets
+        <Button href={getLocalizedPath('/projets', lang)} variant="outline" size="lg">
+          {t(d, 'viewAll', lang)}
         </Button>
       </div>
     </Container>
@@ -223,13 +198,13 @@ const related = [
     <Container>
       <div class="text-center max-w-2xl mx-auto" data-reveal>
         <h2 class="font-display text-section font-normal text-white mb-6">
-          <span class="font-display italic">Un projet</span> <span class="font-heading font-light">similaire ?</span>
+          <span class="font-display italic">{t(d, 'ctaTitle1', lang)}</span> <span class="font-heading font-light">{t(d, 'ctaTitle2', lang)}</span>
         </h2>
         <p class="font-body text-lg font-light text-white/70 mb-10 leading-relaxed">
-          Discutons de votre projet de renovation. Consultation gratuite et sans engagement.
+          {t(d, 'ctaDesc', lang)}
         </p>
-        <Button href="/contact" variant="primary" size="lg">
-          Prendre rendez-vous
+        <Button href={getLocalizedPath('/contact', lang)} variant="primary" size="lg">
+          {t(d, 'ctaBtn', lang)}
         </Button>
       </div>
     </Container>

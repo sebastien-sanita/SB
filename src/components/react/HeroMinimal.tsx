@@ -1,23 +1,29 @@
 /**
- * HeroMinimal — KS ART-style 100vh hero
- * Full-screen image with Ken Burns (slow zoom), dark overlay,
- * centered text with large letter-spacing, uppercase.
- * Multiple images cycling with slow crossfade + zoom.
+ * HeroMinimal — Hero cinématique 100vh
+ * Full-screen image with Ken Burns, overlay minimal
+ * Style DN Architectes : logo en haut, definition en bas
  */
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import TextMorph from './TextMorph';
+import strings from '@i18n/strings';
+import type { Locale } from '@i18n/languages';
 
 const heroImages = [
-  '/images/projets/RSD-Agencements-Architecte-interieur-Lyon-14.jpg',
-  '/images/projets/Renovation-villa-bord-de-mer.jpg',
-  '/images/projets/RSD-Agencements-Architecte-interieur-Lyon-16.jpg',
+  '/images/hero/luxury-villa-riviera.jpg',
+  '/images/hero/luxury-villa-pool.jpg',
+  '/images/hero/luxury-villa-sunset.jpg',
 ];
 
 const easeOutQuart = [0.25, 1, 0.5, 1] as const;
 
-export default function HeroMinimal() {
+interface Props {
+  lang?: Locale;
+}
+
+export default function HeroMinimal({ lang = 'fr' }: Props) {
   const [current, setCurrent] = useState(0);
+  const h = strings.hero;
+  const gt = <K extends keyof typeof h>(key: K) => h[key][lang];
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -43,89 +49,52 @@ export default function HeroMinimal() {
         >
           <img
             src={heroImages[current]}
-            alt="Interieur luxueux"
+            alt="Architecture haut de gamme Côte d'Azur"
             className="w-full h-full object-cover"
             loading="eager"
           />
         </motion.div>
       </AnimatePresence>
 
-      {/* Dark overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/55 to-black/65" />
+      {/* Overlay subtil */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-black/40" />
 
-      {/* Centered content — KS ART style */}
-      <div className="relative z-10 flex flex-col items-center justify-center h-full px-6 text-center">
-        <div className="max-w-5xl mx-auto">
-          {/* Small label */}
-          <motion.span
-            initial={{ opacity: 0, y: 20, filter: 'blur(8px)' }}
-            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-            transition={{ duration: 1.2, delay: 0.5, ease: easeOutQuart }}
-            className="block font-heading text-xs font-medium text-white/60 uppercase tracking-[0.3em] mb-8"
-          >
-            Studio Bisciglia Design
-          </motion.span>
+      {/* Logo / nom — en haut (style DN Architectes) */}
+      <motion.div
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.5, delay: 0.3, ease: easeOutQuart }}
+        className="absolute top-0 left-0 right-0 z-10 pt-28 md:pt-32 text-center"
+      >
+        <h1
+          className="font-display font-normal text-white leading-[1] tracking-[-0.02em]"
+          style={{ fontSize: 'clamp(32px, 5vw, 56px)' }}
+        >
+          SB Design Riviera
+        </h1>
+      </motion.div>
 
-          {/* Main title — uppercase, massive letter-spacing */}
-          <motion.h1
-            initial={{ opacity: 0, y: 40, filter: 'blur(16px)' }}
-            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-            transition={{ duration: 1.5, delay: 0.2, ease: easeOutQuart }}
-            className="font-display text-[clamp(36px,7vw,80px)] font-normal text-white uppercase tracking-[0.15em] md:tracking-[0.3em] leading-[1.4] mb-8"
-          >
-            <TextMorph words={['Creer', 'Renover', 'Sublimer', 'Imaginer']} interval={4000} /> des espaces
-            <br />
-            qui inspirent
-          </motion.h1>
+      {/* Baseline / définition — en bas (style DN Architectes) */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.2, delay: 1.0, ease: easeOutQuart }}
+        className="absolute bottom-16 md:bottom-20 left-0 right-0 z-10 text-center"
+      >
+        <p className="font-heading text-[11px] md:text-[12px] font-medium text-white/60 uppercase tracking-[0.3em]">
+          {gt('subtitle1')}
+        </p>
+      </motion.div>
 
-          {/* Thin gold line separator */}
-          <motion.div
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: 1 }}
-            transition={{ duration: 1.2, delay: 0.8, ease: easeOutQuart }}
-            className="w-16 h-px bg-[#C9A87C] mx-auto mb-8 origin-center"
-          />
-
-          {/* Subtitle */}
-          <motion.p
-            initial={{ opacity: 0, y: 20, filter: 'blur(8px)' }}
-            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-            transition={{ duration: 1.2, delay: 0.6, ease: easeOutQuart }}
-            className="font-body text-base md:text-lg font-light text-white/70 max-w-lg mx-auto mb-12 leading-[1.8] tracking-wide"
-          >
-            Renovation d'exception et architecture d'interieur a Lyon depuis plus de 35 ans.
-          </motion.p>
-
-          {/* CTAs — square, minimal */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.0, ease: easeOutQuart }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
-          >
-            <a
-              href="/projets"
-              className="inline-flex items-center justify-center px-10 py-4 bg-[#C9A87C] text-white font-heading text-sm font-medium uppercase tracking-[0.15em] hover:bg-[#B8976B] transition-colors duration-500"
-            >
-              Decouvrir
-            </a>
-            <a
-              href="/contact"
-              className="inline-flex items-center justify-center px-10 py-4 border border-white/30 text-white font-heading text-sm font-medium uppercase tracking-[0.15em] hover:bg-white/10 transition-all duration-500"
-            >
-              Contact
-            </a>
-          </motion.div>
-        </div>
-      </div>
-
-      {/* Scroll indicator — minimal line */}
+      {/* Scroll indicator */}
       <motion.div
         animate={{ y: [0, 8, 0] }}
         transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10"
       >
-        <div className="w-px h-12 bg-white/30" />
+        <svg className="w-4 h-4 text-white/25" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 13.5L12 21m0 0l-7.5-7.5M12 21V3" />
+        </svg>
       </motion.div>
     </section>
   );

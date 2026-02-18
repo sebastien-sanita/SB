@@ -1,0 +1,195 @@
+---
+/**
+ * Page Expertise — Editorial Luxe (IT)
+ * 3 layouts variés (full-width, asymétrique, bleed) comme WhatWeDo
+ */
+import Layout from '@layouts/Layout.astro';
+import Section from '@components/ui/Section.astro';
+import Container from '@components/ui/Container.astro';
+import Button from '@components/ui/Button.astro';
+import HeroInner from '@components/react/HeroInner';
+import { t, tArray, getLocalizedPath } from '@i18n/index';
+import type { Locale } from '@i18n/languages';
+
+const lang: Locale = 'it';
+const p = 'expertisePage' as const;
+---
+
+<Layout
+  lang={lang}
+  title={t(p, 'metaTitle', lang)}
+  description={t(p, 'metaDesc', lang)}
+>
+
+  <HeroInner
+    client:load
+    images={[
+      '/images/expertise/hero-riviera-1.jpg',
+      '/images/expertise/hero-riviera-2.jpg',
+      '/images/expertise/hero-riviera-3.jpg',
+    ]}
+    label={t(p, 'heroLabel', lang)}
+    title=""
+    titlePrefix={t(p, 'heroPrefix', lang)}
+    titleMorphWords={tArray(p, 'heroMorphWords', lang)}
+    subtitle={t(p, 'heroSubtitle', lang)}
+  />
+
+  <!-- Service 01 — Conception Architecturale -->
+  <Section padding="lg" background="white">
+    <Container>
+      <div class="relative" id="renovation">
+        <span class="section-number-xl">01</span>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center" data-reveal>
+          {/* Images — grille bento à gauche */}
+          <div class="grid grid-cols-2 grid-rows-3 gap-2 h-[500px] lg:h-[75vh] lg:min-h-[600px]" data-reveal>
+            <div class="group relative col-span-2 row-span-2 overflow-hidden">
+              <img src="/images/expertise/conception-villa-1.jpg" alt="Villa contemporaine Côte d'Azur" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+            </div>
+            <div class="group relative overflow-hidden">
+              <img src="/images/expertise/conception-villa-2.jpg" alt="Architecture résidentielle premium" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+            </div>
+            <div class="group relative overflow-hidden">
+              <img src="/images/expertise/conception-villa-3.jpg" alt="Conception architecturale villa" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+            </div>
+          </div>
+          {/* Texte — à droite */}
+          <div data-reveal data-reveal-delay="0.1">
+            <span class="subsection-number">01</span>
+            <h2 class="font-display text-subsection font-normal text-primary-dark mt-4 mb-6">
+              <span class="font-display italic">{t(p, 's1Title1', lang)}</span> <span class="font-heading font-light">{t(p, 's1Title2', lang)}</span>
+            </h2>
+            <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.75] mb-8">
+              {t(p, 's1Desc', lang)}
+            </p>
+            <ul class="space-y-3 mb-8">
+              {[t(p, 's1B1', lang), t(p, 's1B2', lang), t(p, 's1B3', lang), t(p, 's1B4', lang)].map((item) => (
+                <li class="flex items-start gap-3">
+                  <svg class="w-5 h-5 text-accent-gold mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span class="font-body text-sm font-light text-[var(--color-text-light)]">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </Section>
+
+  <div class="group relative w-full h-[40vh] min-h-[280px] overflow-hidden" data-slide-in="left">
+    <img src="/images/hero/luxury-interior-living.jpg" alt="" class="w-full h-full object-cover transition-transform duration-[1.2s] ease-smooth group-hover:scale-[1.05]" data-parallax="0.1" loading="lazy" />
+  </div>
+
+  <!-- Service 02 — Interior Refinement -->
+  <Section padding="lg" background="warm">
+    <Container>
+      <div class="relative" id="design">
+        <span class="section-number-xl">02</span>
+        <div class="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-10 lg:gap-16 items-end" data-reveal>
+          <div>
+            <span class="subsection-number">02</span>
+            <h2 class="font-display text-subsection font-normal text-primary-dark mt-4 mb-6">
+              <span class="font-display italic">{t(p, 's2Title1', lang)}</span> <span class="font-heading font-light">{t(p, 's2Title2', lang)}</span>
+            </h2>
+            <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.75] mb-8">
+              {t(p, 's2Desc', lang)}
+            </p>
+            <ul class="space-y-3 mb-8" data-reveal data-reveal-delay="0.1">
+              {[t(p, 's2B1', lang), t(p, 's2B2', lang), t(p, 's2B3', lang), t(p, 's2B4', lang)].map((item) => (
+                <li class="flex items-start gap-3">
+                  <svg class="w-5 h-5 text-accent-gold mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span class="font-body text-sm font-light text-[var(--color-text-light)]">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="grid grid-cols-2 grid-rows-3 gap-2 h-[500px] lg:h-[75vh] lg:min-h-[600px]" data-reveal>
+            <div class="group relative row-span-2 overflow-hidden">
+              <img src="/images/expertise/interior-salon-1.jpg" alt="Salon design villa Côte d'Azur" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+            </div>
+            <div class="group relative overflow-hidden">
+              <img src="/images/expertise/interior-cuisine-1.jpg" alt="Cuisine sur-mesure haut de gamme" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+            </div>
+            <div class="group relative overflow-hidden">
+              <img src="/images/expertise/interior-chambre-1.jpg" alt="Suite parentale luxe" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+            </div>
+            <div class="group relative col-span-2 overflow-hidden">
+              <img src="/images/expertise/interior-sdb-1.jpg" alt="Salle de bains d'exception" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </Section>
+
+  <div class="group relative w-full h-[40vh] min-h-[280px] overflow-hidden" data-slide-in="right">
+    <img src="/images/hero/luxury-architecture-detail.jpg" alt="" class="w-full h-full object-cover transition-transform duration-[1.2s] ease-smooth group-hover:scale-[1.05]" data-parallax="0.1" loading="lazy" />
+  </div>
+
+  <!-- Service 03 — Valorisation Patrimoniale -->
+  <Section padding="lg" background="white">
+    <Container>
+      <div class="relative" id="prestige">
+        <span class="section-number-xl">03</span>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center" data-reveal>
+          <div class="lg:-ml-8 grid grid-cols-3 grid-rows-2 gap-2 h-[500px] lg:h-[85vh] lg:min-h-[650px]" data-reveal>
+            <div class="group relative col-span-2 row-span-2 overflow-hidden">
+              <img src="/images/expertise/valorisation-terrasse-1.jpg" alt="Villa avec terrasse et piscine Côte d'Azur" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+            </div>
+            <div class="group relative overflow-hidden">
+              <img src="/images/expertise/valorisation-pool-1.jpg" alt="Villa moderne avec piscine" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+            </div>
+            <div class="group relative overflow-hidden">
+              <img src="/images/expertise/valorisation-vue-mer-1.jpg" alt="Résidence haut de gamme vue mer" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+            </div>
+          </div>
+          <div>
+            <span class="subsection-number">03</span>
+            <h2 class="font-display text-subsection font-normal text-primary-dark mt-4 mb-6">
+              <span class="font-display italic">{t(p, 's3Title1', lang)}</span> <span class="font-heading font-light">{t(p, 's3Title2', lang)}</span>
+            </h2>
+            <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.75] mb-8">
+              {t(p, 's3Desc', lang)}
+            </p>
+            <ul class="space-y-3 mb-8" data-reveal data-reveal-delay="0.1">
+              {[t(p, 's3B1', lang), t(p, 's3B2', lang), t(p, 's3B3', lang), t(p, 's3B4', lang)].map((item) => (
+                <li class="flex items-start gap-3">
+                  <svg class="w-5 h-5 text-accent-gold mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span class="font-body text-sm font-light text-[var(--color-text-light)]">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </Section>
+
+  <!-- CTA -->
+  <Section background="dark" padding="lg">
+    <Container>
+      <div class="text-center max-w-2xl mx-auto" data-reveal>
+        <h2 class="font-display text-section font-normal text-white mb-6">
+          <span class="font-display italic">{t(p, 'ctaTitle1', lang)}</span> <span class="font-heading font-light">{t(p, 'ctaTitle2', lang)}</span>
+        </h2>
+        <p class="font-body text-lg font-light text-white/70 mb-10 leading-relaxed">
+          {t(p, 'ctaDesc', lang)}
+        </p>
+        <Button href={getLocalizedPath('/contact', lang)} variant="primary" size="lg">
+          {t(p, 'ctaBtn', lang)}
+        </Button>
+      </div>
+    </Container>
+  </Section>
+
+</Layout>
