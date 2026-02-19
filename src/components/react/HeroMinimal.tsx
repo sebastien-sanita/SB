@@ -66,11 +66,19 @@ export default function HeroMinimal({ lang = 'fr' }: Props) {
         transition={{ duration: 1.5, delay: 0.3, ease: easeOutQuart }}
         className="absolute top-0 left-0 right-0 z-10 pt-28 md:pt-32 text-center"
       >
-        <h1
-          className="font-display font-normal text-white leading-[1] tracking-[-0.02em] uppercase"
-          style={{ fontSize: 'clamp(40px, 7vw, 80px)' }}
-        >
-          SB Design Riviera
+        <h1 className="leading-[1] text-center">
+          <span
+            className="font-heading font-bold lowercase text-white tracking-[-0.03em] block"
+            style={{ fontSize: 'clamp(44px, 8vw, 88px)' }}
+          >
+            sbdesign
+          </span>
+          <span
+            className="font-heading font-light lowercase text-white/40 tracking-[0.08em] block mt-1"
+            style={{ fontSize: 'clamp(16px, 2.5vw, 28px)' }}
+          >
+            riviera
+          </span>
         </h1>
       </motion.div>
 

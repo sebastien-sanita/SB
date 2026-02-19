@@ -51,10 +51,10 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 0em;
 }
 
-/* h1 = Toujours Playfair Display uppercase — poids normal, la taille suffit */
+/* h1 = Playfair Display uppercase — bold pour les titres statement */
 h1 {
   font-family: var(--font-display);
-  font-weight: var(--weight-normal);
+  font-weight: var(--weight-bold);
   text-transform: uppercase;
 }
 

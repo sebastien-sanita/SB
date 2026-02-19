@@ -13,7 +13,7 @@ const items = tArray('marquee', 'items', lang);
 <div class="py-6 md:py-8 bg-primary-dark overflow-hidden">
   <div class="marquee-track flex whitespace-nowrap">
     {[...Array(4)].map(() => (
-      <span class="font-display text-[clamp(48px,8vw,100px)] font-normal uppercase text-white/[0.08] mx-8 inline-block">
+      <span class="font-display text-[clamp(48px,8vw,100px)] font-bold uppercase text-white/[0.08] mx-8 inline-block">
         {items.join(' \u2014 ')} &mdash;
       </span>
     ))}
