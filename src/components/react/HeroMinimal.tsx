@@ -69,15 +69,15 @@ export default function HeroMinimal({ lang = 'fr' }: Props) {
         <h1 className="leading-[1] text-center">
           <span
             className="font-heading font-bold lowercase text-white tracking-[-0.03em] block"
-            style={{ fontSize: 'clamp(44px, 8vw, 88px)' }}
+            style={{ fontSize: 'clamp(48px, 9vw, 96px)' }}
           >
             sbdesign
           </span>
           <span
             className="font-heading lowercase text-white/40 tracking-[0.08em] block mt-1"
-            style={{ fontSize: 'clamp(16px, 2.5vw, 28px)' }}
+            style={{ fontSize: 'clamp(18px, 2.8vw, 32px)' }}
           >
-            <span className="font-light">ri</span><span className="font-bold">viera</span>
+            <span className="font-light">ri</span><span className="font-bold">iera</span>
           </span>
         </h1>
       </motion.div>
