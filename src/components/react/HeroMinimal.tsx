@@ -74,10 +74,10 @@ export default function HeroMinimal({ lang = 'fr' }: Props) {
             sbdesign
           </span>
           <span
-            className="font-heading font-light lowercase text-white/40 tracking-[0.08em] block mt-1"
+            className="font-heading lowercase text-white/40 tracking-[0.08em] block mt-1"
             style={{ fontSize: 'clamp(16px, 2.5vw, 28px)' }}
           >
-            riviera
+            <span className="font-light">ri</span><span className="font-bold">viera</span>
           </span>
         </h1>
       </motion.div>
