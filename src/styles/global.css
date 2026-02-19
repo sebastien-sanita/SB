@@ -256,58 +256,6 @@ main {
     color: rgba(255, 255, 255, 1) !important;
   }
 
-  /* ═══════════════════════════════════════════
-     Sketch-to-reality — Transition esquisse crayon → photo réelle
-     Symbolise le passage de la conception papier à la réalisation
-     ═══════════════════════════════════════════ */
-  .sketch-frame {
-    position: relative;
-  }
-
-  .sketch-frame img {
-    -webkit-mask-image:
-      linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%),
-      linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
-    mask-image:
-      linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%),
-      linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
-    -webkit-mask-composite: source-in;
-    mask-composite: intersect;
-  }
-
-  /* Cross-hatch pencil lines — visible only at the edges */
-  .sketch-frame::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    z-index: 10;
-    pointer-events: none;
-    background:
-      repeating-linear-gradient(
-        47deg,
-        transparent, transparent 3px,
-        rgba(42, 36, 30, 0.08) 3px, rgba(42, 36, 30, 0.08) 3.5px
-      ),
-      repeating-linear-gradient(
-        -28deg,
-        transparent, transparent 5px,
-        rgba(42, 36, 30, 0.05) 5px, rgba(42, 36, 30, 0.05) 5.5px
-      ),
-      repeating-linear-gradient(
-        72deg,
-        transparent, transparent 7px,
-        rgba(42, 36, 30, 0.04) 7px, rgba(42, 36, 30, 0.04) 7.5px
-      );
-    -webkit-mask-image:
-      linear-gradient(to right, black 0%, transparent 18%, transparent 82%, black 100%),
-      linear-gradient(to bottom, black 0%, transparent 18%, transparent 82%, black 100%);
-    mask-image:
-      linear-gradient(to right, black 0%, transparent 18%, transparent 82%, black 100%),
-      linear-gradient(to bottom, black 0%, transparent 18%, transparent 82%, black 100%);
-    -webkit-mask-composite: source-over;
-    mask-composite: add;
-  }
-
   /* Image hover — slow transition, rounded */
   .image-hover {
     overflow: hidden;

@@ -9,6 +9,7 @@ import Container from '@components/ui/Container.astro';
 import Button from '@components/ui/Button.astro';
 import ProjectMarquee from '@components/react/ProjectMarquee';
 import SectionDivider from '@components/react/SectionDivider';
+import TextRibbon from '@components/react/TextRibbon';
 import { projects } from '../../../data/projects';
 import type { Project } from '../../../data/projects';
 import { t, getLocalizedPath } from '@i18n/index';
@@ -49,6 +50,7 @@ const related = [
 ].slice(0, 3);
 
 const marqueeKeywords = [project.title, styleLabels[project.style], project.location, ...project.materials];
+const ribbonText = [project.title, categoryLabels[project.category], styleLabels[project.style], project.location].join('  ◆  ');
 ---
 
 <Layout
@@ -90,6 +92,11 @@ const marqueeKeywords = [project.title, styleLabels[project.style], project.loca
   <!-- Cover image full-bleed -->
   <div class="w-full h-[55vh] min-h-[350px] lg:h-[70vh] overflow-hidden">
     <img src={project.coverImage} alt={project.title} class="w-full h-full object-cover" loading="eager" />
+  </div>
+
+  <!-- Nastro scorrevole sotto la cover -->
+  <div class="bg-background py-3">
+    <TextRibbon text={ribbonText} direction="left" speed={35} client:visible />
   </div>
 
   <!-- Détails -->
@@ -177,6 +184,9 @@ const marqueeKeywords = [project.title, styleLabels[project.style], project.loca
   <div class="relative z-10 -my-[60px] pointer-events-none">
     <SectionDivider client:visible />
   </div>
+  <div class="relative z-10 -mt-8">
+    <TextRibbon text={ribbonText} direction="right" speed={40} client:visible />
+  </div>
 
   <!-- Galleria -->
   {project.images.length > 0 && (
@@ -197,7 +207,7 @@ const marqueeKeywords = [project.title, styleLabels[project.style], project.loca
           {project.images.map((img, i) => (
             <div
               class:list={[
-                "sketch-frame group overflow-hidden",
+                "group overflow-hidden",
                 i === 0 && project.images.length > 2 ? "md:col-span-2" : "",
               ]}
             >
@@ -223,6 +233,9 @@ const marqueeKeywords = [project.title, styleLabels[project.style], project.loca
 
   <div class="relative z-10 -my-[60px] pointer-events-none">
     <SectionDivider client:visible />
+  </div>
+  <div class="relative z-10 -mt-8">
+    <TextRibbon text={ribbonText} direction="left" speed={45} client:visible />
   </div>
 
   <!-- Materiali pregiati -->

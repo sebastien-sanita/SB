@@ -62,6 +62,15 @@ export default {
         smooth: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
         'out-quart': 'cubic-bezier(0.25, 1, 0.5, 1)',
       },
+      keyframes: {
+        ribbon: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
+      },
+      animation: {
+        ribbon: 'ribbon 30s linear infinite',
+      },
       aspectRatio: {
         '2/3': '2 / 3',
         '3/4': '3 / 4',
