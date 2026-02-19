@@ -48,14 +48,10 @@ export default function ProjectMarquee({ images, title }: Props) {
     setX(xRaw.current);
   });
 
-  // Build image set with varying heights for bento feel
-  const heights = ['h-[220px]', 'h-[280px]', 'h-[240px]', 'h-[300px]', 'h-[250px]', 'h-[260px]'];
-  const widths = ['w-[320px]', 'w-[400px]', 'w-[350px]', 'w-[450px]', 'w-[380px]', 'w-[420px]'];
-
   const imageSet = images.map((img, i) => (
     <div
       key={i}
-      className={`shrink-0 ${widths[i % widths.length]} ${heights[i % heights.length]} rounded-sm overflow-hidden`}
+      className="shrink-0 w-[520px] h-[340px] lg:w-[620px] lg:h-[400px] overflow-hidden"
     >
       <img
         src={img}
@@ -67,13 +63,12 @@ export default function ProjectMarquee({ images, title }: Props) {
   ));
 
   return (
-    <div className="w-full overflow-hidden py-2" ref={containerRef}>
+    <div className="w-full overflow-hidden" ref={containerRef}>
       <motion.div
         data-track
-        className="flex gap-3 items-center"
+        className="flex gap-[3px] items-center"
         style={{ x }}
       >
-        {/* Double the set for seamless loop */}
         {imageSet}
         {imageSet}
       </motion.div>
