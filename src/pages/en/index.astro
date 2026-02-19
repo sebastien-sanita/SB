@@ -79,8 +79,10 @@ const lang: Locale = 'en';
       <div class="relative mb-16 md:mb-24" data-reveal>
         <span class="section-number-xl">05</span>
         <span class="section-number">{t('stats', 'number', lang)}</span>
-        <h2 class="font-heading text-section font-extralight text-primary-dark mt-6">
-          {t('stats', 'title', lang)} <TextMorph client:visible words={tArray('stats', 'morphWords', lang)} className="font-heading font-extralight" />
+        <h2 class="group/title font-heading text-section text-primary-dark mt-6 cursor-default">
+          <span class="font-extralight text-primary-dark/10 transition-colors duration-700 group-hover/title:text-primary-dark/30">{t('stats', 'title', lang)}</span>
+          <span class="font-extralight text-primary-dark/15 mx-1 select-none">/</span>
+          <TextMorph client:visible words={tArray('stats', 'morphWords', lang)} className="font-heading font-bold text-primary-dark transition-colors duration-700 group-hover/title:text-primary-dark/30" />
         </h2>
       </div>
       <StatsCounter lang={lang} client:visible />
@@ -94,8 +96,10 @@ const lang: Locale = 'en';
       <div class="relative mb-16 md:mb-24" data-reveal>
         <span class="section-number-xl">07</span>
         <span class="section-number">{t('temoignages', 'number', lang)}</span>
-        <h2 class="font-display text-section uppercase text-primary-dark mt-6">
-          <span class="font-light text-primary-dark/40">{t('temoignages', 'title1', lang)}</span> <TextMorph client:visible words={tArray('temoignages', 'morphWords', lang)} className="font-display font-bold uppercase" />
+        <h2 class="group/title font-display text-section uppercase text-primary-dark mt-6 cursor-default">
+          <span class="font-light text-primary-dark/10 transition-colors duration-700 group-hover/title:text-primary-dark/30">{t('temoignages', 'title1', lang)}</span>
+          <span class="font-extralight text-primary-dark/15 mx-1 select-none">/</span>
+          <TextMorph client:visible words={tArray('temoignages', 'morphWords', lang)} className="font-display font-bold uppercase text-primary-dark transition-colors duration-700 group-hover/title:text-primary-dark/30" />
         </h2>
         <p class="font-body text-lg font-light text-[var(--color-text-light)] mt-4 max-w-xl">
           {t('temoignages', 'subtitle', lang)}

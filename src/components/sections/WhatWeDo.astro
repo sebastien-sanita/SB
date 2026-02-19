@@ -56,8 +56,10 @@ const services = [
     <div class="relative mb-12 md:mb-16" data-reveal>
       <span class="section-number-xl">02</span>
       <span class="section-number">{t('approche', 'number', lang)}</span>
-      <h2 class="text-section text-primary-dark mt-4">
-        <span class="font-display font-light uppercase text-primary-dark/40">{t('approche', 'title', lang)}</span> <TextMorph client:visible words={tArray('approche', 'morphWords', lang)} className="font-display font-bold uppercase" />
+      <h2 class="group/title text-section text-primary-dark mt-4 cursor-default">
+        <span class="font-display font-light uppercase text-primary-dark/10 transition-colors duration-700 group-hover/title:text-primary-dark/30">{t('approche', 'title', lang)}</span>
+        <span class="font-display font-extralight text-primary-dark/15 mx-1 select-none">/</span>
+        <TextMorph client:visible words={tArray('approche', 'morphWords', lang)} className="font-display font-bold uppercase text-primary-dark transition-colors duration-700 group-hover/title:text-primary-dark/30" />
       </h2>
     </div>
 

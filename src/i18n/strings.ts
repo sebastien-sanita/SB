@@ -48,6 +48,8 @@ const strings = {
   manifeste: {
     number:    { fr: '01 — Notre Vision',  en: '01 — Our Vision',  it: '01 — La Nostra Visione' },
     title:     { fr: 'Notre Vision',       en: 'Our Vision',       it: 'La Nostra Visione' },
+    titlePrefix: { fr: 'Notre',            en: 'Our',              it: 'La Nostra' },
+    titleStar:   { fr: 'Vision',           en: 'Vision',           it: 'Visione' },
     p1: {
       fr: 'SB Design Riviera est née d\'une vision : concevoir des résidences secondaires qui allient <em>excellence architecturale</em> et <em>intelligence patrimoniale</em>.',
       en: 'SB Design Riviera was founded on a clear vision: to design secondary residences that combine <em>architectural excellence</em> with <em>strategic asset enhancement</em>.',
