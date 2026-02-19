@@ -28,7 +28,7 @@ export default function TextRibbon({
   return (
     <div className={`overflow-hidden ${className}`}>
       <div
-        className="flex whitespace-nowrap font-heading text-[11px] font-semibold uppercase tracking-[0.2em] text-primary-dark/20"
+        className="flex whitespace-nowrap font-heading text-[11px] leading-none font-semibold uppercase tracking-[0.2em] text-primary-dark/20"
         style={animStyle}
       >
         <span className="shrink-0">{repeated}</span>
