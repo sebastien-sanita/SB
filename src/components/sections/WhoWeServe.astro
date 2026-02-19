@@ -32,10 +32,10 @@ const cards = [
     <div class="relative mb-20 md:mb-32" data-reveal>
       <span class="section-number-xl !text-white">06</span>
       <span class="section-number !text-white/40">{t('pourQui', 'number', lang)}</span>
-      <h2 class="group/title font-display text-section uppercase text-white mt-6 cursor-default">
-        <span class="font-light text-white/10 transition-colors duration-700 group-hover/title:text-white/30">{t('pourQui', 'title', lang)}</span>
+      <h2 class="editorial-breadcrumb-dark font-display text-section uppercase text-white mt-6 cursor-default">
+        <span class="editorial-nav-item font-light text-white/10">{t('pourQui', 'title', lang)}</span>
         <span class="font-extralight text-white/15 mx-1 select-none">/</span>
-        <span class="font-bold text-white transition-colors duration-700 group-hover/title:text-white/30"><TextMorph client:visible words={tArray('pourQui', 'morphWords', lang)} className="font-display font-bold uppercase" /></span>
+        <TextMorph client:visible words={tArray('pourQui', 'morphWords', lang)} className="editorial-nav-item font-display font-bold uppercase text-white" />
       </h2>
       <p class="font-body text-lg font-light text-white/50 mt-4 max-w-xl leading-[1.8]">
         {t('pourQui', 'subtitle', lang)}

@@ -248,6 +248,14 @@ main {
     color: rgba(26, 26, 26, 1) !important;
   }
 
+  /* Dark variant (white text on dark background) */
+  .editorial-breadcrumb-dark:hover .editorial-nav-item {
+    color: rgba(255, 255, 255, 0.15) !important;
+  }
+  .editorial-breadcrumb-dark .editorial-nav-item:hover {
+    color: rgba(255, 255, 255, 1) !important;
+  }
+
   /* Image hover — slow transition, rounded */
   .image-hover {
     overflow: hidden;

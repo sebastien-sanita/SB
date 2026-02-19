@@ -36,22 +36,26 @@ const lang: Locale = 'it';
   <Manifeste lang={lang} />
   <FeaturedProjects lang={lang} />
 
-  <!-- Banda visiva — Ristrutturazione & Costruzione -->
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
-    <a href={getLocalizedPath('/projets', lang) + '?type=renovation'} class="group relative block h-[35vh] min-h-[260px] lg:h-[45vh] overflow-hidden">
-      <img src="/images/expertise/luxury-entrance-hall.jpg" alt={t('manifeste', 'imgLabel1', lang)} class="w-full h-full object-cover transition-transform duration-[1.5s] ease-smooth group-hover:scale-[1.05]" loading="lazy" />
-      <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent group-hover:from-black/70 transition-all duration-500" />
-      <div class="absolute bottom-0 left-0 right-0 p-8 md:p-10">
-        <span class="font-heading text-[11px] font-medium text-accent-gold uppercase tracking-[0.2em] mb-2 block">{t('manifeste', 'imgDiscover', lang)}</span>
-        <h3 class="font-display text-2xl md:text-4xl font-bold uppercase text-white">{t('manifeste', 'imgLabel1', lang)}</h3>
+  <!-- Banda visiva — Ristrutturazione & Costruzione (stile antoniolupi) -->
+  <div class="space-y-0">
+    <a href={getLocalizedPath('/projets', lang) + '?type=renovation'} class="group grid grid-cols-1 md:grid-cols-[1fr_1.6fr] gap-0 min-h-[280px] md:min-h-[420px]">
+      <div class="flex items-end p-8 md:p-12 lg:p-16 bg-[var(--color-warm)]">
+        <h3 class="font-display text-[clamp(28px,5vw,56px)] font-bold uppercase text-primary-dark leading-[1.1]">
+          {t('manifeste', 'imgLabel1', lang)}
+        </h3>
+      </div>
+      <div class="relative overflow-hidden">
+        <img src="/images/expertise/luxury-entrance-hall.jpg" alt={t('manifeste', 'imgLabel1', lang)} class="w-full h-full object-cover transition-transform duration-[1.5s] ease-smooth group-hover:scale-[1.05]" loading="lazy" />
       </div>
     </a>
-    <a href={getLocalizedPath('/projets', lang) + '?type=construction'} class="group relative block h-[35vh] min-h-[260px] lg:h-[45vh] overflow-hidden">
-      <img src="/images/expertise/villa-garden-pool.jpg" alt={t('manifeste', 'imgLabel2', lang)} class="w-full h-full object-cover transition-transform duration-[1.5s] ease-smooth group-hover:scale-[1.05]" loading="lazy" />
-      <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent group-hover:from-black/70 transition-all duration-500" />
-      <div class="absolute bottom-0 left-0 right-0 p-8 md:p-10">
-        <span class="font-heading text-[11px] font-medium text-accent-gold uppercase tracking-[0.2em] mb-2 block">{t('manifeste', 'imgDiscover', lang)}</span>
-        <h3 class="font-display text-2xl md:text-4xl font-bold uppercase text-white">{t('manifeste', 'imgLabel2', lang)}</h3>
+    <a href={getLocalizedPath('/projets', lang) + '?type=construction'} class="group grid grid-cols-1 md:grid-cols-[1.6fr_1fr] gap-0 min-h-[280px] md:min-h-[420px]">
+      <div class="relative overflow-hidden order-2 md:order-1">
+        <img src="/images/expertise/villa-garden-pool.jpg" alt={t('manifeste', 'imgLabel2', lang)} class="w-full h-full object-cover transition-transform duration-[1.5s] ease-smooth group-hover:scale-[1.05]" loading="lazy" />
+      </div>
+      <div class="flex items-end p-8 md:p-12 lg:p-16 bg-[var(--color-warm)] order-1 md:order-2">
+        <h3 class="font-display text-[clamp(28px,5vw,56px)] font-bold uppercase text-primary-dark leading-[1.1]">
+          {t('manifeste', 'imgLabel2', lang)}
+        </h3>
       </div>
     </a>
   </div>
@@ -79,10 +83,10 @@ const lang: Locale = 'it';
       <div class="relative mb-16 md:mb-24" data-reveal>
         <span class="section-number-xl">05</span>
         <span class="section-number">{t('stats', 'number', lang)}</span>
-        <h2 class="group/title font-heading text-section text-primary-dark mt-6 cursor-default">
-          <span class="font-extralight text-primary-dark/10 transition-colors duration-700 group-hover/title:text-primary-dark/30">{t('stats', 'title', lang)}</span>
+        <h2 class="editorial-breadcrumb font-heading text-section text-primary-dark mt-6 cursor-default">
+          <span class="editorial-nav-item font-extralight text-primary-dark/10">{t('stats', 'title', lang)}</span>
           <span class="font-extralight text-primary-dark/15 mx-1 select-none">/</span>
-          <TextMorph client:visible words={tArray('stats', 'morphWords', lang)} className="font-heading font-bold text-primary-dark transition-colors duration-700 group-hover/title:text-primary-dark/30" />
+          <TextMorph client:visible words={tArray('stats', 'morphWords', lang)} className="editorial-nav-item font-heading font-bold text-primary-dark" />
         </h2>
       </div>
       <StatsCounter lang={lang} client:visible />
@@ -96,10 +100,10 @@ const lang: Locale = 'it';
       <div class="relative mb-16 md:mb-24" data-reveal>
         <span class="section-number-xl">07</span>
         <span class="section-number">{t('temoignages', 'number', lang)}</span>
-        <h2 class="group/title font-display text-section uppercase text-primary-dark mt-6 cursor-default">
-          <span class="font-light text-primary-dark/10 transition-colors duration-700 group-hover/title:text-primary-dark/30">{t('temoignages', 'title1', lang)}</span>
+        <h2 class="editorial-breadcrumb font-display text-section uppercase text-primary-dark mt-6 cursor-default">
+          <span class="editorial-nav-item font-light text-primary-dark/10">{t('temoignages', 'title1', lang)}</span>
           <span class="font-extralight text-primary-dark/15 mx-1 select-none">/</span>
-          <TextMorph client:visible words={tArray('temoignages', 'morphWords', lang)} className="font-display font-bold uppercase text-primary-dark transition-colors duration-700 group-hover/title:text-primary-dark/30" />
+          <TextMorph client:visible words={tArray('temoignages', 'morphWords', lang)} className="editorial-nav-item font-display font-bold uppercase text-primary-dark" />
         </h2>
         <p class="font-body text-lg font-light text-[var(--color-text-light)] mt-4 max-w-xl">
           {t('temoignages', 'subtitle', lang)}

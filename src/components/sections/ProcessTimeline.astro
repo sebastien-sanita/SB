@@ -27,10 +27,10 @@ const steps = [
     <div class="relative mb-20 md:mb-32" data-reveal>
       <span class="section-number-xl">04</span>
       <span class="section-number">{t('processus', 'number', lang)}</span>
-      <h2 class="group/title text-section text-primary-dark mt-6 cursor-default">
-        <span class="font-display font-light uppercase text-primary-dark/10 transition-colors duration-700 group-hover/title:text-primary-dark/30">{t('processus', 'title', lang)}</span>
+      <h2 class="editorial-breadcrumb text-section text-primary-dark mt-6 cursor-default">
+        <span class="editorial-nav-item font-display font-light uppercase text-primary-dark/10">{t('processus', 'title', lang)}</span>
         <span class="font-display font-extralight text-primary-dark/15 mx-1 select-none">/</span>
-        <TextMorph client:visible words={tArray('processus', 'morphWords', lang)} className="font-display font-bold uppercase text-primary-dark transition-colors duration-700 group-hover/title:text-primary-dark/30" />
+        <TextMorph client:visible words={tArray('processus', 'morphWords', lang)} className="editorial-nav-item font-display font-bold uppercase text-primary-dark" />
       </h2>
       <p class="font-body text-lg font-light text-[var(--color-text-light)] mt-4 max-w-xl leading-[1.8]">
         {t('processus', 'subtitle', lang)}

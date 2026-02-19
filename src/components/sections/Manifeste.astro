@@ -18,10 +18,10 @@ const lang = Astro.props.lang ?? 'fr';
     <div class="relative mb-8 md:mb-10" data-reveal>
       <span class="section-number-xl">01</span>
       <span class="section-number">{t('manifeste', 'number', lang)}</span>
-      <h2 class="group/title font-display text-section uppercase text-primary-dark mt-3 cursor-default">
-        <span class="font-light text-primary-dark/10 transition-colors duration-700 group-hover/title:text-primary-dark/30">{t('manifeste', 'titlePrefix', lang)}</span>
+      <h2 class="editorial-breadcrumb font-display text-section uppercase text-primary-dark mt-3 cursor-default">
+        <span class="editorial-nav-item font-light text-primary-dark/10">{t('manifeste', 'titlePrefix', lang)}</span>
         <span class="font-extralight text-primary-dark/15 mx-1 select-none">/</span>
-        <span class="font-bold transition-colors duration-700 group-hover/title:text-primary-dark/30">{t('manifeste', 'titleStar', lang)}</span>
+        <span class="editorial-nav-item font-bold">{t('manifeste', 'titleStar', lang)}</span>
       </h2>
     </div>
 
