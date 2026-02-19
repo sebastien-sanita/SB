@@ -7,6 +7,7 @@ import Layout from '@layouts/Layout.astro';
 import Section from '@components/ui/Section.astro';
 import Container from '@components/ui/Container.astro';
 import Button from '@components/ui/Button.astro';
+import ProjectMarquee from '@components/react/ProjectMarquee';
 import { projects } from '../../../data/projects';
 import type { Project } from '../../../data/projects';
 import { t, getLocalizedPath } from '@i18n/index';
@@ -130,10 +131,10 @@ const related = [
     </Container>
   </Section>
 
-  <!-- Transition image -->
+  <!-- Scrolling bento — project images -->
   {project.images.length > 1 && (
-    <div class="w-full h-[40vh] min-h-[280px] lg:h-[50vh] overflow-hidden">
-      <img src={project.images[1]} alt="" class="w-full h-full object-cover" loading="lazy" />
+    <div class="bg-[var(--color-warm)]">
+      <ProjectMarquee images={project.images} title={project.title} client:visible />
     </div>
   )}
 
