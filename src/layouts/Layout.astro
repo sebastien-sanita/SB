@@ -18,9 +18,9 @@ interface Props {
 }
 
 const defaultDescriptions: Record<Locale, string> = {
-  fr: "SB Design Riviera — Architecture & Property Enhancement. Conception et valorisation de résidences secondaires haut de gamme sur la Côte d'Azur.",
-  en: "SB Design Riviera — Architecture & Property Enhancement. Design and enhancement of high-end secondary residences on the French Riviera.",
-  it: "SB Design Riviera — Architecture & Property Enhancement. Progettazione e valorizzazione di residenze secondarie di lusso sulla Costa Azzurra.",
+  fr: "SB Design Riviera — Luxury Transformation. Conception et valorisation de résidences secondaires haut de gamme sur la Côte d'Azur.",
+  en: "SB Design Riviera — Luxury Transformation. Design and enhancement of high-end secondary residences on the French Riviera.",
+  it: "SB Design Riviera — Luxury Transformation. Progettazione e valorizzazione di residenze secondarie di lusso sulla Costa Azzurra.",
 };
 
 const currentLang = Astro.props.lang ?? getLangFromUrl(Astro.url);
@@ -60,7 +60,7 @@ const hreflangAlternates = getHreflangAlternates(Astro.url.pathname, Astro.site?
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
       "name": "SB Design Riviera",
-      "description": "Architecture & Property Enhancement — Conception et valorisation de résidences secondaires haut de gamme sur la Côte d'Azur.",
+      "description": "Luxury Transformation — Conception et valorisation de résidences secondaires haut de gamme sur la Côte d'Azur.",
       "url": "https://www.sbdesign.fr",
       "telephone": ["+33609459245"],
       "email": "contact@sbdesignriviera.fr",

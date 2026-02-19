@@ -19,7 +19,7 @@ const strings = {
   // ── Branding ────────────────────────────────────────────
   brand: {
     name:    { fr: 'SB Design Riviera', en: 'SB Design Riviera', it: 'SB Design Riviera' },
-    tagline: { fr: 'Architecture & Property Enhancement', en: 'Architecture & Property Enhancement', it: 'Architecture & Property Enhancement' },
+    tagline: { fr: 'Luxury Transformation', en: 'Luxury Transformation', it: 'Luxury Transformation' },
   },
 
   // ── Hero ────────────────────────────────────────────────
@@ -30,9 +30,9 @@ const strings = {
       it: 'Creare spazi\nche ispirano',
     },
     subtitle1: {
-      fr: 'Architecture & Property Enhancement — Côte d\'Azur',
-      en: 'Architecture & Property Enhancement — French Riviera',
-      it: 'Architecture & Property Enhancement — Costa Azzurra',
+      fr: 'Luxury Transformation — Côte d\'Azur',
+      en: 'Luxury Transformation — French Riviera',
+      it: 'Luxury Transformation — Costa Azzurra',
     },
     subtitle2: {
       fr: 'Conception et transformation de résidences secondaires haut de gamme pour propriétaires et investisseurs internationaux.',
@@ -365,9 +365,9 @@ const strings = {
   // ── Page Expertise ─────────────────────────────────────
   expertisePage: {
     metaTitle: {
-      fr: 'Notre Expertise — Architecture & Property Enhancement | SB Design Riviera',
-      en: 'Our Expertise — Architecture & Property Enhancement | SB Design Riviera',
-      it: 'La Nostra Expertise — Architecture & Property Enhancement | SB Design Riviera',
+      fr: 'Notre Expertise — Luxury Transformation | SB Design Riviera',
+      en: 'Our Expertise — Luxury Transformation | SB Design Riviera',
+      it: 'La Nostra Expertise — Luxury Transformation | SB Design Riviera',
     },
     metaDesc: {
       fr: 'Conception architecturale, Interior Refinement et valorisation patrimoniale. SB Design Riviera vous accompagne de la vision à la livraison clé en main sur la Côte d\'Azur.',
@@ -436,9 +436,9 @@ const strings = {
   // ── Page À Propos ──────────────────────────────────────
   aproposPage: {
     metaTitle: {
-      fr: 'À Propos — SB Design Riviera | Architecture & Property Enhancement Côte d\'Azur',
-      en: 'About — SB Design Riviera | Architecture & Property Enhancement French Riviera',
-      it: 'Chi Siamo — SB Design Riviera | Architecture & Property Enhancement Costa Azzurra',
+      fr: 'À Propos — SB Design Riviera | Luxury Transformation Côte d\'Azur',
+      en: 'About — SB Design Riviera | Luxury Transformation French Riviera',
+      it: 'Chi Siamo — SB Design Riviera | Luxury Transformation Costa Azzurra',
     },
     metaDesc: {
       fr: 'SB Design Riviera : studio d\'architecture spécialisé dans la conception et la valorisation de résidences secondaires haut de gamme sur la Côte d\'Azur.',
