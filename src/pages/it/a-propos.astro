@@ -8,6 +8,7 @@ import Section from '@components/ui/Section.astro';
 import Container from '@components/ui/Container.astro';
 import Button from '@components/ui/Button.astro';
 import HeroInner from '@components/react/HeroInner';
+import TextRibbon from '@components/react/TextRibbon';
 import { t, tArray, getLocalizedPath } from '@i18n/index';
 import type { Locale } from '@i18n/languages';
 
@@ -20,6 +21,7 @@ const values = [
   { number: '03', title: t(p, 'value3Title', lang), description: t(p, 'value3Desc', lang) },
   { number: '04', title: t(p, 'value4Title', lang), description: t(p, 'value4Desc', lang) },
 ];
+const aboutRibbon = [t(p, 'value1Title', lang), t(p, 'value2Title', lang), t(p, 'value3Title', lang)].join('  ◆  ');
 ---
 
 <Layout
@@ -84,12 +86,18 @@ const values = [
     </Container>
   </Section>
 
+  <div class="overflow-hidden" style="background: linear-gradient(to bottom, var(--color-background), var(--color-background));">
+    <TextRibbon text={aboutRibbon} direction="left" speed={35} client:visible />
+  </div>
   <div class="group relative w-full h-[45vh] min-h-[300px] overflow-hidden" data-slide-in="bottom">
     <img src="/images/expertise/villa-terrace-sea.jpg" alt="" class="w-full h-full object-cover transition-transform duration-[1.2s] ease-smooth group-hover:scale-[1.05]" data-parallax="0.12" loading="lazy" />
   </div>
+  <div class="overflow-hidden" style="background: linear-gradient(to bottom, var(--color-background), var(--color-primary-warm));">
+    <TextRibbon text={aboutRibbon} direction="right" speed={40} client:visible />
+  </div>
 
   <!-- Valeurs -->
-  <Section background="warm" padding="lg">
+  <Section background="warm" padding="lg" style="background: linear-gradient(to bottom, var(--color-primary-warm) 75%, var(--color-background));">
     <Container>
       <div class="relative mb-16 md:mb-24" data-reveal>
         <span class="section-number-xl">V</span>

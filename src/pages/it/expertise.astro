@@ -8,11 +8,13 @@ import Section from '@components/ui/Section.astro';
 import Container from '@components/ui/Container.astro';
 import Button from '@components/ui/Button.astro';
 import HeroInner from '@components/react/HeroInner';
+import TextRibbon from '@components/react/TextRibbon';
 import { t, tArray, getLocalizedPath } from '@i18n/index';
 import type { Locale } from '@i18n/languages';
 
 const lang: Locale = 'it';
 const p = 'expertisePage' as const;
+const expertiseRibbon = [t(p, 's1Title1', lang), t(p, 's1Title2', lang), t(p, 's2Title1', lang), t(p, 's2Title2', lang), t(p, 's3Title1', lang), t(p, 's3Title2', lang)].join('  ◆  ');
 ---
 
 <Layout
@@ -79,8 +81,14 @@ const p = 'expertisePage' as const;
     </Container>
   </Section>
 
+  <div class="overflow-hidden" style="background: linear-gradient(to bottom, var(--color-background), var(--color-primary-warm));">
+    <TextRibbon text={expertiseRibbon} direction="left" speed={35} client:visible />
+  </div>
   <div class="group relative w-full h-[40vh] min-h-[280px] overflow-hidden" data-slide-in="left">
     <img src="/images/hero/luxury-interior-living.jpg" alt="" class="w-full h-full object-cover transition-transform duration-[1.2s] ease-smooth group-hover:scale-[1.05]" data-parallax="0.1" loading="lazy" />
+  </div>
+  <div class="overflow-hidden" style="background: linear-gradient(to bottom, var(--color-background), var(--color-primary-warm));">
+    <TextRibbon text={expertiseRibbon} direction="right" speed={40} client:visible />
   </div>
 
   <!-- Service 02 — Interior Refinement -->
@@ -129,8 +137,14 @@ const p = 'expertisePage' as const;
     </Container>
   </Section>
 
+  <div class="overflow-hidden" style="background: linear-gradient(to bottom, var(--color-primary-warm), var(--color-background));">
+    <TextRibbon text={expertiseRibbon} direction="right" speed={38} client:visible />
+  </div>
   <div class="group relative w-full h-[40vh] min-h-[280px] overflow-hidden" data-slide-in="right">
     <img src="/images/hero/luxury-architecture-detail.jpg" alt="" class="w-full h-full object-cover transition-transform duration-[1.2s] ease-smooth group-hover:scale-[1.05]" data-parallax="0.1" loading="lazy" />
+  </div>
+  <div class="overflow-hidden" style="background: linear-gradient(to bottom, var(--color-background), var(--color-background));">
+    <TextRibbon text={expertiseRibbon} direction="left" speed={42} client:visible />
   </div>
 
   <!-- Service 03 — Valorisation Patrimoniale -->

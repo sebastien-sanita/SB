@@ -1,6 +1,6 @@
 /**
  * TextRibbon — Ruban de texte défilant comme séparateur entre sections
- * Défile en continu via CSS animation (léger, pas de JS)
+ * Utilise le @keyframes marquee global (animations.css) — léger, pas de JS runtime
  */
 
 interface Props {
@@ -21,14 +21,14 @@ export default function TextRibbon({
   const repeated = content.repeat(12);
 
   const animStyle = {
-    animationDuration: `${speed}s`,
+    animation: `marquee ${speed}s linear infinite`,
     animationDirection: direction === 'right' ? 'reverse' : 'normal',
   } as React.CSSProperties;
 
   return (
-    <div className={`overflow-hidden py-2 ${className}`}>
+    <div className={`overflow-hidden ${className}`}>
       <div
-        className="flex whitespace-nowrap font-heading text-[10px] font-semibold uppercase tracking-[0.2em] text-primary-dark/15 animate-ribbon"
+        className="flex whitespace-nowrap font-heading text-[11px] font-semibold uppercase tracking-[0.2em] text-primary-dark/20"
         style={animStyle}
       >
         <span className="shrink-0">{repeated}</span>

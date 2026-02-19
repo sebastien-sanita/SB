@@ -95,8 +95,8 @@ const ribbonText = [project.title, categoryLabels[project.category], styleLabels
   </div>
 
   <!-- Ruban défilant sous la cover -->
-  <div class="bg-background py-3">
-    <TextRibbon text={ribbonText} direction="left" speed={35} client:visible />
+  <div class="bg-background">
+    <TextRibbon text={ribbonText} direction="left" speed={35} client:load />
   </div>
 
   <!-- Détails + Description -->
@@ -184,9 +184,6 @@ const ribbonText = [project.title, categoryLabels[project.category], styleLabels
   <div class="relative z-10 -my-[60px] pointer-events-none">
     <SectionDivider client:visible />
   </div>
-  <div class="relative z-10 -mt-8">
-    <TextRibbon text={ribbonText} direction="right" speed={40} client:visible />
-  </div>
 
   <!-- Galerie -->
   {project.images.length > 0 && (
@@ -233,9 +230,6 @@ const ribbonText = [project.title, categoryLabels[project.category], styleLabels
 
   <div class="relative z-10 -my-[60px] pointer-events-none">
     <SectionDivider client:visible />
-  </div>
-  <div class="relative z-10 -mt-8">
-    <TextRibbon text={ribbonText} direction="left" speed={45} client:visible />
   </div>
 
   <!-- Matériaux d'exception -->

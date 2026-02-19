@@ -100,8 +100,8 @@ export default function ProjectMarquee({ images, title, keywords = [] }: Props) 
 
   return (
     <div className="w-full overflow-hidden" ref={containerRef}>
-      {/* Ruban supérieur */}
-      <div className="overflow-hidden py-3">
+      {/* Ruban supérieur — fond dégradé blanc → beige */}
+      <div className="overflow-hidden py-3" style={{ background: 'linear-gradient(to bottom, var(--color-background), var(--color-primary-warm))' }}>
         <motion.div
           data-ribbon
           className="flex whitespace-nowrap font-heading text-[10px] font-semibold uppercase tracking-[0.2em] text-primary-dark/20"
@@ -121,8 +121,8 @@ export default function ProjectMarquee({ images, title, keywords = [] }: Props) 
         {imageSet}
       </motion.div>
 
-      {/* Ruban inférieur */}
-      <div className="overflow-hidden py-3">
+      {/* Ruban inférieur — fond dégradé blanc → beige (se fond dans la section warm en dessous) */}
+      <div className="overflow-hidden py-3" style={{ background: 'linear-gradient(to bottom, var(--color-background), var(--color-primary-warm))' }}>
         <motion.div
           className="flex whitespace-nowrap font-heading text-[10px] font-semibold uppercase tracking-[0.2em] text-primary-dark/20"
           style={{ x: -ribbonX }}
