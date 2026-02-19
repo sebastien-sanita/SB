@@ -8,6 +8,7 @@ import Section from '@components/ui/Section.astro';
 import Container from '@components/ui/Container.astro';
 import Button from '@components/ui/Button.astro';
 import ProjectMarquee from '@components/react/ProjectMarquee';
+import SectionDivider from '@components/react/SectionDivider';
 import { projects } from '../../../data/projects';
 import type { Project } from '../../../data/projects';
 import { t, getLocalizedPath } from '@i18n/index';
@@ -131,6 +132,10 @@ const related = [
     </Container>
   </Section>
 
+  <div class="relative z-10 -my-[60px] pointer-events-none">
+    <SectionDivider client:visible />
+  </div>
+
   <!-- Scrolling bento — project images -->
   {project.images.length > 1 && (
     <div class="bg-[var(--color-warm)]">
@@ -170,6 +175,10 @@ const related = [
       </div>
     </Container>
   </Section>
+
+  <div class="relative z-10 -my-[60px] pointer-events-none">
+    <SectionDivider client:visible />
+  </div>
 
   <!-- Gallery -->
   {project.images.length > 0 && (
@@ -213,6 +222,10 @@ const related = [
       </Container>
     </Section>
   )}
+
+  <div class="relative z-10 -my-[60px] pointer-events-none">
+    <SectionDivider client:visible />
+  </div>
 
   <!-- Materials & finishes -->
   <Section padding="lg" background="warm">
