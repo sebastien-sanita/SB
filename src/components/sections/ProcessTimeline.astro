@@ -28,7 +28,7 @@ const steps = [
       <span class="section-number-xl">04</span>
       <span class="section-number">{t('processus', 'number', lang)}</span>
       <h2 class="text-section text-primary-dark mt-6">
-        <span class="font-display font-bold uppercase">{t('processus', 'title', lang)}</span> <TextMorph client:visible words={tArray('processus', 'morphWords', lang)} className="font-heading font-light uppercase" />
+        <span class="font-display font-normal uppercase">{t('processus', 'title', lang)}</span> <TextMorph client:visible words={tArray('processus', 'morphWords', lang)} className="font-heading font-extralight uppercase" />
       </h2>
       <p class="font-body text-lg font-light text-[var(--color-text-light)] mt-4 max-w-xl leading-[1.8]">
         {t('processus', 'subtitle', lang)}
@@ -56,7 +56,7 @@ const steps = [
           <div class="w-10 h-px bg-accent-gold/40 mb-6" />
 
           {/* Titre */}
-          <h3 class="font-display text-xl lg:text-2xl font-semibold uppercase text-primary-dark mb-4 leading-[1.2]">
+          <h3 class="font-display text-xl lg:text-2xl font-medium uppercase text-primary-dark mb-4 leading-[1.2]">
             {step.title}
           </h3>
 
@@ -83,7 +83,7 @@ const steps = [
               {step.number}
             </span>
             <div class="pt-2">
-              <h3 class="font-display text-lg font-semibold uppercase text-primary-dark mb-2 leading-[1.2]">
+              <h3 class="font-display text-lg font-medium uppercase text-primary-dark mb-2 leading-[1.2]">
                 {step.title}
               </h3>
               <p class="font-body text-sm font-light text-text-secondary leading-[1.8]">

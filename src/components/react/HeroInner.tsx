@@ -73,13 +73,13 @@ export default function HeroInner({ images, label, title, subtitle, titlePrefix,
                 initial={{ opacity: 0, y: 30, filter: 'blur(8px)' }}
                 animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
                 transition={{ duration: 1.2, delay: 0.15, ease: easeOutQuart }}
-                className="font-display text-[clamp(52px,8vw,104px)] font-bold uppercase text-white leading-[1.1] tracking-[-0.01em] mb-6"
+                className="font-display text-[clamp(56px,10vw,130px)] font-normal uppercase text-white leading-[1.05] tracking-[-0.02em] mb-6"
               >
-                <span className="font-['Playfair_Display']">{titlePrefix}</span>{' '}
+                <span className="font-['Playfair_Display'] font-light">{titlePrefix}</span>{' '}
                 <TextMorph
                   words={titleMorphWords}
                   interval={4500}
-                  className="font-['Playfair_Display'] font-bold"
+                  className="font-['Playfair_Display'] font-normal"
                 />
               </motion.h1>
             ) : (
@@ -87,7 +87,7 @@ export default function HeroInner({ images, label, title, subtitle, titlePrefix,
                 initial={{ opacity: 0, y: 30, filter: 'blur(8px)' }}
                 animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
                 transition={{ duration: 1.2, delay: 0.15, ease: easeOutQuart }}
-                className="font-display text-[clamp(52px,8vw,104px)] font-bold uppercase text-white leading-[1.1] tracking-[-0.01em] mb-6"
+                className="font-display text-[clamp(56px,10vw,130px)] font-normal uppercase text-white leading-[1.05] tracking-[-0.02em] mb-6"
                 dangerouslySetInnerHTML={{ __html: title }}
               />
             )}

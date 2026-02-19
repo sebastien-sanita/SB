@@ -34,7 +34,7 @@ export default function HeroVideo() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="font-display text-[clamp(44px,8vw,96px)] font-bold uppercase leading-[1.05] tracking-[-0.01em] text-white mb-6"
+            className="font-display text-[clamp(48px,10vw,120px)] font-normal uppercase leading-[1.05] tracking-[-0.02em] text-white mb-6"
           >
             Créer des espaces
             <br />
