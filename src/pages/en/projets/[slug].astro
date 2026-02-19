@@ -47,6 +47,8 @@ const related = [
   ...projects.filter((p) => p.id !== project.id && p.category === project.category),
   ...projects.filter((p) => p.id !== project.id && p.category !== project.category),
 ].slice(0, 3);
+
+const marqueeKeywords = [project.title, styleLabels[project.style], project.location, ...project.materials];
 ---
 
 <Layout
@@ -135,7 +137,7 @@ const related = [
   <!-- Scrolling bento — project images -->
   {project.images.length > 1 && (
     <div class="bg-[var(--color-warm)]">
-      <ProjectMarquee images={project.images} title={project.title} client:visible />
+      <ProjectMarquee images={project.images} title={project.title} keywords={marqueeKeywords} client:visible />
     </div>
   )}
 
