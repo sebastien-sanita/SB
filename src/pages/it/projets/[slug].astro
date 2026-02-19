@@ -170,31 +170,9 @@ const related = [
     </Container>
   </Section>
 
-  <!-- Materiali pregiati -->
-  <Section padding="lg" background="white">
-    <Container>
-      <div data-reveal>
-        <div class="w-10 h-px bg-accent-gold/40 mb-6" />
-        <h2 class="font-display text-subsection font-bold uppercase text-primary-dark mb-12">
-          {t(d, 'materialsTitle1', lang)} <span class="font-heading font-light">{t(d, 'materialsTitle2', lang)}</span>
-        </h2>
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-          {project.materials.map((material) => (
-            <div class="text-center">
-              <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-[var(--color-warm)] flex items-center justify-center">
-                <div class="w-2 h-2 rounded-full bg-accent-gold/50" />
-              </div>
-              <span class="font-heading text-[12px] font-medium text-primary-dark uppercase tracking-[0.08em] leading-tight block">{material}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </Container>
-  </Section>
-
   <!-- Galleria -->
   {project.images.length > 0 && (
-    <Section padding="lg" background="warm">
+    <Section padding="lg" background="white">
       <Container>
         <div class="mb-12 md:mb-16" data-reveal>
           <h2 class="font-display text-subsection font-bold uppercase text-primary-dark">
@@ -235,7 +213,29 @@ const related = [
     </Section>
   )}
 
-  <!-- Autres réalisations -->
+  <!-- Materiali pregiati -->
+  <Section padding="lg" background="warm">
+    <Container>
+      <div data-reveal>
+        <div class="w-10 h-px bg-accent-gold/40 mb-6" />
+        <h2 class="font-display text-subsection font-bold uppercase text-primary-dark mb-12">
+          {t(d, 'materialsTitle1', lang)} <span class="font-heading font-light">{t(d, 'materialsTitle2', lang)}</span>
+        </h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+          {project.materials.map((material) => (
+            <div class="text-center">
+              <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-[var(--color-warm)] flex items-center justify-center">
+                <div class="w-2 h-2 rounded-full bg-accent-gold/50" />
+              </div>
+              <span class="font-heading text-[12px] font-medium text-primary-dark uppercase tracking-[0.08em] leading-tight block">{material}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </Container>
+  </Section>
+
+  <!-- Altre realizzazioni -->
   <Section padding="lg" background="white">
     <Container>
       <div class="mb-12 md:mb-16" data-reveal>
