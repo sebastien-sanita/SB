@@ -596,6 +596,19 @@ const strings = {
       en: 'Every project tells a unique story. Discover our expertise through a selection of exceptional works.',
       it: 'Ogni progetto è una storia unica. Scoprite il nostro savoir-faire attraverso una selezione di realizzazioni d\'eccezione.',
     },
+    introLabel: { fr: 'Notre approche', en: 'Our approach', it: 'Il nostro approccio' },
+    introTitle1: { fr: 'Chaque', en: 'Each', it: 'Ogni' },
+    introTitle2: { fr: 'Réalisation', en: 'Creation', it: 'Realizzazione' },
+    introText1: {
+      fr: 'De la villa contemporaine au penthouse d\'exception, chaque projet est conçu comme une <em>œuvre sur mesure</em>. Nous intervenons à chaque étape — conception architecturale, design intérieur et valorisation patrimoniale — pour révéler le plein potentiel de votre bien.',
+      en: 'From contemporary villas to exceptional penthouses, each project is designed as a <em>bespoke creation</em>. We intervene at every stage — architectural design, interior refinement and property enhancement — to reveal the full potential of your property.',
+      it: 'Dalla villa contemporanea all\'attico d\'eccezione, ogni progetto è concepito come un\'<em>opera su misura</em>. Interveniamo in ogni fase — progettazione architettonica, interior design e valorizzazione patrimoniale — per rivelare il pieno potenziale del vostro immobile.',
+    },
+    introText2: {
+      fr: 'Sur la Côte d\'Azur, nous accompagnons propriétaires privés et investisseurs internationaux avec une exigence constante : l\'excellence architecturale au service de la performance patrimoniale.',
+      en: 'On the French Riviera, we support private owners and international investors with a constant requirement: architectural excellence in service of property performance.',
+      it: 'Sulla Costa Azzurra, affianchiamo proprietari privati e investitori internazionali con un\'esigenza costante: l\'eccellenza architettonica al servizio della performance patrimoniale.',
+    },
   },
 
   // ── Page Projet Détail ─────────────────────────────────

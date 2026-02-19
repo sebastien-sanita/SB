@@ -20,19 +20,21 @@ const p = 'contactPage' as const;
   description={t(p, 'metaDesc', lang)}
 >
 
-  <HeroInner
-    client:load
-    images={[
-      '/images/expertise/luxury-entrance-hall.jpg',
-      '/images/expertise/villa-riviera-aerial.jpg',
-      '/images/expertise/villa-terrace-sea.jpg',
-    ]}
-    label={t(p, 'heroLabel', lang)}
-    title=""
-    titlePrefix={t(p, 'heroPrefix', lang)}
-    titleMorphWords={tArray(p, 'heroMorphWords', lang)}
-    subtitle={t(p, 'heroSubtitle', lang)}
-  />
+  <div class="-mt-[80px]">
+    <HeroInner
+      client:load
+      images={[
+        '/images/expertise/luxury-entrance-hall.jpg',
+        '/images/expertise/villa-riviera-aerial.jpg',
+        '/images/expertise/villa-terrace-sea.jpg',
+      ]}
+      label={t(p, 'heroLabel', lang)}
+      title=""
+      titlePrefix={t(p, 'heroPrefix', lang)}
+      titleMorphWords={tArray(p, 'heroMorphWords', lang)}
+      subtitle={t(p, 'heroSubtitle', lang)}
+    />
+  </div>
 
   <Section padding="lg">
     <Container>

@@ -30,19 +30,21 @@ const aboutRibbon = [t(p, 'value1Title', lang), t(p, 'value2Title', lang), t(p, 
   description={t(p, 'metaDesc', lang)}
 >
 
-  <HeroInner
-    client:load
-    images={[
-      '/images/expertise/villa-garden-pool.jpg',
-      '/images/expertise/luxury-dining-room.jpg',
-      '/images/expertise/modern-kitchen-luxury.jpg',
-    ]}
-    label={t(p, 'heroLabel', lang)}
-    title=""
-    titlePrefix={t(p, 'heroPrefix', lang)}
-    titleMorphWords={tArray(p, 'heroMorphWords', lang)}
-    subtitle={t(p, 'heroSubtitle', lang)}
-  />
+  <div class="-mt-[80px]">
+    <HeroInner
+      client:load
+      images={[
+        '/images/expertise/villa-garden-pool.jpg',
+        '/images/expertise/luxury-dining-room.jpg',
+        '/images/expertise/modern-kitchen-luxury.jpg',
+      ]}
+      label={t(p, 'heroLabel', lang)}
+      title=""
+      titlePrefix={t(p, 'heroPrefix', lang)}
+      titleMorphWords={tArray(p, 'heroMorphWords', lang)}
+      subtitle={t(p, 'heroSubtitle', lang)}
+    />
+  </div>
 
   <!-- Histoire -->
   <Section padding="lg">

@@ -23,19 +23,21 @@ const expertiseRibbon = [t(p, 's1Title1', lang), t(p, 's1Title2', lang), t(p, 's
   description={t(p, 'metaDesc', lang)}
 >
 
-  <HeroInner
-    client:load
-    images={[
-      '/images/expertise/hero-riviera-1.jpg',
-      '/images/expertise/hero-riviera-2.jpg',
-      '/images/expertise/hero-riviera-3.jpg',
-    ]}
-    label={t(p, 'heroLabel', lang)}
-    title=""
-    titlePrefix={t(p, 'heroPrefix', lang)}
-    titleMorphWords={tArray(p, 'heroMorphWords', lang)}
-    subtitle={t(p, 'heroSubtitle', lang)}
-  />
+  <div class="-mt-[80px]">
+    <HeroInner
+      client:load
+      images={[
+        '/images/expertise/hero-riviera-1.jpg',
+        '/images/expertise/hero-riviera-2.jpg',
+        '/images/expertise/hero-riviera-3.jpg',
+      ]}
+      label={t(p, 'heroLabel', lang)}
+      title=""
+      titlePrefix={t(p, 'heroPrefix', lang)}
+      titleMorphWords={tArray(p, 'heroMorphWords', lang)}
+      subtitle={t(p, 'heroSubtitle', lang)}
+    />
+  </div>
 
   <!-- Service 01 — Conception Architecturale -->
   <Section padding="lg" background="white">

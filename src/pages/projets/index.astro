@@ -21,21 +21,42 @@ const p = 'projetsPage' as const;
   description={t(p, 'metaDesc', lang)}
 >
 
-  <HeroInner
-    client:load
-    images={[
-      '/images/expertise/hero-riviera-1.jpg',
-      '/images/expertise/hero-riviera-2.jpg',
-      '/images/expertise/hero-riviera-3.jpg',
-    ]}
-    label={t(p, 'heroLabel', lang)}
-    title=""
-    titlePrefix={t(p, 'heroPrefix', lang)}
-    titleMorphWords={tArray(p, 'heroMorphWords', lang)}
-    subtitle={t(p, 'heroSubtitle', lang)}
-  />
+  <div class="-mt-[80px]">
+    <HeroInner
+      client:load
+      images={[
+        '/images/expertise/hero-riviera-1.jpg',
+        '/images/expertise/hero-riviera-2.jpg',
+        '/images/expertise/hero-riviera-3.jpg',
+      ]}
+      label={t(p, 'heroLabel', lang)}
+      title=""
+      titlePrefix={t(p, 'heroPrefix', lang)}
+      titleMorphWords={tArray(p, 'heroMorphWords', lang)}
+      subtitle={t(p, 'heroSubtitle', lang)}
+    />
+  </div>
 
+  <!-- Intro éditoriale -->
   <Section padding="lg">
+    <Container>
+      <div class="max-w-5xl" data-reveal>
+        <span class="font-heading text-xs font-semibold uppercase tracking-[0.2em] text-accent-gold/60 mb-6 block">
+          {t(p, 'introLabel', lang)}
+        </span>
+        <h2 class="font-display text-subsection uppercase text-primary-dark mb-10">
+          <span class="font-light text-primary-dark/20">{t(p, 'introTitle1', lang)}</span>{' '}
+          <span class="font-bold">{t(p, 'introTitle2', lang)}</span>
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
+          <p class="font-body text-base font-light text-text-secondary leading-[1.8]" set:html={t(p, 'introText1', lang)} />
+          <p class="font-body text-base font-light text-text-secondary leading-[1.8]">{t(p, 'introText2', lang)}</p>
+        </div>
+      </div>
+    </Container>
+  </Section>
+
+  <Section padding="lg" background="warm">
     <Container>
       <div data-reveal>
         <ProjectGrid projects={projects} client:load />
