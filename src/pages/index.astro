@@ -186,4 +186,10 @@ const lang: Locale = 'fr';
     </Container>
   </section>
 
+  <!-- Masquer le logo header sur mobile (déjà affiché dans le hero) -->
+  <style is:global>
+    @media (max-width: 1023px) {
+      #header-logo { visibility: hidden; }
+    }
+  </style>
 </Layout>

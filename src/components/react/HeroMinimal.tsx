@@ -64,7 +64,7 @@ export default function HeroMinimal({ lang = 'fr' }: Props) {
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.5, delay: 0.3, ease: easeOutQuart }}
-        className="absolute top-0 left-0 right-0 z-10 pt-28 md:pt-32 text-center hidden md:block"
+        className="absolute top-0 left-0 right-0 z-10 pt-28 md:pt-32 text-center"
       >
         <h1 className="leading-[1] text-center">
           <span
