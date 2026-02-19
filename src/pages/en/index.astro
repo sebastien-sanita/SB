@@ -32,7 +32,10 @@ const lang: Locale = 'en';
   description="SB Design Riviera, architectural studio specialising in the design and enhancement of high-end secondary residences on the French Riviera. Design, renovation and property enhancement."
 >
 
-  <HeroMinimal lang={lang} client:load />
+  <!-- HERO : remonte par-dessus le spacer header -->
+  <div class="-mt-[80px]">
+    <HeroMinimal lang={lang} client:load />
+  </div>
   <Manifeste lang={lang} />
   <FeaturedProjects lang={lang} />
 

@@ -37,8 +37,10 @@ const lang: Locale = 'fr';
   description="SB Design Riviera, cabinet d'architecture specialise dans la conception et la valorisation de residences secondaires haut de gamme sur la Cote d'Azur. Design, renovation et property enhancement."
 >
 
-  <!-- HERO : Cinématique 100vh -->
-  <HeroMinimal lang={lang} client:load />
+  <!-- HERO : Cinématique 100vh — remonte par-dessus le spacer header -->
+  <div class="-mt-[80px]">
+    <HeroMinimal lang={lang} client:load />
+  </div>
 
   <!-- SECTION 01 : Manifeste / Vision -->
   <Manifeste lang={lang} />

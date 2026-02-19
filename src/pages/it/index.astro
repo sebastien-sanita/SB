@@ -32,7 +32,10 @@ const lang: Locale = 'it';
   description="SB Design Riviera, studio di architettura specializzato nella progettazione e valorizzazione di residenze secondarie di lusso sulla Costa Azzurra. Design, ristrutturazione e property enhancement."
 >
 
-  <HeroMinimal lang={lang} client:load />
+  <!-- HERO : remonte par-dessus le spacer header -->
+  <div class="-mt-[80px]">
+    <HeroMinimal lang={lang} client:load />
+  </div>
   <Manifeste lang={lang} />
   <FeaturedProjects lang={lang} />
 
