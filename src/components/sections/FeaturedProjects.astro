@@ -73,23 +73,18 @@ const featured = [
         </div>
       )}
 
-      {/* Contenu texte — bas de l'image */}
+      {/* Contenu texte — bas de l'image, style breadcrumb éditorial */}
       <div class="absolute bottom-0 left-0 right-0 pb-10 md:pb-14 lg:pb-16">
         <Container>
           <div class="flex items-end justify-between gap-8">
 
-            {/* Infos projet */}
-            <div class="max-w-2xl">
-              <span class="font-heading text-[11px] font-medium text-accent-gold uppercase tracking-[0.2em] mb-3 block translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
-                {t('featured', project.tagKey, lang)}
-              </span>
-              <h3 class="font-display text-3xl md:text-5xl lg:text-[4.5rem] font-bold uppercase text-white leading-[1.05]">
-                {t('featured', project.titleKey, lang)}
-              </h3>
-              <p class="font-body text-sm md:text-base font-light text-white/50 mt-3 tracking-wide">
-                {t('featured', project.metaKey, lang)}
-              </p>
-            </div>
+            {/* Breadcrumb éditorial — SB /PROJETS /CATÉGORIE  TITRE */}
+            <nav class="editorial-breadcrumb-dark flex flex-wrap items-baseline gap-x-1 md:gap-x-2">
+              <span class="editorial-nav-item font-display text-[clamp(18px,3vw,36px)] font-bold italic uppercase text-white/15 leading-none cursor-default select-none">SB</span>
+              <span class="editorial-nav-item font-display text-[clamp(18px,3vw,36px)] font-bold uppercase text-white/60 leading-none">/{t('nav', 'projets', lang)}</span>
+              <span class="editorial-nav-item font-display text-[clamp(18px,3vw,36px)] font-bold uppercase text-accent-gold/70 leading-none cursor-default">/{t('featured', project.tagKey, lang)}</span>
+              <span class="editorial-nav-item font-display text-[clamp(36px,7vw,90px)] font-light uppercase text-white leading-[1.05] cursor-default">{t('featured', project.titleKey, lang)}</span>
+            </nav>
 
             {/* Indicateur "Voir le projet" au hover */}
             <span class="hidden md:flex items-center gap-3 shrink-0 font-heading text-[11px] font-medium text-white/60 uppercase tracking-[0.15em] opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500">
