@@ -237,6 +237,17 @@ main {
     user-select: none;
   }
 
+  /* Editorial breadcrumb — hover: only pointed word stays dark, others gray */
+  .editorial-nav-item {
+    transition: color 0.5s ease;
+  }
+  .editorial-breadcrumb:hover .editorial-nav-item {
+    color: rgba(26, 26, 26, 0.15) !important;
+  }
+  .editorial-breadcrumb .editorial-nav-item:hover {
+    color: rgba(26, 26, 26, 1) !important;
+  }
+
   /* Image hover — slow transition, rounded */
   .image-hover {
     overflow: hidden;
