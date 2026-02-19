@@ -140,7 +140,7 @@ const related = [
   )}
 
   <!-- Philosophie de design -->
-  <Section padding="lg" background="warm">
+  <Section padding="lg" background="warm" style="background: linear-gradient(to bottom, var(--color-primary-warm) 75%, var(--color-background));">
     <Container>
       <div class="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-12 lg:gap-20" data-reveal>
         <div>
@@ -172,13 +172,13 @@ const related = [
     </Container>
   </Section>
 
-  <div class="relative z-[5] -my-16 h-32 bg-gradient-to-b from-[var(--color-warm)] to-white pointer-events-none">
-    <SectionDivider client:visible height={128} />
+  <div class="relative z-10 -my-[60px] pointer-events-none">
+    <SectionDivider client:visible />
   </div>
 
   <!-- Galerie -->
   {project.images.length > 0 && (
-    <Section padding="lg" background="white">
+    <Section padding="lg" background="white" style="background: linear-gradient(to bottom, var(--color-background) 75%, var(--color-primary-warm));">
       <Container>
         <div class="mb-12 md:mb-16" data-reveal>
           <h2 class="font-display text-subsection font-bold uppercase text-primary-dark">
@@ -219,12 +219,12 @@ const related = [
     </Section>
   )}
 
-  <div class="relative z-[5] -my-16 h-32 bg-gradient-to-b from-white to-[var(--color-warm)] pointer-events-none">
-    <SectionDivider client:visible height={128} />
+  <div class="relative z-10 -my-[60px] pointer-events-none">
+    <SectionDivider client:visible />
   </div>
 
   <!-- Matériaux d'exception -->
-  <Section padding="lg" background="warm">
+  <Section padding="lg" background="warm" style="background: linear-gradient(to bottom, var(--color-primary-warm) 75%, var(--color-background));">
     <Container>
       <div data-reveal>
         <div class="w-10 h-px bg-accent-gold/40 mb-6" />
