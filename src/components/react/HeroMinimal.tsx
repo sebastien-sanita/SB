@@ -68,10 +68,10 @@ export default function HeroMinimal({ lang = 'fr' }: Props) {
       >
         <h1 className="leading-[1] text-center">
           <span
-            className="font-heading font-bold lowercase text-white tracking-[-0.03em] block"
+            className="font-heading font-bold lowercase tracking-[-0.03em] block"
             style={{ fontSize: 'clamp(48px, 9vw, 96px)' }}
           >
-            sbdesign
+            <span className="text-white/60">sb</span><span className="text-white">design</span>
           </span>
           <span
             className="font-heading lowercase text-white/40 tracking-[0.08em] block mt-1"

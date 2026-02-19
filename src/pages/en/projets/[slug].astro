@@ -130,7 +130,69 @@ const related = [
     </Container>
   </Section>
 
-  <!-- Galerie -->
+  <!-- Transition image -->
+  {project.images.length > 1 && (
+    <div class="w-full h-[40vh] min-h-[280px] lg:h-[50vh] overflow-hidden">
+      <img src={project.images[1]} alt="" class="w-full h-full object-cover" loading="lazy" />
+    </div>
+  )}
+
+  <!-- Design philosophy -->
+  <Section padding="lg" background="warm">
+    <Container>
+      <div class="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-12 lg:gap-20" data-reveal>
+        <div>
+          <div class="w-10 h-px bg-accent-gold/40 mb-6" />
+          <h2 class="font-display text-subsection font-bold uppercase text-primary-dark mb-8">
+            {t(d, 'philosophyTitle1', lang)} <span class="font-heading font-light">{t(d, 'philosophyTitle2', lang)}</span>
+          </h2>
+          <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.85] italic">
+            {project.philosophy}
+          </p>
+        </div>
+        <div>
+          <div class="w-10 h-px bg-accent-gold/40 mb-6" />
+          <h2 class="font-display text-subsection font-bold uppercase text-primary-dark mb-8">
+            {t(d, 'highlightsTitle1', lang)} <span class="font-heading font-light">{t(d, 'highlightsTitle2', lang)}</span>
+          </h2>
+          <ul class="space-y-4">
+            {project.highlights.map((item) => (
+              <li class="flex items-start gap-3">
+                <svg class="w-4 h-4 text-accent-gold mt-1 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7" />
+                </svg>
+                <span class="font-body text-sm font-light text-[var(--color-text-light)] leading-relaxed">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </Container>
+  </Section>
+
+  <!-- Materials & finishes -->
+  <Section padding="lg" background="white">
+    <Container>
+      <div data-reveal>
+        <div class="w-10 h-px bg-accent-gold/40 mb-6" />
+        <h2 class="font-display text-subsection font-bold uppercase text-primary-dark mb-12">
+          {t(d, 'materialsTitle1', lang)} <span class="font-heading font-light">{t(d, 'materialsTitle2', lang)}</span>
+        </h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+          {project.materials.map((material) => (
+            <div class="text-center">
+              <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-[var(--color-warm)] flex items-center justify-center">
+                <div class="w-2 h-2 rounded-full bg-accent-gold/50" />
+              </div>
+              <span class="font-heading text-[12px] font-medium text-primary-dark uppercase tracking-[0.08em] leading-tight block">{material}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </Container>
+  </Section>
+
+  <!-- Gallery -->
   {project.images.length > 0 && (
     <Section padding="lg" background="warm">
       <Container>

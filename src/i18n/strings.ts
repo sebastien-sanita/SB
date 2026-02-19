@@ -628,6 +628,12 @@ const strings = {
     styleModerne: { fr: 'Moderne', en: 'Modern', it: 'Moderno' },
     styleClassique: { fr: 'Classique', en: 'Classic', it: 'Classico' },
     styleContemporain: { fr: 'Contemporain', en: 'Contemporary', it: 'Contemporaneo' },
+    philosophyTitle1: { fr: 'Philosophie', en: 'Design', it: 'Filosofia' },
+    philosophyTitle2: { fr: 'de design', en: 'philosophy', it: 'del progetto' },
+    materialsTitle1: { fr: 'Matériaux', en: 'Materials', it: 'Materiali' },
+    materialsTitle2: { fr: 'd\'exception', en: '& finishes', it: 'pregiati' },
+    highlightsTitle1: { fr: 'Points', en: 'Key', it: 'Punti' },
+    highlightsTitle2: { fr: 'forts', en: 'features', it: 'di forza' },
   },
 } as const;
 
