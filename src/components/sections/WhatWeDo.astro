@@ -57,7 +57,7 @@ const services = [
       <span class="section-number-xl">02</span>
       <span class="section-number">{t('approche', 'number', lang)}</span>
       <h2 class="text-section text-primary-dark mt-4">
-        <span class="font-display font-normal">{t('approche', 'title', lang)}</span> <TextMorph client:visible words={tArray('approche', 'morphWords', lang)} className="font-heading font-light" />
+        <span class="font-display font-bold uppercase">{t('approche', 'title', lang)}</span> <TextMorph client:visible words={tArray('approche', 'morphWords', lang)} className="font-heading font-light uppercase" />
       </h2>
     </div>
 
@@ -106,8 +106,8 @@ const services = [
             <div class="flex items-center gap-3 mb-4">
               <span class="font-heading text-[40px] font-extralight text-accent-gold/25 leading-none">{service.num}</span>
             </div>
-            <h3 class="font-display text-2xl md:text-3xl font-normal text-primary-dark mb-4">
-              <span class="italic">{t('approche', service.title1Key, lang)}</span> <span class="font-heading font-light">{t('approche', service.title2Key, lang)}</span>
+            <h3 class="font-display text-2xl md:text-3xl font-bold uppercase text-primary-dark mb-4">
+              {t('approche', service.title1Key, lang)} <span class="font-heading font-light">{t('approche', service.title2Key, lang)}</span>
             </h3>
             <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.8] mb-5">
               {t('approche', service.descKey, lang)}

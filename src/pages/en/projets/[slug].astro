@@ -63,7 +63,7 @@ const related = [
           <span class="block font-heading text-xs font-semibold uppercase tracking-[0.2em] text-accent-gold mb-4">
             {categoryLabels[project.category]} — {styleLabels[project.style]}
           </span>
-          <h1 class="font-display text-[clamp(40px,7vw,88px)] font-normal text-white leading-[1.1] tracking-[0.02em]">
+          <h1 class="font-display text-[clamp(44px,7vw,96px)] font-bold uppercase text-white leading-[1.05] tracking-[-0.01em]">
             {project.title}
           </h1>
         </div>
@@ -111,8 +111,8 @@ const related = [
           </div>
         </div>
         <div>
-          <h2 class="font-display text-subsection font-normal text-primary-dark mb-8">
-            <span class="font-display italic">{t(d, 'aboutTitle1', lang)}</span> <span class="font-heading font-light">{t(d, 'aboutTitle2', lang)}</span>
+          <h2 class="font-display text-subsection font-bold uppercase text-primary-dark mb-8">
+            {t(d, 'aboutTitle1', lang)} <span class="font-heading font-light">{t(d, 'aboutTitle2', lang)}</span>
           </h2>
           <p class="font-body text-lg font-light text-[var(--color-text-light)] leading-[1.85] max-w-2xl">
             {project.description}
@@ -127,8 +127,8 @@ const related = [
     <Section padding="lg" background="warm">
       <Container>
         <div class="mb-12 md:mb-16" data-reveal>
-          <h2 class="font-display text-subsection font-normal text-primary-dark">
-            <span class="font-display italic">{t(d, 'galleryTitle1', lang)}</span> <span class="font-heading font-light">{t(d, 'galleryTitle2', lang)}</span>
+          <h2 class="font-display text-subsection font-bold uppercase text-primary-dark">
+            {t(d, 'galleryTitle1', lang)} <span class="font-heading font-light">{t(d, 'galleryTitle2', lang)}</span>
           </h2>
         </div>
         <div
@@ -169,8 +169,8 @@ const related = [
   <Section padding="lg" background="white">
     <Container>
       <div class="mb-12 md:mb-16" data-reveal>
-        <h2 class="font-display text-subsection font-normal text-primary-dark">
-          <span class="font-display italic">{t(d, 'relatedTitle1', lang)}</span> <span class="font-heading font-light">{t(d, 'relatedTitle2', lang)}</span>
+        <h2 class="font-display text-subsection font-bold uppercase text-primary-dark">
+          {t(d, 'relatedTitle1', lang)} <span class="font-heading font-light">{t(d, 'relatedTitle2', lang)}</span>
         </h2>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4" data-reveal>
@@ -180,7 +180,7 @@ const related = [
             <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent group-hover:from-black/70 transition-all duration-500" />
             <div class="absolute bottom-0 left-0 right-0 p-5">
               <span class="text-[11px] font-heading font-medium text-accent-gold uppercase tracking-[0.15em]">{categoryLabels[p.category]}</span>
-              <h3 class="font-display text-xl font-normal text-white mt-1">{p.title}</h3>
+              <h3 class="font-display text-xl font-semibold uppercase text-white mt-1">{p.title}</h3>
             </div>
           </a>
         ))}
@@ -197,8 +197,8 @@ const related = [
   <Section background="dark" padding="lg">
     <Container>
       <div class="text-center max-w-2xl mx-auto" data-reveal>
-        <h2 class="font-display text-section font-normal text-white mb-6">
-          <span class="font-display italic">{t(d, 'ctaTitle1', lang)}</span> <span class="font-heading font-light">{t(d, 'ctaTitle2', lang)}</span>
+        <h2 class="font-display text-section font-bold uppercase text-white mb-6">
+          {t(d, 'ctaTitle1', lang)} <span class="font-heading font-light">{t(d, 'ctaTitle2', lang)}</span>
         </h2>
         <p class="font-body text-lg font-light text-white/70 mb-10 leading-relaxed">
           {t(d, 'ctaDesc', lang)}

@@ -72,9 +72,9 @@ export default {
         '21/9': '21 / 9',
       },
       fontSize: {
-        'hero': ['clamp(48px, 8vw, 96px)', { lineHeight: '1.2', letterSpacing: '0.02em' }],
-        'section': ['clamp(32px, 5vw, 64px)', { lineHeight: '1.3', letterSpacing: '0em' }],
-        'subsection': ['clamp(24px, 3vw, 40px)', { lineHeight: '1.4', letterSpacing: '0em' }],
+        'hero': ['clamp(52px, 8vw, 104px)', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
+        'section': ['clamp(36px, 5.5vw, 72px)', { lineHeight: '1.15', letterSpacing: '-0.01em' }],
+        'subsection': ['clamp(24px, 3vw, 44px)', { lineHeight: '1.25', letterSpacing: '0em' }],
       },
       letterSpacing: {
         tightest: '-0.01em',

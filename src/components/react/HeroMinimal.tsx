@@ -67,8 +67,8 @@ export default function HeroMinimal({ lang = 'fr' }: Props) {
         className="absolute top-0 left-0 right-0 z-10 pt-28 md:pt-32 text-center"
       >
         <h1
-          className="font-display font-normal text-white leading-[1] tracking-[-0.02em]"
-          style={{ fontSize: 'clamp(32px, 5vw, 56px)' }}
+          className="font-display font-bold text-white leading-[1] tracking-[-0.02em] uppercase"
+          style={{ fontSize: 'clamp(36px, 5.5vw, 64px)' }}
         >
           SB Design Riviera
         </h1>

@@ -34,7 +34,7 @@ function isActive(href: string) {
 
     {/* Logo */}
     <a href={getLocalizedPath('/', lang)} class="hover:opacity-100 relative z-[1050] flex flex-col">
-      <span class="font-display text-xl md:text-2xl text-primary-dark leading-none">SB Design Riviera</span>
+      <span class="font-display text-xl md:text-2xl font-bold uppercase text-primary-dark leading-none">SB Design Riviera</span>
       <span class="font-heading text-[9px] md:text-[10px] font-medium uppercase tracking-[0.2em] text-accent-brown mt-1">Luxury Transformation</span>
     </a>
 
@@ -126,7 +126,7 @@ function isActive(href: string) {
   <div class="flex flex-col items-center justify-center h-full gap-8 px-6">
     <a
       href={getLocalizedPath('/', lang)}
-      class="mobile-nav-link font-display text-[clamp(24px,5vw,38px)] italic font-normal text-primary-dark/40 hover:text-accent-brown transition-all duration-300"
+      class="mobile-nav-link font-display text-[clamp(24px,5vw,38px)] font-bold uppercase text-primary-dark/40 hover:text-accent-brown transition-all duration-300"
       data-delay="0"
       style="opacity:0; transform:translateY(16px);"
     >
@@ -136,7 +136,7 @@ function isActive(href: string) {
       <a
         href={link.href}
         class:list={[
-          'mobile-nav-link font-display text-[clamp(24px,5vw,38px)] italic font-normal transition-all duration-300',
+          'mobile-nav-link font-display text-[clamp(24px,5vw,38px)] font-bold uppercase transition-all duration-300',
           isActive(link.href)
             ? 'text-accent-brown'
             : 'text-primary-dark/40 hover:text-accent-brown',

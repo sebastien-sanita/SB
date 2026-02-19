@@ -43,7 +43,7 @@ const lang: Locale = 'en';
       <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent group-hover:from-black/70 transition-all duration-500" />
       <div class="absolute bottom-0 left-0 right-0 p-8 md:p-10">
         <span class="font-heading text-[11px] font-medium text-accent-gold uppercase tracking-[0.2em] mb-2 block">{t('manifeste', 'imgDiscover', lang)}</span>
-        <h3 class="font-display text-2xl md:text-3xl font-normal text-white">{t('manifeste', 'imgLabel1', lang)}</h3>
+        <h3 class="font-display text-2xl md:text-3xl font-bold uppercase text-white">{t('manifeste', 'imgLabel1', lang)}</h3>
       </div>
     </a>
     <a href={getLocalizedPath('/projets', lang) + '?type=construction'} class="group relative block h-[35vh] min-h-[260px] lg:h-[45vh] overflow-hidden">
@@ -51,7 +51,7 @@ const lang: Locale = 'en';
       <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent group-hover:from-black/70 transition-all duration-500" />
       <div class="absolute bottom-0 left-0 right-0 p-8 md:p-10">
         <span class="font-heading text-[11px] font-medium text-accent-gold uppercase tracking-[0.2em] mb-2 block">{t('manifeste', 'imgDiscover', lang)}</span>
-        <h3 class="font-display text-2xl md:text-3xl font-normal text-white">{t('manifeste', 'imgLabel2', lang)}</h3>
+        <h3 class="font-display text-2xl md:text-3xl font-bold uppercase text-white">{t('manifeste', 'imgLabel2', lang)}</h3>
       </div>
     </a>
   </div>
@@ -94,8 +94,8 @@ const lang: Locale = 'en';
       <div class="relative mb-16 md:mb-24" data-reveal>
         <span class="section-number-xl">07</span>
         <span class="section-number">{t('temoignages', 'number', lang)}</span>
-        <h2 class="font-display text-section font-normal text-primary-dark mt-6">
-          {t('temoignages', 'title1', lang)} <TextMorph client:visible words={tArray('temoignages', 'morphWords', lang)} className="font-display font-normal" />
+        <h2 class="font-display text-section font-bold uppercase text-primary-dark mt-6">
+          {t('temoignages', 'title1', lang)} <TextMorph client:visible words={tArray('temoignages', 'morphWords', lang)} className="font-display font-bold uppercase" />
         </h2>
         <p class="font-body text-lg font-light text-[var(--color-text-light)] mt-4 max-w-xl">
           {t('temoignages', 'subtitle', lang)}
@@ -121,7 +121,7 @@ const lang: Locale = 'en';
         <span class="font-heading text-xs font-semibold text-accent-gold uppercase tracking-[0.2em] mb-6 block">
           {t('cta', 'label', lang)}
         </span>
-        <h2 class="font-display text-[clamp(32px,5vw,56px)] font-normal text-white leading-[1.3] mb-6" set:html={t('cta', 'title', lang).replace('\n', '<br />')} />
+        <h2 class="font-display text-[clamp(36px,5.5vw,64px)] font-bold uppercase text-white leading-[1.15] mb-6" set:html={t('cta', 'title', lang).replace('\n', '<br />')} />
         <p class="font-body text-lg font-light text-white/70 mb-12 max-w-xl mx-auto leading-[1.8]">
           {t('cta', 'subtitle', lang)}
         </p>
