@@ -26,7 +26,7 @@ export default function TextRibbon({
   } as React.CSSProperties;
 
   return (
-    <div className={`overflow-hidden ${className}`}>
+    <div className={`overflow-hidden py-1.5 ${className}`}>
       <div
         className="flex whitespace-nowrap font-heading text-[11px] leading-none font-semibold uppercase tracking-[0.2em] text-primary-dark/20"
         style={animStyle}
