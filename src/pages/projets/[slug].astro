@@ -132,10 +132,6 @@ const related = [
     </Container>
   </Section>
 
-  <div class="relative z-10 -my-[60px] pointer-events-none">
-    <SectionDivider client:visible />
-  </div>
-
   <!-- Bento défilant — images du projet -->
   {project.images.length > 1 && (
     <div class="bg-[var(--color-warm)]">
@@ -176,8 +172,8 @@ const related = [
     </Container>
   </Section>
 
-  <div class="relative z-10 -my-[60px] pointer-events-none">
-    <SectionDivider client:visible />
+  <div class="relative z-[5] -my-16 h-32 bg-gradient-to-b from-[var(--color-warm)] to-white pointer-events-none">
+    <SectionDivider client:visible height={128} />
   </div>
 
   <!-- Galerie -->
@@ -223,8 +219,8 @@ const related = [
     </Section>
   )}
 
-  <div class="relative z-10 -my-[60px] pointer-events-none">
-    <SectionDivider client:visible />
+  <div class="relative z-[5] -my-16 h-32 bg-gradient-to-b from-white to-[var(--color-warm)] pointer-events-none">
+    <SectionDivider client:visible height={128} />
   </div>
 
   <!-- Matériaux d'exception -->
