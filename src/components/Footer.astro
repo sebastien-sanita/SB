@@ -85,6 +85,7 @@ const lang = Astro.props.lang ?? getLangFromUrl(Astro.url);
           <li><a href={getLocalizedPath('/', lang)} class="text-white/60 hover:text-white transition-colors duration-fast block py-[6px]">{t('footer', 'accueil', lang)}</a></li>
           <li><a href={getLocalizedPath('/projets', lang)} class="text-white/60 hover:text-white transition-colors duration-fast block py-[6px]">{t('footer', 'nosProjets', lang)}</a></li>
           <li><a href={getLocalizedPath('/expertise', lang)} class="text-white/60 hover:text-white transition-colors duration-fast block py-[6px]">{t('footer', 'notreExpertise', lang)}</a></li>
+          <li><a href={getLocalizedPath('/agence', lang)} class="text-white/60 hover:text-white transition-colors duration-fast block py-[6px]">{t('nav', 'agence', lang)}</a></li>
           <li><a href={getLocalizedPath('/a-propos', lang)} class="text-white/60 hover:text-white transition-colors duration-fast block py-[6px]">{t('footer', 'leStudio', lang)}</a></li>
           <li><a href={getLocalizedPath('/contact', lang)} class="text-white/60 hover:text-white transition-colors duration-fast block py-[6px]">{t('nav', 'contact', lang)}</a></li>
         </ul>

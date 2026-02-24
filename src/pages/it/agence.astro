@@ -1,0 +1,275 @@
+---
+/**
+ * Page L'Agenzia & Il Nostro Metodo — Luxury Property Transformation (IT)
+ * Posizionamento strategico: agenzia di architettura & valorizzazione immobiliare
+ * con capacità operativa integrata
+ */
+import Layout from '@layouts/Layout.astro';
+import Section from '@components/ui/Section.astro';
+import Container from '@components/ui/Container.astro';
+import Button from '@components/ui/Button.astro';
+import HeroInner from '@components/react/HeroInner';
+import TextRibbon from '@components/react/TextRibbon';
+import { t, tArray, getLocalizedPath } from '@i18n/index';
+import type { Locale } from '@i18n/languages';
+
+const lang: Locale = 'it';
+const p = 'agencePage' as const;
+
+const agenceRibbon = ['Architettura', 'Padronanza Globale', 'Valorizzazione', 'Luxury Transformation'].join('  ◆  ');
+---
+
+<Layout
+  lang={lang}
+  title={t(p, 'metaTitle', lang)}
+  description={t(p, 'metaDesc', lang)}
+>
+
+  <div class="-mt-[80px]">
+    <HeroInner
+      client:load
+      images={[
+        '/images/expertise/villa-garden-pool.jpg',
+        '/images/expertise/luxury-dining-room.jpg',
+        '/images/expertise/villa-panoramic-view.jpg',
+      ]}
+      label={t(p, 'heroLabel', lang)}
+      title=""
+      titlePrefix={t(p, 'heroPrefix', lang)}
+      titleMorphWords={tArray(p, 'heroMorphWords', lang)}
+      subtitle={t(p, 'heroSubtitle', lang)}
+    />
+  </div>
+
+  <!-- Sezione 01 — Visione -->
+  <Section padding="lg">
+    <Container>
+      <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] gap-12 lg:gap-20 items-start">
+        <div class="relative" data-reveal>
+          <div class="hidden lg:block absolute -top-6 -left-6 w-28 h-px bg-accent-gold/30" />
+          <div class="hidden lg:block absolute -top-6 -left-6 w-px h-28 bg-accent-gold/30" />
+
+          <span class="subsection-number">{t(p, 'visionLabel', lang)}</span>
+          <h2 class="font-display text-subsection font-bold uppercase text-primary-dark mt-4 mb-8">
+            {t(p, 'visionTitle1', lang)}<br />
+            <span class="font-heading font-light">{t(p, 'visionTitle2', lang)}</span><br />
+            <span class="font-heading font-light">{t(p, 'visionTitle3', lang)}</span>
+          </h2>
+          <div class="space-y-6">
+            <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.75]" data-reveal data-reveal-delay="0.1">
+              {t(p, 'visionP1', lang)}
+            </p>
+            <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.75]" data-reveal data-reveal-delay="0.2">
+              {t(p, 'visionP2', lang)}
+            </p>
+          </div>
+          <blockquote class="mt-10 pl-6 border-l-2 border-accent-gold" data-reveal data-reveal-delay="0.3">
+            <p class="font-display text-xl italic font-normal text-primary-dark leading-relaxed">
+              &laquo; {t(p, 'visionQuote', lang)} &raquo;
+            </p>
+          </blockquote>
+        </div>
+
+        <div class="relative mt-8 lg:mt-16" data-clip-reveal="right">
+          <div class="overflow-hidden">
+            <img src="/images/expertise/villa-garden-pool.jpg" alt="Villa di lusso Costa Azzurra" class="w-full h-[500px] lg:h-[75vh] lg:min-h-[600px] object-cover transition-transform duration-700 ease-smooth hover:scale-[1.05]" data-parallax="0.12" loading="lazy" />
+          </div>
+          <div class="hidden lg:block absolute -bottom-14 -left-16 w-[260px] h-[360px] overflow-hidden z-10 group/secondary">
+            <img src="/images/expertise/modern-kitchen-luxury.jpg" alt="Trasformazione interiore di lusso" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover/secondary:scale-[1.08]" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </Container>
+  </Section>
+
+  <div class="overflow-hidden" style="background: linear-gradient(to bottom, var(--color-background), var(--color-primary-warm));">
+    <TextRibbon text={agenceRibbon} direction="left" speed={35} client:visible />
+  </div>
+
+  <!-- Sezione 02 — Posizionamento -->
+  <Section background="warm" padding="lg">
+    <Container>
+      <div class="relative">
+        <span class="section-number-xl">01</span>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center" data-reveal>
+
+          <div data-reveal data-reveal-delay="0.1">
+            <span class="subsection-number">01</span>
+            <h2 class="font-display text-subsection font-bold uppercase text-primary-dark mt-4 mb-6">
+              <span class="font-display">{t(p, 'posTitle1', lang)}</span><br />
+              <span class="font-heading font-light">{t(p, 'posTitle2', lang)}</span>
+            </h2>
+            <div class="space-y-5 mb-8">
+              <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.75]">
+                {t(p, 'posP1', lang)}
+              </p>
+              <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.75]">
+                {t(p, 'posP2', lang)}
+              </p>
+              <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.75]">
+                {t(p, 'posP3', lang)}
+              </p>
+            </div>
+
+            <div class="flex flex-wrap gap-3">
+              {[t(p, 'posTag1', lang), t(p, 'posTag2', lang), t(p, 'posTag3', lang)].map((tag) => (
+                <span class="px-4 py-2 border border-accent-gold/20 font-heading text-[11px] font-medium uppercase tracking-[0.15em] text-accent-brown">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 grid-rows-3 gap-2 h-[500px] lg:h-[75vh] lg:min-h-[600px]" data-reveal>
+            <div class="group relative col-span-2 row-span-2 overflow-hidden">
+              <img src="/images/expertise/conception-villa-1.jpg" alt="Progettazione architettonica villa" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+            </div>
+            <div class="group relative overflow-hidden">
+              <img src="/images/expertise/interior-salon-1.jpg" alt="Design salone di lusso" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+            </div>
+            <div class="group relative overflow-hidden">
+              <img src="/images/expertise/valorisation-terrasse-1.jpg" alt="Terrazza villa Costa Azzurra" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </Section>
+
+  <div class="group relative w-full h-[40vh] min-h-[280px] overflow-hidden" data-slide-in="left">
+    <img src="/images/hero/luxury-interior-living.jpg" alt="" class="w-full h-full object-cover transition-transform duration-[1.2s] ease-smooth group-hover:scale-[1.05]" data-parallax="0.1" loading="lazy" />
+  </div>
+
+  <div class="overflow-hidden" style="background: linear-gradient(to bottom, var(--color-background), var(--color-background));">
+    <TextRibbon text={agenceRibbon} direction="right" speed={40} client:visible />
+  </div>
+
+  <!-- Sezione 03 — Modello operativo integrato -->
+  <Section padding="lg">
+    <Container>
+      <div class="relative">
+        <span class="section-number-xl">02</span>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center" data-reveal>
+
+          <div class="grid grid-cols-2 grid-rows-3 gap-2 h-[500px] lg:h-[75vh] lg:min-h-[600px] order-2 lg:order-1" data-reveal>
+            <div class="group relative row-span-2 overflow-hidden">
+              <img src="/images/expertise/interior-cuisine-1.jpg" alt="Cucina su misura di lusso" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+            </div>
+            <div class="group relative overflow-hidden">
+              <img src="/images/expertise/conception-villa-2.jpg" alt="Architettura villa premium" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+            </div>
+            <div class="group relative overflow-hidden">
+              <img src="/images/expertise/interior-chambre-1.jpg" alt="Suite padronale di lusso" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+            </div>
+            <div class="group relative col-span-2 overflow-hidden">
+              <img src="/images/expertise/interior-sdb-1.jpg" alt="Bagno d'eccezione" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+            </div>
+          </div>
+
+          <div class="order-1 lg:order-2" data-reveal data-reveal-delay="0.1">
+            <span class="subsection-number">02</span>
+            <h2 class="font-display text-subsection font-bold uppercase text-primary-dark mt-4 mb-6">
+              <span class="font-display">{t(p, 'modeTitle1', lang)}</span> <span class="font-heading font-light">{t(p, 'modeTitle2', lang)}</span>
+            </h2>
+            <div class="space-y-5 mb-8">
+              <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.75]">
+                {t(p, 'modeP1', lang)}
+              </p>
+              <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.75]">
+                {t(p, 'modeP2', lang)}
+              </p>
+            </div>
+            <ul class="space-y-3 mb-8">
+              {[t(p, 'modeItem1', lang), t(p, 'modeItem2', lang), t(p, 'modeItem3', lang), t(p, 'modeItem4', lang)].map((item) => (
+                <li class="flex items-start gap-3">
+                  <svg class="w-5 h-5 text-accent-gold mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span class="font-body text-sm font-light text-[var(--color-text-light)]">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </Section>
+
+  <div class="overflow-hidden" style="background: linear-gradient(to bottom, var(--color-background), var(--color-primary-warm));">
+    <TextRibbon text={agenceRibbon} direction="left" speed={38} client:visible />
+  </div>
+
+  <!-- Sezione 04 — Vantaggi per il cliente -->
+  <Section background="warm" padding="lg" style="background: linear-gradient(to bottom, var(--color-primary-warm) 80%, var(--color-background));">
+    <Container>
+      <div class="relative mb-16 md:mb-24" data-reveal>
+        <span class="section-number-xl">03</span>
+        <span class="section-number">{t(p, 'benefLabel', lang)}</span>
+        <h2 class="font-heading text-section text-primary-dark mt-6" data-split-words>
+          <span class="font-heading font-light">{t(p, 'benefTitle1', lang)}</span> <span class="font-display font-bold uppercase">{t(p, 'benefTitle2', lang)}</span>
+        </h2>
+        <p class="font-body text-lg font-light text-[var(--color-text-light)] mt-4 max-w-xl">
+          {t(p, 'benefSubtitle', lang)}
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16">
+        {[
+          { number: t(p, 'benef1Number', lang), title: t(p, 'benef1Title', lang), desc: t(p, 'benef1Desc', lang) },
+          { number: t(p, 'benef2Number', lang), title: t(p, 'benef2Title', lang), desc: t(p, 'benef2Desc', lang) },
+          { number: t(p, 'benef3Number', lang), title: t(p, 'benef3Title', lang), desc: t(p, 'benef3Desc', lang) },
+          { number: t(p, 'benef4Number', lang), title: t(p, 'benef4Title', lang), desc: t(p, 'benef4Desc', lang) },
+        ].map((item, i) => (
+          <div class="flex gap-6" data-reveal data-reveal-delay={`${i * 0.1}`}>
+            <span class="font-heading text-3xl font-light text-accent-gold/40 shrink-0">{item.number}</span>
+            <div>
+              <h3 class="font-display text-xl font-medium uppercase text-primary-dark mb-3">{item.title}</h3>
+              <p class="font-body text-sm font-light text-[var(--color-text-light)] leading-relaxed">{item.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </Container>
+  </Section>
+
+  <!-- Sezione argomento agenzie -->
+  <Section padding="lg">
+    <Container>
+      <div class="max-w-3xl mx-auto text-center" data-reveal>
+        <span class="font-heading text-[11px] font-medium uppercase tracking-[0.2em] text-accent-brown mb-6 block">
+          {t(p, 'agencesLabel', lang)}
+        </span>
+        <blockquote class="relative">
+          <div class="hidden lg:block absolute -top-4 -left-8 w-20 h-px bg-accent-gold/30" />
+          <div class="hidden lg:block absolute -top-4 -left-8 w-px h-20 bg-accent-gold/30" />
+          <div class="hidden lg:block absolute -bottom-4 -right-8 w-20 h-px bg-accent-gold/30" />
+          <div class="hidden lg:block absolute -bottom-4 -right-8 w-px h-20 bg-accent-gold/30" />
+          <p class="font-display text-[clamp(22px,3.5vw,36px)] italic font-normal text-primary-dark leading-snug px-4 lg:px-12 py-8">
+            &laquo; {t(p, 'agencesQuote', lang)} &raquo;
+          </p>
+        </blockquote>
+      </div>
+    </Container>
+  </Section>
+
+  <!-- CTA -->
+  <Section background="dark" padding="lg">
+    <Container>
+      <div class="text-center max-w-2xl mx-auto" data-reveal>
+        <h2 class="font-display text-section font-bold uppercase text-white mb-6">
+          {t(p, 'ctaTitle1', lang)} {t(p, 'ctaTitle2', lang)} <span class="font-heading font-light">{t(p, 'ctaTitle3', lang)}</span>
+        </h2>
+        <p class="font-body text-lg font-light text-white/70 mb-10 leading-relaxed">
+          {t(p, 'ctaDesc', lang)}
+        </p>
+        <Button href={getLocalizedPath('/contact', lang)} variant="primary" size="lg">
+          {t(p, 'ctaBtn', lang)}
+        </Button>
+      </div>
+    </Container>
+  </Section>
+
+</Layout>

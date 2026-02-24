@@ -10,6 +10,7 @@ const strings = {
     projets:    { fr: 'Projets',    en: 'Projects',   it: 'Progetti' },
     studio:     { fr: 'Expertise',   en: 'Expertise',  it: 'Competenze' },
     processus:  { fr: 'À propos',   en: 'About',      it: 'Chi Siamo' },
+    agence:     { fr: 'L\'Agence',   en: 'The Studio',  it: 'L\'Agenzia' },
     contact:    { fr: 'Contact',    en: 'Contact',    it: 'Contatti' },
     accueil:    { fr: 'Accueil',    en: 'Home',       it: 'Home' },
     rdv:        { fr: 'Rendez-vous', en: 'Book a Call', it: 'Appuntamento' },
@@ -652,6 +653,166 @@ const strings = {
     materialsTitle2: { fr: 'd\'exception', en: '& finishes', it: 'pregiati' },
     highlightsTitle1: { fr: 'Points', en: 'Key', it: 'Punti' },
     highlightsTitle2: { fr: 'forts', en: 'features', it: 'di forza' },
+  },
+
+  // ── Page Agence & Notre Méthode ─────────────────────────
+  agencePage: {
+    metaTitle: {
+      fr: 'L\'Agence & Notre Méthode — Luxury Property Transformation | SB Design Riviera',
+      en: 'The Studio & Our Approach — Luxury Property Transformation | SB Design Riviera',
+      it: 'L\'Agenzia & Il Nostro Metodo — Luxury Property Transformation | SB Design Riviera',
+    },
+    metaDesc: {
+      fr: 'SB Design Riviera : agence d\'architecture et de valorisation immobilière haut de gamme. Maîtrise complète de la transformation, de la conception à la livraison, sur la Côte d\'Azur.',
+      en: 'SB Design Riviera: high-end architecture and property enhancement studio. Complete mastery of transformation from design to delivery on the French Riviera.',
+      it: 'SB Design Riviera: agenzia di architettura e valorizzazione immobiliare di lusso. Padronanza completa della trasformazione, dalla concezione alla consegna, sulla Costa Azzurra.',
+    },
+    heroLabel: { fr: 'L\'Agence', en: 'The Studio', it: 'L\'Agenzia' },
+    heroPrefix: { fr: 'Notre', en: 'Our', it: 'Il Nostro' },
+    heroMorphWords: {
+      fr: ['Méthode', 'Maîtrise', 'Engagement'],
+      en: ['Approach', 'Mastery', 'Commitment'],
+      it: ['Metodo', 'Padronanza', 'Impegno'],
+    },
+    heroSubtitle: {
+      fr: 'Une maîtrise complète de la transformation immobilière haut de gamme sur la Côte d\'Azur.',
+      en: 'Complete mastery of high-end property transformation on the French Riviera.',
+      it: 'Padronanza completa della trasformazione immobiliare di lusso sulla Costa Azzurra.',
+    },
+    // Section 01 — Vision
+    visionLabel: { fr: 'Notre Vision', en: 'Our Vision', it: 'La Nostra Visione' },
+    visionTitle1: { fr: 'Maîtrise complète', en: 'Complete mastery', it: 'Padronanza completa' },
+    visionTitle2: { fr: 'de la transformation', en: 'of property', it: 'della trasformazione' },
+    visionTitle3: { fr: 'immobilière haut de gamme', en: 'transformation', it: 'immobiliare di lusso' },
+    visionP1: {
+      fr: 'Nous concevons et réalisons des transformations immobilières d\'exception en combinant approche architecturale, vision patrimoniale et capacité opérationnelle intégrée.',
+      en: 'We design and deliver exceptional property transformations by combining architectural vision, asset strategy and integrated operational capability.',
+      it: 'Concepiamo e realizziamo trasformazioni immobiliari d\'eccezione combinando approccio architettonico, visione patrimoniale e capacità operativa integrata.',
+    },
+    visionP2: {
+      fr: 'Chaque projet est pensé comme un tout : esthétique, fonctionnel et stratégique. De la première esquisse à la remise des clés, nous orchestrons l\'ensemble de la transformation avec une exigence absolue.',
+      en: 'Every project is conceived as a whole: aesthetic, functional and strategic. From the first sketch to key handover, we orchestrate the entire transformation with absolute rigour.',
+      it: 'Ogni progetto è pensato come un insieme: estetico, funzionale e strategico. Dal primo schizzo alla consegna delle chiavi, orchestriamo l\'intera trasformazione con un\'esigenza assoluta.',
+    },
+    visionQuote: {
+      fr: 'Concevoir, transformer et valoriser — avec une maîtrise complète du projet.',
+      en: 'Design, transform and enhance — with complete project mastery.',
+      it: 'Concepire, trasformare e valorizzare — con una padronanza completa del progetto.',
+    },
+    // Section 02 — Positionnement
+    posLabel: { fr: 'Notre Positionnement', en: 'Our Positioning', it: 'Il Nostro Posizionamento' },
+    posTitle1: { fr: 'Agence d\'architecture', en: 'Architecture', it: 'Agenzia di architettura' },
+    posTitle2: { fr: '& valorisation immobilière', en: '& property enhancement', it: '& valorizzazione immobiliare' },
+    posP1: {
+      fr: 'SB Design Riviera est une agence d\'architecture intérieure et de valorisation immobilière spécialisée dans les propriétés haut de gamme de la Côte d\'Azur.',
+      en: 'SB Design Riviera is an interior architecture and property enhancement studio specialising in high-end properties on the French Riviera.',
+      it: 'SB Design Riviera è un\'agenzia di architettura d\'interni e valorizzazione immobiliare specializzata nelle proprietà di lusso della Costa Azzurra.',
+    },
+    posP2: {
+      fr: 'Notre expertise s\'adresse aux résidences secondaires et aux investissements premium : villas, penthouses et propriétés d\'exception destinées à une clientèle internationale exigeante.',
+      en: 'Our expertise is dedicated to secondary residences and premium investments: villas, penthouses and exceptional properties for a discerning international clientele.',
+      it: 'La nostra expertise è dedicata alle residenze secondarie e agli investimenti premium: ville, attici e proprietà d\'eccezione per una clientela internazionale esigente.',
+    },
+    posP3: {
+      fr: 'Ce qui nous distingue : la capacité de penser un projet dans sa globalité, de l\'intention architecturale à la stratégie de valorisation patrimoniale.',
+      en: 'What sets us apart: the ability to conceive a project in its entirety, from architectural intent to asset enhancement strategy.',
+      it: 'Ciò che ci distingue: la capacità di pensare un progetto nella sua globalità, dall\'intenzione architettonica alla strategia di valorizzazione patrimoniale.',
+    },
+    posTag1: { fr: 'Architecture intérieure', en: 'Interior Architecture', it: 'Architettura d\'interni' },
+    posTag2: { fr: 'Résidences premium', en: 'Premium Residences', it: 'Residenze premium' },
+    posTag3: { fr: 'Investissements haut de gamme', en: 'High-end Investments', it: 'Investimenti di lusso' },
+    // Section 03 — Mode opératoire intégré
+    modeLabel: { fr: 'Notre Mode Opératoire', en: 'Our Operating Model', it: 'Il Nostro Modello Operativo' },
+    modeTitle1: { fr: 'Structure', en: 'Integrated', it: 'Struttura' },
+    modeTitle2: { fr: 'intégrée', en: 'structure', it: 'integrata' },
+    modeP1: {
+      fr: 'SB Design Riviera s\'appuie sur une structure intégrée permettant de piloter et de réaliser en interne l\'ensemble des travaux de second œuvre, garantissant cohérence architecturale, qualité d\'exécution et maîtrise des délais.',
+      en: 'SB Design Riviera relies on an integrated structure enabling us to manage and deliver all interior fit-out works in-house, ensuring architectural consistency, execution quality and schedule control.',
+      it: 'SB Design Riviera si avvale di una struttura integrata che permette di gestire e realizzare internamente tutti i lavori di seconda opera, garantendo coerenza architettonica, qualità di esecuzione e rispetto dei tempi.',
+    },
+    modeP2: {
+      fr: 'Cette capacité opérationnelle unique permet de maintenir une vision créative sans compromis, du concept initial à la finition la plus exigeante.',
+      en: 'This unique operational capability allows us to maintain an uncompromising creative vision, from initial concept to the most demanding finish.',
+      it: 'Questa capacità operativa unica permette di mantenere una visione creativa senza compromessi, dal concept iniziale alla finitura più esigente.',
+    },
+    modeItem1: {
+      fr: 'Pilotage complet du chantier de A à Z',
+      en: 'Complete site management from A to Z',
+      it: 'Gestione completa del cantiere dalla A alla Z',
+    },
+    modeItem2: {
+      fr: 'Réalisation en interne des travaux de second œuvre',
+      en: 'In-house delivery of all interior fit-out works',
+      it: 'Realizzazione interna dei lavori di seconda opera',
+    },
+    modeItem3: {
+      fr: 'Cohérence architecturale garantie à chaque étape',
+      en: 'Architectural consistency guaranteed at every stage',
+      it: 'Coerenza architettonica garantita in ogni fase',
+    },
+    modeItem4: {
+      fr: 'Maîtrise des délais et des coûts',
+      en: 'Schedule and cost control',
+      it: 'Rispetto dei tempi e dei costi',
+    },
+    // Section 04 — Bénéfice client
+    benefLabel: { fr: 'Votre Avantage', en: 'Your Advantage', it: 'Il Vostro Vantaggio' },
+    benefTitle1: { fr: 'Ce que cela', en: 'What this means', it: 'Cosa significa' },
+    benefTitle2: { fr: 'change pour vous', en: 'for you', it: 'per voi' },
+    benefSubtitle: {
+      fr: 'Pour les agences immobilières, les propriétaires et les acquéreurs internationaux',
+      en: 'For real estate agencies, property owners and international buyers',
+      it: 'Per le agenzie immobiliari, i proprietari e gli acquirenti internazionali',
+    },
+    benef1Number: { fr: '01', en: '01', it: '01' },
+    benef1Title: { fr: 'Un interlocuteur unique', en: 'A single point of contact', it: 'Un interlocutore unico' },
+    benef1Desc: {
+      fr: 'Un seul partenaire de confiance pour l\'ensemble du projet. Plus besoin de coordonner architecte, entreprise de travaux et décorateur — nous intégrons toutes les compétences.',
+      en: 'A single trusted partner for the entire project. No need to coordinate architect, contractor and decorator — we integrate all competencies.',
+      it: 'Un unico partner di fiducia per l\'intero progetto. Non è più necessario coordinare architetto, impresa di lavori e decoratore — integriamo tutte le competenze.',
+    },
+    benef2Number: { fr: '02', en: '02', it: '02' },
+    benef2Title: { fr: 'Vision architecturale cohérente', en: 'Consistent architectural vision', it: 'Visione architettonica coerente' },
+    benef2Desc: {
+      fr: 'De la conception à l\'exécution, la même intention créative guide chaque décision. Aucune déperdition entre le projet et sa réalisation.',
+      en: 'From design to execution, the same creative intent guides every decision. No loss between project vision and its realisation.',
+      it: 'Dalla concezione all\'esecuzione, la stessa intenzione creativa guida ogni decisione. Nessuna dispersione tra il progetto e la sua realizzazione.',
+    },
+    benef3Number: { fr: '03', en: '03', it: '03' },
+    benef3Title: { fr: 'Exécution maîtrisée', en: 'Controlled execution', it: 'Esecuzione controllata' },
+    benef3Desc: {
+      fr: 'Qualité d\'exécution garantie par nos équipes internes. Chaque détail est suivi avec la rigueur d\'un atelier, pas d\'un chantier.',
+      en: 'Execution quality guaranteed by our in-house teams. Every detail is managed with the rigour of a workshop, not a construction site.',
+      it: 'Qualità di esecuzione garantita dai nostri team interni. Ogni dettaglio è seguito con il rigore di un atelier, non di un cantiere.',
+    },
+    benef4Number: { fr: '04', en: '04', it: '04' },
+    benef4Title: { fr: 'Transformation complète du bien', en: 'Complete property transformation', it: 'Trasformazione completa del bene' },
+    benef4Desc: {
+      fr: 'Livraison clé en main d\'une propriété entièrement repensée et valorisée — prête à vivre ou à mettre sur le marché premium.',
+      en: 'Turnkey delivery of a fully redesigned and enhanced property — ready to live in or to place on the premium market.',
+      it: 'Consegna chiavi in mano di una proprietà interamente ripensata e valorizzata — pronta da vivere o da posizionare sul mercato premium.',
+    },
+    // Section agences
+    agencesQuote: {
+      fr: 'Après l\'achat, SBDesign Riviera peut concevoir et gérer la transformation complète du bien.',
+      en: 'After the purchase, SBDesign Riviera can design and manage the complete property transformation.',
+      it: 'Dopo l\'acquisto, SBDesign Riviera può concepire e gestire la trasformazione completa dell\'immobile.',
+    },
+    agencesLabel: {
+      fr: 'L\'argument clé pour les agences immobilières de prestige',
+      en: 'The key argument for prestige real estate agencies',
+      it: 'L\'argomento chiave per le agenzie immobiliari di prestigio',
+    },
+    // CTA
+    ctaTitle1: { fr: 'Discutons de', en: 'Let\'s discuss', it: 'Parliamo del' },
+    ctaTitle2: { fr: 'votre', en: 'your', it: 'vostro' },
+    ctaTitle3: { fr: 'projet', en: 'project', it: 'progetto' },
+    ctaDesc: {
+      fr: 'Propriétaire, investisseur ou agence immobilière — contactez-nous pour un échange confidentiel sur votre projet.',
+      en: 'Owner, investor or real estate agency — contact us for a confidential discussion about your project.',
+      it: 'Proprietario, investitore o agenzia immobiliare — contattateci per uno scambio confidenziale sul vostro progetto.',
+    },
+    ctaBtn: { fr: 'Prendre rendez-vous', en: 'Book a Consultation', it: 'Prenota un Appuntamento' },
   },
 } as const;
 
