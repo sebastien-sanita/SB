@@ -198,15 +198,116 @@ const agenceRibbon = ['Architecture', 'Maîtrise Globale', 'Valorisation', 'Luxu
     </Container>
   </Section>
 
-  <div class="overflow-hidden" style="background: linear-gradient(to bottom, var(--color-background), var(--color-primary-warm));">
+  <!-- Section — Approche complémentaire aux architectes -->
+  <Section background="warm" padding="lg">
+    <Container>
+      <div class="relative">
+        <span class="section-number-xl">03</span>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center" data-reveal>
+
+          <div data-reveal data-reveal-delay="0.1">
+            <span class="subsection-number">03</span>
+            <h2 class="font-display text-subsection font-bold uppercase text-primary-dark mt-4 mb-6">
+              <span class="font-display">{t(p, 'archiTitle1', lang)}</span><br />
+              <span class="font-heading font-light">{t(p, 'archiTitle2', lang)}</span>
+            </h2>
+            <div class="space-y-5 mb-8">
+              <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.75]">
+                {t(p, 'archiP1', lang)}
+              </p>
+              <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.75]">
+                {t(p, 'archiP2', lang)}
+              </p>
+              <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.75]">
+                {t(p, 'archiP3', lang)}
+              </p>
+              <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.75]">
+                {t(p, 'archiP4', lang)}
+              </p>
+            </div>
+
+            <div class="flex flex-wrap gap-3">
+              {[t(p, 'archiTag1', lang), t(p, 'archiTag2', lang), t(p, 'archiTag3', lang)].map((tag) => (
+                <span class="px-4 py-2 border border-accent-gold/20 font-heading text-[11px] font-medium uppercase tracking-[0.15em] text-accent-brown">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 grid-rows-3 gap-2 h-[500px] lg:h-[75vh] lg:min-h-[600px]" data-reveal>
+            <div class="group relative col-span-2 row-span-2 overflow-hidden">
+              <img src="/images/expertise/conception-villa-2.jpg" alt="Collaboration architecturale villa" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+            </div>
+            <div class="group relative overflow-hidden">
+              <img src="/images/expertise/interior-sdb-1.jpg" alt="Lots techniques haut de gamme" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+            </div>
+            <div class="group relative overflow-hidden">
+              <img src="/images/expertise/interior-chambre-1.jpg" alt="Agencements sur mesure" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </Section>
+
+  <div class="overflow-hidden" style="background: linear-gradient(to bottom, var(--color-primary-warm), var(--color-background));">
     <TextRibbon text={agenceRibbon} direction="left" speed={38} client:visible />
+  </div>
+
+  <!-- Section — Présence territoriale RS.D Lyon -->
+  <Section padding="lg">
+    <Container>
+      <div class="relative">
+        <span class="section-number-xl">04</span>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center" data-reveal>
+
+          <div class="order-2 lg:order-1 relative" data-reveal>
+            <div class="aspect-[4/3] overflow-hidden">
+              <img src="/images/hero/luxury-interior-living.jpg" alt="Boutique RS.D Lyon" class="w-full h-full object-cover transition-transform duration-700 ease-smooth hover:scale-[1.05]" loading="lazy" />
+            </div>
+          </div>
+
+          <div class="order-1 lg:order-2" data-reveal data-reveal-delay="0.1">
+            <span class="subsection-number">04</span>
+            <h2 class="font-display text-subsection font-bold uppercase text-primary-dark mt-4 mb-6">
+              <span class="font-display">{t(p, 'rsdTitle1', lang)}</span><br />
+              <span class="font-heading font-light">{t(p, 'rsdTitle2', lang)}</span>
+            </h2>
+            <div class="space-y-5 mb-8">
+              <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.75]">
+                {t(p, 'rsdP1', lang)}
+              </p>
+              <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.75]">
+                {t(p, 'rsdP2', lang)}
+              </p>
+            </div>
+            <ul class="space-y-3 mb-8">
+              {[t(p, 'rsdItem1', lang), t(p, 'rsdItem2', lang), t(p, 'rsdItem3', lang), t(p, 'rsdItem4', lang)].map((item) => (
+                <li class="flex items-start gap-3">
+                  <svg class="w-5 h-5 text-accent-gold mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span class="font-body text-sm font-light text-[var(--color-text-light)]">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </Container>
+  </Section>
+
+  <div class="overflow-hidden" style="background: linear-gradient(to bottom, var(--color-background), var(--color-primary-warm));">
+    <TextRibbon text={agenceRibbon} direction="right" speed={38} client:visible />
   </div>
 
   <!-- Section 04 — Bénéfice client -->
   <Section background="warm" padding="lg" style="background: linear-gradient(to bottom, var(--color-primary-warm) 80%, var(--color-background));">
     <Container>
       <div class="relative mb-16 md:mb-24" data-reveal>
-        <span class="section-number-xl">03</span>
+        <span class="section-number-xl">05</span>
         <span class="section-number">{t(p, 'benefLabel', lang)}</span>
         <h2 class="font-heading text-section text-primary-dark mt-6" data-split-words>
           <span class="font-heading font-light">{t(p, 'benefTitle1', lang)}</span> <span class="font-display font-bold uppercase">{t(p, 'benefTitle2', lang)}</span>

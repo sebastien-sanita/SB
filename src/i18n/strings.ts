@@ -658,14 +658,14 @@ const strings = {
   // ── Page Agence & Notre Méthode ─────────────────────────
   agencePage: {
     metaTitle: {
-      fr: 'L\'Agence & Notre Méthode — Luxury Property Transformation | SB Design Riviera',
-      en: 'The Studio & Our Approach — Luxury Property Transformation | SB Design Riviera',
-      it: 'L\'Agenzia & Il Nostro Metodo — Luxury Property Transformation | SB Design Riviera',
+      fr: 'L\'Agence & Notre Organisation — Luxury Property Transformation | SB Design Riviera',
+      en: 'The Studio & Our Organisation — Luxury Property Transformation | SB Design Riviera',
+      it: 'L\'Agenzia & La Nostra Organizzazione — Luxury Property Transformation | SB Design Riviera',
     },
     metaDesc: {
-      fr: 'SB Design Riviera : agence d\'architecture et de valorisation immobilière haut de gamme. Maîtrise complète de la transformation, de la conception à la livraison, sur la Côte d\'Azur.',
-      en: 'SB Design Riviera: high-end architecture and property enhancement studio. Complete mastery of transformation from design to delivery on the French Riviera.',
-      it: 'SB Design Riviera: agenzia di architettura e valorizzazione immobiliare di lusso. Padronanza completa della trasformazione, dalla concezione alla consegna, sulla Costa Azzurra.',
+      fr: 'SB Design Riviera : agence de conception et de transformation de propriétés haut de gamme, et partenaire opérationnel des architectes locaux. Présence Riviera et Lyon (RS.D).',
+      en: 'SB Design Riviera: high-end property design and transformation studio, and operational partner for local architects. Riviera and Lyon (RS.D) presence.',
+      it: 'SB Design Riviera: studio di progettazione e trasformazione di immobili di pregio, e partner operativo degli architetti locali. Presenza Riviera e Lione (RS.D).',
     },
     heroLabel: { fr: 'L\'Agence', en: 'The Studio', it: 'L\'Agenzia' },
     heroPrefix: { fr: 'Notre', en: 'Our', it: 'Il Nostro' },
@@ -791,6 +791,67 @@ const strings = {
       fr: 'Livraison clé en main d\'une propriété entièrement repensée et valorisée — prête à vivre ou à mettre sur le marché premium.',
       en: 'Turnkey delivery of a fully redesigned and enhanced property — ready to live in or to place on the premium market.',
       it: 'Consegna chiavi in mano di una proprietà interamente ripensata e valorizzata — pronta da vivere o da posizionare sul mercato premium.',
+    },
+    // Section — Approche complémentaire aux architectes
+    archiLabel: { fr: 'Notre Approche', en: 'Our Approach', it: 'Il Nostro Approccio' },
+    archiTitle1: { fr: 'Une approche', en: 'A complementary', it: 'Un approccio' },
+    archiTitle2: { fr: 'complémentaire aux architectes', en: 'approach for architects', it: 'complementare agli architetti' },
+    archiP1: {
+      fr: 'SBDesign Riviera intervient soit directement comme agence de conception et de transformation de propriétés haut de gamme, soit en collaboration avec des architectes locaux lorsque le projet le nécessite.',
+      en: 'SBDesign Riviera operates either as a design and transformation studio for high-end properties, or as an operational partner supporting architects in coordinating and executing part or all of the technical and finishing works.',
+      it: 'SBDesign Riviera interviene sia come studio di progettazione e trasformazione di immobili di pregio, sia come partner operativo a supporto degli architetti per coordinare e realizzare in tutto o in parte le opere tecniche e di finitura.',
+    },
+    archiP2: {
+      fr: 'Dans ce cadre, nous pouvons encadrer et réaliser tout ou partie des lots techniques et de second œuvre, en intégration avec les équipes de conception, afin d\'assurer une exécution cohérente et qualitative, dans le respect de la vision architecturale.',
+      en: 'Depending on the project configuration, we can ensure full project management or work in close integration with the architect\'s teams to guarantee a coherent execution fully aligned with the architectural vision.',
+      it: 'A seconda della configurazione del progetto, possiamo garantire una gestione globale del cantiere oppure operare in integrazione con i team dell\'architetto, assicurando un\'esecuzione coerente e fedele alla visione architettonica.',
+    },
+    archiP3: {
+      fr: 'Notre organisation intégrée (climatisation, plomberie, chauffage, agencements sur mesure) et notre présence locale facilitent la coordination des projets complexes, tout en conservant un interlocuteur unique pour le client.',
+      en: 'Our integrated structure includes in-house expertise covering key technical trades – HVAC, plumbing, heating and bespoke interior fit-out – allowing precise and high-quality project delivery.',
+      it: 'La nostra struttura integrata comprende competenze interne nei principali impianti tecnici – climatizzazione, idraulica, riscaldamento e arredi su misura – consentendo un controllo preciso e qualitativo del progetto.',
+    },
+    archiP4: {
+      fr: 'Nous nous appuyons également sur des relations directes avec des fournisseurs et marques italiennes d\'agencement et de décoration intérieure, afin de proposer des solutions adaptées au niveau d\'exigence des propriétés haut de gamme.',
+      en: 'We work directly with leading Italian suppliers and brands to source refined interior solutions fully aligned with the standards expected for prestige properties.',
+      it: 'Collaboriamo direttamente con fornitori e marchi italiani di riferimento per selezionare soluzioni d\'interior perfettamente in linea con il livello richiesto per immobili di prestigio.',
+    },
+    archiTag1: { fr: 'Agence complète', en: 'Full-service studio', it: 'Studio completo' },
+    archiTag2: { fr: 'Partenaire des architectes', en: 'Architects\' partner', it: 'Partner degli architetti' },
+    archiTag3: { fr: 'Sourcing italien premium', en: 'Premium Italian sourcing', it: 'Sourcing italiano premium' },
+    // Section — Présence territoriale RS.D Lyon
+    rsdLabel: { fr: 'Notre Présence', en: 'Our Presence', it: 'La Nostra Presenza' },
+    rsdTitle1: { fr: 'Une présence territoriale', en: 'A territorial presence', it: 'Una presenza territoriale' },
+    rsdTitle2: { fr: 'pensée pour l\'international', en: 'designed for international clients', it: 'pensata per l\'internazionale' },
+    rsdP1: {
+      fr: 'En complément de notre implantation sur la Riviera, nous disposons d\'une filiale lyonnaise, RS.D, conçue comme une boutique d\'étude et de sélection.',
+      en: 'Alongside our Riviera base, we operate a Lyon-based subsidiary, RS.D, designed as a dedicated boutique for project definition and material selection.',
+      it: 'Oltre alla sede sulla Riviera, disponiamo di una filiale a Lione, RS.D, concepita come boutique di studio e selezione.',
+    },
+    rsdP2: {
+      fr: 'Ce lieu central permet à une clientèle basée dans le nord de la France ou en Europe de préparer son projet, d\'effectuer ses choix d\'agencements et de cadrer les études préalables avec un interlocuteur unique, sans avoir à se déplacer de manière répétée dans le sud durant les phases de conception.',
+      en: 'This central location allows clients based in Northern France or across Europe to prepare their project, define interior choices and structure preliminary studies with a single point of contact, without the need for frequent travel to the south during the design phase.',
+      it: 'Questo spazio centrale permette ai clienti del nord della Francia o dell\'Europa di preparare il progetto, definire le scelte di arredo e impostare gli studi preliminari con un unico interlocutore, senza dover viaggiare frequentemente verso il sud durante la fase progettuale.',
+    },
+    rsdItem1: {
+      fr: 'Boutique d\'étude et de sélection à Lyon',
+      en: 'Design boutique and selection space in Lyon',
+      it: 'Boutique di studio e selezione a Lione',
+    },
+    rsdItem2: {
+      fr: 'Interlocuteur unique du nord au sud',
+      en: 'Single point of contact from north to south',
+      it: 'Interlocutore unico dal nord al sud',
+    },
+    rsdItem3: {
+      fr: 'Cadrage projet sans déplacements répétés',
+      en: 'Project scoping without repeated travel',
+      it: 'Definizione progetto senza spostamenti ripetuti',
+    },
+    rsdItem4: {
+      fr: 'Clientèle européenne et internationale',
+      en: 'European and international clientele',
+      it: 'Clientela europea e internazionale',
     },
     // Section agences
     agencesQuote: {
