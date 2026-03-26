@@ -14,54 +14,39 @@ import { t, tArray, getLocalizedPath, type Locale } from '@i18n/index';
 interface Props { lang?: Locale; }
 const lang = Astro.props.lang ?? 'fr';
 
+const comingSoonLabel: Record<string, string> = {
+  fr: 'Projet a venir',
+  en: 'Coming soon',
+  it: 'Prossimamente',
+};
+
 const projects = [
   {
     title: 'Villa Azur',
     category: t('portfolio', 'catRenovation', lang),
-    location: 'Saint-Jean-Cap-Ferrat',
-    image: '/images/projets/villa-azur-1.jpg',
+    location: 'Rayol-Canadel-sur-Mer',
+    image: '/images/projets/villa-azur-1.jpeg',
     slug: getLocalizedPath('/projets/villa-azur', lang),
     gridClass: 'md:col-span-2 md:row-span-2',
+    ready: true,
   },
   {
-    title: 'Penthouse Croisette',
+    title: 'Bormes-les-Mimosas',
     category: t('portfolio', 'catRenovation', lang),
-    location: 'Cannes',
-    image: '/images/projets/penthouse-croisette-1.jpg',
-    slug: getLocalizedPath('/projets/penthouse-croisette', lang),
+    location: 'Bormes-les-Mimosas',
+    image: '/images/projets/villa-azur-28.jpeg',
+    slug: '',
     gridClass: 'md:col-span-2',
+    ready: false,
   },
   {
-    title: 'Suite Riviera',
-    category: t('portfolio', 'catAmenagement', lang),
-    location: 'Nice',
-    image: '/images/projets/suite-riviera-1.jpg',
-    slug: getLocalizedPath('/projets/suite-riviera', lang),
-    gridClass: '',
-  },
-  {
-    title: "L'Ecrin",
+    title: 'Saint-Tropez',
     category: t('portfolio', 'catRenovation', lang),
-    location: 'Monaco',
-    image: '/images/projets/ecrin-monaco-1.jpg',
-    slug: getLocalizedPath('/projets/ecrin-monaco', lang),
-    gridClass: '',
-  },
-  {
-    title: 'Villa Horizon',
-    category: t('portfolio', 'catConstruction', lang),
-    location: 'Ramatuelle',
-    image: '/images/projets/villa-horizon-1.jpg',
-    slug: getLocalizedPath('/projets/villa-horizon', lang),
+    location: 'Saint-Tropez',
+    image: '/images/projets/villa-azur-30.jpeg',
+    slug: '',
     gridClass: 'md:col-span-2',
-  },
-  {
-    title: 'Bastide Provencale',
-    category: t('portfolio', 'catRenovation', lang),
-    location: 'Mougins',
-    image: '/images/projets/bastide-provencale-1.jpg',
-    slug: getLocalizedPath('/projets/bastide-provencale', lang),
-    gridClass: 'md:col-span-2',
+    ready: false,
   },
 ];
 ---
@@ -84,47 +69,66 @@ const projects = [
     </div>
 
     {/* Grille bento asymétrique */}
-    <div class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-[420px_420px_380px] gap-4 md:gap-5" data-mosaic>
+    <div class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-[420px_380px] gap-4 md:gap-5" data-mosaic>
       {projects.map((project) => (
-        <a
-          href={project.slug}
-          data-mosaic-item
-          class:list={[
-            'group relative overflow-hidden cursor-pointer block rounded-lg transition-all duration-base hover:-translate-y-2 hover:shadow-large',
-            project.gridClass,
-          ]}
-        >
-          {/* Image avec zoom au hover */}
-          <img
-            src={project.image}
-            alt={project.title}
-            class="w-full h-full object-cover transition-transform duration-slow ease-smooth group-hover:scale-[1.06]"
-            loading="lazy"
-          />
-
-          {/* Gradient subtil permanent → overlay au hover */}
-          <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent group-hover:from-black/70 group-hover:via-black/40 group-hover:to-black/20 transition-all duration-base ease-smooth rounded-lg" />
-
-          {/* Hover overlay : infos projet centrées */}
-          <div class="absolute inset-0 flex flex-col items-center justify-center text-center opacity-0 group-hover:opacity-100 transition-all duration-base ease-smooth p-6">
-            <span class="text-[11px] font-heading font-medium text-accent-gold uppercase tracking-[0.2em] mb-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-base delay-150">
-              {project.category}
-            </span>
-            <h3 class="font-display text-2xl md:text-3xl font-bold uppercase text-white mb-2 translate-y-3 group-hover:translate-y-0 transition-transform duration-base delay-75">
-              {project.title}
-            </h3>
-            <span class="text-xs font-heading font-light text-white/60 translate-y-2 group-hover:translate-y-0 transition-transform duration-base delay-200">
-              {project.location}
-            </span>
+        project.ready ? (
+          <a
+            href={project.slug}
+            data-mosaic-item
+            class:list={[
+              'group relative overflow-hidden cursor-pointer block rounded-lg transition-all duration-base hover:-translate-y-2 hover:shadow-large',
+              project.gridClass,
+            ]}
+          >
+            <img
+              src={project.image}
+              alt={project.title}
+              class="w-full h-full object-cover transition-transform duration-slow ease-smooth group-hover:scale-[1.06]"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent group-hover:from-black/70 group-hover:via-black/40 group-hover:to-black/20 transition-all duration-base ease-smooth rounded-lg" />
+            <div class="absolute inset-0 flex flex-col items-center justify-center text-center opacity-0 group-hover:opacity-100 transition-all duration-base ease-smooth p-6">
+              <span class="text-[11px] font-heading font-medium text-accent-gold uppercase tracking-[0.2em] mb-2 translate-y-4 group-hover:translate-y-0 transition-transform duration-base delay-150">
+                {project.category}
+              </span>
+              <h3 class="font-display text-2xl md:text-3xl font-bold uppercase text-white mb-2 translate-y-3 group-hover:translate-y-0 transition-transform duration-base delay-75">
+                {project.title}
+              </h3>
+              <span class="text-xs font-heading font-light text-white/60 translate-y-2 group-hover:translate-y-0 transition-transform duration-base delay-200">
+                {project.location}
+              </span>
+            </div>
+            <div class="absolute bottom-0 left-0 right-0 p-5 group-hover:opacity-0 transition-opacity duration-fast">
+              <span class="text-xs font-heading font-medium text-white/80 uppercase tracking-[0.12em]">
+                {project.category}
+              </span>
+            </div>
+          </a>
+        ) : (
+          <div
+            data-mosaic-item
+            class:list={[
+              'group relative overflow-hidden block rounded-lg',
+              project.gridClass,
+            ]}
+          >
+            <img
+              src={project.image}
+              alt={project.title}
+              class="w-full h-full object-cover grayscale-[30%] opacity-80"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent rounded-lg" />
+            <div class="absolute inset-0 flex flex-col items-center justify-center text-center p-6">
+              <h3 class="font-display text-2xl md:text-3xl font-bold uppercase text-white mb-2">
+                {project.title}
+              </h3>
+              <span class="text-[11px] font-heading font-medium text-white/40 uppercase tracking-[0.2em]">
+                {comingSoonLabel[lang] || comingSoonLabel.fr}
+              </span>
+            </div>
           </div>
-
-          {/* Label catégorie visible par défaut */}
-          <div class="absolute bottom-0 left-0 right-0 p-5 group-hover:opacity-0 transition-opacity duration-fast">
-            <span class="text-xs font-heading font-medium text-white/80 uppercase tracking-[0.12em]">
-              {project.category}
-            </span>
-          </div>
-        </a>
+        )
       ))}
     </div>
 

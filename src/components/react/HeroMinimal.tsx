@@ -9,9 +9,9 @@ import strings from '@i18n/strings';
 import type { Locale } from '@i18n/languages';
 
 const heroImages = [
-  '/images/hero/luxury-villa-riviera.jpg',
-  '/images/hero/luxury-villa-pool.jpg',
-  '/images/hero/luxury-villa-sunset.jpg',
+  '/images/projets/villa-azur-1.jpeg',
+  '/images/projets/villa-azur-10.jpeg',
+  '/images/projets/villa-azur-3.jpeg',
 ];
 
 const easeOutQuart = [0.25, 1, 0.5, 1] as const;

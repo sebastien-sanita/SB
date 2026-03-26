@@ -16,7 +16,7 @@ export default function HeroVideo() {
         className="absolute inset-0"
       >
         <img
-          src="/images/expertise/villa-riviera-aerial.jpg"
+          src="/images/projets/villa-azur-15.jpeg"
           alt="Intérieur luxueux avec lumière naturelle"
           className="w-full h-full object-cover"
           loading="eager"

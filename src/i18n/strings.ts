@@ -176,18 +176,18 @@ const strings = {
     viewProject: { fr: 'Voir le projet', en: 'View Project', it: 'Vedi il Progetto' },
     viewAll: { fr: 'Découvrir tous nos projets', en: 'Discover All Projects', it: 'Scopri Tutti i Progetti' },
     ctaLine: { fr: 'Chaque projet est une histoire unique', en: 'Every project tells a unique story', it: 'Ogni progetto racconta una storia unica' },
-    // Projet 1 — Villa Azur
+    // Projet 1 — Villa Azur (Rayol-Canadel)
     fp1Title: { fr: 'Villa Azur', en: 'Villa Azur', it: 'Villa Azur' },
     fp1Tag: { fr: 'Rénovation Villa', en: 'Villa Renovation', it: 'Ristrutturazione Villa' },
-    fp1Meta: { fr: 'Villa vue mer · 450 m² · Saint-Jean-Cap-Ferrat', en: 'Sea view villa · 450 m² · Saint-Jean-Cap-Ferrat', it: 'Villa vista mare · 450 m² · Saint-Jean-Cap-Ferrat' },
-    // Projet 2 — Penthouse Croisette
-    fp2Title: { fr: 'Penthouse Croisette', en: 'Penthouse Croisette', it: 'Penthouse Croisette' },
-    fp2Tag: { fr: 'Rénovation Prestige', en: 'Prestige Renovation', it: 'Ristrutturazione Prestige' },
-    fp2Meta: { fr: 'Duplex face à la Croisette · 280 m²', en: 'Duplex facing La Croisette · 280 m²', it: 'Duplex fronte Croisette · 280 m²' },
-    // Projet 3 — L'Écrin Monaco
-    fp3Title: { fr: 'L\'Écrin', en: 'L\'Écrin', it: 'L\'Écrin' },
-    fp3Tag: { fr: 'Design Contemporain', en: 'Contemporary Design', it: 'Design Contemporaneo' },
-    fp3Meta: { fr: 'Duplex vue port · 200 m² · Monaco', en: 'Harbor view duplex · 200 m² · Monaco', it: 'Duplex vista porto · 200 m² · Monaco' },
+    fp1Meta: { fr: 'Villa vue mer · 450 m² · Rayol-Canadel-sur-Mer', en: 'Sea view villa · 450 m² · Rayol-Canadel-sur-Mer', it: 'Villa vista mare · 450 m² · Rayol-Canadel-sur-Mer' },
+    // Projet 2 — Bormes-les-Mimosas (a venir)
+    fp2Title: { fr: 'Bormes-les-Mimosas', en: 'Bormes-les-Mimosas', it: 'Bormes-les-Mimosas' },
+    fp2Tag: { fr: 'Rénovation', en: 'Renovation', it: 'Ristrutturazione' },
+    fp2Meta: { fr: 'Projet a venir', en: 'Coming soon', it: 'Prossimamente' },
+    // Projet 3 — Saint-Tropez (a venir)
+    fp3Title: { fr: 'Saint-Tropez', en: 'Saint-Tropez', it: 'Saint-Tropez' },
+    fp3Tag: { fr: 'Rénovation', en: 'Renovation', it: 'Ristrutturazione' },
+    fp3Meta: { fr: 'Projet a venir', en: 'Coming soon', it: 'Prossimamente' },
   },
 
   // ── Section 03 — Portfolio ──────────────────────────────
