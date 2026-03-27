@@ -47,7 +47,7 @@ export const projects: Project[] = [
       'Escalier en pierre naturelle retroeclaire',
       'Terrasse panoramique avec cuisine exterieure',
     ],
-    coverImage: '/images/projets/villa-azur-1.jpeg',
+    coverImage: '/images/projets/villa-azur-11.jpeg',
     images: Array.from({ length: 52 }, (_, i) => `/images/projets/villa-azur-${i + 1}.jpeg`),
     featured: true,
   },
