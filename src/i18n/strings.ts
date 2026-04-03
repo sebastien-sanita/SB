@@ -180,14 +180,12 @@ const strings = {
     fp1Title: { fr: 'Villa Azur', en: 'Villa Azur', it: 'Villa Azur' },
     fp1Tag: { fr: 'Rénovation Villa', en: 'Villa Renovation', it: 'Ristrutturazione Villa' },
     fp1Meta: { fr: 'Villa vue mer · 450 m² · Rayol-Canadel-sur-Mer', en: 'Sea view villa · 450 m² · Rayol-Canadel-sur-Mer', it: 'Villa vista mare · 450 m² · Rayol-Canadel-sur-Mer' },
-    // Projet 2 — Bormes-les-Mimosas (a venir)
+    // Projet 2 — Bormes-les-Mimosas
     fp2Title: { fr: 'Bormes-les-Mimosas', en: 'Bormes-les-Mimosas', it: 'Bormes-les-Mimosas' },
-    fp2Tag: { fr: 'Rénovation', en: 'Renovation', it: 'Ristrutturazione' },
-    fp2Meta: { fr: 'Projet a venir', en: 'Coming soon', it: 'Prossimamente' },
-    // Projet 3 — Saint-Tropez (a venir)
-    fp3Title: { fr: 'Saint-Tropez', en: 'Saint-Tropez', it: 'Saint-Tropez' },
+    fp2Tag: { fr: 'Construction', en: 'Construction', it: 'Costruzione' },
+    // Projet 3 — Villa Aiguebelle
+    fp3Title: { fr: 'Aiguebelle', en: 'Aiguebelle', it: 'Aiguebelle' },
     fp3Tag: { fr: 'Rénovation', en: 'Renovation', it: 'Ristrutturazione' },
-    fp3Meta: { fr: 'Projet a venir', en: 'Coming soon', it: 'Prossimamente' },
   },
 
   // ── Section 03 — Portfolio ──────────────────────────────

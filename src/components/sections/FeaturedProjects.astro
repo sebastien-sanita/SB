@@ -2,7 +2,7 @@
 /**
  * FeaturedProjects — Showcase cinématique des réalisations phares
  * Placé entre Hero et Manifeste — impact visuel immédiat
- * Villa Azur (réel) + 2 projets à venir (Bormes & Saint-Tropez)
+ * Villa Azur, Bormes-les-Mimosas & Villa Aiguebelle
  */
 import Container from '@components/ui/Container.astro';
 import Button from '@components/ui/Button.astro';
@@ -10,12 +10,6 @@ import { t, getLocalizedPath, type Locale } from '@i18n/index';
 
 interface Props { lang?: Locale; }
 const lang = Astro.props.lang ?? 'fr';
-
-const comingSoonLabel: Record<string, string> = {
-  fr: 'Projet a venir',
-  en: 'Coming soon',
-  it: 'Prossimamente',
-};
 ---
 
 <section class="relative bg-primary-dark">
@@ -62,15 +56,16 @@ const comingSoonLabel: Record<string, string> = {
     </div>
   </a>
 
-  {/* Projet 2 — Bormes-les-Mimosas (a venir) */}
-  <div
+  {/* Projet 2 — Bormes-les-Mimosas (cliquable) */}
+  <a
+    href={getLocalizedPath('/projets/bormes-les-mimosas', lang)}
     class="group relative block w-full h-[50vh] min-h-[350px] lg:h-[55vh] overflow-hidden"
     data-featured-project
   >
     <img
-      src="/images/projets/villa-azur-19.jpeg"
+      src="/images/projets/bormes-les-mimosas-3.jpeg"
       alt={t('featured', 'fp2Title', lang)}
-      class="w-full h-full object-cover grayscale-[30%] opacity-80"
+      class="w-full h-full object-cover transition-transform duration-[1.5s] ease-smooth group-hover:scale-[1.04]"
       data-parallax="0.08"
       loading="lazy"
     />
@@ -84,23 +79,27 @@ const comingSoonLabel: Record<string, string> = {
             <span class="editorial-nav-item font-display text-[clamp(18px,3vw,36px)] font-bold uppercase text-accent-gold/70 leading-none cursor-default">/{t('featured', 'fp2Tag', lang)}</span>
             <span class="editorial-nav-item font-display text-[clamp(36px,7vw,90px)] font-light uppercase text-white leading-[1.05] cursor-default">{t('featured', 'fp2Title', lang)}</span>
           </nav>
-          <span class="hidden md:flex items-center gap-3 shrink-0 font-heading text-[11px] font-medium text-white/40 uppercase tracking-[0.15em]">
-            {comingSoonLabel[lang] || comingSoonLabel.fr}
+          <span class="hidden md:flex items-center gap-3 shrink-0 font-heading text-[11px] font-medium text-white/60 uppercase tracking-[0.15em] opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500">
+            {t('featured', 'viewProject', lang)}
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+            </svg>
           </span>
         </div>
       </Container>
     </div>
-  </div>
+  </a>
 
-  {/* Projet 3 — Saint-Tropez (a venir) */}
-  <div
+  {/* Projet 3 — Villa Aiguebelle (cliquable) */}
+  <a
+    href={getLocalizedPath('/projets/villa-aiguebelle', lang)}
     class="group relative block w-full h-[50vh] min-h-[350px] lg:h-[55vh] overflow-hidden"
     data-featured-project
   >
     <img
-      src="/images/projets/villa-azur-14.jpeg"
+      src="/images/projets/aiguebelle-3.jpeg"
       alt={t('featured', 'fp3Title', lang)}
-      class="w-full h-full object-cover grayscale-[30%] opacity-80"
+      class="w-full h-full object-cover transition-transform duration-[1.5s] ease-smooth group-hover:scale-[1.04]"
       data-parallax="0.08"
       loading="lazy"
     />
@@ -114,13 +113,16 @@ const comingSoonLabel: Record<string, string> = {
             <span class="editorial-nav-item font-display text-[clamp(18px,3vw,36px)] font-bold uppercase text-accent-gold/70 leading-none cursor-default">/{t('featured', 'fp3Tag', lang)}</span>
             <span class="editorial-nav-item font-display text-[clamp(36px,7vw,90px)] font-light uppercase text-white leading-[1.05] cursor-default">{t('featured', 'fp3Title', lang)}</span>
           </nav>
-          <span class="hidden md:flex items-center gap-3 shrink-0 font-heading text-[11px] font-medium text-white/40 uppercase tracking-[0.15em]">
-            {comingSoonLabel[lang] || comingSoonLabel.fr}
+          <span class="hidden md:flex items-center gap-3 shrink-0 font-heading text-[11px] font-medium text-white/60 uppercase tracking-[0.15em] opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500">
+            {t('featured', 'viewProject', lang)}
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+            </svg>
           </span>
         </div>
       </Container>
     </div>
-  </div>
+  </a>
 
   {/* CTA — bandeau éditorial avec filigrane */}
   <div class="relative py-12 md:py-16 overflow-hidden">
