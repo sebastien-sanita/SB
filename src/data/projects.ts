@@ -83,4 +83,37 @@ export const projects: Project[] = [
     images: Array.from({ length: 7 }, (_, i) => `/images/projets/bormes-les-mimosas-${i + 1}.jpeg`),
     featured: false,
   },
+  {
+    id: '3',
+    slug: 'villa-aiguebelle',
+    title: 'Villa Aiguebelle',
+    category: 'maison',
+    type: 'renovation',
+    style: 'moderne',
+    surface: 220,
+    year: 2024,
+    location: 'Aiguebelle, Lavandou',
+    description:
+      "Renovation complete d'une villa de 220 m² perchee sur les hauteurs d'Aiguebelle, face a la Mediterranee. Les volumes ont ete entierement repenses pour magnifier la vue mer panoramique. Piliers en pierre naturelle, galeries eclairees, piscine a debordement et terrasses en cascade creent une architecture contemporaine ancree dans le paysage. Interieurs epures — salon ouvert sur la baie, salles de bains en pierre — prolongent l'experience du dehors au dedans.",
+    philosophy:
+      "Reveler le dialogue entre la pierre et la lumiere. Chaque element architectural — piliers, escaliers, garde-corps — a ete dessine pour cadrer le paysage mediterraneen comme une oeuvre vivante. La pierre locale, posee a la main, ancre la villa dans son terroir tandis que les lignes contemporaines projettent l'ensemble vers la modernite. Le soir, un eclairage scenographique transforme la villa en tableau lumineux suspendu entre ciel et mer.",
+    materials: [
+      'Pierre naturelle locale',
+      'Enduit mineral teinte',
+      'Metal laque noir',
+      'Carrelage grand format',
+      'Verre securit',
+      'Bois composite',
+    ],
+    highlights: [
+      'Vue mer panoramique sur la baie du Lavandou',
+      'Piscine a debordement eclairee',
+      'Galerie de piliers en pierre naturelle',
+      'Eclairage scenographique nocturne',
+      'Terrasses en cascade sur plusieurs niveaux',
+    ],
+    coverImage: '/images/projets/aiguebelle-3.jpeg',
+    images: Array.from({ length: 21 }, (_, i) => `/images/projets/aiguebelle-${i + 1}.jpeg`),
+    featured: true,
+  },
 ];
