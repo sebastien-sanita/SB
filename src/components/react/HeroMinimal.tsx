@@ -66,20 +66,12 @@ export default function HeroMinimal({ lang = 'fr' }: Props) {
         transition={{ duration: 1.5, delay: 0.3, ease: easeOutQuart }}
         className="absolute top-0 left-0 right-0 z-10 pt-28 md:pt-32 text-center"
       >
-        <h1 className="leading-[1] text-center">
-          <span
-            className="font-heading font-bold lowercase tracking-[-0.03em] block"
-            style={{ fontSize: 'clamp(48px, 9vw, 96px)' }}
-          >
-            <span className="text-white/60">sb</span><span className="text-white">design</span>
-          </span>
-          <span
-            className="font-heading lowercase text-white/40 tracking-[0.08em] block mt-1"
-            style={{ fontSize: 'clamp(18px, 2.8vw, 32px)' }}
-          >
-            <span className="font-light">riv</span><span className="font-bold">iera</span>
-          </span>
-        </h1>
+        <img
+          src="/images/logo-sb.png"
+          alt="SB Design"
+          className="mx-auto w-auto invert brightness-0 invert"
+          style={{ height: 'clamp(110px, 16vw, 220px)', filter: 'invert(1) brightness(100)' }}
+        />
       </motion.div>
 
       {/* Baseline / définition — en bas (style DN Architectes) */}
