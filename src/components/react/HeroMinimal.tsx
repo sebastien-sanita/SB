@@ -70,7 +70,7 @@ export default function HeroMinimal({ lang = 'fr' }: Props) {
           src="/images/logo-sb.png"
           alt="SB Design"
           className="mx-auto w-auto invert brightness-0 invert"
-          style={{ height: 'clamp(110px, 16vw, 220px)', filter: 'invert(1) brightness(100)' }}
+          style={{ height: 'clamp(140px, 20vw, 280px)', filter: 'invert(1) brightness(100)' }}
         />
       </motion.div>
 
