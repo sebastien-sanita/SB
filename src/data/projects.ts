@@ -69,8 +69,8 @@ export const projects: Project[] = [
       'Enduit blanc',
       'Metal laque noir',
       'Terrasse bois composite',
-      'Beton lisse',
-      'Verre securit',
+      'Carport',
+      'Toiture construction',
     ],
     highlights: [
       'Architecture en volumes decales sur plusieurs niveaux',
