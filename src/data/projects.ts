@@ -51,4 +51,36 @@ export const projects: Project[] = [
     images: Array.from({ length: 52 }, (_, i) => `/images/projets/villa-azur-${i + 1}.jpeg`),
     featured: true,
   },
+  {
+    id: '2',
+    slug: 'bormes-les-mimosas',
+    title: 'Villa Bormes-les-Mimosas',
+    category: 'maison',
+    type: 'construction',
+    style: 'moderne',
+    surface: 160,
+    year: 2013,
+    location: 'Bormes-les-Mimosas',
+    description:
+      "Construction d'une villa moderne de 160 m² a Bormes-les-Mimosas. Architecture contemporaine en volumes decales sur plusieurs niveaux, ouverte sur la vegetation environnante. Piscine, terrasses en bois amenagees, larges baies vitrees et garde-corps metalliques soulignent une ligne architecturale epuree et lumineuse.",
+    philosophy:
+      "Inscrire une architecture resolument moderne dans un ecrin de nature mediterraneenne. Les volumes decales epousent la pente naturelle du terrain, multipliant les terrasses et les points de vue. Chaque niveau vit en dialogue avec l'exterieur, prolongeant les espaces de vie vers le paysage.",
+    materials: [
+      'Enduit blanc',
+      'Metal laque noir',
+      'Terrasse bois composite',
+      'Beton lisse',
+      'Verre securit',
+    ],
+    highlights: [
+      'Architecture en volumes decales sur plusieurs niveaux',
+      'Piscine integree au jardin mediterraneen',
+      'Terrasses panoramiques en bois',
+      'Larges baies vitrees ouvrant sur la vegetation',
+      'Vue degagee sur les collines',
+    ],
+    coverImage: '/images/projets/bormes-les-mimosas-3.jpeg',
+    images: Array.from({ length: 7 }, (_, i) => `/images/projets/bormes-les-mimosas-${i + 1}.jpeg`),
+    featured: false,
+  },
 ];
