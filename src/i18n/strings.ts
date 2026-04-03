@@ -148,8 +148,8 @@ const strings = {
       en: 'Beyond structure, we orchestrate interior refinement with absolute rigour. Furniture and material selection from Italian and European houses of excellence, complete site coordination and turnkey delivery.',
       it: 'Oltre alla struttura, orchestriamo il refinement interiore con un\'esigenza assoluta. Selezione di mobili e materiali presso case d\'eccellenza italiane ed europee, coordinamento completo del cantiere e consegna chiavi in mano.',
     },
-    s2Bullet1: { fr: 'Partenariats exclusifs : ALIVAR, PIANCA, MOLTENI&C', en: 'Exclusive partnerships: ALIVAR, PIANCA, MOLTENI&C', it: 'Partnership esclusivi: ALIVAR, PIANCA, MOLTENI&C' },
-    s2Bullet2: { fr: 'Cuisines sur-mesure TONCELLI & ASTER cucine', en: 'Bespoke kitchens by TONCELLI & ASTER cucine', it: 'Cucine su misura TONCELLI & ASTER cucine' },
+    s2Bullet1: { fr: 'Partenariats exclusifs avec des maisons d\'excellence italiennes et européennes', en: 'Exclusive partnerships with Italian and European houses of excellence', it: 'Partnership esclusivi con case d\'eccellenza italiane ed europee' },
+    s2Bullet2: { fr: 'Cuisines sur-mesure haut de gamme', en: 'Bespoke luxury kitchens', it: 'Cucine su misura di alta gamma' },
     s2Bullet3: { fr: 'Coordination complète et reporting qualité régulier', en: 'Complete coordination and regular quality reporting', it: 'Coordinamento completo e reporting qualità regolare' },
     // 2.3
     s3Title1:   { fr: 'Valorisation', en: 'Property', it: 'Valorizzazione' },
@@ -238,9 +238,9 @@ const strings = {
     },
     step3Title: { fr: 'Réalisation & Refinement', en: 'Build & Refinement', it: 'Realizzazione & Refinement' },
     step3Desc: {
-      fr: 'Coordination d\'excellence, mobilier ALIVAR, PIANCA, MOLTENI&C, cuisines TONCELLI & ASTER cucine. Suivi qualité sans compromis.',
-      en: 'World-class coordination, ALIVAR, PIANCA, MOLTENI&C furniture, TONCELLI & ASTER cucine kitchens. Uncompromising quality control.',
-      it: 'Coordinamento d\'eccellenza, mobili ALIVAR, PIANCA, MOLTENI&C, cucine TONCELLI & ASTER cucine. Controllo qualità senza compromessi.',
+      fr: 'Coordination d\'excellence, mobilier et cuisines haut de gamme issus de maisons d\'excellence. Suivi qualité sans compromis.',
+      en: 'World-class coordination, premium furniture and kitchens from houses of excellence. Uncompromising quality control.',
+      it: 'Coordinamento d\'eccellenza, mobili e cucine di alta gamma dalle migliori case d\'eccellenza. Controllo qualità senza compromessi.',
     },
     step4Title: { fr: 'Valorisation & Livraison', en: 'Enhancement & Delivery', it: 'Valorizzazione & Consegna' },
     step4Desc: {
@@ -409,8 +409,8 @@ const strings = {
       en: 'Beyond structure, we orchestrate interior refinement with absolute rigour. Furniture and material selection from Italian and European houses of excellence.',
       it: 'Oltre alla struttura, orchestriamo il refinement interiore con un\'esigenza assoluta. Selezione di mobili e materiali presso case d\'eccellenza italiane ed europee.',
     },
-    s2B1: { fr: 'Partenariats exclusifs : ALIVAR, PIANCA, MOLTENI&C', en: 'Exclusive partnerships: ALIVAR, PIANCA, MOLTENI&C', it: 'Partnership esclusivi: ALIVAR, PIANCA, MOLTENI&C' },
-    s2B2: { fr: 'Cuisines sur-mesure TONCELLI & ASTER cucine', en: 'Bespoke kitchens by TONCELLI & ASTER cucine', it: 'Cucine su misura TONCELLI & ASTER cucine' },
+    s2B1: { fr: 'Partenariats exclusifs avec des maisons d\'excellence italiennes et européennes', en: 'Exclusive partnerships with Italian and European houses of excellence', it: 'Partnership esclusivi con case d\'eccellenza italiane ed europee' },
+    s2B2: { fr: 'Cuisines sur-mesure haut de gamme', en: 'Bespoke luxury kitchens', it: 'Cucine su misura di alta gamma' },
     s2B3: { fr: 'Mobilier et luminaires sur-mesure', en: 'Bespoke furniture and lighting', it: 'Mobili e illuminazione su misura' },
     s2B4: { fr: 'Mise en scène et décoration finale', en: 'Staging and final decoration', it: 'Allestimento e decorazione finale' },
     // Service 03
@@ -475,9 +475,9 @@ const strings = {
       it: 'Fondato sulla convinzione che l\'architettura debba essere al contempo bella e strategica, lo studio accompagna una clientela internazionale — proprietari privati, investitori e acquirenti esigenti — nella progettazione, trasformazione e valorizzazione di beni d\'eccezione sulla Riviera francese.',
     },
     historyP3: {
-      fr: 'Notre équipe réunit des compétences complémentaires en architecture, design intérieur, coordination de chantier et conseil patrimonial. Chaque projet bénéficie d\'un accompagnement intégral — de la vision initiale à la livraison clé en main — avec une sélection de mobilier auprès de maisons d\'excellence italiennes et européennes : ALIVAR, PIANCA, MOLTENI&C, TONCELLI.',
-      en: 'Our team brings together complementary expertise in architecture, interior design, site coordination and asset consultancy. Every project benefits from end-to-end support — from initial vision to turnkey delivery — with furniture selection from Italian and European houses of excellence: ALIVAR, PIANCA, MOLTENI&C, TONCELLI.',
-      it: 'Il nostro team riunisce competenze complementari in architettura, design d\'interni, coordinamento di cantiere e consulenza patrimoniale. Ogni progetto beneficia di un accompagnamento integrale — dalla visione iniziale alla consegna chiavi in mano — con una selezione di mobili presso case d\'eccellenza italiane ed europee: ALIVAR, PIANCA, MOLTENI&C, TONCELLI.',
+      fr: 'Notre équipe réunit des compétences complémentaires en architecture, design intérieur, coordination de chantier et conseil patrimonial. Chaque projet bénéficie d\'un accompagnement intégral — de la vision initiale à la livraison clé en main — avec une sélection de mobilier auprès de maisons d\'excellence italiennes et européennes.',
+      en: 'Our team brings together complementary expertise in architecture, interior design, site coordination and asset consultancy. Every project benefits from end-to-end support — from initial vision to turnkey delivery — with furniture selection from Italian and European houses of excellence.',
+      it: 'Il nostro team riunisce competenze complementari in architettura, design d\'interni, coordinamento di cantiere e consulenza patrimoniale. Ogni progetto beneficia di un accompagnamento integrale — dalla visione iniziale alla consegna chiavi in mano — con una selezione di mobili presso case d\'eccellenza italiane ed europee.',
     },
     historyQuote: {
       fr: 'Sur la Côte d\'Azur, l\'architecture ne doit pas seulement être belle — elle doit être stratégique.',
