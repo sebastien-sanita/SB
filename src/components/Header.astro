@@ -100,9 +100,9 @@ function isActive(href: string) {
       aria-expanded="false"
     >
       <div id="menu-icon-open" class="flex flex-col gap-[6px] w-6 transition-all duration-300">
-        <span class="block w-full h-[1.5px] bg-primary-dark transition-all duration-300 origin-center" />
-        <span class="block w-full h-[1.5px] bg-primary-dark transition-all duration-300" />
-        <span class="block w-2/3 h-[1.5px] bg-primary-dark transition-all duration-300 ml-auto origin-center" />
+        <span class="block w-full h-[1.5px] transition-all duration-300 origin-center burger-bar burger-bar--dark" />
+        <span class="block w-full h-[1.5px] transition-all duration-300 burger-bar burger-bar--dark" />
+        <span class="block w-2/3 h-[1.5px] transition-all duration-300 ml-auto origin-center burger-bar burger-bar--dark" />
       </div>
       <div id="menu-icon-close" class="hidden">
         <svg class="w-6 h-6 text-primary-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -244,19 +244,31 @@ function isActive(href: string) {
   const nav = document.getElementById('main-nav');
   const navBorder = document.getElementById('nav-border');
   if (nav) {
+    const burgerBars = document.querySelectorAll('.burger-bar');
     const onScroll = (scrollY: number) => {
       if (scrollY > 80) {
         nav.style.background = 'rgba(253,251,247,0.95)';
         nav.style.backdropFilter = 'blur(20px)';
         (nav.style as any).webkitBackdropFilter = 'blur(20px)';
         if (navBorder) navBorder.style.background = 'rgba(200,175,130,0.15)';
+        burgerBars.forEach((bar) => {
+          bar.classList.remove('burger-bar--light');
+          bar.classList.add('burger-bar--dark');
+        });
       } else {
         nav.style.background = 'transparent';
         nav.style.backdropFilter = 'none';
         (nav.style as any).webkitBackdropFilter = 'none';
         if (navBorder) navBorder.style.background = 'transparent';
+        burgerBars.forEach((bar) => {
+          bar.classList.remove('burger-bar--dark');
+          bar.classList.add('burger-bar--light');
+        });
       }
     };
+
+    // Set initial state
+    onScroll(window.scrollY);
 
     const lenis = (window as any).__lenis;
     if (lenis) {

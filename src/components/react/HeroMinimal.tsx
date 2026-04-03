@@ -33,7 +33,7 @@ export default function HeroMinimal({ lang = 'fr' }: Props) {
   }, []);
 
   return (
-    <section className="relative w-full h-screen min-h-[600px] overflow-hidden">
+    <section className="relative w-full h-screen min-h-[600px] overflow-hidden bg-black">
       {/* Ken Burns slideshow */}
       <AnimatePresence mode="sync">
         <motion.div
@@ -42,7 +42,7 @@ export default function HeroMinimal({ lang = 'fr' }: Props) {
           animate={{ opacity: 1, scale: 1.15 }}
           exit={{ opacity: 0 }}
           transition={{
-            opacity: { duration: 2, ease: easeOutQuart },
+            opacity: { duration: 2.5, ease: easeOutQuart },
             scale: { duration: 20, ease: 'linear' },
           }}
           className="absolute inset-0"
@@ -64,13 +64,13 @@ export default function HeroMinimal({ lang = 'fr' }: Props) {
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.5, delay: 0.3, ease: easeOutQuart }}
-        className="absolute top-0 left-0 right-0 z-10 pt-28 md:pt-32 text-center"
+        className="absolute top-0 left-0 right-0 z-10 pt-28 md:pt-32 text-center hero-glow"
       >
         <img
           src="/images/logo-sb.png"
           alt="SB Design"
-          className="mx-auto w-auto invert brightness-0 invert"
-          style={{ height: 'clamp(140px, 20vw, 280px)', filter: 'invert(1) brightness(100)' }}
+          className="mx-auto w-auto"
+          style={{ height: 'clamp(140px, 20vw, 280px)', filter: 'invert(1) brightness(100)', transition: 'filter 1.5s ease-in-out' }}
         />
       </motion.div>
 
@@ -79,9 +79,12 @@ export default function HeroMinimal({ lang = 'fr' }: Props) {
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.2, delay: 1.0, ease: easeOutQuart }}
-        className="absolute bottom-16 md:bottom-20 left-0 right-0 z-10 text-center"
+        className="absolute bottom-16 md:bottom-20 left-0 right-0 z-10 text-center hero-glow"
       >
-        <p className="font-heading text-[11px] md:text-[12px] font-medium text-white/60 uppercase tracking-[0.3em]">
+        <p
+          className="font-heading text-[11px] md:text-[12px] font-medium text-white uppercase tracking-[0.3em]"
+          style={{ textShadow: '0 0 20px rgba(255,255,255,0.4), 0 0 60px rgba(255,255,255,0.15)' }}
+        >
           {gt('subtitle1')}
         </p>
       </motion.div>

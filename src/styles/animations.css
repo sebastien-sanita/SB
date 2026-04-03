@@ -51,6 +51,55 @@ body.is-loading {
 }
 
 /* ─────────────────────────────────────────────
+   HERO GLOW — Smooth brightness pulse on logo & baseline
+   ───────────────────────────────────────────── */
+@keyframes hero-glow {
+  0%, 100% { opacity: 0.85; }
+  50% { opacity: 1; }
+}
+
+.hero-glow {
+  animation: hero-glow 7s ease-in-out infinite;
+}
+
+/* ─────────────────────────────────────────────
+   HAMBURGER SHIMMER — Subtle light sweep on bars
+   ───────────────────────────────────────────── */
+@keyframes bar-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.burger-bar {
+  background-size: 200% 100%;
+  animation: bar-shimmer 4s ease-in-out infinite;
+}
+
+/* Dark background (hero visible) → white shimmer */
+.burger-bar--light {
+  background-image: linear-gradient(
+    90deg,
+    var(--color-primary-dark) 0%,
+    var(--color-primary-dark) 35%,
+    rgba(255,255,255,0.6) 50%,
+    var(--color-primary-dark) 65%,
+    var(--color-primary-dark) 100%
+  );
+}
+
+/* Light background (scrolled) → gold shimmer */
+.burger-bar--dark {
+  background-image: linear-gradient(
+    90deg,
+    var(--color-primary-dark) 0%,
+    var(--color-primary-dark) 35%,
+    var(--color-accent-gold) 50%,
+    var(--color-primary-dark) 65%,
+    var(--color-primary-dark) 100%
+  );
+}
+
+/* ─────────────────────────────────────────────
    PREFERS REDUCED MOTION — Disable visual effects
    ───────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
@@ -71,5 +120,16 @@ body.is-loading {
 
   .marquee-track {
     animation: none;
+  }
+
+  .hero-glow {
+    animation: none;
+    opacity: 1 !important;
+  }
+
+  .burger-bar {
+    animation: none;
+    background-image: none !important;
+    background-color: var(--color-primary-dark);
   }
 }
