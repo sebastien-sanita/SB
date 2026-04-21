@@ -44,39 +44,67 @@ const expertiseRibbon = [t(p, 's1Title1', lang), t(p, 's1Title2', lang), t(p, 's
     <Container>
       <div class="relative" id="renovation">
         <span class="section-number-xl">01</span>
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center" data-reveal>
-          {/* Images — grille bento à gauche */}
-          <div class="grid grid-cols-2 grid-rows-3 gap-2 h-[500px] lg:h-[75vh] lg:min-h-[600px]" data-reveal>
-            <div class="group relative col-span-2 row-span-2 overflow-hidden">
-              <img src="/images/projets/villa-azur-3.jpeg" alt="Villa contemporaine Côte d'Azur" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+
+        {/* Texte pleine largeur */}
+        <div class="max-w-3xl mb-12 md:mb-16" data-reveal>
+          <span class="subsection-number">01</span>
+          <h2 class="font-display text-subsection font-bold uppercase text-primary-dark mt-4 mb-6">
+            <span class="font-display">{t(p, 's1Title1', lang)}</span> <span class="font-heading font-light">{t(p, 's1Title2', lang)}</span>
+          </h2>
+          <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.75] mb-8">
+            {t(p, 's1Desc', lang)}
+          </p>
+          <ul class="space-y-3">
+            {[t(p, 's1B1', lang), t(p, 's1B2', lang), t(p, 's1B3', lang), t(p, 's1B4', lang)].map((item) => (
+              <li class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-accent-gold mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7" />
+                </svg>
+                <span class="font-body text-sm font-light text-[var(--color-text-light)]">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* 2 Pavés côte à côte : Conception 3D (gauche) + Réalisé (droite) */}
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8" data-reveal data-reveal-delay="0.1">
+          {/* Pavé Conception 3D */}
+          <div>
+            <div class="flex items-center gap-3 mb-4">
+              <span class="font-heading text-[11px] font-semibold uppercase tracking-[0.2em] text-accent-gold">Conception 3D</span>
+              <div class="flex-1 h-px bg-accent-gold/20" />
             </div>
-            <div class="group relative overflow-hidden">
-              <img src="/images/projets/villa-azur-5.jpeg" alt="Architecture résidentielle premium" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
-            </div>
-            <div class="group relative overflow-hidden">
-              <img src="/images/projets/villa-azur-7.jpeg" alt="Conception architecturale villa" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+            <div class="grid grid-cols-2 grid-rows-2 gap-2 h-[400px] md:h-[500px]">
+              <div class="group relative col-span-2 overflow-hidden">
+                <img src="/images/projets/la-croix-valmer-2.jpg" alt="Rendu 3D villa contemporaine" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+              </div>
+              <div class="group relative overflow-hidden">
+                <img src="/images/projets/la-croix-valmer-6.jpg" alt="Rendu 3D terrasse piscine" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+              </div>
+              <div class="group relative overflow-hidden">
+                <img src="/images/projets/la-croix-valmer-9.jpg" alt="Insertion 3D projet" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+              </div>
             </div>
           </div>
-          {/* Texte — à droite */}
-          <div data-reveal data-reveal-delay="0.1">
-            <span class="subsection-number">01</span>
-            <h2 class="font-display text-subsection font-bold uppercase text-primary-dark mt-4 mb-6">
-              <span class="font-display">{t(p, 's1Title1', lang)}</span> <span class="font-heading font-light">{t(p, 's1Title2', lang)}</span>
-            </h2>
-            <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.75] mb-8">
-              {t(p, 's1Desc', lang)}
-            </p>
-            <ul class="space-y-3 mb-8">
-              {[t(p, 's1B1', lang), t(p, 's1B2', lang), t(p, 's1B3', lang), t(p, 's1B4', lang)].map((item) => (
-                <li class="flex items-start gap-3">
-                  <svg class="w-5 h-5 text-accent-gold mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7" />
-                  </svg>
-                  <span class="font-body text-sm font-light text-[var(--color-text-light)]">{item}</span>
-                </li>
-              ))}
-            </ul>
+          {/* Pavé Projet Réalisé */}
+          <div>
+            <div class="flex items-center gap-3 mb-4">
+              <span class="font-heading text-[11px] font-semibold uppercase tracking-[0.2em] text-accent-brown">Projet Réalisé</span>
+              <div class="flex-1 h-px bg-accent-brown/20" />
+            </div>
+            <div class="grid grid-cols-2 grid-rows-2 gap-2 h-[400px] md:h-[500px]">
+              <div class="group relative col-span-2 overflow-hidden">
+                <img src="/images/projets/villa-azur-3.jpeg" alt="Villa contemporaine Côte d'Azur" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+              </div>
+              <div class="group relative overflow-hidden">
+                <img src="/images/projets/villa-azur-5.jpeg" alt="Architecture résidentielle premium" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+              </div>
+              <div class="group relative overflow-hidden">
+                <img src="/images/projets/villa-azur-7.jpeg" alt="Conception architecturale villa" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -93,7 +121,7 @@ const expertiseRibbon = [t(p, 's1Title1', lang), t(p, 's1Title2', lang), t(p, 's
     <TextRibbon text={expertiseRibbon} direction="right" speed={40} client:visible />
   </div>
 
-  <!-- Service 02 — Interior Refinement -->
+  <!-- Service 02 — Raffinement Intérieur -->
   <Section padding="lg" background="warm">
     <Container>
       <div class="relative" id="design">
@@ -120,7 +148,7 @@ const expertiseRibbon = [t(p, 's1Title1', lang), t(p, 's1Title2', lang), t(p, 's
           </div>
           <div class="grid grid-cols-2 grid-rows-3 gap-2 h-[500px] lg:h-[75vh] lg:min-h-[600px]" data-reveal>
             <div class="group relative row-span-2 overflow-hidden">
-              <img src="/images/projets/villa-azur-35.jpeg" alt="Salon design villa Côte d'Azur" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+              <img src="/images/projets/villa-azur-62.jpeg" alt="Salon design villa Côte d'Azur" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
               <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
             </div>
             <div class="group relative overflow-hidden">

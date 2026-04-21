@@ -5,7 +5,7 @@
  * Animation puzzle clip-path déclenchée au scroll via useInView
  * Filtrage par URL param ?type=renovation|construction
  */
-import { useRef, useMemo } from 'react';
+import { useRef, useMemo, useState, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
 import type { Project } from '../../data/projects';
 
@@ -51,25 +51,30 @@ const sizePattern = [
 export default function ProjectGrid({ projects, basePath = '/projets' }: Props) {
   const gridRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(gridRef, { once: true, amount: 0.05 });
+  const [typeFilter, setTypeFilter] = useState<string | null>(null);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    setTypeFilter(params.get('type'));
+  }, []);
 
   // Filter projects by URL param ?type=renovation|construction
   const filteredProjects = useMemo(() => {
-    if (typeof window === 'undefined') return projects;
-    const params = new URLSearchParams(window.location.search);
-    const typeFilter = params.get('type');
     if (typeFilter && (typeFilter === 'renovation' || typeFilter === 'construction')) {
       return projects.filter((p) => p.type === typeFilter);
     }
     return projects;
-  }, [projects]);
+  }, [projects, typeFilter]);
+
+  const isFiltered = typeFilter === 'renovation' || typeFilter === 'construction';
 
   return (
     <div
       ref={gridRef}
-      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 auto-rows-[240px] grid-flow-row-dense gap-3"
+      className={`grid grid-cols-1 md:grid-cols-2 ${isFiltered ? 'lg:grid-cols-3' : 'lg:grid-cols-4'} auto-rows-[240px] md:auto-rows-[280px] grid-flow-row-dense gap-3`}
     >
       {filteredProjects.map((project, i) => {
-        const size = sizePattern[i % sizePattern.length];
+        const size = isFiltered ? { col: '' } : sizePattern[i % sizePattern.length];
         return (
           <motion.a
             key={project.id}

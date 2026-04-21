@@ -6,6 +6,7 @@ import Layout from '@layouts/Layout.astro';
 import Section from '@components/ui/Section.astro';
 import Container from '@components/ui/Container.astro';
 import ProjectGrid from '@components/react/ProjectGrid';
+import ConstructionShowcase from '@components/react/ConstructionShowcase';
 import HeroInner from '@components/react/HeroInner';
 import { projects } from '../../data/projects';
 import { t, tArray } from '@i18n/index';
@@ -72,5 +73,8 @@ const p = 'projetsPage' as const;
       </div>
     </Container>
   </Section>
+
+  <!-- Chantiers en cours — visible uniquement sur ?type=construction -->
+  <ConstructionShowcase client:load />
 
 </Layout>

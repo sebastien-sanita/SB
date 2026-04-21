@@ -138,13 +138,13 @@ const strings = {
     s1Bullet2: { fr: 'Optimisation des volumes et de la lumière naturelle', en: 'Volume and natural light optimisation', it: 'Ottimizzazione dei volumi e della luce naturale' },
     s1Bullet3: { fr: 'Sélection de matériaux nobles et durables', en: 'Selection of premium and sustainable materials', it: 'Selezione di materiali pregiati e sostenibili' },
     // 2.2
-    s2Title1:   { fr: 'Interior', en: 'Interior', it: 'Interior' },
-    s2Title2:   { fr: 'Refinement', en: 'Refinement', it: 'Refinement' },
+    s2Title1:   { fr: 'Raffinement', en: 'Interior', it: 'Interior' },
+    s2Title2:   { fr: 'Intérieur', en: 'Refinement', it: 'Refinement' },
     s2Tag1:     { fr: 'Mobilier Premium', en: 'Premium Furniture', it: 'Mobili Premium' },
     s2Tag2:     { fr: 'Partenaires d\'Excellence', en: 'World-Class Partners', it: 'Partner d\'Eccellenza' },
     s2Tag3:     { fr: 'Clé en Main', en: 'Turnkey', it: 'Chiavi in Mano' },
     s2Desc: {
-      fr: 'Au-delà de la structure, nous orchestrons le refinement intérieur avec une exigence absolue. Sélection de mobilier et matériaux auprès de maisons d\'excellence italiennes et européennes, coordination complète du chantier et livraison clé en main.',
+      fr: 'Au-delà de la structure, nous orchestrons le raffinement intérieur avec une exigence absolue. Sélection de mobilier et matériaux auprès de maisons d\'excellence italiennes et européennes, coordination complète du chantier et livraison clé en main.',
       en: 'Beyond structure, we orchestrate interior refinement with absolute rigour. Furniture and material selection from Italian and European houses of excellence, complete site coordination and turnkey delivery.',
       it: 'Oltre alla struttura, orchestriamo il refinement interiore con un\'esigenza assoluta. Selezione di mobili e materiali presso case d\'eccellenza italiane ed europee, coordinamento completo del cantiere e consegna chiavi in mano.',
     },
@@ -234,7 +234,7 @@ const strings = {
       en: 'Architectural design integrating Mediterranean aesthetics, contemporary functionality and property asset value optimisation.',
       it: 'Design architettonico che integra estetica mediterranea, funzionalità contemporanea e ottimizzazione del valore patrimoniale.',
     },
-    step3Title: { fr: 'Réalisation & Refinement', en: 'Build & Refinement', it: 'Realizzazione & Refinement' },
+    step3Title: { fr: 'Réalisation & Raffinement', en: 'Build & Refinement', it: 'Realizzazione & Refinement' },
     step3Desc: {
       fr: 'Coordination d\'excellence, mobilier et cuisines haut de gamme issus de maisons d\'excellence. Suivi qualité sans compromis.',
       en: 'World-class coordination, premium furniture and kitchens from houses of excellence. Uncompromising quality control.',
@@ -294,7 +294,7 @@ const strings = {
     card2Tag: { fr: 'Asset enhancement & ROI', en: 'Asset Enhancement & ROI', it: 'Asset Enhancement & ROI' },
     card3Title: { fr: 'Acquéreurs Exigeants', en: 'Discerning Buyers', it: 'Acquirenti Esigenti' },
     card3Desc: {
-      fr: 'Vous venez d\'acquérir un bien d\'exception et souhaitez un projet clé en main — de la conception architecturale au refinement intérieur, avec un accompagnement total, une sélection de mobilier premium et une livraison sans compromis.',
+      fr: 'Vous venez d\'acquérir un bien d\'exception et souhaitez un projet clé en main — de la conception architecturale au raffinement intérieur, avec un accompagnement total, une sélection de mobilier premium et une livraison sans compromis.',
       en: 'You\'ve just acquired an exceptional property and want a turnkey project — from architectural design to interior refinement, with complete support, premium furniture selection and uncompromising delivery.',
       it: 'Avete appena acquisito un bene d\'eccezione e desiderate un progetto chiavi in mano — dalla concezione architettonica al refinement interiore, con un accompagnamento totale, una selezione di mobili premium e una consegna senza compromessi.',
     },
@@ -371,7 +371,7 @@ const strings = {
       it: 'La Nostra Expertise — Luxury Transformation | SB Design Riviera',
     },
     metaDesc: {
-      fr: 'Conception architecturale, Interior Refinement et valorisation patrimoniale. SB Design Riviera vous accompagne de la vision à la livraison clé en main sur la Côte d\'Azur.',
+      fr: 'Conception architecturale, Raffinement Intérieur et valorisation patrimoniale. SB Design Riviera vous accompagne de la vision à la livraison clé en main sur la Côte d\'Azur.',
       en: 'Architectural design, Interior Refinement and property enhancement. SB Design Riviera supports you from vision to turnkey delivery on the French Riviera.',
       it: 'Progettazione architettonica, Interior Refinement e valorizzazione patrimoniale. SB Design Riviera vi accompagna dalla visione alla consegna chiavi in mano sulla Costa Azzurra.',
     },
@@ -400,10 +400,10 @@ const strings = {
     s1B3: { fr: 'Sélection de matériaux nobles et durables', en: 'Selection of premium and sustainable materials', it: 'Selezione di materiali pregiati e sostenibili' },
     s1B4: { fr: 'Livraison clé en main avec garanties complètes', en: 'Turnkey delivery with complete warranties', it: 'Consegna chiavi in mano con garanzie complete' },
     // Service 02
-    s2Title1: { fr: 'Interior', en: 'Interior', it: 'Interior' },
-    s2Title2: { fr: 'Refinement', en: 'Refinement', it: 'Refinement' },
+    s2Title1: { fr: 'Raffinement', en: 'Interior', it: 'Interior' },
+    s2Title2: { fr: 'Intérieur', en: 'Refinement', it: 'Refinement' },
     s2Desc: {
-      fr: 'Au-delà de la structure, nous orchestrons le refinement intérieur avec une exigence absolue. Sélection de mobilier et matériaux auprès de maisons d\'excellence italiennes et européennes.',
+      fr: 'Au-delà de la structure, nous orchestrons le raffinement intérieur avec une exigence absolue. Sélection de mobilier et matériaux auprès de maisons d\'excellence italiennes et européennes.',
       en: 'Beyond structure, we orchestrate interior refinement with absolute rigour. Furniture and material selection from Italian and European houses of excellence.',
       it: 'Oltre alla struttura, orchestriamo il refinement interiore con un\'esigenza assoluta. Selezione di mobili e materiali presso case d\'eccellenza italiane ed europee.',
     },
@@ -463,7 +463,7 @@ const strings = {
     historyTitle2: { fr: '& stratégie', en: '& strategy', it: '& strategia' },
     historyTitle3: { fr: 'au service de votre patrimoine', en: 'at the service of your assets', it: 'al servizio del vostro patrimonio' },
     historyP1: {
-      fr: 'SB Design Riviera est un studio d\'architecture et de property enhancement spécialisé dans les résidences secondaires haut de gamme sur la Côte d\'Azur. Notre approche unique fusionne excellence architecturale, interior refinement et stratégie d\'asset enhancement.',
+      fr: 'SB Design Riviera est un studio d\'architecture et de property enhancement spécialisé dans les résidences secondaires haut de gamme sur la Côte d\'Azur. Notre approche unique fusionne excellence architecturale, raffinement intérieur et stratégie d\'asset enhancement.',
       en: 'SB Design Riviera is an architecture and property enhancement studio specialising in high-end secondary residences on the French Riviera. Our unique approach fuses architectural excellence, interior refinement and asset enhancement strategy.',
       it: 'SB Design Riviera è uno studio di architettura e property enhancement specializzato in residenze secondarie di lusso sulla Costa Azzurra. Il nostro approccio unico fonde eccellenza architettonica, interior refinement e strategia di asset enhancement.',
     },
@@ -505,7 +505,7 @@ const strings = {
     },
     value4Title: { fr: 'Accompagnement Intégral', en: 'End-to-End Support', it: 'Accompagnamento Integrale' },
     value4Desc: {
-      fr: 'De la conception architecturale au refinement intérieur, un suivi complet et sans compromis. Coordination de chantier, sélection de mobilier premium et livraison clé en main.',
+      fr: 'De la conception architecturale au raffinement intérieur, un suivi complet et sans compromis. Coordination de chantier, sélection de mobilier premium et livraison clé en main.',
       en: 'From architectural design to interior refinement, complete and uncompromising support. Site coordination, premium furniture selection and turnkey delivery.',
       it: 'Dalla concezione architettonica al refinement interiore, un seguito completo e senza compromessi. Coordinamento di cantiere, selezione di mobili premium e consegna chiavi in mano.',
     },
@@ -555,7 +555,7 @@ const strings = {
     placeholderMessage: { fr: 'Décrivez votre projet...', en: 'Describe your project...', it: 'Descrivete il vostro progetto...' },
     selectDefault: { fr: 'Sélectionnez...', en: 'Select...', it: 'Selezionate...' },
     selectRenovation: { fr: 'Rénovation complète', en: 'Full Renovation', it: 'Ristrutturazione completa' },
-    selectDesign: { fr: 'Interior Refinement', en: 'Interior Refinement', it: 'Interior Refinement' },
+    selectDesign: { fr: 'Raffinement Intérieur', en: 'Interior Refinement', it: 'Interior Refinement' },
     selectPrestige: { fr: 'Valorisation Patrimoniale', en: 'Property Enhancement', it: 'Valorizzazione Patrimoniale' },
     selectOther: { fr: 'Autre', en: 'Other', it: 'Altro' },
     submitBtn: { fr: 'Envoyer ma demande', en: 'Send My Request', it: 'Invia la mia richiesta' },
@@ -579,7 +579,7 @@ const strings = {
       it: 'Le Nostre Realizzazioni — Architettura & Valorizzazione | SB Design Riviera',
     },
     metaDesc: {
-      fr: 'Découvrez les réalisations de SB Design Riviera : conception architecturale, interior refinement et valorisation patrimoniale sur la Côte d\'Azur.',
+      fr: 'Découvrez les réalisations de SB Design Riviera : conception architecturale, raffinement intérieur et valorisation patrimoniale sur la Côte d\'Azur.',
       en: 'Discover SB Design Riviera\'s projects: architectural design, interior refinement and property enhancement on the French Riviera.',
       it: 'Scoprite le realizzazioni di SB Design Riviera: progettazione architettonica, interior refinement e valorizzazione patrimoniale sulla Costa Azzurra.',
     },
