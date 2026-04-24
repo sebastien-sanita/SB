@@ -336,8 +336,8 @@ export const projects: Project[] = [
     category: 'maison',
     type: 'renovation',
     style: 'contemporain',
-    surface: 300,
-    year: 2024,
+    surface: 250,
+    year: 2014,
     location: 'Villefranche-sur-Mer',
     description:
       "Projet d'aménagement intérieur complet avec terrasse extérieure face à la baie de Villefranche-sur-Mer. Cuisine sur-mesure, murs en stuc nacré, plafonds en staff, pose de carrelage grand format sans joint. Escalier tournant en crema marfil, métallerie en inox poli miroir, portes laquées sur-mesure. Terrasse sur plots et piscine à débordement prolongent l'expérience intérieure vers l'horizon méditerranéen, dans un écrin contemporain d'une rare élégance sur la Côte d'Azur.",
@@ -406,7 +406,7 @@ export const projects: Project[] = [
     category: 'maison',
     type: 'construction',
     style: 'contemporain',
-    surface: 240,
+    surface: 160,
     year: 2025,
     location: 'La Croix-Valmer',
     description:
