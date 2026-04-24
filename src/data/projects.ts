@@ -218,7 +218,7 @@ export const projects: Project[] = [
       'Éclairage scénographique nocturne',
       'Terrasses en cascade sur plusieurs niveaux',
     ],
-    coverImage: '/images/projets/aiguebelle-1.jpeg',
+    coverImage: '/images/projets/aiguebelle-6.jpeg',
     images: [
       // Extérieur (vue maison cover en 1er, puis panoramas/nuit/piscine)
       '/images/projets/aiguebelle-1.jpeg',
