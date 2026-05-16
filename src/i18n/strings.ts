@@ -575,9 +575,9 @@ const strings = {
       it: 'Grazie. La vostra richiesta è stata inviata — vi ricontatteremo entro 2 giorni lavorativi.',
     },
     formError: {
-      fr: 'Une erreur est survenue lors de l\'envoi. Merci de réessayer ou de nous écrire à contact@sbdesignriviera.fr.',
-      en: 'An error occurred while sending. Please try again or email us at contact@sbdesignriviera.fr.',
-      it: 'Si è verificato un errore durante l\'invio. Riprovate o scriveteci a contact@sbdesignriviera.fr.',
+      fr: 'Une erreur est survenue lors de l\'envoi. Merci de réessayer ou de nous écrire à info@sbdesign.fr.',
+      en: 'An error occurred while sending. Please try again or email us at info@sbdesign.fr.',
+      it: 'Si è verificato un errore durante l\'invio. Riprovate o scriveteci a info@sbdesign.fr.',
     },
   },
 
