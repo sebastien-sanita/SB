@@ -44,6 +44,35 @@ const hreflangAlternates = getHreflangAlternates(Astro.url.pathname, Astro.site?
     <link rel="apple-touch-icon" href="/images/logo-sb.png" />
     <meta name="generator" content={Astro.generator} />
 
+    <!-- Tracking capture — runs BEFORE GTM so dataLayer is pre-populated -->
+    <script is:inline>
+      (function(){try{
+        var K='sbd_tracking',N=Date.now(),SESSION_MS=30*60*1000;
+        var PARAMS=['gclid','gbraid','wbraid','dclid','fbclid','msclkid','ttclid','li_fat_id','twclid','epik','irclickid','yclid','utm_source','utm_medium','utm_campaign','utm_term','utm_content','utm_id'];
+        var s={};try{s=JSON.parse(localStorage.getItem(K))||{};}catch(e){}
+        var u=new URL(location.href),q=u.searchParams;
+        if(!s.first_seen_at)s.first_seen_at=N;
+        if(!s.landing_page)s.landing_page=u.pathname+u.search;
+        if(!s.page_referrer)s.page_referrer=document.referrer||'';
+        if(!s.last_session_at||(N-s.last_session_at)>SESSION_MS)s.session_count=(s.session_count||0)+1;
+        s.last_session_at=N;s.last_seen_at=N;s.page_views_count=(s.page_views_count||0)+1;
+        PARAMS.forEach(function(k){var v=q.get(k);if(v){if(!s['first_'+k])s['first_'+k]=v;s['last_'+k]=v;s[k]=v;}});
+        try{localStorage.setItem(K,JSON.stringify(s));}catch(e){}
+        window.dataLayer=window.dataLayer||[];
+        window.dataLayer.push({event:'tracking_ready',tracking:s});
+      }catch(e){if(console&&console.error)console.error('[tracking-capture]',e);}})();
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script is:inline>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-MGLL3J66');
+    </script>
+    <!-- End Google Tag Manager -->
+
     <!-- SEO -->
     <title>{title}</title>
     <meta name="description" content={description} />
@@ -98,6 +127,12 @@ const hreflangAlternates = getHreflangAlternates(Astro.url.pathname, Astro.site?
   </head>
 
   <body class:list={['bg-background text-text-primary is-loading', className]}>
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MGLL3J66" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
 
     <!-- Page Transition — Logo overlay -->
     <div

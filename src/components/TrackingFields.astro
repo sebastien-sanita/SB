@@ -1,0 +1,43 @@
+---
+/**
+ * TrackingFields — hidden inputs declared at build time so Netlify Forms
+ * detects them. Values are filled in at runtime by src/scripts/contact-form.ts
+ * from localStorage (`sbd_tracking`) + cookies (_ga, _fbp, _fbc, _gcl_*).
+ *
+ * Keep this in sync with URL_PARAMS / field names in contact-form.ts.
+ */
+
+const URL_PARAMS = [
+  'gclid', 'gbraid', 'wbraid', 'dclid',
+  'fbclid', 'msclkid', 'ttclid', 'li_fat_id', 'twclid',
+  'epik', 'irclickid', 'yclid',
+  'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'utm_id',
+];
+
+const CONTEXT_FIELDS = [
+  'landing_page', 'page_referrer',
+  'first_seen_at', 'last_seen_at',
+  'session_count', 'page_views_count',
+  'current_url', 'user_agent', 'submitted_at',
+];
+
+const COOKIE_FIELDS = [
+  'ga_client_id', 'ga_session_id',
+  'fbp', 'fbc',
+  'gcl_aw', 'gcl_dc',
+];
+
+const PII_HASH_FIELDS = ['email_sha256', 'phone_sha256'];
+---
+
+{URL_PARAMS.map((name) => (
+  <>
+    <input type="hidden" name={name} value="" />
+    <input type="hidden" name={`first_${name}`} value="" />
+    <input type="hidden" name={`last_${name}`} value="" />
+  </>
+))}
+
+{CONTEXT_FIELDS.map((name) => <input type="hidden" name={name} value="" />)}
+{COOKIE_FIELDS.map((name) => <input type="hidden" name={name} value="" />)}
+{PII_HASH_FIELDS.map((name) => <input type="hidden" name={name} value="" />)}

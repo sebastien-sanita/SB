@@ -569,6 +569,16 @@ const strings = {
       it: 'Lunedì — Sabato: 10 — 12 / 14 — 18:30\nDomenica: chiuso',
     },
     followUs: { fr: 'Suivez-nous', en: 'Follow Us', it: 'Seguiteci' },
+    formSuccess: {
+      fr: 'Merci. Votre demande a bien été envoyée — nous vous recontactons sous 48 h ouvrées.',
+      en: 'Thank you. Your request has been sent — we will get back to you within 2 business days.',
+      it: 'Grazie. La vostra richiesta è stata inviata — vi ricontatteremo entro 2 giorni lavorativi.',
+    },
+    formError: {
+      fr: 'Une erreur est survenue lors de l\'envoi. Merci de réessayer ou de nous écrire à contact@sbdesignriviera.fr.',
+      en: 'An error occurred while sending. Please try again or email us at contact@sbdesignriviera.fr.',
+      it: 'Si è verificato un errore durante l\'invio. Riprovate o scriveteci a contact@sbdesignriviera.fr.',
+    },
   },
 
   // ── Page Projets ───────────────────────────────────────
