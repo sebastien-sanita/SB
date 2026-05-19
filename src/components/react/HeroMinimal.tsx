@@ -52,6 +52,8 @@ export default function HeroMinimal({ lang = 'fr' }: Props) {
             alt="Architecture haut de gamme Côte d'Azur"
             className="w-full h-full object-cover"
             loading="eager"
+            decoding="async"
+            fetchPriority={current === 0 ? 'high' : 'auto'}
           />
         </motion.div>
       </AnimatePresence>

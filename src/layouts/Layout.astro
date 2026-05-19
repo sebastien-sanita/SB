@@ -6,7 +6,7 @@
 import '@/styles/global.css';
 import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
-import { getLangFromUrl, getHreflangAlternates } from '@i18n/utils';
+import { getLangFromUrl, getHreflangAlternates, getBasePathname, getLocalizedPath } from '@i18n/utils';
 import type { Locale } from '@i18n/languages';
 
 interface Props {
@@ -18,9 +18,9 @@ interface Props {
 }
 
 const defaultDescriptions: Record<Locale, string> = {
-  fr: "SB Design Riviera — Luxury Transformation. Conception et valorisation de résidences secondaires haut de gamme sur la Côte d'Azur.",
-  en: "SB Design Riviera — Luxury Transformation. Design and enhancement of high-end secondary residences on the French Riviera.",
-  it: "SB Design Riviera — Luxury Transformation. Progettazione e valorizzazione di residenze secondarie di lusso sulla Costa Azzurra.",
+  fr: "SB Design Riviera, architecte d'intérieur sur la Côte d'Azur : conception, rénovation et valorisation de résidences secondaires haut de gamme dans le Var et les Alpes-Maritimes.",
+  en: "SB Design Riviera, interior architect on the French Riviera: design, renovation and enhancement of high-end second homes across the Var and Alpes-Maritimes.",
+  it: "SB Design Riviera, architetto d'interni sulla Costa Azzurra: progettazione, ristrutturazione e valorizzazione di residenze secondarie di lusso nel Var e nelle Alpi Marittime.",
 };
 
 const currentLang = Astro.props.lang ?? getLangFromUrl(Astro.url);
@@ -37,6 +37,37 @@ const hreflangAlternates = getHreflangAlternates(Astro.url.pathname, Astro.site?
 // Open Graph — image absolue (fallback global si la page n'en fournit pas)
 const ogImageURL = new URL(ogImage ?? '/images/projets/villa-azur-11.jpeg', Astro.site);
 const ogLocales: Record<Locale, string> = { fr: 'fr_FR', en: 'en_GB', it: 'it_IT' };
+
+// Schema.org BreadcrumbList — généré depuis le chemin de la page (Problème 5 SEO)
+const siteBase = Astro.site?.toString().replace(/\/$/, '') ?? '';
+const homeLabel: Record<Locale, string> = { fr: 'Accueil', en: 'Home', it: 'Home' };
+const breadcrumbLabels: Record<string, Record<Locale, string>> = {
+  projets: { fr: 'Projets', en: 'Projects', it: 'Progetti' },
+  expertise: { fr: 'Expertise', en: 'Expertise', it: 'Competenze' },
+  contact: { fr: 'Contact', en: 'Contact', it: 'Contatto' },
+  'a-propos': { fr: 'À propos', en: 'About', it: 'Chi siamo' },
+  agence: { fr: 'Agence', en: 'Agency', it: 'Agenzia' },
+  'architecte-interieur-saint-tropez': {
+    fr: "Architecte d'intérieur Saint-Tropez",
+    en: 'Interior Architect Saint-Tropez',
+    it: "Architetto d'interni Saint-Tropez",
+  },
+};
+const titleCase = (s: string) =>
+  s.split('-').map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+
+const crumbSegments = getBasePathname(Astro.url.pathname).split('/').filter(Boolean);
+const breadcrumbItems = [
+  { name: homeLabel[currentLang], url: `${siteBase}${getLocalizedPath('/', currentLang)}` },
+];
+let crumbAcc = '';
+for (const seg of crumbSegments) {
+  crumbAcc += `/${seg}`;
+  breadcrumbItems.push({
+    name: breadcrumbLabels[seg]?.[currentLang] ?? titleCase(seg),
+    url: `${siteBase}${getLocalizedPath(crumbAcc, currentLang)}/`,
+  });
+}
 ---
 
 <!doctype html>
@@ -89,18 +120,18 @@ const ogLocales: Record<Locale, string> = { fr: 'fr_FR', en: 'en_GB', it: 'it_IT
     <link rel="alternate" hreflang="x-default" href={hreflangAlternates.find(a => a.lang === 'fr')?.href ?? canonicalURL.href} />
 
     <!-- Schema.org LocalBusiness -->
-    <script type="application/ld+json" set:html={JSON.stringify({
+    <script type="application/ld+json" is:inline set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
       "name": "SB Design Riviera",
-      "description": "Luxury Transformation — Conception et valorisation de résidences secondaires haut de gamme sur la Côte d'Azur.",
+      "description": "Architecte d'intérieur sur la Côte d'Azur : conception, rénovation et valorisation de résidences secondaires haut de gamme dans le Var et les Alpes-Maritimes.",
       "url": "https://www.sbdesign.fr",
       "telephone": ["+33609459245"],
       "email": "info@sbdesign.fr",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Chassieu",
-        "addressRegion": "Côte d'Azur",
+        "addressRegion": "Auvergne-Rhône-Alpes",
         "addressCountry": "FR"
       },
       "areaServed": [
@@ -112,6 +143,20 @@ const ogLocales: Record<Locale, string> = { fr: 'fr_FR', en: 'en_GB', it: 'it_IT
       "openingHours": "Mo-Fr 09:00-18:00",
       "knowsLanguage": ["fr", "en", "it"]
     })} />
+
+    <!-- Schema.org BreadcrumbList -->
+    {breadcrumbItems.length > 1 && (
+      <script type="application/ld+json" is:inline set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": breadcrumbItems.map((item, i) => ({
+          "@type": "ListItem",
+          "position": i + 1,
+          "name": item.name,
+          "item": item.url,
+        })),
+      })} />
+    )}
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
