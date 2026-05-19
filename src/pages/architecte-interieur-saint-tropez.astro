@@ -1,0 +1,162 @@
+---
+/**
+ * Page locale SEO — Architecte d'intérieur dans le golfe de Saint-Tropez (FR)
+ * Cible : « architecte d'intérieur Saint-Tropez » + communes du golfe.
+ */
+import Layout from '@layouts/Layout.astro';
+import Section from '@components/ui/Section.astro';
+import Container from '@components/ui/Container.astro';
+import Button from '@components/ui/Button.astro';
+import HeroInner from '@components/react/HeroInner';
+import { projects } from '../data/projects';
+import { getLocalizedPath } from '@i18n/index';
+import type { Locale } from '@i18n/languages';
+
+const lang: Locale = 'fr';
+const project = projects.find((p) => p.slug === 'villa-la-croix-valmer');
+
+const prestations = [
+  'Rénovation de villas et appartements haut de gamme',
+  'Architecture et décoration d\'intérieur sur mesure',
+  'Mobilier et agencements sur mesure',
+  'Valorisation patrimoniale et mise en location premium',
+];
+---
+
+<Layout
+  lang={lang}
+  title="Architecte d'intérieur Saint-Tropez & golfe | SB Design"
+  description="Architecte d'intérieur dans le golfe de Saint-Tropez : rénovation de villas, mobilier sur mesure et valorisation à Ramatuelle, Gassin, Grimaud, Sainte-Maxime."
+  ogImage="/images/projets/la-croix-valmer-2.jpg"
+>
+
+  <div class="-mt-[80px]">
+    <HeroInner
+      client:load
+      images={[
+        '/images/projets/la-croix-valmer-2.jpg',
+        '/images/projets/la-croix-valmer-6.jpg',
+        '/images/projets/la-croix-valmer-9.jpg',
+      ]}
+      label="Golfe de Saint-Tropez"
+      title={`Architecte d'intérieur<br /><span class="font-heading font-light text-[0.4em]">dans le golfe de Saint-Tropez</span>`}
+      subtitle="De Saint-Tropez à Sainte-Maxime, SB Design Riviera conçoit, rénove et valorise les résidences d'exception."
+    />
+  </div>
+
+  <!-- 01 — Le golfe de Saint-Tropez -->
+  <Section padding="lg" background="white">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <span class="subsection-number">01</span>
+        <h2 class="font-display text-subsection font-bold uppercase text-primary-dark mt-4 mb-6">
+          Le golfe de Saint-Tropez, <span class="font-heading font-light">un écrin pour l'architecture d'intérieur</span>
+        </h2>
+        <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.75]">
+          Le golfe de Saint-Tropez réunit certains des biens les plus convoités de la Côte d'Azur — villas
+          surplombant la Méditerranée, propriétés au cœur des pinèdes, résidences contemporaines face à la baie.
+          SB Design Riviera y accompagne propriétaires privés et investisseurs internationaux dans la conception,
+          la rénovation et la valorisation de leurs résidences. Notre approche conjugue exigence architecturale,
+          raffinement des intérieurs et stratégie patrimoniale, pour révéler le plein potentiel de chaque bien.
+        </p>
+      </div>
+    </Container>
+  </Section>
+
+  <!-- 02 — Nos prestations dans le golfe -->
+  <Section padding="lg" background="warm">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <span class="subsection-number">02</span>
+        <h2 class="font-display text-subsection font-bold uppercase text-primary-dark mt-4 mb-6">
+          Nos prestations <span class="font-heading font-light">dans le golfe</span>
+        </h2>
+        <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.75] mb-8">
+          De la rénovation intégrale d'une villa à la création de mobilier sur mesure, nous intervenons à chaque
+          étape du projet : conception architecturale, sélection de matériaux nobles, coordination de chantier et
+          livraison clé en main — un accompagnement complet, pensé pour les exigences du marché tropézien.
+        </p>
+        <ul class="space-y-3">
+          {prestations.map((item) => (
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-accent-gold mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="font-body text-sm font-light text-[var(--color-text-light)]">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </Container>
+  </Section>
+
+  <!-- 03 — De Saint-Tropez à Sainte-Maxime -->
+  <Section padding="lg" background="white">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <span class="subsection-number">03</span>
+        <h2 class="font-display text-subsection font-bold uppercase text-primary-dark mt-4 mb-6">
+          De Saint-Tropez <span class="font-heading font-light">à Sainte-Maxime</span>
+        </h2>
+        <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.75]">
+          Notre studio intervient sur l'ensemble du golfe de Saint-Tropez : Saint-Tropez et la presqu'île,
+          Ramatuelle, Gassin, Grimaud, Sainte-Maxime, La Croix-Valmer et Cavalaire-sur-Mer. Chaque commune
+          possède son identité — village perché, front de mer, domaine boisé — et chaque projet est conçu pour
+          dialoguer avec son environnement et la lumière si particulière de cette baie.
+        </p>
+      </div>
+    </Container>
+  </Section>
+
+  <!-- 04 — Une réalisation dans le golfe -->
+  {project && (
+    <Section padding="lg" background="warm">
+      <Container>
+        <div class="max-w-3xl mb-10" data-reveal>
+          <h2 class="font-display text-subsection font-bold uppercase text-primary-dark">
+            Une réalisation <span class="font-heading font-light">dans le golfe</span>
+          </h2>
+        </div>
+        <a
+          href={getLocalizedPath(`/projets/${project.slug}`, lang)}
+          class="group relative overflow-hidden block h-[320px] lg:h-[460px]"
+          data-reveal
+        >
+          <img
+            src={project.coverImage}
+            alt={`Rénovation de villa à ${project.location} — golfe de Saint-Tropez`}
+            class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.05]"
+            loading="lazy"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+          <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+            <span class="text-[11px] font-heading font-medium text-accent-gold uppercase tracking-[0.15em]">
+              {project.location}
+            </span>
+            <h3 class="font-display text-2xl md:text-3xl font-semibold uppercase text-white mt-1">
+              {project.title}
+            </h3>
+          </div>
+        </a>
+      </Container>
+    </Section>
+  )}
+
+  <!-- 05 — CTA -->
+  <Section background="dark" padding="lg">
+    <Container>
+      <div class="text-center max-w-2xl mx-auto" data-reveal>
+        <h2 class="font-display text-section font-bold uppercase text-white mb-6">
+          Un projet dans le <span class="font-heading font-light">golfe de Saint-Tropez ?</span>
+        </h2>
+        <p class="font-body text-lg font-light text-white/70 mb-10 leading-relaxed">
+          Échangeons sur votre projet de rénovation ou de valorisation. Consultation confidentielle et sans engagement.
+        </p>
+        <Button href={getLocalizedPath('/contact', lang)} variant="primary" size="lg">
+          Prendre rendez-vous
+        </Button>
+      </div>
+    </Container>
+  </Section>
+
+</Layout>
