@@ -11,6 +11,27 @@ import type { Locale } from '@i18n/languages';
 
 interface Props { lang?: Locale; }
 const lang = Astro.props.lang ?? getLangFromUrl(Astro.url);
+
+// Zones d'intervention — landing pages SEO locales (FR/EN/IT)
+const zonesTitle: Record<Locale, string> = {
+  fr: "Zones d'intervention",
+  en: 'Areas we cover',
+  it: 'Zone di intervento',
+};
+const zones: Array<{ path: string; label: Record<Locale, string> }> = [
+  {
+    path: '/architecte-interieur-saint-tropez',
+    label: { fr: 'Golfe de Saint-Tropez', en: 'Gulf of Saint-Tropez', it: 'Golfo di Saint-Tropez' },
+  },
+  {
+    path: '/architecte-interieur-var',
+    label: { fr: 'Corniche des Maures · Var', en: 'Corniche des Maures · Var', it: 'Corniche des Maures · Var' },
+  },
+  {
+    path: '/architecte-interieur-nice',
+    label: { fr: 'Nice & Villefranche-sur-Mer', en: 'Nice & Villefranche-sur-Mer', it: 'Nizza & Villefranche-sur-Mer' },
+  },
+];
 ---
 
 <footer
@@ -97,18 +118,16 @@ const lang = Astro.props.lang ?? getLangFromUrl(Astro.url);
           <li><a href={getLocalizedPath('/projets', lang)} class="text-white/60 hover:text-white transition-colors duration-fast block py-[6px]">{t('footer', 'amenagement', lang)}</a></li>
         </ul>
 
-        {lang === 'fr' && (
-          <div class="mt-10">
-            <h4 class="font-heading text-sm font-semibold uppercase tracking-[0.2em] text-white/40 mb-6">
-              Zones d'intervention
-            </h4>
-            <ul class="space-y-3">
-              <li><a href="/architecte-interieur-saint-tropez" class="text-white/60 hover:text-white transition-colors duration-fast block py-[6px]">Golfe de Saint-Tropez</a></li>
-              <li><a href="/architecte-interieur-var" class="text-white/60 hover:text-white transition-colors duration-fast block py-[6px]">Corniche des Maures · Var</a></li>
-              <li><a href="/architecte-interieur-nice" class="text-white/60 hover:text-white transition-colors duration-fast block py-[6px]">Nice &amp; Villefranche-sur-Mer</a></li>
-            </ul>
-          </div>
-        )}
+        <div class="mt-10">
+          <h4 class="font-heading text-sm font-semibold uppercase tracking-[0.2em] text-white/40 mb-6">
+            {zonesTitle[lang]}
+          </h4>
+          <ul class="space-y-3">
+            {zones.map((zone) => (
+              <li><a href={getLocalizedPath(zone.path, lang)} class="text-white/60 hover:text-white transition-colors duration-fast block py-[6px]">{zone.label[lang]}</a></li>
+            ))}
+          </ul>
+        </div>
       </div>
 
       {/* Col 4 : Contact */}

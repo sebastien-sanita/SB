@@ -1,0 +1,158 @@
+---
+/**
+ * Pagina SEO locale — Architetto d'interni a Nizza e Villefranche-sur-Mer (IT)
+ * Target: "architetto d'interni Nizza" + comuni dell'est della Riviera.
+ */
+import Layout from '@layouts/Layout.astro';
+import Section from '@components/ui/Section.astro';
+import Container from '@components/ui/Container.astro';
+import Button from '@components/ui/Button.astro';
+import HeroInner from '@components/react/HeroInner';
+import { projects } from '../../data/projects';
+import { getLocalizedPath } from '@i18n/index';
+import type { Locale } from '@i18n/languages';
+
+const lang: Locale = 'it';
+const project = projects.find((p) => p.slug === 'villa-villefranche-sur-mer');
+const heroImages = (project?.images ?? [project?.coverImage ?? '/images/projets/villa-azur-11.jpeg']).slice(0, 3);
+
+const prestations = [
+  'Ristrutturazione di ville e appartamenti di lusso',
+  'Architettura e decorazione d\'interni su misura',
+  'Mobili e arredi su misura',
+  'Valorizzazione patrimoniale e locazione premium',
+];
+---
+
+<Layout
+  lang={lang}
+  title="Architetto d'interni a Nizza e Villefranche | SB Design"
+  description="Architetto d'interni a Nizza e Villefranche-sur-Mer: ristrutturazione, decorazione e valorizzazione di residenze di lusso sulla Riviera. SB Design Riviera."
+  ogImage={project?.coverImage}
+>
+
+  <div class="-mt-[80px]">
+    <HeroInner
+      client:load
+      images={heroImages}
+      label="Nizza · Villefranche-sur-Mer"
+      title={`Architetto d'interni<br /><span class="font-heading font-light text-[0.4em]">a Nizza e Villefranche-sur-Mer</span>`}
+      subtitle="Da Nizza a Saint-Jean-Cap-Ferrat, SB Design Riviera valorizza le residenze d'eccezione della Riviera."
+    />
+  </div>
+
+  <!-- 01 — Nizza e la sua Riviera -->
+  <Section padding="lg" background="white">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <span class="subsection-number">01</span>
+        <h2 class="font-display text-subsection font-bold uppercase text-primary-dark mt-4 mb-6">
+          Nizza e la sua Riviera, <span class="font-heading font-light">un patrimonio d'eccezione</span>
+        </h2>
+        <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.75]">
+          Dalla Baie des Anges ai capi preservati, l'est della Riviera concentra un patrimonio residenziale raro —
+          appartamenti haussmanniani, ville Belle Époque, residenze contemporanee vista mare. SB Design Riviera
+          accompagna proprietari privati e investitori internazionali nella progettazione, ristrutturazione e
+          valorizzazione dei loro immobili, con una costante esigenza di eleganza e durevolezza.
+        </p>
+      </div>
+    </Container>
+  </Section>
+
+  <!-- 02 — I nostri servizi -->
+  <Section padding="lg" background="warm">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <span class="subsection-number">02</span>
+        <h2 class="font-display text-subsection font-bold uppercase text-primary-dark mt-4 mb-6">
+          I nostri servizi <span class="font-heading font-light">sulla Riviera</span>
+        </h2>
+        <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.75] mb-8">
+          Dalla ristrutturazione integrale di un appartamento alla creazione di mobili su misura, interveniamo in
+          ogni fase del progetto: progettazione architettonica, selezione di materiali pregiati, coordinamento del
+          cantiere e consegna chiavi in mano — un accompagnamento completo, dal primo schizzo alla consegna delle
+          chiavi.
+        </p>
+        <ul class="space-y-3">
+          {prestations.map((item) => (
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-accent-gold mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="font-body text-sm font-light text-[var(--color-text-light)]">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </Container>
+  </Section>
+
+  <!-- 03 — Da Nizza a Cap-Ferrat -->
+  <Section padding="lg" background="white">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <span class="subsection-number">03</span>
+        <h2 class="font-display text-subsection font-bold uppercase text-primary-dark mt-4 mb-6">
+          Da Nizza <span class="font-heading font-light">a Cap-Ferrat</span>
+        </h2>
+        <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.75]">
+          Il nostro studio opera a Nizza, Villefranche-sur-Mer, Beaulieu-sur-Mer, Saint-Jean-Cap-Ferrat ed Èze.
+          Dalle colline nizzarde alle penisole più ambite della Riviera, ogni progetto è concepito per esaltare il
+          carattere del luogo — la sua architettura, le sue prospettive sul Mediterraneo, la sua luce.
+        </p>
+      </div>
+    </Container>
+  </Section>
+
+  <!-- 04 — Una realizzazione sulla Riviera -->
+  {project && (
+    <Section padding="lg" background="warm">
+      <Container>
+        <div class="max-w-3xl mb-10" data-reveal>
+          <h2 class="font-display text-subsection font-bold uppercase text-primary-dark">
+            Una realizzazione <span class="font-heading font-light">sulla Riviera</span>
+          </h2>
+        </div>
+        <a
+          href={getLocalizedPath(`/projets/${project.slug}`, lang)}
+          class="group relative overflow-hidden block h-[320px] lg:h-[460px]"
+          data-reveal
+        >
+          <img
+            src={project.coverImage}
+            alt={`Ristrutturazione di villa a ${project.location}`}
+            class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.05]"
+            loading="lazy"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+          <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+            <span class="text-[11px] font-heading font-medium text-accent-gold uppercase tracking-[0.15em]">
+              {project.location}
+            </span>
+            <h3 class="font-display text-2xl md:text-3xl font-semibold uppercase text-white mt-1">
+              {project.title}
+            </h3>
+          </div>
+        </a>
+      </Container>
+    </Section>
+  )}
+
+  <!-- 05 — CTA -->
+  <Section background="dark" padding="lg">
+    <Container>
+      <div class="text-center max-w-2xl mx-auto" data-reveal>
+        <h2 class="font-display text-section font-bold uppercase text-white mb-6">
+          Un progetto a <span class="font-heading font-light">Nizza o sulla Riviera?</span>
+        </h2>
+        <p class="font-body text-lg font-light text-white/70 mb-10 leading-relaxed">
+          Parliamo del suo progetto di ristrutturazione o valorizzazione. Consulenza riservata e senza impegno.
+        </p>
+        <Button href={getLocalizedPath('/contact', lang)} variant="primary" size="lg">
+          Fissare un appuntamento
+        </Button>
+      </div>
+    </Container>
+  </Section>
+
+</Layout>

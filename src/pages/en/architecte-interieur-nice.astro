@@ -1,0 +1,157 @@
+---
+/**
+ * Local SEO page — Interior architect in Nice and Villefranche-sur-Mer (EN)
+ * Target: "interior architect Nice" + towns of the eastern Riviera.
+ */
+import Layout from '@layouts/Layout.astro';
+import Section from '@components/ui/Section.astro';
+import Container from '@components/ui/Container.astro';
+import Button from '@components/ui/Button.astro';
+import HeroInner from '@components/react/HeroInner';
+import { projects } from '../../data/projects';
+import { getLocalizedPath } from '@i18n/index';
+import type { Locale } from '@i18n/languages';
+
+const lang: Locale = 'en';
+const project = projects.find((p) => p.slug === 'villa-villefranche-sur-mer');
+const heroImages = (project?.images ?? [project?.coverImage ?? '/images/projets/villa-azur-11.jpeg']).slice(0, 3);
+
+const prestations = [
+  'Renovation of high-end villas and apartments',
+  'Bespoke interior architecture and design',
+  'Custom furniture and fitted joinery',
+  'Heritage enhancement and premium rental positioning',
+];
+---
+
+<Layout
+  lang={lang}
+  title="Interior Architect Nice & Villefranche | SB Design"
+  description="Interior architect in Nice and Villefranche-sur-Mer: renovation, design and enhancement of high-end residences on the Riviera. SB Design Riviera."
+  ogImage={project?.coverImage}
+>
+
+  <div class="-mt-[80px]">
+    <HeroInner
+      client:load
+      images={heroImages}
+      label="Nice · Villefranche-sur-Mer"
+      title={`Interior architect<br /><span class="font-heading font-light text-[0.4em]">in Nice and Villefranche-sur-Mer</span>`}
+      subtitle="From Nice to Saint-Jean-Cap-Ferrat, SB Design Riviera enhances the exceptional residences of the Riviera."
+    />
+  </div>
+
+  <!-- 01 — Nice and its Riviera -->
+  <Section padding="lg" background="white">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <span class="subsection-number">01</span>
+        <h2 class="font-display text-subsection font-bold uppercase text-primary-dark mt-4 mb-6">
+          Nice and its Riviera, <span class="font-heading font-light">an exceptional heritage</span>
+        </h2>
+        <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.75]">
+          From the Baie des Anges to the unspoilt capes, the eastern Riviera holds a rare residential heritage —
+          Haussmann apartments, Belle Époque villas, contemporary sea-view residences. SB Design Riviera supports
+          private owners and international investors in the design, renovation and enhancement of their
+          properties, with a constant pursuit of elegance and durability.
+        </p>
+      </div>
+    </Container>
+  </Section>
+
+  <!-- 02 — Our services -->
+  <Section padding="lg" background="warm">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <span class="subsection-number">02</span>
+        <h2 class="font-display text-subsection font-bold uppercase text-primary-dark mt-4 mb-6">
+          Our services <span class="font-heading font-light">on the Riviera</span>
+        </h2>
+        <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.75] mb-8">
+          From the complete renovation of an apartment to the creation of bespoke furniture, we are involved at
+          every stage of the project: architectural design, selection of fine materials, site coordination and
+          turnkey delivery — comprehensive support, from the first sketch to the handover of keys.
+        </p>
+        <ul class="space-y-3">
+          {prestations.map((item) => (
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-accent-gold mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="font-body text-sm font-light text-[var(--color-text-light)]">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </Container>
+  </Section>
+
+  <!-- 03 — From Nice to Cap-Ferrat -->
+  <Section padding="lg" background="white">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <span class="subsection-number">03</span>
+        <h2 class="font-display text-subsection font-bold uppercase text-primary-dark mt-4 mb-6">
+          From Nice <span class="font-heading font-light">to Cap-Ferrat</span>
+        </h2>
+        <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.75]">
+          Our studio works in Nice, Villefranche-sur-Mer, Beaulieu-sur-Mer, Saint-Jean-Cap-Ferrat and Èze. From
+          the hills of Nice to the most prized peninsulas of the Riviera, each project is designed to elevate the
+          character of the place — its architecture, its views over the Mediterranean, its light.
+        </p>
+      </div>
+    </Container>
+  </Section>
+
+  <!-- 04 — A project on the Riviera -->
+  {project && (
+    <Section padding="lg" background="warm">
+      <Container>
+        <div class="max-w-3xl mb-10" data-reveal>
+          <h2 class="font-display text-subsection font-bold uppercase text-primary-dark">
+            A project <span class="font-heading font-light">on the Riviera</span>
+          </h2>
+        </div>
+        <a
+          href={getLocalizedPath(`/projets/${project.slug}`, lang)}
+          class="group relative overflow-hidden block h-[320px] lg:h-[460px]"
+          data-reveal
+        >
+          <img
+            src={project.coverImage}
+            alt={`Villa renovation in ${project.location}`}
+            class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.05]"
+            loading="lazy"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+          <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+            <span class="text-[11px] font-heading font-medium text-accent-gold uppercase tracking-[0.15em]">
+              {project.location}
+            </span>
+            <h3 class="font-display text-2xl md:text-3xl font-semibold uppercase text-white mt-1">
+              {project.title}
+            </h3>
+          </div>
+        </a>
+      </Container>
+    </Section>
+  )}
+
+  <!-- 05 — CTA -->
+  <Section background="dark" padding="lg">
+    <Container>
+      <div class="text-center max-w-2xl mx-auto" data-reveal>
+        <h2 class="font-display text-section font-bold uppercase text-white mb-6">
+          A project in <span class="font-heading font-light">Nice or on the Riviera?</span>
+        </h2>
+        <p class="font-body text-lg font-light text-white/70 mb-10 leading-relaxed">
+          Let's talk about your renovation or enhancement project. Confidential consultation, no obligation.
+        </p>
+        <Button href={getLocalizedPath('/contact', lang)} variant="primary" size="lg">
+          Book a consultation
+        </Button>
+      </div>
+    </Container>
+  </Section>
+
+</Layout>

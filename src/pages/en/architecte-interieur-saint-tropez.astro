@@ -1,0 +1,162 @@
+---
+/**
+ * Local SEO page — Interior architect in the Gulf of Saint-Tropez (EN)
+ * Target: "interior architect Saint-Tropez" + towns of the gulf.
+ */
+import Layout from '@layouts/Layout.astro';
+import Section from '@components/ui/Section.astro';
+import Container from '@components/ui/Container.astro';
+import Button from '@components/ui/Button.astro';
+import HeroInner from '@components/react/HeroInner';
+import { projects } from '../../data/projects';
+import { getLocalizedPath } from '@i18n/index';
+import type { Locale } from '@i18n/languages';
+
+const lang: Locale = 'en';
+const project = projects.find((p) => p.slug === 'villa-la-croix-valmer');
+
+const prestations = [
+  'Renovation of high-end villas and apartments',
+  'Bespoke interior architecture and design',
+  'Custom furniture and fitted joinery',
+  'Heritage enhancement and premium rental positioning',
+];
+---
+
+<Layout
+  lang={lang}
+  title="Interior Architect Saint-Tropez & the Gulf | SB Design"
+  description="Interior architect in the Gulf of Saint-Tropez: villa renovation, bespoke furniture and property enhancement in Ramatuelle, Gassin, Grimaud and Sainte-Maxime."
+  ogImage="/images/projets/la-croix-valmer-2.jpg"
+>
+
+  <div class="-mt-[80px]">
+    <HeroInner
+      client:load
+      images={[
+        '/images/projets/la-croix-valmer-2.jpg',
+        '/images/projets/la-croix-valmer-6.jpg',
+        '/images/projets/la-croix-valmer-9.jpg',
+      ]}
+      label="Gulf of Saint-Tropez"
+      title={`Interior architect<br /><span class="font-heading font-light text-[0.4em]">in the Gulf of Saint-Tropez</span>`}
+      subtitle="From Saint-Tropez to Sainte-Maxime, SB Design Riviera designs, renovates and enhances exceptional residences."
+    />
+  </div>
+
+  <!-- 01 — The Gulf of Saint-Tropez -->
+  <Section padding="lg" background="white">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <span class="subsection-number">01</span>
+        <h2 class="font-display text-subsection font-bold uppercase text-primary-dark mt-4 mb-6">
+          The Gulf of Saint-Tropez, <span class="font-heading font-light">a setting for interior architecture</span>
+        </h2>
+        <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.75]">
+          The Gulf of Saint-Tropez brings together some of the most sought-after properties on the French Riviera —
+          villas overlooking the Mediterranean, homes set within the pine groves, contemporary residences facing the
+          bay. SB Design Riviera supports private owners and international investors in the design, renovation and
+          enhancement of their residences. Our approach combines architectural rigour, refined interiors and a
+          heritage strategy, to reveal the full potential of each property.
+        </p>
+      </div>
+    </Container>
+  </Section>
+
+  <!-- 02 — Our services in the gulf -->
+  <Section padding="lg" background="warm">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <span class="subsection-number">02</span>
+        <h2 class="font-display text-subsection font-bold uppercase text-primary-dark mt-4 mb-6">
+          Our services <span class="font-heading font-light">in the gulf</span>
+        </h2>
+        <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.75] mb-8">
+          From the complete renovation of a villa to the creation of bespoke furniture, we are involved at every
+          stage of the project: architectural design, selection of fine materials, site coordination and turnkey
+          delivery — comprehensive support, tailored to the demands of the Saint-Tropez market.
+        </p>
+        <ul class="space-y-3">
+          {prestations.map((item) => (
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-accent-gold mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="font-body text-sm font-light text-[var(--color-text-light)]">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </Container>
+  </Section>
+
+  <!-- 03 — From Saint-Tropez to Sainte-Maxime -->
+  <Section padding="lg" background="white">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <span class="subsection-number">03</span>
+        <h2 class="font-display text-subsection font-bold uppercase text-primary-dark mt-4 mb-6">
+          From Saint-Tropez <span class="font-heading font-light">to Sainte-Maxime</span>
+        </h2>
+        <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.75]">
+          Our studio works across the entire Gulf of Saint-Tropez: Saint-Tropez and the peninsula, Ramatuelle,
+          Gassin, Grimaud, Sainte-Maxime, La Croix-Valmer and Cavalaire-sur-Mer. Each town has its own identity —
+          hilltop village, seafront, wooded estate — and each project is designed to engage with its surroundings
+          and the distinctive light of this bay.
+        </p>
+      </div>
+    </Container>
+  </Section>
+
+  <!-- 04 — A project in the gulf -->
+  {project && (
+    <Section padding="lg" background="warm">
+      <Container>
+        <div class="max-w-3xl mb-10" data-reveal>
+          <h2 class="font-display text-subsection font-bold uppercase text-primary-dark">
+            A project <span class="font-heading font-light">in the gulf</span>
+          </h2>
+        </div>
+        <a
+          href={getLocalizedPath(`/projets/${project.slug}`, lang)}
+          class="group relative overflow-hidden block h-[320px] lg:h-[460px]"
+          data-reveal
+        >
+          <img
+            src={project.coverImage}
+            alt={`Villa renovation in ${project.location} — Gulf of Saint-Tropez`}
+            class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.05]"
+            loading="lazy"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+          <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+            <span class="text-[11px] font-heading font-medium text-accent-gold uppercase tracking-[0.15em]">
+              {project.location}
+            </span>
+            <h3 class="font-display text-2xl md:text-3xl font-semibold uppercase text-white mt-1">
+              {project.title}
+            </h3>
+          </div>
+        </a>
+      </Container>
+    </Section>
+  )}
+
+  <!-- 05 — CTA -->
+  <Section background="dark" padding="lg">
+    <Container>
+      <div class="text-center max-w-2xl mx-auto" data-reveal>
+        <h2 class="font-display text-section font-bold uppercase text-white mb-6">
+          A project in the <span class="font-heading font-light">Gulf of Saint-Tropez?</span>
+        </h2>
+        <p class="font-body text-lg font-light text-white/70 mb-10 leading-relaxed">
+          Let's talk about your renovation or enhancement project. Confidential consultation, no obligation.
+        </p>
+        <Button href={getLocalizedPath('/contact', lang)} variant="primary" size="lg">
+          Book a consultation
+        </Button>
+      </div>
+    </Container>
+  </Section>
+
+</Layout>

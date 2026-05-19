@@ -1,0 +1,163 @@
+---
+/**
+ * Local SEO page — Interior architect on the Corniche des Maures (Var) (EN)
+ * Target: "interior architect Var" + towns of the Corniche des Maures.
+ */
+import Layout from '@layouts/Layout.astro';
+import Section from '@components/ui/Section.astro';
+import Container from '@components/ui/Container.astro';
+import Button from '@components/ui/Button.astro';
+import HeroInner from '@components/react/HeroInner';
+import { projects } from '../../data/projects';
+import type { Project } from '../../data/projects';
+import { getLocalizedPath } from '@i18n/index';
+import type { Locale } from '@i18n/languages';
+
+const lang: Locale = 'en';
+const zoneSlugs = ['bormes-les-mimosas', 'villa-aiguebelle', 'villa-azur'];
+const zoneProjects = zoneSlugs
+  .map((s) => projects.find((p) => p.slug === s))
+  .filter((p): p is Project => Boolean(p));
+const heroImages = zoneProjects.map((p) => p.coverImage);
+
+const prestations = [
+  'Renovation of high-end villas and apartments',
+  'Bespoke interior architecture and design',
+  'Custom furniture and fitted joinery',
+  'Heritage enhancement and premium rental positioning',
+];
+---
+
+<Layout
+  lang={lang}
+  title="Interior Architect in the Var | SB Design Riviera"
+  description="Interior architect on the Corniche des Maures: villa renovation and bespoke furniture in Le Lavandou, Bormes-les-Mimosas, Le Rayol-Canadel and Hyères."
+  ogImage={heroImages[0]}
+>
+
+  <div class="-mt-[80px]">
+    <HeroInner
+      client:load
+      images={heroImages}
+      label="Corniche des Maures · Var"
+      title={`Interior architect<br /><span class="font-heading font-light text-[0.4em]">on the Corniche des Maures</span>`}
+      subtitle="From Le Lavandou to Le Rayol-Canadel, SB Design Riviera transforms the villas of the Var coastline."
+    />
+  </div>
+
+  <!-- 01 — The Corniche des Maures -->
+  <Section padding="lg" background="white">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <span class="subsection-number">01</span>
+        <h2 class="font-display text-subsection font-bold uppercase text-primary-dark mt-4 mb-6">
+          The Corniche des Maures, <span class="font-heading font-light">between pine groves and the Mediterranean</span>
+        </h2>
+        <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.75]">
+          The Corniche des Maures unfolds one of the finest coastlines in the Var — villas nestled in the pine
+          groves, terraces opening onto the Hyères islands, properties overlooking the sea. SB Design Riviera
+          designs, renovates and enhances exceptional residences here, combining architectural rigour, refined
+          interiors and a heritage strategy, to reveal the full potential of each property.
+        </p>
+      </div>
+    </Container>
+  </Section>
+
+  <!-- 02 — Our services in the Var -->
+  <Section padding="lg" background="warm">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <span class="subsection-number">02</span>
+        <h2 class="font-display text-subsection font-bold uppercase text-primary-dark mt-4 mb-6">
+          Our services <span class="font-heading font-light">in the Var</span>
+        </h2>
+        <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.75] mb-8">
+          From the complete renovation of a villa to the creation of bespoke furniture, we are involved at every
+          stage of the project: architectural design, selection of fine materials, site coordination and turnkey
+          delivery — comprehensive support, from the first sketch to the handover of keys.
+        </p>
+        <ul class="space-y-3">
+          {prestations.map((item) => (
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-accent-gold mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="font-body text-sm font-light text-[var(--color-text-light)]">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </Container>
+  </Section>
+
+  <!-- 03 — From Le Lavandou to Hyères -->
+  <Section padding="lg" background="white">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <span class="subsection-number">03</span>
+        <h2 class="font-display text-subsection font-bold uppercase text-primary-dark mt-4 mb-6">
+          From Le Lavandou <span class="font-heading font-light">to Hyères</span>
+        </h2>
+        <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.75]">
+          Our studio works across the entire Corniche des Maures: Le Lavandou, Bormes-les-Mimosas, Aiguebelle,
+          Pramousquier, Le Rayol-Canadel, Cavalaire-sur-Mer and Hyères. Each town has its own identity —
+          flower-filled village, wooded coves, seafront — and each project is designed to engage with its
+          surroundings and the light of the Var coast.
+        </p>
+      </div>
+    </Container>
+  </Section>
+
+  <!-- 04 — Our projects in the Var -->
+  {zoneProjects.length > 0 && (
+    <Section padding="lg" background="warm">
+      <Container>
+        <div class="max-w-3xl mb-10" data-reveal>
+          <h2 class="font-display text-subsection font-bold uppercase text-primary-dark">
+            Our projects <span class="font-heading font-light">in the Var</span>
+          </h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4" data-reveal>
+          {zoneProjects.map((p) => (
+            <a
+              href={getLocalizedPath(`/projets/${p.slug}`, lang)}
+              class="group relative overflow-hidden block h-[280px] lg:h-[380px]"
+            >
+              <img
+                src={p.coverImage}
+                alt={`Villa renovation in ${p.location}`}
+                class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent group-hover:from-black/70 transition-all duration-500" />
+              <div class="absolute bottom-0 left-0 right-0 p-5">
+                <span class="text-[11px] font-heading font-medium text-accent-gold uppercase tracking-[0.15em]">
+                  {p.location}
+                </span>
+                <h3 class="font-display text-xl font-semibold uppercase text-white mt-1">{p.title}</h3>
+              </div>
+            </a>
+          ))}
+        </div>
+      </Container>
+    </Section>
+  )}
+
+  <!-- 05 — CTA -->
+  <Section background="dark" padding="lg">
+    <Container>
+      <div class="text-center max-w-2xl mx-auto" data-reveal>
+        <h2 class="font-display text-section font-bold uppercase text-white mb-6">
+          A project <span class="font-heading font-light">in the Var?</span>
+        </h2>
+        <p class="font-body text-lg font-light text-white/70 mb-10 leading-relaxed">
+          Let's talk about your renovation or enhancement project. Confidential consultation, no obligation.
+        </p>
+        <Button href={getLocalizedPath('/contact', lang)} variant="primary" size="lg">
+          Book a consultation
+        </Button>
+      </div>
+    </Container>
+  </Section>
+
+</Layout>
