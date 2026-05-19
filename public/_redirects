@@ -1,0 +1,50 @@
+# ───────────────────────────────────────────────────────────────
+# Redirections de domaine — SBDESIGN RIVIERA
+# ───────────────────────────────────────────────────────────────
+# Le domaine sbdesign.it (enregistré séparément) renvoie vers le
+# nouveau site et atterrit directement sur la version italienne.
+#
+# Pré-requis (à configurer une seule fois, voir notes ci-dessous) :
+#  1. Ajouter sbdesign.it + www.sbdesign.it comme domaines du
+#     projet Netlify (Domain management).
+#  2. Faire pointer le DNS de sbdesign.it vers Netlify.
+#
+# Les paramètres d'URL (utm_source, gclid, etc.) sont conservés
+# automatiquement par Netlify lors de la redirection.
+
+http://sbdesign.it/*        https://www.sbdesign.fr/it/    301!
+https://sbdesign.it/*       https://www.sbdesign.fr/it/    301!
+http://www.sbdesign.it/*    https://www.sbdesign.fr/it/    301!
+https://www.sbdesign.it/*   https://www.sbdesign.fr/it/    301!
+
+# ───────────────────────────────────────────────────────────────
+# Redirections SEO — ancien site PHP → refonte Astro
+# ───────────────────────────────────────────────────────────────
+# L'ancien sbdesign.fr (PHP) a été remplacé par cette refonte Astro.
+# 13 anciennes URLs .php sont encore dans l'index Google + 3 URLs
+# .php mortes (sitemap PHP obsolète). Ces 301 transfèrent le signal
+# SEO vers les nouvelles pages et éliminent les 404.
+# NB : l'ancienne home / et la nouvelle / ont la même URL — aucune
+# règle nécessaire. Les redirections http→https / non-www→www se
+# gèrent côté Netlify (Domain management), pas ici.
+
+# — Pages éditoriales —
+/contact.php                          /contact/      301
+/histoire.php                         /a-propos/     301
+/philosophie.php                      /a-propos/     301
+
+# — Expertise / services —
+/mobilier-sur-mesure.php              /expertise/    301
+/cles-en-main.php                     /expertise/    301
+/construction-neuve.php               /expertise/    301
+/renovation-maison-appartement.php    /expertise/    301
+
+# — Réalisations / projets —
+/realisations.php                     /projets/      301
+/villas.php                           /projets/      301
+/appartement.php                      /projets/      301
+/realisations1-appartement.php        /projets/      301
+/realisations2-appartement.php        /projets/      301
+/realisations3-maison.php             /projets/      301
+/realisations4-salle-bains.php        /projets/      301
+/realisations5-cuisine.php            /projets/      301
