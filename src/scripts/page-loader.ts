@@ -133,4 +133,17 @@ function initPageExitTransition(
 // Run immediately
 initPageLoader();
 
+// Fix bfcache: when the page is restored via the browser's back/forward
+// button, scripts don't re-run and the loader curtain stays down covering
+// the screen (stuck on the logo). Snap it back to hidden on restore.
+window.addEventListener('pageshow', (e) => {
+  if (!e.persisted) return;
+
+  const loader = document.getElementById('page-loader');
+  if (loader) {
+    gsap.set(loader, { yPercent: 0, display: 'none', clearProps: 'transform' });
+  }
+  document.body.classList.remove('is-loading');
+});
+
 export {};

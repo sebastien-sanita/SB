@@ -81,9 +81,9 @@ export default function HeroMinimal({ lang = 'fr' }: Props) {
         transition={{ duration: 1.2, delay: 1.0, ease: easeOutQuart }}
         className="absolute bottom-16 md:bottom-20 left-0 right-0 z-10 text-center"
       >
-        <p className="font-heading text-[11px] md:text-[12px] font-medium text-white/60 uppercase tracking-[0.3em]">
+        <h1 className="font-heading text-[11px] md:text-[12px] font-medium text-white/60 uppercase tracking-[0.3em]">
           {gt('subtitle1')}
-        </p>
+        </h1>
       </motion.div>
 
       {/* Scroll indicator */}

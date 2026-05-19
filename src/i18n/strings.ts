@@ -31,9 +31,9 @@ const strings = {
       it: 'Creare spazi\nche ispirano',
     },
     subtitle1: {
-      fr: 'Luxury Transformation — Côte d\'Azur',
-      en: 'Luxury Transformation — French Riviera',
-      it: 'Luxury Transformation — Costa Azzurra',
+      fr: 'Architecte d\'intérieur — Côte d\'Azur',
+      en: 'Interior Architect — French Riviera',
+      it: 'Architetto d\'interni — Costa Azzurra',
     },
     subtitle2: {
       fr: 'Conception et transformation de résidences secondaires haut de gamme pour propriétaires et investisseurs internationaux.',
@@ -366,14 +366,14 @@ const strings = {
   // ── Page Expertise ─────────────────────────────────────
   expertisePage: {
     metaTitle: {
-      fr: 'Notre Expertise — Luxury Transformation | SB Design Riviera',
-      en: 'Our Expertise — Luxury Transformation | SB Design Riviera',
-      it: 'La Nostra Expertise — Luxury Transformation | SB Design Riviera',
+      fr: 'Mobilier sur mesure & rénovation Côte d\'Azur | SB Design',
+      en: 'Bespoke furniture & renovation French Riviera | SB Design',
+      it: 'Mobili su misura & ristrutturazione | SB Design Riviera',
     },
     metaDesc: {
-      fr: 'Conception architecturale, Raffinement Intérieur et valorisation patrimoniale. SB Design Riviera vous accompagne de la vision à la livraison clé en main sur la Côte d\'Azur.',
-      en: 'Architectural design, Interior Refinement and property enhancement. SB Design Riviera supports you from vision to turnkey delivery on the French Riviera.',
-      it: 'Progettazione architettonica, Interior Refinement e valorizzazione patrimoniale. SB Design Riviera vi accompagna dalla visione alla consegna chiavi in mano sulla Costa Azzurra.',
+      fr: 'Conception architecturale, mobilier sur mesure et valorisation patrimoniale sur la Côte d\'Azur. De la vision à la livraison clé en main avec SB Design.',
+      en: 'Architectural design, bespoke furniture and property enhancement on the French Riviera. From initial vision to turnkey delivery with SB Design.',
+      it: 'Progettazione architettonica, mobili su misura e valorizzazione patrimoniale sulla Costa Azzurra. Dalla visione alla consegna chiavi in mano con SB Design.',
     },
     heroLabel: { fr: 'Expertise', en: 'Expertise', it: 'Expertise' },
     heroPrefix: { fr: 'Notre', en: 'Our', it: 'La Nostra' },
@@ -437,9 +437,9 @@ const strings = {
   // ── Page À Propos ──────────────────────────────────────
   aproposPage: {
     metaTitle: {
-      fr: 'À Propos — SB Design Riviera | Luxury Transformation Côte d\'Azur',
-      en: 'About — SB Design Riviera | Luxury Transformation French Riviera',
-      it: 'Chi Siamo — SB Design Riviera | Luxury Transformation Costa Azzurra',
+      fr: 'À propos — SB Design Riviera, architecte Côte d\'Azur',
+      en: 'About — SB Design Riviera, interior architect Riviera',
+      it: 'Chi siamo — SB Design Riviera, architetto Costa Azzurra',
     },
     metaDesc: {
       fr: 'SB Design Riviera : studio d\'architecture spécialisé dans la conception et la valorisation de résidences secondaires haut de gamme sur la Côte d\'Azur.',
@@ -519,12 +519,12 @@ const strings = {
   // ── Page Contact ───────────────────────────────────────
   contactPage: {
     metaTitle: {
-      fr: 'Contact — SB Design Riviera | Côte d\'Azur',
-      en: 'Contact — SB Design Riviera | French Riviera',
-      it: 'Contatti — SB Design Riviera | Costa Azzurra',
+      fr: 'Contact — Architecte d\'intérieur Côte d\'Azur | SB Design',
+      en: 'Contact — Interior architect French Riviera | SB Design',
+      it: 'Contatti — Architetto d\'interni Costa Azzurra | SB Design',
     },
     metaDesc: {
-      fr: 'Contactez SB Design Riviera pour votre projet d\'architecture ou de valorisation patrimoniale sur la Côte d\'Azur. Consultation confidentielle.',
+      fr: 'Contactez SB Design Riviera pour votre projet d\'architecture d\'intérieur ou de valorisation patrimoniale sur la Côte d\'Azur. Échangeons sur votre projet.',
       en: 'Contact SB Design Riviera for your architecture or property enhancement project on the French Riviera. Confidential consultation.',
       it: 'Contattate SB Design Riviera per il vostro progetto di architettura o valorizzazione patrimoniale sulla Costa Azzurra. Consulenza riservata.',
     },
@@ -584,9 +584,9 @@ const strings = {
   // ── Page Projets ───────────────────────────────────────
   projetsPage: {
     metaTitle: {
-      fr: 'Nos Réalisations — Architecture & Valorisation | SB Design Riviera',
-      en: 'Our Projects — Architecture & Enhancement | SB Design Riviera',
-      it: 'Le Nostre Realizzazioni — Architettura & Valorizzazione | SB Design Riviera',
+      fr: 'Réalisations — Architecte d\'intérieur Riviera | SB Design',
+      en: 'Projects — Interior architecture Riviera | SB Design',
+      it: 'Realizzazioni — Architetto d\'interni Riviera | SB Design',
     },
     metaDesc: {
       fr: 'Découvrez les réalisations de SB Design Riviera : conception architecturale, raffinement intérieur et valorisation patrimoniale sur la Côte d\'Azur.',
@@ -666,12 +666,12 @@ const strings = {
   // ── Page Agence & Notre Méthode ─────────────────────────
   agencePage: {
     metaTitle: {
-      fr: 'L\'Agence & Notre Organisation — Luxury Property Transformation | SB Design Riviera',
-      en: 'The Studio & Our Organisation — Luxury Property Transformation | SB Design Riviera',
-      it: 'L\'Agenzia & La Nostra Organizzazione — Luxury Property Transformation | SB Design Riviera',
+      fr: 'L\'Agence — Architecture & valorisation | SB Design Riviera',
+      en: 'The Studio — Architecture & enhancement | SB Design Riviera',
+      it: 'L\'Agenzia — Architettura & valorizzazione | SB Design Riviera',
     },
     metaDesc: {
-      fr: 'SB Design Riviera : agence de conception et de transformation de propriétés haut de gamme, et partenaire opérationnel des architectes locaux. Présence Riviera et Lyon (RS.D).',
+      fr: 'SB Design Riviera : agence de conception et de transformation de propriétés haut de gamme, partenaire des architectes locaux. Présence Riviera et Lyon.',
       en: 'SB Design Riviera: high-end property design and transformation studio, and operational partner for local architects. Riviera and Lyon (RS.D) presence.',
       it: 'SB Design Riviera: studio di progettazione e trasformazione di immobili di pregio, e partner operativo degli architetti locali. Presenza Riviera e Lione (RS.D).',
     },

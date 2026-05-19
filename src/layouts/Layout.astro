@@ -33,6 +33,10 @@ const {
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const hreflangAlternates = getHreflangAlternates(Astro.url.pathname, Astro.site?.toString().replace(/\/$/, '') ?? '');
+
+// Open Graph — image absolue (fallback global si la page n'en fournit pas)
+const ogImageURL = new URL(ogImage ?? '/images/projets/villa-azur-11.jpeg', Astro.site);
+const ogLocales: Record<Locale, string> = { fr: 'fr_FR', en: 'en_GB', it: 'it_IT' };
 ---
 
 <!doctype html>
@@ -111,15 +115,18 @@ const hreflangAlternates = getHreflangAlternates(Astro.url.pathname, Astro.site?
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="SB Design Riviera" />
+    <meta property="og:locale" content={ogLocales[currentLang]} />
+    <meta property="og:url" content={canonicalURL.href} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    {ogImage && <meta property="og:image" content={ogImage} />}
+    <meta property="og:image" content={ogImageURL.href} />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    {ogImage && <meta name="twitter:image" content={ogImage} />}
+    <meta name="twitter:image" content={ogImageURL.href} />
 
     <!-- Preload fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

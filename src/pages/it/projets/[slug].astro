@@ -51,12 +51,19 @@ const related = [
 
 const marqueeKeywords = [project.title, styleLabels[project.style], project.location, ...project.materials];
 const ribbonText = [project.title, categoryLabels[project.category], styleLabels[project.style], project.location].join('  ◆  ');
+
+// SEO meta description — versione breve (la descrizione completa supera i 300 caratteri)
+const metaDescription =
+  project.description.length > 160
+    ? project.description.slice(0, 157).replace(/\s+\S*$/, '') + '…'
+    : project.description;
 ---
 
 <Layout
   lang={lang}
   title={`${project.title} — ${categoryLabels[project.category]} ${project.location} | SB Design Riviera`}
-  description={project.description}
+  description={metaDescription}
+  ogImage={project.coverImage}
 >
 
   <!-- Header éditorial style antoniolupi -->
@@ -80,9 +87,9 @@ const ribbonText = [project.title, categoryLabels[project.category], styleLabels
       <span class="editorial-nav-item font-display text-[clamp(24px,4vw,48px)] font-bold uppercase text-primary-dark leading-none cursor-default">
         /{categoryLabels[project.category]}
       </span>
-      <span class="editorial-nav-item font-display text-[clamp(40px,8vw,110px)] font-light uppercase text-primary-dark/10 leading-[1.1] cursor-default select-none">
+      <h1 class="editorial-nav-item font-display text-[clamp(40px,8vw,110px)] font-light uppercase text-primary-dark/10 leading-[1.1] cursor-default select-none">
         {project.title}
-      </span>
+      </h1>
     </nav>
   </section>
 
