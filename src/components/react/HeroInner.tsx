@@ -99,8 +99,9 @@ export default function HeroInner({ images, label, title, subtitle, titlePrefix,
                     <TextMorphGhost word={w} className="font-['Playfair_Display'] font-bold" />
                   </span>
                 ))}
-                {/* Le <h1> ne contient que la formule affichée ; il hérite de la typographie du conteneur. */}
-                <h1 className="col-start-1 row-start-1">
+                {/* Le <h1> ne contient que la formule affichée. Il reprend les classes typographiques du
+                    conteneur : la règle globale h1 (couleur, interlignage, approche) écraserait l'héritage. */}
+                <h1 className="col-start-1 row-start-1 font-display text-[clamp(56px,10vw,130px)] uppercase text-white leading-[1.05] tracking-[-0.04em]">
                   <span className="font-['Playfair_Display'] font-light text-white/40">{titlePrefix}</span>{' '}
                   <TextMorph
                     words={titleMorphWords}
