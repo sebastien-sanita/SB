@@ -3,11 +3,12 @@
  * Each character blurs out individually, then the new word blurs in
  * letter by letter for an elegant, fluid transition.
  * Le retour à la ligne est possible ENTRE les mots (jamais à l'intérieur d'un mot).
- * SEO / accessibilité : chaque lettre est un <span> *inline* (pas inline-block)
- * et n'est pas translatée en y. Des boîtes inline-block par lettre étaient lues
- * « H i s t o i r e » par les extracteurs de texte (Google, lecteurs d'écran) :
- * le H1 des pages perdait son mot principal. L'effet visuel (fondu + flou lettre
- * à lettre) est conservé ; seul le léger décalage vertical disparaît.
+ * SEO / accessibilité : le premier mot est rendu comme UN seul nœud texte, HTML
+ * serveur compris ; le découpage lettre à lettre n'intervient qu'au premier
+ * changement de mot. Un mot découpé en une balise par lettre était lu
+ * « H i s t o i r e » par les outils qui extraient le texte en séparant les
+ * balises : le H1 perdait son mot principal. Les lettres animées sont des
+ * <span> inline, sans translation verticale.
  */
 import { useState, useEffect, Fragment } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -20,66 +21,77 @@ interface Props {
 
 export default function TextMorph({ words, interval = 4000, className }: Props) {
   const [index, setIndex] = useState(0);
+  // false tant que le premier mot n'a pas changé : il est alors rendu en texte brut.
+  const [cycled, setCycled] = useState(false);
 
   useEffect(() => {
     if (words.length <= 1) return;
     const timer = setInterval(() => {
+      setCycled(true);
       setIndex((prev) => (prev + 1) % words.length);
     }, interval);
     return () => clearInterval(timer);
   }, [words.length, interval]);
 
   const word = words[index];
-  const parts = word.split(' ');
-  // Index de départ de chaque mot : i reste continu sur l'ensemble des lettres
-  const starts = parts.map((_, wi) => parts.slice(0, wi).reduce((n, p) => n + p.length + 1, 0));
+  // Découpe par mot, avec un index de lettre continu sur l'ensemble du libellé
+  // (délai i * 0.035 identique à l'animation d'origine).
+  const parts = word.split(' ').reduce<{ text: string; offset: number }[]>((acc, text) => {
+    const prev = acc[acc.length - 1];
+    acc.push({ text, offset: prev ? prev.offset + prev.text.length + 1 : 0 });
+    return acc;
+  }, []);
 
   return (
     <span className={className || ''}>
       <AnimatePresence mode="wait">
-        <motion.span
-          key={word}
-          className="inline"
-        >
-          {parts.map((part, wi) => (
-            <Fragment key={`${word}-w${wi}`}>
-              {/* Espace = nœud texte entre deux inline-block : opportunité de césure */}
-              {wi > 0 ? ' ' : null}
-              <span className="inline-block whitespace-nowrap">
-                {part.split('').map((char, ci) => {
-                  const i = starts[wi] + ci;
-                  return (
-                    <motion.span
-                      key={`${word}-${i}`}
-                      className="inline"
-                      initial={{ opacity: 0, filter: 'blur(12px)' }}
-                      animate={{
-                        opacity: 1,
-                        filter: 'blur(0px)',
-                        transition: {
-                          duration: 0.35,
-                          delay: i * 0.035,
-                          ease: [0.25, 0.46, 0.45, 0.94],
-                        },
-                      }}
-                      exit={{
-                        opacity: 0,
-                        filter: 'blur(12px)',
-                        transition: {
-                          duration: 0.25,
-                          delay: i * 0.02,
-                          ease: [0.55, 0, 1, 0.45],
-                        },
-                      }}
-                    >
-                      {char}
-                    </motion.span>
-                  );
-                })}
-              </span>
-            </Fragment>
-          ))}
-        </motion.span>
+        {!cycled ? (
+          // Premier mot : texte brut, visible sans JS et lu d'un seul tenant.
+          <motion.span
+            key={`static-${word}`}
+            className="inline"
+            exit={{
+              opacity: 0,
+              filter: 'blur(12px)',
+              transition: { duration: 0.3, ease: [0.55, 0, 1, 0.45] },
+            }}
+          >
+            {word}
+          </motion.span>
+        ) : (
+          <motion.span key={word} className="inline">
+            {parts.map((part, wi) => (
+              <Fragment key={`${word}-w${wi}`}>
+                {/* Espace = nœud texte entre deux mots insécables : seule opportunité de césure */}
+                {wi > 0 ? ' ' : null}
+                <span className="inline-block whitespace-nowrap">
+                  {part.text.split('').map((char, ci) => {
+                    const i = part.offset + ci;
+                    return (
+                      <motion.span
+                        key={`${word}-${i}`}
+                        className="inline"
+                        initial={{ opacity: 0, filter: 'blur(12px)' }}
+                        animate={{
+                          opacity: 1,
+                          filter: 'blur(0px)',
+                          transition: { duration: 0.35, delay: i * 0.035, ease: [0.25, 0.46, 0.45, 0.94] },
+                        }}
+                        exit={{
+                          opacity: 0,
+                          filter: 'blur(12px)',
+                          transition: { duration: 0.25, delay: i * 0.02, ease: [0.55, 0, 1, 0.45] },
+                        }}
+                      >
+                        {char}
+                      </motion.span>
+                    );
+                  })}
+                </span>
+              </Fragment>
+            ))}
+          </motion.span>
+        )}
       </AnimatePresence>
     </span>
   );

@@ -84,13 +84,13 @@ export default function HeroInner({ images, label, title, subtitle, titlePrefix,
               {label}
             </motion.span>
             {titlePrefix && titleMorphWords ? (
-              <motion.h1
+              <motion.div
                 initial={{ opacity: 0, y: 30, filter: 'blur(8px)' }}
                 animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
                 transition={{ duration: 1.2, delay: 0.15, ease: easeOutQuart }}
                 className="grid font-display text-[clamp(56px,10vw,130px)] uppercase text-white leading-[1.05] tracking-[-0.04em] mb-6"
               >
-                {/* Fantômes empilés dans la même cellule : le h1 (donc le hero, dimensionné par
+                {/* Fantômes empilés dans la même cellule, HORS du h1 : le conteneur (donc le hero, dimensionné par
                     son contenu) garde la hauteur du mot qui prend le plus de lignes — la page
                     ne saute pas à chaque morph, à toutes les largeurs. */}
                 {titleMorphWords.map((w) => (
@@ -99,15 +99,16 @@ export default function HeroInner({ images, label, title, subtitle, titlePrefix,
                     <TextMorphGhost word={w} className="font-['Playfair_Display'] font-bold" />
                   </span>
                 ))}
-                <span className="col-start-1 row-start-1">
+                {/* Le <h1> ne contient que la formule affichée ; il hérite de la typographie du conteneur. */}
+                <h1 className="col-start-1 row-start-1">
                   <span className="font-['Playfair_Display'] font-light text-white/40">{titlePrefix}</span>{' '}
                   <TextMorph
                     words={titleMorphWords}
                     interval={4500}
                     className="font-['Playfair_Display'] font-bold"
                   />
-                </span>
-              </motion.h1>
+                </h1>
+              </motion.div>
             ) : (
               <motion.h1
                 initial={{ opacity: 0, y: 30, filter: 'blur(8px)' }}
