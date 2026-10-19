@@ -8,6 +8,8 @@ import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
 import { getLangFromUrl, getHreflangAlternates, getBasePathname, getLocalizedPath } from '@i18n/utils';
 import type { Locale } from '@i18n/languages';
+import Picture from '@components/ui/Picture.astro';
+import imageManifest from '@/data/image-manifest.json';
 
 interface Props {
   title: string;
@@ -15,6 +17,10 @@ interface Props {
   ogImage?: string;
   class?: string;
   lang?: Locale;
+  /** Image LCP (hero) à précharger en WebP responsive. */
+  preloadImage?: string;
+  /** Schema.org JSON-LD additionnel propre à la page (objet ou tableau). */
+  schema?: Record<string, unknown> | Record<string, unknown>[];
 }
 
 const defaultDescriptions: Record<Locale, string> = {
@@ -29,7 +35,23 @@ const {
   description = defaultDescriptions[currentLang],
   ogImage,
   class: className,
+  preloadImage,
+  schema,
 } = Astro.props;
+
+// Schema.org propre à la page → normalisé en tableau
+const pageSchemas = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
+
+// Preload responsive WebP de l'image LCP (hero) si la page en fournit une
+type ImgEntry = { w: number; h: number; widths: number[] };
+let preloadSrcset: string | null = null;
+if (preloadImage) {
+  const e = (imageManifest as Record<string, ImgEntry>)[preloadImage];
+  if (e) {
+    const base = preloadImage.slice(0, preloadImage.lastIndexOf('.'));
+    preloadSrcset = e.widths.map((w) => `${base}-${w}.webp ${w}w`).join(', ');
+  }
+}
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const hreflangAlternates = getHreflangAlternates(Astro.url.pathname, Astro.site?.toString().replace(/\/$/, '') ?? '');
@@ -62,6 +84,51 @@ const breadcrumbLabels: Record<string, Record<Locale, string>> = {
     en: 'Interior Architect Nice',
     it: "Architetto d'interni Nice",
   },
+  'architecte-interieur-cannes': {
+    fr: "Architecte d'intérieur Cannes",
+    en: 'Interior Architect Cannes',
+    it: "Architetto d'interni Cannes",
+  },
+  'architecte-interieur-antibes': {
+    fr: "Architecte d'intérieur Antibes",
+    en: 'Interior Architect Antibes',
+    it: "Architetto d'interni Antibes",
+  },
+  'architecte-interieur-cap-ferrat': {
+    fr: "Architecte d'intérieur Cap-Ferrat",
+    en: 'Interior Architect Cap-Ferrat',
+    it: "Architetto d'interni Cap-Ferrat",
+  },
+  'architecte-interieur-mougins': {
+    fr: "Architecte d'intérieur Mougins",
+    en: 'Interior Architect Mougins',
+    it: "Architetto d'interni Mougins",
+  },
+  'architecte-interieur-le-lavandou': {
+    fr: "Architecte d'intérieur Le Lavandou",
+    en: 'Interior Architect Le Lavandou',
+    it: "Architetto d'interni Le Lavandou",
+  },
+  'architecte-interieur-bormes-les-mimosas': {
+    fr: "Architecte d'intérieur Bormes-les-Mimosas",
+    en: 'Interior Architect Bormes-les-Mimosas',
+    it: "Architetto d'interni Bormes-les-Mimosas",
+  },
+  'architecte-interieur-rayol-canadel': {
+    fr: "Architecte d'intérieur Rayol-Canadel-sur-Mer",
+    en: 'Interior Architect Rayol-Canadel-sur-Mer',
+    it: "Architetto d'interni Rayol-Canadel-sur-Mer",
+  },
+  'architecte-interieur-sainte-maxime': {
+    fr: "Architecte d'intérieur Sainte-Maxime",
+    en: 'Interior Architect Sainte-Maxime',
+    it: "Architetto d'interni Sainte-Maxime",
+  },
+  'architecte-interieur-ramatuelle': {
+    fr: "Architecte d'intérieur Ramatuelle",
+    en: 'Interior Architect Ramatuelle',
+    it: "Architetto d'interni Ramatuelle",
+  },
 };
 const titleCase = (s: string) =>
   s.split('-').map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
@@ -88,6 +155,35 @@ for (const seg of crumbSegments) {
     <link rel="icon" type="image/png" href="/images/logo-sb.png" />
     <link rel="apple-touch-icon" href="/images/logo-sb.png" />
     <meta name="generator" content={Astro.generator} />
+
+    <!-- Révélations au scroll : l'état masqué (opacity:0) n'est appliqué que si JS est actif, et un filet de sécurité force l'affichage si les animations ne se sont pas initialisées. -->
+    <script is:inline>
+      (function () {
+        var d = document.documentElement;
+        d.classList.add('js');
+        setTimeout(function () {
+          if (d.classList.contains('reveals-ready')) return;
+          // Le JS de la page n'a pas pris la main : on révèle le contenu et
+          // on retire le rideau du loader, qui sinon masque toute la page.
+          d.classList.add('reveal-fallback');
+          var l = document.getElementById('page-loader');
+          if (l) l.style.display = 'none';
+          if (document.body) document.body.classList.remove('is-loading');
+        }, 4000);
+      })();
+    </script>
+
+    {/* Preload de l'image LCP (hero) — WebP responsive */}
+    {preloadSrcset && (
+      <link
+        rel="preload"
+        as="image"
+        type="image/webp"
+        imagesrcset={preloadSrcset}
+        imagesizes="100vw"
+        fetchpriority="high"
+      />
+    )}
 
     <!-- Tracking capture — runs BEFORE GTM so dataLayer is pre-populated -->
     <script is:inline>
@@ -133,9 +229,17 @@ for (const seg of crumbSegments) {
     <script type="application/ld+json" is:inline set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
+      "@id": "https://www.sbdesign.fr/#business",
       "name": "SB Design Riviera",
+      "alternateName": ["SB Design"],
       "description": "Architecte d'intérieur sur la Côte d'Azur : conception, rénovation et valorisation de résidences secondaires haut de gamme dans le Var et les Alpes-Maritimes.",
       "url": "https://www.sbdesign.fr",
+      "logo": "https://www.sbdesign.fr/images/logo-sb.png",
+      "image": "https://www.sbdesign.fr/images/projets/villa-azur-11.jpeg",
+      "sameAs": [
+        "https://www.instagram.com/sbdesignriviera/",
+        "https://www.linkedin.com/company/sbdesignriviera/"
+      ],
       "telephone": ["+33609459245"],
       "email": "info@sbdesign.fr",
       "address": {
@@ -167,6 +271,11 @@ for (const seg of crumbSegments) {
         })),
       })} />
     )}
+
+    <!-- Schema.org spécifique à la page (CreativeWork, ItemList…) -->
+    {pageSchemas.map((s) => (
+      <script type="application/ld+json" is:inline set:html={JSON.stringify(s)} />
+    ))}
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -202,7 +311,7 @@ for (const seg of crumbSegments) {
       class="fixed inset-0 z-[9999] bg-background flex flex-col items-center justify-center pointer-events-none"
     >
       <div id="page-loader-logo" class="flex items-center justify-center">
-        <img src="/images/logo-sb.png" alt="SB Design" class="h-28 md:h-32 w-auto" />
+        <Picture src="/images/logo-sb.png" alt="SB Design Riviera" class="h-28 md:h-32 w-auto" />
       </div>
       <div class="w-24 h-px bg-border overflow-hidden mt-8">
         <div
@@ -227,15 +336,29 @@ for (const seg of crumbSegments) {
       import '../scripts/animations';
       import '../scripts/page-loader';
 
-      // Footer reveal — fixed footer with main scrolling over it
+      // Footer reveal — sticky sous le contenu, uniquement sur desktop et si le footer
+      // tient sous le header ; sinon footer dans le flux (mobile : toujours atteignable).
       function initFooterReveal() {
         const footer = document.getElementById('main-footer');
-        const main = document.querySelector('main');
-        if (footer && main) {
-          const footerHeight = footer.offsetHeight;
-          (main as HTMLElement).style.marginBottom = `${footerHeight}px`;
+        const main = document.querySelector('main') as HTMLElement | null;
+        if (!footer) return;
+        if (main) main.style.marginBottom = '';
+        footer.classList.remove('footer-reveal');
+        const header = document.getElementById('main-nav');
+        const headerH = header ? header.offsetHeight : 0;
+        const isDesktop = window.matchMedia('(min-width: 1024px)').matches;
+        const fits = footer.offsetHeight + headerH <= window.innerHeight;
+        const reveal = isDesktop && fits;
+        footer.classList.toggle('footer-reveal', reveal);
+        // Page plus courte que l'écran : main occupe l'espace restant pour que le
+        // footer sticky reste collé en bas (pas de bande claire sous le footer).
+        if (main) {
+          main.style.minHeight = reveal
+            ? `${Math.max(0, window.innerHeight - footer.offsetHeight - main.offsetTop)}px`
+            : '';
         }
       }
+      initFooterReveal();
       window.addEventListener('load', initFooterReveal);
       window.addEventListener('resize', initFooterReveal);
     </script>

@@ -12,6 +12,7 @@ import HeroInner from '@components/react/HeroInner';
 import TextRibbon from '@components/react/TextRibbon';
 import { t, tArray, getLocalizedPath } from '@i18n/index';
 import type { Locale } from '@i18n/languages';
+import Picture from '@components/ui/Picture.astro';
 
 const lang: Locale = 'it';
 const p = 'agencePage' as const;
@@ -25,9 +26,10 @@ const agenceRibbon = ['Architettura', 'Padronanza Globale', 'Valorizzazione', 'L
   description={t(p, 'metaDesc', lang)}
 >
 
-  <div class="-mt-[80px]">
+  <div class="-mt-[var(--header-h)]">
     <HeroInner
       client:load
+      imageAlt="Soggiorno di Villa Azur a Rayol-Canadel: tavolino in marmo venato e nicchie illuminate"
       images={[
         '/images/projets/villa-azur-38.jpeg',
         '/images/projets/villa-azur-40.jpeg',
@@ -72,10 +74,10 @@ const agenceRibbon = ['Architettura', 'Padronanza Globale', 'Valorizzazione', 'L
 
         <div class="relative mt-8 lg:mt-16" data-clip-reveal="right">
           <div class="overflow-hidden">
-            <img src="/images/projets/villa-azur-38.jpeg" alt="Villa di lusso Costa Azzurra" class="w-full h-[500px] lg:h-[75vh] lg:min-h-[600px] object-cover transition-transform duration-700 ease-smooth hover:scale-[1.05]" data-parallax="0.12" loading="lazy" />
+            <Picture src="/images/projets/villa-azur-38.jpeg" alt="Villa di lusso Costa Azzurra" class="w-full h-[500px] lg:h-[75vh] lg:min-h-[600px] object-cover transition-transform duration-700 ease-smooth hover:scale-[1.05]" data-parallax="0.12" loading="lazy" />
           </div>
           <div class="hidden lg:block absolute -bottom-14 -left-16 w-[260px] h-[360px] overflow-hidden z-10 group/secondary">
-            <img src="/images/projets/villa-azur-39.jpeg" alt="Trasformazione interiore di lusso" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover/secondary:scale-[1.08]" loading="lazy" />
+            <Picture src="/images/projets/villa-azur-39.jpeg" alt="Trasformazione interiore di lusso" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover/secondary:scale-[1.08]" loading="lazy" />
           </div>
         </div>
       </div>
@@ -122,14 +124,14 @@ const agenceRibbon = ['Architettura', 'Padronanza Globale', 'Valorizzazione', 'L
 
           <div class="grid grid-cols-2 grid-rows-3 gap-2 h-[500px] lg:h-[75vh] lg:min-h-[600px]" data-reveal>
             <div class="group relative col-span-2 row-span-2 overflow-hidden">
-              <img src="/images/projets/villa-azur-1.jpeg" alt="Progettazione architettonica villa" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+              <Picture src="/images/projets/villa-azur-1.jpeg" alt="Progettazione architettonica villa" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
               <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
             </div>
             <div class="group relative overflow-hidden">
-              <img src="/images/projets/villa-azur-35.jpeg" alt="Design salone di lusso" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+              <Picture src="/images/projets/villa-azur-35.jpeg" alt="Design salone di lusso" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
             </div>
             <div class="group relative overflow-hidden">
-              <img src="/images/projets/villa-azur-9.jpeg" alt="Terrazza villa Costa Azzurra" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+              <Picture src="/images/projets/villa-azur-9.jpeg" alt="Terrazza villa Costa Azzurra" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
             </div>
           </div>
         </div>
@@ -138,7 +140,7 @@ const agenceRibbon = ['Architettura', 'Padronanza Globale', 'Valorizzazione', 'L
   </Section>
 
   <div class="group relative w-full h-[40vh] min-h-[280px] overflow-hidden" data-slide-in="left">
-    <img src="/images/projets/villa-azur-32.jpeg" alt="" class="w-full h-full object-cover transition-transform duration-[1.2s] ease-smooth group-hover:scale-[1.05]" data-parallax="0.1" loading="lazy" />
+    <Picture src="/images/projets/villa-azur-32.jpeg" alt="Giardino terrazzato e muretti in pietra naturale, Villa Azur a Rayol-Canadel" class="w-full h-full object-cover transition-transform duration-[1.2s] ease-smooth group-hover:scale-[1.05]" data-parallax="0.1" loading="lazy" />
   </div>
 
   <div class="overflow-hidden" style="background: linear-gradient(to bottom, var(--color-background), var(--color-background));">
@@ -154,17 +156,17 @@ const agenceRibbon = ['Architettura', 'Padronanza Globale', 'Valorizzazione', 'L
 
           <div class="grid grid-cols-2 grid-rows-3 gap-2 h-[500px] lg:h-[75vh] lg:min-h-[600px] order-2 lg:order-1" data-reveal>
             <div class="group relative row-span-2 overflow-hidden">
-              <img src="/images/projets/villa-azur-37.jpeg" alt="Cucina su misura di lusso" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+              <Picture src="/images/projets/villa-azur-37.jpeg" alt="Cucina su misura di lusso" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
               <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
             </div>
             <div class="group relative overflow-hidden">
-              <img src="/images/projets/villa-azur-5.jpeg" alt="Architettura villa premium" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+              <Picture src="/images/projets/villa-azur-5.jpeg" alt="Architettura villa premium" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
             </div>
             <div class="group relative overflow-hidden">
-              <img src="/images/projets/villa-azur-49.jpeg" alt="Suite padronale di lusso" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+              <Picture src="/images/projets/villa-azur-49.jpeg" alt="Suite padronale di lusso" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
             </div>
             <div class="group relative col-span-2 overflow-hidden">
-              <img src="/images/projets/villa-azur-22.jpeg" alt="Bagno d'eccezione" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+              <Picture src="/images/projets/villa-azur-22.jpeg" alt="Bagno d'eccezione" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
               <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
             </div>
           </div>
@@ -237,14 +239,14 @@ const agenceRibbon = ['Architettura', 'Padronanza Globale', 'Valorizzazione', 'L
 
           <div class="grid grid-cols-2 grid-rows-3 gap-2 h-[500px] lg:h-[75vh] lg:min-h-[600px]" data-reveal>
             <div class="group relative col-span-2 row-span-2 overflow-hidden">
-              <img src="/images/projets/villa-azur-5.jpeg" alt="Collaborazione architettonica villa" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+              <Picture src="/images/projets/villa-azur-5.jpeg" alt="Collaborazione architettonica villa" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
               <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
             </div>
             <div class="group relative overflow-hidden">
-              <img src="/images/projets/villa-azur-22.jpeg" alt="Impianti tecnici di pregio" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+              <Picture src="/images/projets/villa-azur-22.jpeg" alt="Impianti tecnici di pregio" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
             </div>
             <div class="group relative overflow-hidden">
-              <img src="/images/projets/villa-azur-49.jpeg" alt="Arredi su misura" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+              <Picture src="/images/projets/villa-azur-49.jpeg" alt="Arredi su misura" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
             </div>
           </div>
         </div>
@@ -265,7 +267,7 @@ const agenceRibbon = ['Architettura', 'Padronanza Globale', 'Valorizzazione', 'L
 
           <div class="order-2 lg:order-1 relative" data-reveal>
             <div class="aspect-[4/3] overflow-hidden">
-              <img src="/images/projets/villa-azur-32.jpeg" alt="Boutique RS.D Lione" class="w-full h-full object-cover transition-transform duration-700 ease-smooth hover:scale-[1.05]" loading="lazy" />
+              <Picture src="/images/projets/villa-azur-32.jpeg" alt="Boutique RS.D Lione" class="w-full h-full object-cover transition-transform duration-700 ease-smooth hover:scale-[1.05]" loading="lazy" />
             </div>
           </div>
 

@@ -8,6 +8,10 @@ export interface Project {
   surface: number;
   year: number;
   location: string;
+  /** Titre SEO par langue, sans le suffixe « | SB Design Riviera » (≤ 40 caractères). */
+  seoTitle: Record<'fr' | 'en' | 'it', string>;
+  /** Meta description par langue (≤ 155 caractères), propre au projet. */
+  seoDescription: Record<'fr' | 'en' | 'it', string>;
   description: string;
   philosophy: string;
   materials: string[];
@@ -28,6 +32,16 @@ export const projects: Project[] = [
     surface: 450,
     year: 2024,
     location: 'Rayol-Canadel-sur-Mer',
+    seoTitle: {
+      fr: 'Villa Azur, Rayol-Canadel — Rénovation',
+      en: 'Villa Azur, Rayol-Canadel — Renovation',
+      it: 'Villa Azur ristrutturata, Rayol-Canadel',
+    },
+    seoDescription: {
+      fr: 'Rénovation intégrale de la Villa Azur au Rayol-Canadel : 450 m² ouverts sur la mer, piscine à débordement, hammam en pierre, cuisine en marbre sur mesure.',
+      en: 'Complete renovation of Villa Azur in Rayol-Canadel: 450 m² opening onto the sea, infinity pool, stone hammam and a bespoke marble kitchen.',
+      it: 'Ristrutturazione integrale di Villa Azur a Rayol-Canadel: 450 m² aperti sul mare, piscina a sfioro, hammam in pietra e cucina in marmo su misura.',
+    },
     description:
       "Rénovation intégrale d'une villa d'exception sur les hauteurs du Rayol-Canadel. Volumes généreux ouverts sur la Méditerranée, terrasse panoramique aménagée, piscine à débordement. Matériaux nobles — pierre naturelle, marbre, bois massif — subliment chaque espace de vie. Hammam sur-mesure, cuisine en marbre avec îlot central, escalier en pierre rétroéclairé.",
     philosophy:
@@ -138,6 +152,16 @@ export const projects: Project[] = [
     surface: 320,
     year: 2013,
     location: 'Bormes-les-Mimosas',
+    seoTitle: {
+      fr: 'Deux villas neuves à Bormes-les-Mimosas',
+      en: 'Two new villas in Bormes-les-Mimosas',
+      it: 'Due ville nuove a Bormes-les-Mimosas',
+    },
+    seoDescription: {
+      fr: 'Construction de deux villas jumelles à Bormes-les-Mimosas : volumes décalés sur la pente, terrasses en bois, piscine, ascenseur privatif, patio intérieur.',
+      en: 'Two twin new-build villas in Bormes-les-Mimosas: split-level volumes following the slope, wooden terraces, pool, private lift and inner patio.',
+      it: 'Due ville gemelle di nuova costruzione a Bormes-les-Mimosas: volumi sfalsati sul pendio, terrazze in legno, piscina, ascensore privato, patio.',
+    },
     description:
       "Construction neuve de deux villas contemporaines à Bormes-les-Mimosas. Architecture en volumes décalés sur plusieurs niveaux, ouverte sur la végétation environnante. Piscine, terrasses en bois aménagées, larges baies vitrées et garde-corps métalliques soulignent une ligne architecturale épurée et lumineuse. Cuisine et salle de bains sur-mesure, ascenseur privatif, patio intérieur.",
     philosophy:
@@ -199,6 +223,16 @@ export const projects: Project[] = [
     surface: 220,
     year: 2024,
     location: 'Aiguebelle, Lavandou',
+    seoTitle: {
+      fr: 'Villa Aiguebelle rénovée, Le Lavandou',
+      en: 'Villa Aiguebelle renovation, Le Lavandou',
+      it: 'Villa Aiguebelle ristrutturata, Lavandou',
+    },
+    seoDescription: {
+      fr: 'Rénovation complète d’une villa de 220 m² à Aiguebelle, au Lavandou : vue mer panoramique, piliers en pierre naturelle, piscine à débordement, terrasses.',
+      en: 'Full renovation of a 220 m² villa in Aiguebelle, Le Lavandou: panoramic sea views, natural stone pillars, infinity pool and cascading terraces.',
+      it: 'Ristrutturazione completa di una villa di 220 m² ad Aiguebelle, Le Lavandou: vista mare panoramica, pilastri in pietra, piscina a sfioro, terrazze.',
+    },
     description:
       "Rénovation complète d'une villa de 220 m² perchée sur les hauteurs d'Aiguebelle, face à la Méditerranée. Les volumes ont été entièrement repensés pour magnifier la vue mer panoramique. Piliers en pierre naturelle, galeries éclairées, piscine à débordement et terrasses en cascade créent une architecture contemporaine ancrée dans le paysage. Intérieurs épurés — salon ouvert sur la baie, salles de bains en pierre — prolongent l'expérience du dehors au dedans.",
     philosophy:
@@ -269,6 +303,16 @@ export const projects: Project[] = [
     surface: 280,
     year: 2024,
     location: 'Pramousquier, Lavandou',
+    seoTitle: {
+      fr: 'Villa neuve à Pramousquier, Le Lavandou',
+      en: 'New villa in Pramousquier, Le Lavandou',
+      it: 'Villa nuova a Pramousquier, Le Lavandou',
+    },
+    seoDescription: {
+      fr: 'Villa contemporaine neuve à Pramousquier, au Lavandou : piscine, pergola bioclimatique, hammam, cave à vin et pierre naturelle apparente.',
+      en: 'Contemporary new-build villa in Pramousquier, Le Lavandou: pool, bioclimatic pergola, hammam, wine cellar and exposed natural stone.',
+      it: 'Villa contemporanea di nuova costruzione a Pramousquier, Le Lavandou: piscina, pergola bioclimatica, hammam, cantina e pietra naturale a vista.',
+    },
     description:
       "Construction neuve d'une villa contemporaine haut de gamme à Pramousquier, dans la baie du Lavandou. Projet global comprenant la construction, la piscine extérieure et l'aménagement intérieur complet. Programme d'exception avec hammam chromothérapie, cave à vin dédiée, cuisine équipée sur-mesure et pergola bioclimatique. Les matériaux nobles — pierre naturelle apparente, métal laqué, bois massif — composent une écriture architecturale sobre et maîtrisée. Terrasses sur plots, piscine privative et entrée en pierre ponctuent l'ensemble d'un caractère méditerranéen assumé.",
     philosophy:
@@ -339,6 +383,16 @@ export const projects: Project[] = [
     surface: 250,
     year: 2014,
     location: 'Villefranche-sur-Mer',
+    seoTitle: {
+      fr: 'Villa Villefranche-sur-Mer — Rénovation',
+      en: 'Villa Villefranche-sur-Mer — Renovation',
+      it: 'Ristrutturazione a Villefranche-sur-Mer',
+    },
+    seoDescription: {
+      fr: 'Aménagement intérieur complet d’une villa face à la baie de Villefranche-sur-Mer : stuc nacré, escalier en crema marfil, piscine à débordement.',
+      en: 'Complete interior fit-out of a villa overlooking the bay of Villefranche-sur-Mer: pearlescent stucco, crema marfil staircase, infinity pool.',
+      it: 'Allestimento interno completo di una villa sulla baia di Villefranche-sur-Mer: stucco perlato, scala in crema marfil, piscina a sfioro.',
+    },
     description:
       "Projet d'aménagement intérieur complet avec terrasse extérieure face à la baie de Villefranche-sur-Mer. Cuisine sur-mesure, murs en stuc nacré, plafonds en staff, pose de carrelage grand format sans joint. Escalier tournant en crema marfil, métallerie en inox poli miroir, portes laquées sur-mesure. Terrasse sur plots et piscine à débordement prolongent l'expérience intérieure vers l'horizon méditerranéen, dans un écrin contemporain d'une rare élégance sur la Côte d'Azur.",
     philosophy:
@@ -409,6 +463,16 @@ export const projects: Project[] = [
     surface: 160,
     year: 2025,
     location: 'La Croix-Valmer',
+    seoTitle: {
+      fr: 'Villa contemporaine à La Croix-Valmer',
+      en: 'Contemporary villa in La Croix-Valmer',
+      it: 'Villa contemporanea a La Croix-Valmer',
+    },
+    seoDescription: {
+      fr: 'Construction neuve et rénovation de piscine à La Croix-Valmer : villa contemporaine conçue en 3D, terrasses généreuses et carport intégré.',
+      en: 'New build and pool renovation in La Croix-Valmer: a contemporary villa designed in 3D, with generous terraces and an integrated carport.',
+      it: 'Nuova costruzione e ristrutturazione della piscina a La Croix-Valmer: villa contemporanea progettata in 3D, ampie terrazze e carport integrato.',
+    },
     description:
       "Projet mixte de construction neuve et de rénovation d'une piscine existante à La Croix-Valmer, avec aménagement intérieur et extérieur complet. Architecture résolument contemporaine : piscine à débordement retravaillée, carport intégré, terrasses généreuses et larges baies vitrées ouvertes sur le paysage varois. Les volumes épurés et la ligne basse s'ancrent dans le terrain. Projet dessiné en rendus 3D pour visualiser l'insertion paysagère et l'harmonie des volumes avant réalisation.",
     philosophy:

@@ -10,9 +10,24 @@ import HeroInner from '@components/react/HeroInner';
 import TrackingFields from '@components/TrackingFields.astro';
 import { t, tArray, getLocalizedPath } from '@i18n/index';
 import type { Locale } from '@i18n/languages';
+import Picture from '@components/ui/Picture.astro';
 
 const lang: Locale = 'en';
 const p = 'contactPage' as const;
+
+// Listes de qualification (Pipedrive) : la valeur envoyée est toujours le libellé FR de même index.
+type OptionsKey = 'optionsNatureTravaux' | 'optionsStatut' | 'optionsBudget' | 'optionsEcheance';
+const selectOptions = (key: OptionsKey) => {
+  const fr = tArray(p, key, 'fr');
+  return tArray(p, key, lang).map((label, i) => ({ value: fr[i] ?? label, label }));
+};
+const natureOptions = selectOptions('optionsNatureTravaux');
+const statutOptions = selectOptions('optionsStatut');
+const budgetOptions = selectOptions('optionsBudget');
+const echeanceOptions = selectOptions('optionsEcheance');
+const labelCls = 'block font-heading text-xs font-semibold text-accent-brown uppercase tracking-[0.15em] mb-3';
+const selectCls = 'w-full px-4 py-3.5 border border-border bg-background font-body text-sm text-primary-dark focus:outline-none focus:border-accent-gold transition-colors duration-300';
+const inputCls = 'w-full px-4 py-3.5 border border-border bg-background font-body text-sm text-primary-dark placeholder:text-[var(--color-text-light)]/50 focus:outline-none focus:border-accent-gold transition-colors duration-300';
 ---
 
 <Layout
@@ -21,9 +36,10 @@ const p = 'contactPage' as const;
   description={t(p, 'metaDesc', lang)}
 >
 
-  <div class="-mt-[80px]">
+  <div class="-mt-[var(--header-h)]">
     <HeroInner
       client:load
+      imageAlt="Villa Azur in Rayol-Canadel: infinity pool, umbrella pine and stone walls"
       images={[
         '/images/projets/villa-azur-24.jpeg',
         '/images/projets/villa-azur-15.jpeg',
@@ -60,6 +76,9 @@ const p = 'contactPage' as const;
           >
             <input type="hidden" name="form-name" value="contact" />
             <input type="hidden" name="lang" value={lang} />
+            <input type="hidden" name="marque" value="SB Design" />
+            <input type="hidden" name="source_lead" value="Site web" />
+            <input type="hidden" name="pipeline" value="SB Design" />
             <p class="hidden" aria-hidden="true">
               <label>Ne pas remplir : <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
             </p>
@@ -82,18 +101,46 @@ const p = 'contactPage' as const;
 
             <div>
               <label for="phone" class="block font-heading text-xs font-semibold text-accent-brown uppercase tracking-[0.15em] mb-3">{t(p, 'labelPhone', lang)}</label>
-              <input type="tel" id="phone" name="phone" class="w-full px-4 py-3.5 border border-border bg-background font-body text-sm text-primary-dark placeholder:text-[var(--color-text-light)]/50 focus:outline-none focus:border-accent-gold transition-colors duration-300" placeholder={t(p, 'placeholderPhone', lang)} />
+              <input type="tel" id="phone" name="phone" required autocomplete="tel" class="w-full px-4 py-3.5 border border-border bg-background font-body text-sm text-primary-dark placeholder:text-[var(--color-text-light)]/50 focus:outline-none focus:border-accent-gold transition-colors duration-300" placeholder={t(p, 'placeholderPhone', lang)} />
             </div>
 
             <div>
-              <label for="project" class="block font-heading text-xs font-semibold text-accent-brown uppercase tracking-[0.15em] mb-3">{t(p, 'labelProject', lang)}</label>
-              <select id="project" name="project" class="w-full px-4 py-3.5 border border-border bg-background font-body text-sm text-primary-dark focus:outline-none focus:border-accent-gold transition-colors duration-300">
+              <label for="nature_travaux" class={labelCls}>{t(p, 'labelNatureTravaux', lang)}</label>
+              <select id="nature_travaux" name="nature_travaux" required class={selectCls}>
                 <option value="">{t(p, 'selectDefault', lang)}</option>
-                <option value="renovation">{t(p, 'selectRenovation', lang)}</option>
-                <option value="design">{t(p, 'selectDesign', lang)}</option>
-                <option value="prestige">{t(p, 'selectPrestige', lang)}</option>
-                <option value="autre">{t(p, 'selectOther', lang)}</option>
+                {natureOptions.map((o) => <option value={o.value}>{o.label}</option>)}
               </select>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <label for="statut_propriete" class={labelCls}>{t(p, 'labelStatut', lang)}</label>
+                <select id="statut_propriete" name="statut_propriete" required class={selectCls}>
+                  <option value="">{t(p, 'selectDefault', lang)}</option>
+                  {statutOptions.map((o) => <option value={o.value}>{o.label}</option>)}
+                </select>
+              </div>
+              <div>
+                <label for="budget_travaux" class={labelCls}>{t(p, 'labelBudget', lang)}</label>
+                <select id="budget_travaux" name="budget_travaux" required class={selectCls}>
+                  <option value="">{t(p, 'selectDefault', lang)}</option>
+                  {budgetOptions.map((o) => <option value={o.value}>{o.label}</option>)}
+                </select>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <label for="code_postal" class={labelCls}>{t(p, 'labelCodePostal', lang)}</label>
+                <input type="text" id="code_postal" name="code_postal" required inputmode="numeric" pattern={'[0-9]{5}'} maxlength="5" autocomplete="postal-code" title={t(p, 'titleCodePostal', lang)} class={inputCls} placeholder={t(p, 'placeholderCodePostal', lang)} />
+              </div>
+              <div>
+                <label for="echeance" class={labelCls}>{t(p, 'labelEcheance', lang)}</label>
+                <select id="echeance" name="echeance" required class={selectCls}>
+                  <option value="">{t(p, 'selectDefault', lang)}</option>
+                  {echeanceOptions.map((o) => <option value={o.value}>{o.label}</option>)}
+                </select>
+              </div>
             </div>
 
             <div>
@@ -166,7 +213,7 @@ const p = 'contactPage' as const;
           </div>
 
           <div class="mt-10 overflow-hidden" data-slide-in="right">
-            <img src="/images/projets/villa-azur-20.jpeg" alt="" class="w-full h-[300px] lg:h-[360px] object-cover transition-transform duration-700 ease-smooth hover:scale-[1.05]" loading="lazy" />
+            <Picture src="/images/projets/villa-azur-20.jpeg" alt="Sunset over the Mediterranean from the terrace and pool of Villa Azur" class="w-full h-[300px] lg:h-[360px] object-cover transition-transform duration-700 ease-smooth hover:scale-[1.05]" loading="lazy" />
           </div>
         </div>
 

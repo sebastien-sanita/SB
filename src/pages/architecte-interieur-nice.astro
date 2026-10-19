@@ -11,8 +11,13 @@ import HeroInner from '@components/react/HeroInner';
 import { projects } from '../data/projects';
 import { getLocalizedPath } from '@i18n/index';
 import type { Locale } from '@i18n/languages';
+import Picture from '@components/ui/Picture.astro';
+import ZoneExtras from '@components/sections/ZoneExtras.astro';
+import { niceExtras } from '@/data/zones/nice';
+import { faqSchema } from '@utils/seo';
 
 const lang: Locale = 'fr';
+const zone = niceExtras[lang];
 const project = projects.find((p) => p.slug === 'villa-villefranche-sur-mer');
 const heroImages = (project?.images ?? [project?.coverImage ?? '/images/projets/villa-azur-11.jpeg']).slice(0, 3);
 
@@ -26,14 +31,16 @@ const prestations = [
 
 <Layout
   lang={lang}
-  title="Architecte d'intérieur Nice & Villefranche | SB Design"
-  description="Architecte d'intérieur à Nice et Villefranche-sur-Mer : rénovation, décoration et valorisation de résidences haut de gamme sur la Riviera. SB Design Riviera."
+  title="Architecte d’intérieur à Nice | SB Design Riviera"
+  description="Architecte d’intérieur à Nice et Villefranche-sur-Mer : rénovation d’appartements en copropriété et de villas, matériaux nobles, chantier clé en main."
   ogImage={project?.coverImage}
+  schema={faqSchema(zone.faq.items)}
 >
 
-  <div class="-mt-[80px]">
+  <div class="-mt-[var(--header-h)]">
     <HeroInner
       client:load
+      imageAlt="Piscine à débordement face à la rade de Villefranche-sur-Mer"
       images={heroImages}
       label="Nice · Villefranche-sur-Mer"
       title={`Architecte d'intérieur<br /><span class="font-heading font-light text-[0.4em]">à Nice et Villefranche-sur-Mer</span>`}
@@ -111,18 +118,18 @@ const prestations = [
           <h2 class="font-display text-subsection font-bold uppercase text-primary-dark">
             Une réalisation <span class="font-heading font-light">sur la Riviera</span>
           </h2>
+          <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.75] mt-6">{zone.realisationsIntro}</p>
         </div>
         <a
           href={getLocalizedPath(`/projets/${project.slug}`, lang)}
           class="group relative overflow-hidden block h-[320px] lg:h-[460px]"
           data-reveal
         >
-          <img
+          <Picture
             src={project.coverImage}
             alt={`Rénovation de villa à ${project.location}`}
             class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.05]"
-            loading="lazy"
-          />
+            loading="lazy" />
           <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
           <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8">
             <span class="text-[11px] font-heading font-medium text-accent-gold uppercase tracking-[0.15em]">
@@ -136,6 +143,8 @@ const prestations = [
       </Container>
     </Section>
   )}
+
+  <ZoneExtras content={zone} lang={lang} start={4} />
 
   <!-- 05 — CTA -->
   <Section background="dark" padding="lg">

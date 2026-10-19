@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import strings from '@i18n/strings';
 import type { Locale } from '@i18n/languages';
+import Picture from '@components/react/Picture';
 
 const heroImages = [
   '/images/projets/villa-azur-11.jpeg',
@@ -47,10 +48,11 @@ export default function HeroMinimal({ lang = 'fr' }: Props) {
           }}
           className="absolute inset-0"
         >
-          <img
+          <Picture
             src={heroImages[current]}
             alt="Architecture haut de gamme Côte d'Azur"
             className="w-full h-full object-cover"
+            sizes="100vw"
             loading="eager"
             decoding="async"
             fetchPriority={current === 0 ? 'high' : 'auto'}
@@ -61,17 +63,18 @@ export default function HeroMinimal({ lang = 'fr' }: Props) {
       {/* Overlay subtil */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-black/40" />
 
-      {/* Logo / nom — en haut (style DN Architectes) */}
+      {/* Logo / nom — en haut (style DN Architectes), sous la bande du header */}
       <motion.div
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.5, delay: 0.3, ease: easeOutQuart }}
-        className="absolute top-0 left-0 right-0 z-10 pt-28 md:pt-32 text-center"
+        className="absolute top-0 left-0 right-0 z-10 pt-[calc(var(--header-h)+24px)] text-center"
       >
-        <img
+        <Picture
           src="/images/logo-sb.png"
           alt="SB Design"
           className="mx-auto w-auto"
+          sizes="280px"
           style={{ height: 'clamp(140px, 20vw, 280px)', filter: 'invert(1) brightness(1)' }}
         />
       </motion.div>

@@ -241,6 +241,15 @@ function initMosaicReveals() {
   // Alternating directions for the puzzle/mosaic feel
   const directions = ['left', 'right', 'bottom', 'right', 'left', 'top'];
 
+  // Sur mobile (< md : grilles en 1 colonne, bandes pleine largeur), on ne glisse
+  // que verticalement : un décalage horizontal de ±80px dépasse du viewport et
+  // élargit la page (zoom arrière / défilement latéral) jusqu'au reveal.
+  const isMobile = window.matchMedia('(max-width: 767px)').matches;
+  const offsetFor = (dir: string) => {
+    const t = translateFrom[dir] || translateFrom.bottom;
+    return isMobile && t.x !== 0 ? translateFrom.bottom : t;
+  };
+
   // Mosaic groups — children slide in from alternating directions with stagger
   const mosaicGroups = document.querySelectorAll('[data-mosaic]');
 
@@ -248,8 +257,7 @@ function initMosaicReveals() {
     const items = group.querySelectorAll('[data-mosaic-item]');
 
     items.forEach((item, i) => {
-      const dir = directions[i % directions.length];
-      const t = translateFrom[dir];
+      const t = offsetFor(directions[i % directions.length]);
 
       gsap.fromTo(item,
         { opacity: 0, x: t.x, y: t.y },
@@ -274,8 +282,7 @@ function initMosaicReveals() {
   const slideImages = document.querySelectorAll('[data-slide-in]');
 
   slideImages.forEach((el) => {
-    const direction = (el as HTMLElement).dataset.slideIn || 'bottom';
-    const t = translateFrom[direction] || translateFrom.bottom;
+    const t = offsetFor((el as HTMLElement).dataset.slideIn || 'bottom');
 
     gsap.fromTo(el,
       { opacity: 0, x: t.x, y: t.y },
@@ -394,18 +401,50 @@ function init() {
 }
 
 function start() {
+  // Le bundle est là : on signale à la CSS que les animations prennent la
+  // main, ce qui désamorce le filet `reveal-fallback` du <head>. Posé dès
+  // maintenant (et non à l'init) pour ne pas dépendre de la durée du loader.
+  document.documentElement.classList.add('reveals-ready');
+
+  let started = false;
+  const run = () => {
+    if (started) return;
+    started = true;
+    try {
+      init();
+    } catch (err) {
+      // Une erreur d'init laisserait le contenu masqué : on force l'affichage.
+      document.documentElement.classList.add('reveal-fallback');
+      console.error('[animations] init impossible', err);
+    }
+  };
+
   // If page loader is still visible, wait for it to finish
   if (document.body.classList.contains('is-loading')) {
-    window.addEventListener('loaderComplete', () => init(), { once: true });
+    window.addEventListener('loaderComplete', run, { once: true });
+    // Garde-fou : si `loaderComplete` n'est jamais émis (erreur dans le
+    // loader), on retire le rideau et on initialise quand même — sinon la
+    // page reste masquée.
+    setTimeout(() => {
+      if (started) return;
+      const loader = document.getElementById('page-loader');
+      if (loader) loader.style.display = 'none';
+      document.body.classList.remove('is-loading');
+      run();
+    }, 3000);
   } else {
-    init();
+    run();
   }
 }
 
-if (document.readyState === 'complete') {
-  start();
+// Script de module différé : le DOM est déjà parsé. On n'attend pas `load`
+// (images, polices, GTM…) : sur connexion lente il dépasse les 4 s du filet
+// du <head>, qui neutralisait alors toutes les révélations de la visite.
+// ScrollTrigger recalcule de lui-même les positions au `load`.
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', start, { once: true });
 } else {
-  window.addEventListener('load', start);
+  start();
 }
 
 export {};

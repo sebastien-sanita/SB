@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import Picture from '@components/react/Picture';
 
 const constructionImages = [
   { src: '/images/projets/bormes-les-mimosas-17.jpg', label: 'Construction patio — Bormes-les-Mimosas' },
@@ -45,11 +46,13 @@ export default function ConstructionShowcase() {
               transition={{ duration: 0.6, delay: i * 0.05 }}
               className="group relative overflow-hidden aspect-[4/3]"
             >
-              <img
+              <Picture
                 src={img.src}
                 alt={img.label}
                 className="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.06]"
+                sizes="(max-width: 768px) 50vw, 33vw"
                 loading="lazy"
+                decoding="async"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="absolute bottom-0 left-0 right-0 p-4">

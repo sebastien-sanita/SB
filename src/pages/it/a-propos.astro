@@ -11,6 +11,7 @@ import HeroInner from '@components/react/HeroInner';
 import TextRibbon from '@components/react/TextRibbon';
 import { t, tArray, getLocalizedPath } from '@i18n/index';
 import type { Locale } from '@i18n/languages';
+import Picture from '@components/ui/Picture.astro';
 
 const lang: Locale = 'it';
 const p = 'aproposPage' as const;
@@ -30,9 +31,10 @@ const aboutRibbon = [t(p, 'value1Title', lang), t(p, 'value2Title', lang), t(p, 
   description={t(p, 'metaDesc', lang)}
 >
 
-  <div class="-mt-[80px]">
+  <div class="-mt-[var(--header-h)]">
     <HeroInner
       client:load
+      imageAlt="Soggiorno di Villa Azur a Rayol-Canadel: tavolino in marmo venato e nicchie illuminate"
       images={[
         '/images/projets/villa-azur-38.jpeg',
         '/images/projets/villa-azur-40.jpeg',
@@ -78,10 +80,10 @@ const aboutRibbon = [t(p, 'value1Title', lang), t(p, 'value2Title', lang), t(p, 
 
         <div class="relative mt-8 lg:mt-16" data-clip-reveal="right">
           <div class="overflow-hidden">
-            <img src="/images/projets/villa-azur-38.jpeg" alt="" class="w-full h-[500px] lg:h-[75vh] lg:min-h-[600px] object-cover transition-transform duration-700 ease-smooth hover:scale-[1.05]" data-parallax="0.12" loading="lazy" />
+            <Picture src="/images/projets/villa-azur-38.jpeg" alt="Soggiorno di Villa Azur: tavolino in marmo venato su base in legno massello" class="w-full h-[500px] lg:h-[75vh] lg:min-h-[600px] object-cover transition-transform duration-700 ease-smooth hover:scale-[1.05]" data-parallax="0.12" loading="lazy" />
           </div>
           <div class="hidden lg:block absolute -bottom-14 -left-16 w-[260px] h-[360px] overflow-hidden z-10 group/secondary">
-            <img src="/images/projets/villa-azur-40.jpeg" alt="" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover/secondary:scale-[1.08]" loading="lazy" />
+            <Picture src="/images/projets/villa-azur-40.jpeg" alt="Cucina su misura di Villa Azur: isola in marmo e mensole in noce illuminate" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover/secondary:scale-[1.08]" loading="lazy" />
           </div>
         </div>
       </div>
@@ -92,7 +94,7 @@ const aboutRibbon = [t(p, 'value1Title', lang), t(p, 'value2Title', lang), t(p, 
     <TextRibbon text={aboutRibbon} direction="left" speed={35} client:visible />
   </div>
   <div class="group relative w-full h-[45vh] min-h-[300px] overflow-hidden" data-slide-in="bottom">
-    <img src="/images/projets/villa-azur-14.jpeg" alt="" class="w-full h-full object-cover transition-transform duration-[1.2s] ease-smooth group-hover:scale-[1.05]" data-parallax="0.12" loading="lazy" />
+    <Picture src="/images/projets/villa-azur-14.jpeg" alt="Piscina a sfioro e lettini al tramonto, Villa Azur a Rayol-Canadel" class="w-full h-full object-cover transition-transform duration-[1.2s] ease-smooth group-hover:scale-[1.05]" data-parallax="0.12" loading="lazy" />
   </div>
   <div class="overflow-hidden" style="background: linear-gradient(to bottom, var(--color-background), var(--color-primary-warm));">
     <TextRibbon text={aboutRibbon} direction="right" speed={40} client:visible />
@@ -123,10 +125,10 @@ const aboutRibbon = [t(p, 'value1Title', lang), t(p, 'value2Title', lang), t(p, 
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-20" data-mosaic>
         <div class="overflow-hidden" data-mosaic-item>
-          <img src="/images/projets/villa-azur-2.jpeg" alt="" class="w-full h-[280px] lg:h-[360px] object-cover transition-transform duration-700 ease-smooth hover:scale-[1.05]" loading="lazy" />
+          <Picture src="/images/projets/villa-azur-2.jpeg" alt="Facciata di Villa Azur e piscina a sfioro nel verde di Rayol-Canadel" class="w-full h-[280px] lg:h-[360px] object-cover transition-transform duration-700 ease-smooth hover:scale-[1.05]" loading="lazy" />
         </div>
         <div class="overflow-hidden" data-mosaic-item>
-          <img src="/images/projets/villa-azur-49.jpeg" alt="" class="w-full h-[280px] lg:h-[360px] object-cover transition-transform duration-700 ease-smooth hover:scale-[1.05]" loading="lazy" />
+          <Picture src="/images/projets/villa-azur-49.jpeg" alt="Hammam in pietra con doccia cromoterapica, Villa Azur" class="w-full h-[280px] lg:h-[360px] object-cover transition-transform duration-700 ease-smooth hover:scale-[1.05]" loading="lazy" />
         </div>
       </div>
     </Container>

@@ -13,17 +13,34 @@ import type { Locale } from '@i18n/languages';
 
 const lang: Locale = 'it';
 const p = 'projetsPage' as const;
+
+// Schema.org — ItemList du portfolio (Pb 5 SEO)
+const projectsBase = Astro.url.pathname.replace(/\/$/, '');
+const projectsListSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: t(p, 'metaTitle', lang),
+  numberOfItems: projects.length,
+  itemListElement: projects.map((proj, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    url: new URL(`${projectsBase}/${proj.slug}/`, Astro.site).href,
+    name: proj.title,
+  })),
+};
 ---
 
 <Layout
   lang={lang}
   title={t(p, 'metaTitle', lang)}
   description={t(p, 'metaDesc', lang)}
+  schema={projectsListSchema}
 >
 
-  <div class="-mt-[80px]">
+  <div class="-mt-[var(--header-h)]">
     <HeroInner
       client:load
+      imageAlt="Giardino terrazzato e piscina a sfioro sul mare, Villa Azur a Rayol-Canadel"
       images={[
         '/images/projets/villa-azur-4.jpeg',
         '/images/projets/villa-azur-11.jpeg',

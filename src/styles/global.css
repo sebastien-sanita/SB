@@ -40,6 +40,21 @@ body {
   overflow-x: hidden;
 }
 
+/* Débordement horizontal : `overflow-x:hidden` sur body seul se propage au viewport
+   et body ne clippe rien. Sur mobile, le layout viewport s'élargit alors au contenu
+   qui déborde (slide-in parqués à translateX(80px) avant leur ScrollTrigger → header
+   fixed plus large que l'écran, burger hors cadre). Avec html non-visible, body
+   clippe réellement son contenu ; `clip` — et non `hidden` — pour ne pas faire de
+   body un conteneur de scroll (footer sticky desktop et Lenis restent intacts). */
+@supports (overflow: clip) {
+  html {
+    overflow-x: clip;
+  }
+  body {
+    overflow-x: clip;
+  }
+}
+
 /* ═══════════════════════════════════════════════
    HEADINGS — Règle : Émotionnel = Serif, Corporate = Sans
    ═══════════════════════════════════════════════ */
@@ -120,7 +135,28 @@ select {
 }
 
 /* ═══════════════════════════════════════════════
-   MAIN — Z-index layer for fixed footer reveal
+   HEADER — Hauteur réelle de la bande fixe
+   (logo h-16/h-20 + 2 × py-5/py-6 de Header.astro)
+   ═══════════════════════════════════════════════ */
+
+:root {
+  --header-h: 104px; /* logo 64px + 2 × 20px */
+}
+
+@media (min-width: 768px) {
+  :root {
+    --header-h: 120px; /* logo 80px + 2 × 20px */
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --header-h: 128px; /* logo 80px + 2 × 24px */
+  }
+}
+
+/* ═══════════════════════════════════════════════
+   MAIN — Z-index layer for sticky footer reveal
    ═══════════════════════════════════════════════ */
 
 main {
@@ -129,56 +165,84 @@ main {
   background-color: var(--color-background);
 }
 
+/* Footer : dans le flux par défaut (toujours atteignable, quelle que soit sa hauteur).
+   L'effet « reveal » (sticky sous le contenu) n'est activé par Layout.astro que sur
+   desktop, lorsque le footer tient dans le viewport sous le header. */
+#main-footer { position: relative; z-index: 1; }
+#main-footer.footer-reveal { position: sticky; bottom: 0; }
+
 /* ═══════════════════════════════════════════════
    SCROLL REVEALS — Handled by GSAP ScrollTrigger
    Base state for elements before GSAP initializes
    ═══════════════════════════════════════════════ */
 
-[data-reveal],
-[data-reveal-child] {
+/* L'état initial masqué n'est appliqué que si JS est actif (classe .js posée
+   par un script inline dans le <head>). Sans JS — ou si le bundle GSAP ne se
+   charge pas — le contenu reste lisible au lieu de rester invisible. */
+html.js [data-reveal],
+html.js [data-reveal-child] {
   opacity: 0;
   transform: translateY(60px);
   filter: blur(16px);
   will-change: opacity, transform, filter;
 }
 
+/* Filet de sécurité : si les animations ne se sont pas initialisées au bout
+   de quelques secondes (erreur JS, GSAP indisponible), on force l'affichage
+   plutôt que de laisser une page blanche. */
+html.reveal-fallback [data-reveal],
+html.reveal-fallback [data-reveal-child],
+html.reveal-fallback [data-clip-reveal],
+html.reveal-fallback [data-slide-in],
+html.reveal-fallback [data-mosaic-item] {
+  opacity: 1 !important;
+  transform: none !important;
+  filter: none !important;
+  clip-path: none !important;
+}
+
 /* Clip-path reveal base state */
-[data-clip-reveal] {
+html.js [data-clip-reveal] {
   clip-path: inset(0 100% 0 0);
 }
 
-[data-clip-reveal="right"] {
+html.js [data-clip-reveal="right"] {
   clip-path: inset(0 0 0 100%);
 }
 
-[data-clip-reveal="bottom"] {
+html.js [data-clip-reveal="bottom"] {
   clip-path: inset(100% 0 0 0);
 }
 
-[data-clip-reveal="top"] {
+html.js [data-clip-reveal="top"] {
   clip-path: inset(0 0 100% 0);
 }
 
 /* Slide-in reveal base state — smooth opacity + translate (no clip-path) */
-[data-slide-in] {
+html.js [data-slide-in] {
   opacity: 0;
   transform: translateY(80px);
 }
 
-[data-slide-in="left"] {
-  transform: translateX(-80px);
+/* Décalage horizontal réservé au desktop : sur mobile il déborderait du viewport
+   (page élargie → zoom arrière). En dessous de md, on garde le translateY ci-dessus,
+   cohérent avec animations.ts qui ne glisse que verticalement sur mobile. */
+@media (min-width: 768px) {
+  html.js [data-slide-in="left"] {
+    transform: translateX(-80px);
+  }
+
+  html.js [data-slide-in="right"] {
+    transform: translateX(80px);
+  }
 }
 
-[data-slide-in="right"] {
-  transform: translateX(80px);
-}
-
-[data-slide-in="top"] {
+html.js [data-slide-in="top"] {
   transform: translateY(-80px);
 }
 
 /* Mosaic item base state — hidden before GSAP animates */
-[data-mosaic-item] {
+html.js [data-mosaic-item] {
   opacity: 0;
   transform: translateY(50px);
 }

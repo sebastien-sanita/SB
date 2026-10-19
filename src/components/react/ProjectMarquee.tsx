@@ -5,6 +5,7 @@
  */
 import { useRef, useEffect, useState } from 'react';
 import { motion, useScroll, useVelocity, useTransform, useSpring, useAnimationFrame } from 'framer-motion';
+import Picture from '@components/react/Picture';
 
 interface Props {
   images: string[];
@@ -74,11 +75,13 @@ export default function ProjectMarquee({ images, title, keywords = [] }: Props) 
       key={i}
       className="shrink-0 w-[520px] h-[340px] lg:w-[620px] lg:h-[400px] overflow-hidden"
     >
-      <img
+      <Picture
         src={img}
         alt={`${title} — ${i + 1}`}
         className="w-full h-full object-cover"
+        sizes="(max-width: 1024px) 520px, 620px"
         loading="lazy"
+        decoding="async"
       />
     </div>
   ));

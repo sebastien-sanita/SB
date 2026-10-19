@@ -7,6 +7,7 @@
 import Container from '@components/ui/Container.astro';
 import Button from '@components/ui/Button.astro';
 import { t, getLocalizedPath, type Locale } from '@i18n/index';
+import Picture from '@components/ui/Picture.astro';
 
 interface Props { lang?: Locale; }
 const lang = Astro.props.lang ?? 'fr';
@@ -29,13 +30,12 @@ const lang = Astro.props.lang ?? 'fr';
     class="group relative block w-full h-[50vh] min-h-[350px] lg:h-[55vh] overflow-hidden"
     data-featured-project
   >
-    <img
+    <Picture
       src="/images/projets/villa-azur-11.jpeg"
       alt={t('featured', 'fp1Title', lang)}
       class="w-full h-full object-cover transition-transform duration-[1.5s] ease-smooth group-hover:scale-[1.04]"
       data-parallax="0.08"
-      loading="eager"
-    />
+      loading="eager" />
     <div class="absolute inset-0 bg-gradient-to-t from-black/65 via-black/15 to-transparent" />
     <div class="absolute bottom-0 left-0 right-0 pb-10 md:pb-14 lg:pb-16">
       <Container>
@@ -62,13 +62,12 @@ const lang = Astro.props.lang ?? 'fr';
     class="group relative block w-full h-[50vh] min-h-[350px] lg:h-[55vh] overflow-hidden"
     data-featured-project
   >
-    <img
+    <Picture
       src="/images/projets/bormes-les-mimosas-1.jpg"
       alt={t('featured', 'fp2Title', lang)}
       class="w-full h-full object-cover transition-transform duration-[1.5s] ease-smooth group-hover:scale-[1.04]"
       data-parallax="0.08"
-      loading="lazy"
-    />
+      loading="lazy" />
     <div class="absolute inset-0 bg-gradient-to-t from-black/65 via-black/15 to-transparent" />
     <div class="absolute top-0 left-0 right-0 h-px bg-accent-gold/15" />
     <div class="absolute bottom-0 left-0 right-0 pb-10 md:pb-14 lg:pb-16">
@@ -96,13 +95,12 @@ const lang = Astro.props.lang ?? 'fr';
     class="group relative block w-full h-[50vh] min-h-[350px] lg:h-[55vh] overflow-hidden"
     data-featured-project
   >
-    <img
+    <Picture
       src="/images/projets/aiguebelle-6.jpeg"
       alt={t('featured', 'fp3Title', lang)}
       class="w-full h-full object-cover transition-transform duration-[1.5s] ease-smooth group-hover:scale-[1.04]"
       data-parallax="0.08"
-      loading="lazy"
-    />
+      loading="lazy" />
     <div class="absolute inset-0 bg-gradient-to-t from-black/65 via-black/15 to-transparent" />
     <div class="absolute top-0 left-0 right-0 h-px bg-accent-gold/15" />
     <div class="absolute bottom-0 left-0 right-0 pb-10 md:pb-14 lg:pb-16">

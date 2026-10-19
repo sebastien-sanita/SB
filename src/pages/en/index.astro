@@ -22,18 +22,20 @@ import Marquee from '@components/sections/Marquee.astro';
 
 import { t, tArray, getLocalizedPath } from '@i18n/index';
 import type { Locale } from '@i18n/languages';
+import Picture from '@components/ui/Picture.astro';
 
 const lang: Locale = 'en';
 ---
 
 <Layout
   lang={lang}
-  title="SB Design Riviera — Interior Designer French Riviera"
+  title="Interior Designer French Riviera | SB Design Riviera"
   description="Interior architecture studio on the French Riviera: design, renovation and enhancement of high-end secondary residences. Let's discuss your project."
+  preloadImage="/images/projets/villa-azur-11.jpeg"
 >
 
   <!-- HERO : remonte par-dessus le spacer header -->
-  <div class="-mt-[80px]">
+  <div class="-mt-[var(--header-h)]">
     <HeroMinimal lang={lang} client:load />
   </div>
   <Manifeste lang={lang} />
@@ -56,12 +58,12 @@ const lang: Locale = 'en';
         </span>
       </div>
       <div class="relative overflow-hidden aspect-[4/3] md:aspect-auto">
-        <img src="/images/projets/villa-azur-24.jpeg" alt={t('manifeste', 'imgLabel1', lang)} class="w-full h-full object-cover transition-transform duration-[1.5s] ease-smooth group-hover:scale-[1.05]" loading="lazy" />
+        <Picture src="/images/projets/villa-azur-24.jpeg" alt={t('manifeste', 'imgLabel1', lang)} class="w-full h-full object-cover transition-transform duration-[1.5s] ease-smooth group-hover:scale-[1.05]" loading="lazy" />
       </div>
     </a>
     <a href={getLocalizedPath('/projets', lang) + '?type=construction'} class="group grid grid-cols-1 md:grid-cols-[1.6fr_1.3fr] gap-0 md:h-[380px]">
       <div class="relative overflow-hidden aspect-[4/3] md:aspect-auto order-2 md:order-1">
-        <img src="/images/projets/villa-azur-38.jpeg" alt={t('manifeste', 'imgLabel2', lang)} class="w-full h-full object-cover transition-transform duration-[1.5s] ease-smooth group-hover:scale-[1.05]" loading="lazy" />
+        <Picture src="/images/projets/villa-azur-38.jpeg" alt={t('manifeste', 'imgLabel2', lang)} class="w-full h-full object-cover transition-transform duration-[1.5s] ease-smooth group-hover:scale-[1.05]" loading="lazy" />
       </div>
       <div class="flex flex-col justify-end p-8 md:p-10 lg:p-12 bg-[var(--color-warm)] order-1 md:order-2">
         <div class="w-8 h-px bg-accent-gold/40 mb-4" />
@@ -87,13 +89,12 @@ const lang: Locale = 'en';
 
   <!-- Full-bleed image band — visual transition process → metrics -->
   <div class="group relative w-full h-[45vh] min-h-[300px] lg:h-[55vh] overflow-hidden" data-slide-in="bottom">
-    <img
+    <Picture
       src="/images/projets/villa-azur-15.jpeg"
-      alt=""
+      alt="Infinity pool and outdoor staircase at sunset, Villa Azur in Rayol-Canadel"
       class="w-full h-full object-cover transition-transform duration-[1.2s] ease-smooth group-hover:scale-[1.05]"
       data-parallax="0.12"
-      loading="lazy"
-    />
+      loading="lazy" />
     <div class="absolute inset-0 bg-black/10 group-hover:bg-black/5 transition-colors duration-700" />
   </div>
 
@@ -134,12 +135,11 @@ const lang: Locale = 'en';
 
   <section class="relative py-28 md:py-50 overflow-hidden">
     <div class="absolute inset-0">
-      <img
+      <Picture
         src="/images/projets/villa-azur-19.jpeg"
         alt="Exceptional villa, French Riviera"
         class="w-full h-full object-cover"
-        loading="lazy"
-      />
+        loading="lazy" />
       <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/55 to-black/70" />
     </div>
 

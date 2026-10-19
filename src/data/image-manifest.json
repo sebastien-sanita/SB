@@ -1,0 +1,1621 @@
+{
+  "/images/logo-sb.png": {
+    "w": 960,
+    "h": 960,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/aiguebelle-1.jpeg": {
+    "w": 800,
+    "h": 450,
+    "widths": [
+      480
+    ]
+  },
+  "/images/projets/aiguebelle-10.jpeg": {
+    "w": 2400,
+    "h": 1348,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "/images/projets/aiguebelle-11.jpeg": {
+    "w": 2049,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/aiguebelle-12.jpeg": {
+    "w": 1536,
+    "h": 2049,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/aiguebelle-13.jpeg": {
+    "w": 1536,
+    "h": 2049,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/aiguebelle-14.jpeg": {
+    "w": 1536,
+    "h": 2049,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/aiguebelle-15.jpeg": {
+    "w": 2048,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/aiguebelle-16.jpeg": {
+    "w": 1536,
+    "h": 2049,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/aiguebelle-17.jpeg": {
+    "w": 1536,
+    "h": 2049,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/aiguebelle-18.jpeg": {
+    "w": 1600,
+    "h": 1200,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/aiguebelle-19.jpeg": {
+    "w": 1536,
+    "h": 2049,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/aiguebelle-2.jpeg": {
+    "w": 1536,
+    "h": 2049,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/aiguebelle-20.jpeg": {
+    "w": 1536,
+    "h": 2049,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/aiguebelle-21.jpeg": {
+    "w": 2049,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/aiguebelle-22.jpeg": {
+    "w": 2049,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/aiguebelle-23.jpeg": {
+    "w": 2049,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/aiguebelle-24.jpeg": {
+    "w": 2049,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/aiguebelle-25.jpeg": {
+    "w": 2400,
+    "h": 1015,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "/images/projets/aiguebelle-26.jpeg": {
+    "w": 2049,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/aiguebelle-27.jpeg": {
+    "w": 1536,
+    "h": 2049,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/aiguebelle-28.jpeg": {
+    "w": 1125,
+    "h": 782,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/aiguebelle-3.jpeg": {
+    "w": 1536,
+    "h": 2049,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/aiguebelle-4.jpeg": {
+    "w": 2049,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/aiguebelle-5.jpeg": {
+    "w": 2400,
+    "h": 1350,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "/images/projets/aiguebelle-6.jpeg": {
+    "w": 1536,
+    "h": 2049,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/aiguebelle-7.jpeg": {
+    "w": 1536,
+    "h": 2049,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/aiguebelle-8.jpeg": {
+    "w": 800,
+    "h": 450,
+    "widths": [
+      480
+    ]
+  },
+  "/images/projets/aiguebelle-9.jpeg": {
+    "w": 2049,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/bormes-les-mimosas-1.jpg": {
+    "w": 2400,
+    "h": 1350,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "/images/projets/bormes-les-mimosas-10.png": {
+    "w": 2382,
+    "h": 1568,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/bormes-les-mimosas-11.png": {
+    "w": 2382,
+    "h": 1786,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/bormes-les-mimosas-12.png": {
+    "w": 2382,
+    "h": 1576,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/bormes-les-mimosas-13.png": {
+    "w": 2382,
+    "h": 1786,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/bormes-les-mimosas-14.png": {
+    "w": 2382,
+    "h": 1296,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/bormes-les-mimosas-15.jpg": {
+    "w": 1536,
+    "h": 2048,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/bormes-les-mimosas-16.jpg": {
+    "w": 2056,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/bormes-les-mimosas-17.jpg": {
+    "w": 2400,
+    "h": 1793,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "/images/projets/bormes-les-mimosas-18.jpg": {
+    "w": 2056,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/bormes-les-mimosas-19.jpg": {
+    "w": 2056,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/bormes-les-mimosas-2.jpg": {
+    "w": 2172,
+    "h": 1448,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/bormes-les-mimosas-20.jpg": {
+    "w": 1936,
+    "h": 2592,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/bormes-les-mimosas-3.jpg": {
+    "w": 2400,
+    "h": 1793,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "/images/projets/bormes-les-mimosas-4.png": {
+    "w": 2378,
+    "h": 1586,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/bormes-les-mimosas-5.jpg": {
+    "w": 2400,
+    "h": 1602,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "/images/projets/bormes-les-mimosas-6.jpg": {
+    "w": 1448,
+    "h": 2172,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/bormes-les-mimosas-7.jpg": {
+    "w": 2172,
+    "h": 1448,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/bormes-les-mimosas-8.png": {
+    "w": 2382,
+    "h": 1764,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/bormes-les-mimosas-9.png": {
+    "w": 2382,
+    "h": 1786,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/la-croix-valmer-1.jpg": {
+    "w": 2400,
+    "h": 1350,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "/images/projets/la-croix-valmer-10.jpg": {
+    "w": 2400,
+    "h": 1350,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "/images/projets/la-croix-valmer-11.jpg": {
+    "w": 2400,
+    "h": 1350,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "/images/projets/la-croix-valmer-12.jpg": {
+    "w": 2400,
+    "h": 1350,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "/images/projets/la-croix-valmer-2.jpg": {
+    "w": 2400,
+    "h": 1350,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "/images/projets/la-croix-valmer-3.jpg": {
+    "w": 2400,
+    "h": 1350,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "/images/projets/la-croix-valmer-4.jpg": {
+    "w": 2400,
+    "h": 1350,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "/images/projets/la-croix-valmer-5.jpg": {
+    "w": 2400,
+    "h": 1350,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "/images/projets/la-croix-valmer-6.jpg": {
+    "w": 2400,
+    "h": 1350,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "/images/projets/la-croix-valmer-7.jpg": {
+    "w": 2400,
+    "h": 1350,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "/images/projets/la-croix-valmer-8.jpg": {
+    "w": 2400,
+    "h": 1350,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "/images/projets/la-croix-valmer-9.jpg": {
+    "w": 2048,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/pramousquier-1.jpg": {
+    "w": 2048,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/pramousquier-10.jpg": {
+    "w": 2400,
+    "h": 3600,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "/images/projets/pramousquier-11.jpg": {
+    "w": 2400,
+    "h": 3600,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "/images/projets/pramousquier-12.jpg": {
+    "w": 1536,
+    "h": 2048,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/pramousquier-13.jpg": {
+    "w": 1536,
+    "h": 2048,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/pramousquier-14.jpg": {
+    "w": 1536,
+    "h": 2302,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/pramousquier-15.jpg": {
+    "w": 1536,
+    "h": 2048,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/pramousquier-16.jpg": {
+    "w": 1536,
+    "h": 2302,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/pramousquier-17.jpg": {
+    "w": 1536,
+    "h": 2302,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/pramousquier-18.jpg": {
+    "w": 2302,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/pramousquier-19.jpg": {
+    "w": 2302,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/pramousquier-2.jpg": {
+    "w": 2048,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/pramousquier-20.jpg": {
+    "w": 1536,
+    "h": 2302,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/pramousquier-21.jpg": {
+    "w": 2048,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/pramousquier-22.jpg": {
+    "w": 2048,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/pramousquier-23.jpg": {
+    "w": 2048,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/pramousquier-24.jpg": {
+    "w": 1536,
+    "h": 2048,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/pramousquier-25.jpg": {
+    "w": 2056,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/pramousquier-26.jpg": {
+    "w": 2056,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/pramousquier-27.jpg": {
+    "w": 2056,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/pramousquier-28.jpg": {
+    "w": 2056,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/pramousquier-3.jpg": {
+    "w": 2048,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/pramousquier-4.jpg": {
+    "w": 1536,
+    "h": 2048,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/pramousquier-5.jpg": {
+    "w": 2048,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/pramousquier-6.jpg": {
+    "w": 1536,
+    "h": 2048,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/pramousquier-7.jpg": {
+    "w": 2048,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/pramousquier-8.jpg": {
+    "w": 1536,
+    "h": 2048,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/pramousquier-9.jpg": {
+    "w": 2048,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/villa-azur-1.jpeg": {
+    "w": 2400,
+    "h": 1350,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "/images/projets/villa-azur-10.jpeg": {
+    "w": 1536,
+    "h": 2730,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/villa-azur-11.jpeg": {
+    "w": 2048,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/villa-azur-12.jpeg": {
+    "w": 2048,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/villa-azur-13.jpeg": {
+    "w": 2400,
+    "h": 1350,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "/images/projets/villa-azur-14.jpeg": {
+    "w": 2048,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/villa-azur-15.jpeg": {
+    "w": 2048,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/villa-azur-16.jpeg": {
+    "w": 2048,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/villa-azur-17.jpeg": {
+    "w": 2048,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/villa-azur-18.jpeg": {
+    "w": 2048,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/villa-azur-19.jpeg": {
+    "w": 2048,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/villa-azur-2.jpeg": {
+    "w": 2400,
+    "h": 1350,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "/images/projets/villa-azur-20.jpeg": {
+    "w": 2048,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/villa-azur-21.jpeg": {
+    "w": 2048,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/villa-azur-22.jpeg": {
+    "w": 2048,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/villa-azur-23.jpeg": {
+    "w": 2048,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/villa-azur-24.jpeg": {
+    "w": 1536,
+    "h": 2048,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/villa-azur-25.jpeg": {
+    "w": 2048,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/villa-azur-26.jpeg": {
+    "w": 1536,
+    "h": 2048,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/villa-azur-27.jpeg": {
+    "w": 2048,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/villa-azur-28.jpeg": {
+    "w": 2048,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/villa-azur-29.jpeg": {
+    "w": 1536,
+    "h": 2048,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/villa-azur-3.jpeg": {
+    "w": 2400,
+    "h": 1350,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "/images/projets/villa-azur-30.jpeg": {
+    "w": 1536,
+    "h": 2048,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/villa-azur-31.jpeg": {
+    "w": 1536,
+    "h": 2048,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/villa-azur-32.jpeg": {
+    "w": 2048,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/villa-azur-33.jpeg": {
+    "w": 2048,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/villa-azur-34.jpeg": {
+    "w": 1536,
+    "h": 2048,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/villa-azur-35.jpeg": {
+    "w": 2048,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/villa-azur-36.jpeg": {
+    "w": 2048,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/villa-azur-37.jpeg": {
+    "w": 2400,
+    "h": 1350,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "/images/projets/villa-azur-38.jpeg": {
+    "w": 1536,
+    "h": 2730,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/villa-azur-39.jpeg": {
+    "w": 1536,
+    "h": 2730,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/villa-azur-4.jpeg": {
+    "w": 2048,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/villa-azur-40.jpeg": {
+    "w": 2400,
+    "h": 1350,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "/images/projets/villa-azur-41.jpeg": {
+    "w": 1536,
+    "h": 2730,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/villa-azur-42.jpeg": {
+    "w": 1536,
+    "h": 2730,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/villa-azur-43.jpeg": {
+    "w": 1536,
+    "h": 2048,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/villa-azur-44.jpeg": {
+    "w": 1536,
+    "h": 2048,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/villa-azur-45.jpeg": {
+    "w": 1536,
+    "h": 2048,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/villa-azur-46.jpeg": {
+    "w": 1536,
+    "h": 2048,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/villa-azur-47.jpeg": {
+    "w": 1536,
+    "h": 2048,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/villa-azur-48.jpeg": {
+    "w": 1536,
+    "h": 2048,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/villa-azur-49.jpeg": {
+    "w": 1536,
+    "h": 2048,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/villa-azur-5.jpeg": {
+    "w": 2048,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/villa-azur-50.jpeg": {
+    "w": 1536,
+    "h": 2048,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/villa-azur-51.jpeg": {
+    "w": 2048,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/villa-azur-52.jpeg": {
+    "w": 1536,
+    "h": 2730,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/villa-azur-53.jpeg": {
+    "w": 1536,
+    "h": 1024,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/villa-azur-54.jpeg": {
+    "w": 1024,
+    "h": 1536,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/villa-azur-55.jpeg": {
+    "w": 2400,
+    "h": 1350,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "/images/projets/villa-azur-56.jpeg": {
+    "w": 1024,
+    "h": 1536,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/villa-azur-57.jpeg": {
+    "w": 1024,
+    "h": 1536,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/villa-azur-58.jpeg": {
+    "w": 1024,
+    "h": 1536,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/villa-azur-59.jpeg": {
+    "w": 2048,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/villa-azur-6.jpeg": {
+    "w": 2048,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/villa-azur-60.jpeg": {
+    "w": 1024,
+    "h": 1536,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/villa-azur-61.jpeg": {
+    "w": 1024,
+    "h": 1536,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/villa-azur-62.jpeg": {
+    "w": 1536,
+    "h": 1024,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/villa-azur-63.jpeg": {
+    "w": 1344,
+    "h": 768,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/villa-azur-64.jpeg": {
+    "w": 1536,
+    "h": 1024,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/villa-azur-65.jpeg": {
+    "w": 2400,
+    "h": 1350,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "/images/projets/villa-azur-66.jpeg": {
+    "w": 1024,
+    "h": 1536,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/villa-azur-67.jpeg": {
+    "w": 2400,
+    "h": 1350,
+    "widths": [
+      480,
+      960,
+      1600,
+      2400
+    ]
+  },
+  "/images/projets/villa-azur-68.jpeg": {
+    "w": 1920,
+    "h": 1080,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/villa-azur-7.jpeg": {
+    "w": 2048,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/villa-azur-8.jpeg": {
+    "w": 1536,
+    "h": 2048,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/villa-azur-9.jpeg": {
+    "w": 2048,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/villefranche-sur-mer-1.jpg": {
+    "w": 2048,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/villefranche-sur-mer-10.jpg": {
+    "w": 1536,
+    "h": 2048,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/villefranche-sur-mer-11.jpg": {
+    "w": 2048,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/villefranche-sur-mer-12.jpg": {
+    "w": 1536,
+    "h": 2048,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/villefranche-sur-mer-13.jpg": {
+    "w": 1536,
+    "h": 2048,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/villefranche-sur-mer-14.jpg": {
+    "w": 2048,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/villefranche-sur-mer-15.jpg": {
+    "w": 1536,
+    "h": 2048,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/villefranche-sur-mer-16.jpg": {
+    "w": 1536,
+    "h": 2048,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/villefranche-sur-mer-17.jpg": {
+    "w": 1536,
+    "h": 2048,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/villefranche-sur-mer-18.jpg": {
+    "w": 1536,
+    "h": 2048,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/villefranche-sur-mer-19.jpg": {
+    "w": 1536,
+    "h": 2048,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/villefranche-sur-mer-2.jpg": {
+    "w": 2048,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/villefranche-sur-mer-20.jpg": {
+    "w": 2048,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/villefranche-sur-mer-21.jpg": {
+    "w": 1536,
+    "h": 2048,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/villefranche-sur-mer-22.jpg": {
+    "w": 2048,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/villefranche-sur-mer-23.jpg": {
+    "w": 1536,
+    "h": 2048,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/villefranche-sur-mer-24.jpg": {
+    "w": 2048,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/villefranche-sur-mer-25.jpg": {
+    "w": 1536,
+    "h": 2048,
+    "widths": [
+      480,
+      960
+    ]
+  },
+  "/images/projets/villefranche-sur-mer-26.jpg": {
+    "w": 2048,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/villefranche-sur-mer-27.jpg": {
+    "w": 2048,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/villefranche-sur-mer-28.jpg": {
+    "w": 2048,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/villefranche-sur-mer-3.jpg": {
+    "w": 2048,
+    "h": 2048,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/villefranche-sur-mer-4.jpg": {
+    "w": 2048,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/villefranche-sur-mer-5.jpg": {
+    "w": 2048,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/villefranche-sur-mer-6.jpg": {
+    "w": 2048,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/villefranche-sur-mer-7.jpg": {
+    "w": 2048,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/villefranche-sur-mer-8.jpg": {
+    "w": 2048,
+    "h": 1536,
+    "widths": [
+      480,
+      960,
+      1600
+    ]
+  },
+  "/images/projets/villefranche-sur-mer-9.jpg": {
+    "w": 1536,
+    "h": 2048,
+    "widths": [
+      480,
+      960
+    ]
+  }
+}

@@ -12,9 +12,14 @@ import { projects } from '../../data/projects';
 import type { Project } from '../../data/projects';
 import { getLocalizedPath } from '@i18n/index';
 import type { Locale } from '@i18n/languages';
+import Picture from '@components/ui/Picture.astro';
+import ZoneExtras from '@components/sections/ZoneExtras.astro';
+import { varExtras } from '@/data/zones/var';
+import { faqSchema } from '@utils/seo';
 
 const lang: Locale = 'en';
-const zoneSlugs = ['bormes-les-mimosas', 'villa-aiguebelle', 'villa-azur'];
+const zone = varExtras[lang];
+const zoneSlugs = ['bormes-les-mimosas', 'villa-aiguebelle', 'villa-azur', 'villa-pramousquier'];
 const zoneProjects = zoneSlugs
   .map((s) => projects.find((p) => p.slug === s))
   .filter((p): p is Project => Boolean(p));
@@ -33,11 +38,13 @@ const prestations = [
   title="Interior Architect in the Var | SB Design Riviera"
   description="Interior architect on the Corniche des Maures: villa renovation and bespoke furniture in Le Lavandou, Bormes-les-Mimosas, Le Rayol-Canadel and Hyères."
   ogImage={heroImages[0]}
+  schema={faqSchema(zone.faq.items)}
 >
 
-  <div class="-mt-[80px]">
+  <div class="-mt-[var(--header-h)]">
     <HeroInner
       client:load
+      imageAlt="Aerial view of the split-level villas in Bormes-les-Mimosas, with terraces and pool among the pines"
       images={heroImages}
       label="Corniche des Maures · Var"
       title={`Interior architect<br /><span class="font-heading font-light text-[0.4em]">on the Corniche des Maures</span>`}
@@ -116,19 +123,19 @@ const prestations = [
           <h2 class="font-display text-subsection font-bold uppercase text-primary-dark">
             Our projects <span class="font-heading font-light">in the Var</span>
           </h2>
+          <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.75] mt-6">{zone.realisationsIntro}</p>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4" data-reveal>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4" data-reveal>
           {zoneProjects.map((p) => (
             <a
               href={getLocalizedPath(`/projets/${p.slug}`, lang)}
               class="group relative overflow-hidden block h-[280px] lg:h-[380px]"
             >
-              <img
+              <Picture
                 src={p.coverImage}
                 alt={`Villa renovation in ${p.location}`}
                 class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]"
-                loading="lazy"
-              />
+                loading="lazy" />
               <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent group-hover:from-black/70 transition-all duration-500" />
               <div class="absolute bottom-0 left-0 right-0 p-5">
                 <span class="text-[11px] font-heading font-medium text-accent-gold uppercase tracking-[0.15em]">
@@ -142,6 +149,8 @@ const prestations = [
       </Container>
     </Section>
   )}
+
+  <ZoneExtras content={zone} lang={lang} start={4} />
 
   <!-- 05 — CTA -->
   <Section background="dark" padding="lg">

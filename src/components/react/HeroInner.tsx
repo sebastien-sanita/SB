@@ -5,7 +5,8 @@
  */
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import TextMorph from './TextMorph';
+import TextMorph, { TextMorphGhost } from './TextMorph';
+import Picture from '@components/react/Picture';
 
 interface Props {
   images: string[];
@@ -14,12 +15,23 @@ interface Props {
   subtitle: string;
   titlePrefix?: string;
   titleMorphWords?: string[];
+  /** Alt de l'image de fond. Repli : titre en texte brut + « — SB Design Riviera » (jamais vide). */
+  imageAlt?: string;
 }
 
 const easeOutQuart = [0.25, 1, 0.5, 1] as const;
 
-export default function HeroInner({ images, label, title, subtitle, titlePrefix, titleMorphWords }: Props) {
+export default function HeroInner({ images, label, title, subtitle, titlePrefix, titleMorphWords, imageAlt }: Props) {
   const [current, setCurrent] = useState(0);
+
+  // Alt descriptif : fourni par la page, sinon dérivé du titre (balises retirées).
+  const plainTitle = title
+    .replace(/<br\s*\/?>/gi, ' ')
+    .replace(/<[^>]+>/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+  const fallbackTitle = plainTitle || [titlePrefix, titleMorphWords?.[0]].filter(Boolean).join(' ');
+  const alt = imageAlt?.trim() || (fallbackTitle ? `${fallbackTitle} — SB Design Riviera` : 'SB Design Riviera');
 
   useEffect(() => {
     if (images.length <= 1) return;
@@ -30,7 +42,7 @@ export default function HeroInner({ images, label, title, subtitle, titlePrefix,
   }, [images.length]);
 
   return (
-    <div className="relative w-full h-[50vh] min-h-[400px] lg:h-[60vh] overflow-hidden">
+    <div className="relative w-full min-h-[max(50vh,400px)] lg:min-h-[max(60vh,400px)] overflow-hidden flex">
       {/* Ken Burns slideshow */}
       <AnimatePresence mode="sync">
         <motion.div
@@ -44,11 +56,14 @@ export default function HeroInner({ images, label, title, subtitle, titlePrefix,
           }}
           className="absolute inset-0"
         >
-          <img
+          <Picture
             src={images[current]}
-            alt=""
+            alt={alt}
             className="w-full h-full object-cover"
+            sizes="100vw"
             loading="eager"
+            decoding="async"
+            fetchPriority={current === 0 ? 'high' : 'auto'}
           />
         </motion.div>
       </AnimatePresence>
@@ -56,8 +71,8 @@ export default function HeroInner({ images, label, title, subtitle, titlePrefix,
       {/* Dark gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/70" />
 
-      {/* Content at bottom */}
-      <div className="absolute inset-0 flex items-end pb-16 md:pb-24">
+      {/* Content at bottom — sous la bande du header (pt) ; le hero s'étire si le contenu déborde */}
+      <div className="relative z-10 w-full flex items-end pt-[calc(var(--header-h)+24px)] pb-16 md:pb-24">
         <div className="w-full max-w-[1400px] mx-auto px-6 md:px-10">
           <div className="relative max-w-3xl">
             <motion.span
@@ -73,14 +88,25 @@ export default function HeroInner({ images, label, title, subtitle, titlePrefix,
                 initial={{ opacity: 0, y: 30, filter: 'blur(8px)' }}
                 animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
                 transition={{ duration: 1.2, delay: 0.15, ease: easeOutQuart }}
-                className="font-display text-[clamp(56px,10vw,130px)] uppercase text-white leading-[1.05] tracking-[-0.04em] mb-6"
+                className="grid font-display text-[clamp(56px,10vw,130px)] uppercase text-white leading-[1.05] tracking-[-0.04em] mb-6"
               >
-                <span className="font-['Playfair_Display'] font-light text-white/40">{titlePrefix}</span>{' '}
-                <TextMorph
-                  words={titleMorphWords}
-                  interval={4500}
-                  className="font-['Playfair_Display'] font-bold"
-                />
+                {/* Fantômes empilés dans la même cellule : le h1 (donc le hero, dimensionné par
+                    son contenu) garde la hauteur du mot qui prend le plus de lignes — la page
+                    ne saute pas à chaque morph, à toutes les largeurs. */}
+                {titleMorphWords.map((w) => (
+                  <span key={w} aria-hidden="true" className="col-start-1 row-start-1 invisible">
+                    <span className="font-['Playfair_Display'] font-light">{titlePrefix}</span>{' '}
+                    <TextMorphGhost word={w} className="font-['Playfair_Display'] font-bold" />
+                  </span>
+                ))}
+                <span className="col-start-1 row-start-1">
+                  <span className="font-['Playfair_Display'] font-light text-white/40">{titlePrefix}</span>{' '}
+                  <TextMorph
+                    words={titleMorphWords}
+                    interval={4500}
+                    className="font-['Playfair_Display'] font-bold"
+                  />
+                </span>
               </motion.h1>
             ) : (
               <motion.h1

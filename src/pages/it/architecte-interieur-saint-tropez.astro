@@ -11,8 +11,13 @@ import HeroInner from '@components/react/HeroInner';
 import { projects } from '../../data/projects';
 import { getLocalizedPath } from '@i18n/index';
 import type { Locale } from '@i18n/languages';
+import Picture from '@components/ui/Picture.astro';
+import ZoneExtras from '@components/sections/ZoneExtras.astro';
+import { saintTropezExtras } from '@/data/zones/saint-tropez';
+import { faqSchema } from '@utils/seo';
 
 const lang: Locale = 'it';
+const zone = saintTropezExtras[lang];
 const project = projects.find((p) => p.slug === 'villa-la-croix-valmer');
 
 const prestations = [
@@ -25,14 +30,16 @@ const prestations = [
 
 <Layout
   lang={lang}
-  title="Architetto d'interni a Saint-Tropez e nel golfo | SB Design"
+  title="Architetto d’interni a Saint-Tropez | SB Design Riviera"
   description="Architetto d'interni nel golfo di Saint-Tropez: ristrutturazione di ville, mobili su misura e valorizzazione a Ramatuelle, Gassin, Grimaud e Sainte-Maxime."
   ogImage="/images/projets/la-croix-valmer-2.jpg"
+  schema={faqSchema(zone.faq.items)}
 >
 
-  <div class="-mt-[80px]">
+  <div class="-mt-[var(--header-h)]">
     <HeroInner
       client:load
+      imageAlt="Rendering 3D di una villa con portico ad archi e piscina, progetto a La Croix-Valmer"
       images={[
         '/images/projets/la-croix-valmer-2.jpg',
         '/images/projets/la-croix-valmer-6.jpg',
@@ -117,18 +124,18 @@ const prestations = [
           <h2 class="font-display text-subsection font-bold uppercase text-primary-dark">
             Una realizzazione <span class="font-heading font-light">nel golfo</span>
           </h2>
+          <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.75] mt-6">{zone.realisationsIntro}</p>
         </div>
         <a
           href={getLocalizedPath(`/projets/${project.slug}`, lang)}
           class="group relative overflow-hidden block h-[320px] lg:h-[460px]"
           data-reveal
         >
-          <img
+          <Picture
             src={project.coverImage}
             alt={`Ristrutturazione di villa a ${project.location} — golfo di Saint-Tropez`}
             class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.05]"
-            loading="lazy"
-          />
+            loading="lazy" />
           <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
           <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8">
             <span class="text-[11px] font-heading font-medium text-accent-gold uppercase tracking-[0.15em]">
@@ -142,6 +149,8 @@ const prestations = [
       </Container>
     </Section>
   )}
+
+  <ZoneExtras content={zone} lang={lang} start={4} />
 
   <!-- 05 — CTA -->
   <Section background="dark" padding="lg">

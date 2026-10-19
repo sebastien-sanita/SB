@@ -14,6 +14,7 @@ import { projects } from '../../../data/projects';
 import type { Project } from '../../../data/projects';
 import { t, getLocalizedPath } from '@i18n/index';
 import type { Locale } from '@i18n/languages';
+import Picture from '@components/ui/Picture.astro';
 
 const lang: Locale = 'en';
 const d = 'projetDetail' as const;
@@ -52,18 +53,32 @@ const related = [
 const marqueeKeywords = [project.title, styleLabels[project.style], project.location, ...project.materials];
 const ribbonText = [project.title, categoryLabels[project.category], styleLabels[project.style], project.location].join('  ◆  ');
 
-// SEO meta description — shortened (full project description exceeds 300 characters)
-const metaDescription =
-  project.description.length > 160
-    ? project.description.slice(0, 157).replace(/\s+\S*$/, '') + '…'
-    : project.description;
+// Meta description SEO — rédigée par langue dans src/data/projects.ts (≤ 155 caractères)
+const metaDescription = project.seoDescription[lang];
+
+// Schema.org — CreativeWork du projet (Pb 5 SEO)
+const projectSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CreativeWork',
+  name: project.title,
+  description: project.description,
+  url: new URL(Astro.url.pathname, Astro.site).href,
+  image: Array.from(new Set([project.coverImage, ...project.images]))
+    .slice(0, 10)
+    .map((src) => new URL(src, Astro.site).href),
+  dateCreated: String(project.year),
+  creator: { '@id': 'https://www.sbdesign.fr/#business' },
+  locationCreated: { '@type': 'Place', name: project.location },
+  keywords: [categoryLabels[project.category], styleLabels[project.style], ...project.materials].join(', '),
+};
 ---
 
 <Layout
   lang={lang}
-  title={`${project.title} — ${categoryLabels[project.category]} ${project.location} | SB Design Riviera`}
+  title={`${project.seoTitle[lang]} | SB Design Riviera`}
   description={metaDescription}
   ogImage={project.coverImage}
+  schema={projectSchema}
 >
 
   <!-- Header éditorial style antoniolupi -->
@@ -95,7 +110,7 @@ const metaDescription =
 
   <!-- Cover image full-bleed -->
   <div class="w-full h-[55vh] min-h-[350px] lg:h-[70vh] overflow-hidden">
-    <img src={project.coverImage} alt={project.title} class="w-full h-full object-cover" loading="eager" />
+    <Picture src={project.coverImage} alt={project.title} class="w-full h-full object-cover" loading="eager" />
   </div>
 
   <!-- Scrolling ribbon under cover -->
@@ -212,7 +227,7 @@ const metaDescription =
                 i === 0 && project.images.length > 2 ? "md:col-span-2" : "",
               ]}
             >
-              <img
+              <Picture
                 src={img}
                 alt={`${project.title} — Photo ${i + 1}`}
                 class:list={[
@@ -223,8 +238,7 @@ const metaDescription =
                       ? "h-[400px] lg:h-[70vh] lg:min-h-[500px]"
                       : "h-[300px] lg:h-[50vh] lg:min-h-[400px]",
                 ]}
-                loading="lazy"
-              />
+                loading="lazy" />
             </div>
           ))}
         </div>
@@ -269,7 +283,7 @@ const metaDescription =
       <div class="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4" data-reveal>
         {related.map((p) => (
           <a href={getLocalizedPath(`/projets/${p.slug}`, lang)} class="group relative overflow-hidden block h-[280px] lg:h-[380px]">
-            <img src={p.coverImage} alt={p.title} class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+            <Picture src={p.coverImage} alt={p.title} class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
             <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent group-hover:from-black/70 transition-all duration-500" />
             <div class="absolute bottom-0 left-0 right-0 p-5">
               <span class="text-[11px] font-heading font-medium text-accent-gold uppercase tracking-[0.15em]">{categoryLabels[p.category]}</span>

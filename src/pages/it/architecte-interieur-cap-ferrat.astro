@@ -1,0 +1,166 @@
+---
+/**
+ * Pagina SEO locale — Architetto d'interni a Cap-Ferrat & Beaulieu (IT)
+ * Target: "architetto d'interni Cap-Ferrat" + Beaulieu, Villefranche, Èze.
+ */
+import Layout from '@layouts/Layout.astro';
+import Section from '@components/ui/Section.astro';
+import Container from '@components/ui/Container.astro';
+import Button from '@components/ui/Button.astro';
+import HeroInner from '@components/react/HeroInner';
+import { projects } from '../../data/projects';
+import { getLocalizedPath } from '@i18n/index';
+import type { Locale } from '@i18n/languages';
+import Picture from '@components/ui/Picture.astro';
+
+const lang: Locale = 'it';
+const project = projects.find((p) => p.slug === 'villa-villefranche-sur-mer');
+
+const prestations = [
+  'Ristrutturazione di ville e appartamenti di lusso',
+  'Costruzione di ville e progetti chiavi in mano',
+  'Architettura e decorazione d\'interni su misura',
+  'Valorizzazione patrimoniale e residenze secondarie',
+];
+---
+
+<Layout
+  lang={lang}
+  title="Architetto d’interni a Cap-Ferrat | SB Design Riviera"
+  description="Architetto d’interni a Saint-Jean-Cap-Ferrat, Beaulieu-sur-Mer e Villefranche-sur-Mer: ristrutturazione di ville e valorizzazione patrimoniale."
+  ogImage="/images/projets/villefranche-sur-mer-5.jpg"
+>
+
+  <div class="-mt-[var(--header-h)]">
+    <HeroInner
+      client:load
+      imageAlt="Soggiorno con piastrelle di grande formato senza fughe e ampie vetrate, villa a Villefranche-sur-Mer"
+      images={[
+        '/images/projets/villefranche-sur-mer-5.jpg',
+        '/images/projets/villefranche-sur-mer-11.jpg',
+        '/images/projets/villefranche-sur-mer-22.jpg',
+      ]}
+      label="Cap-Ferrat & Beaulieu"
+      title={`Architetto d'interni<br /><span class="font-heading font-light text-[0.4em]">a Cap-Ferrat & Beaulieu</span>`}
+      subtitle="Da Saint-Jean-Cap-Ferrat a Villefranche-sur-Mer, SB Design Riviera progetta, ristruttura e costruisce residenze d'eccezione."
+    />
+  </div>
+
+  <!-- 01 — La penisola -->
+  <Section padding="lg" background="white">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <span class="subsection-number">01</span>
+        <h2 class="font-display text-subsection font-bold uppercase text-primary-dark mt-4 mb-6">
+          La penisola, <span class="font-heading font-light">il più raro scrigno della Costa Azzurra</span>
+        </h2>
+        <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.75]">
+          Da Saint-Jean-Cap-Ferrat a Beaulieu-sur-Mer, attraverso la rada di Villefranche, questo tratto
+          riunisce le proprietà più ambite della Costa Azzurra — ville Belle Époque, dimore contemporanee a
+          picco sul Mediterraneo, residenze immerse nelle pinete. SB Design Riviera accompagna proprietari
+          privati e investitori internazionali nella ristrutturazione, costruzione e valorizzazione delle loro
+          residenze. Il nostro approccio unisce rigore architettonico, raffinatezza degli interni e visione
+          patrimoniale, per rivelare il pieno potenziale di ogni immobile.
+        </p>
+      </div>
+    </Container>
+  </Section>
+
+  <!-- 02 — I nostri servizi -->
+  <Section padding="lg" background="warm">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <span class="subsection-number">02</span>
+        <h2 class="font-display text-subsection font-bold uppercase text-primary-dark mt-4 mb-6">
+          I nostri servizi <span class="font-heading font-light">a Cap-Ferrat</span>
+        </h2>
+        <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.75] mb-8">
+          Dalla ristrutturazione integrale di una villa Belle Époque alla costruzione di una residenza
+          contemporanea fronte mare, interveniamo in ogni fase del progetto: progettazione architettonica,
+          selezione di materiali pregiati, coordinamento del cantiere e consegna chiavi in mano — un
+          accompagnamento completo, pensato per le esigenze di questo mercato ultra-riservato.
+        </p>
+        <ul class="space-y-3">
+          {prestations.map((item) => (
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-accent-gold mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="font-body text-sm font-light text-[var(--color-text-light)]">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </Container>
+  </Section>
+
+  <!-- 03 — Dalla penisola a Èze -->
+  <Section padding="lg" background="white">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <span class="subsection-number">03</span>
+        <h2 class="font-display text-subsection font-bold uppercase text-primary-dark mt-4 mb-6">
+          Dalla penisola <span class="font-heading font-light">a Èze</span>
+        </h2>
+        <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.75]">
+          Il nostro studio opera su tutta la zona: Saint-Jean-Cap-Ferrat, Beaulieu-sur-Mer, Villefranche-sur-Mer,
+          Èze, Cap-d'Ail. Ogni comune ha la propria identità — promontorio roccioso, microclima della Petite
+          Afrique, borgo arroccato, rada storica — e ogni progetto è concepito per dialogare con il proprio
+          ambiente e con la luce così particolare di questo tratto di costa.
+        </p>
+      </div>
+    </Container>
+  </Section>
+
+  <!-- 04 — Una realizzazione a Villefranche-sur-Mer -->
+  {project && (
+    <Section padding="lg" background="warm">
+      <Container>
+        <div class="max-w-3xl mb-10" data-reveal>
+          <h2 class="font-display text-subsection font-bold uppercase text-primary-dark">
+            Una realizzazione <span class="font-heading font-light">a Villefranche-sur-Mer</span>
+          </h2>
+        </div>
+        <a
+          href={getLocalizedPath(`/projets/${project.slug}`, lang)}
+          class="group relative overflow-hidden block h-[320px] lg:h-[460px]"
+          data-reveal
+        >
+          <Picture
+            src={project.coverImage}
+            alt={`Ristrutturazione di villa a ${project.location} — area di Cap-Ferrat`}
+            class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.05]"
+            loading="lazy"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+          <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+            <span class="text-[11px] font-heading font-medium text-accent-gold uppercase tracking-[0.15em]">
+              {project.location}
+            </span>
+            <h3 class="font-display text-2xl md:text-3xl font-semibold uppercase text-white mt-1">
+              {project.title}
+            </h3>
+          </div>
+        </a>
+      </Container>
+    </Section>
+  )}
+
+  <!-- 05 — CTA -->
+  <Section background="dark" padding="lg">
+    <Container>
+      <div class="text-center max-w-2xl mx-auto" data-reveal>
+        <h2 class="font-display text-section font-bold uppercase text-white mb-6">
+          Un progetto a <span class="font-heading font-light">Cap-Ferrat o Beaulieu?</span>
+        </h2>
+        <p class="font-body text-lg font-light text-white/70 mb-10 leading-relaxed">
+          Parliamo del suo progetto di ristrutturazione, costruzione o valorizzazione. Consulenza riservata e senza impegno.
+        </p>
+        <Button href={getLocalizedPath('/contact', lang)} variant="primary" size="lg">
+          Fissare un appuntamento
+        </Button>
+      </div>
+    </Container>
+  </Section>
+
+</Layout>

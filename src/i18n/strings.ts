@@ -366,8 +366,8 @@ const strings = {
   // ── Page Expertise ─────────────────────────────────────
   expertisePage: {
     metaTitle: {
-      fr: 'Mobilier sur mesure & rénovation Côte d\'Azur | SB Design',
-      en: 'Bespoke furniture & renovation French Riviera | SB Design',
+      fr: 'Mobilier sur mesure & rénovation | SB Design Riviera',
+      en: 'Bespoke furniture & renovation | SB Design Riviera',
       it: 'Mobili su misura & ristrutturazione | SB Design Riviera',
     },
     metaDesc: {
@@ -437,9 +437,9 @@ const strings = {
   // ── Page À Propos ──────────────────────────────────────
   aproposPage: {
     metaTitle: {
-      fr: 'À propos — SB Design Riviera, architecte Côte d\'Azur',
-      en: 'About — SB Design Riviera, interior architect Riviera',
-      it: 'Chi siamo — SB Design Riviera, architetto Costa Azzurra',
+      fr: 'À propos — Architecte d’intérieur | SB Design Riviera',
+      en: 'About — Interior Architect | SB Design Riviera',
+      it: 'Chi siamo — Architetto d’interni | SB Design Riviera',
     },
     metaDesc: {
       fr: 'SB Design Riviera : studio d\'architecture spécialisé dans la conception et la valorisation de résidences secondaires haut de gamme sur la Côte d\'Azur.',
@@ -519,9 +519,9 @@ const strings = {
   // ── Page Contact ───────────────────────────────────────
   contactPage: {
     metaTitle: {
-      fr: 'Contact — Architecte d\'intérieur Côte d\'Azur | SB Design',
-      en: 'Contact — Interior architect French Riviera | SB Design',
-      it: 'Contatti — Architetto d\'interni Costa Azzurra | SB Design',
+      fr: 'Contact — Architecte d’intérieur | SB Design Riviera',
+      en: 'Contact — Interior Architect | SB Design Riviera',
+      it: 'Contatti — Architetto d’interni | SB Design Riviera',
     },
     metaDesc: {
       fr: 'Contactez SB Design Riviera pour votre projet d\'architecture d\'intérieur ou de valorisation patrimoniale sur la Côte d\'Azur. Échangeons sur votre projet.',
@@ -546,7 +546,6 @@ const strings = {
     labelLastname: { fr: 'Nom', en: 'Last Name', it: 'Cognome' },
     labelEmail: { fr: 'Email', en: 'Email', it: 'Email' },
     labelPhone: { fr: 'Téléphone', en: 'Phone', it: 'Telefono' },
-    labelProject: { fr: 'Type de projet', en: 'Project Type', it: 'Tipo di progetto' },
     labelMessage: { fr: 'Votre message', en: 'Your Message', it: 'Il vostro messaggio' },
     placeholderFirstname: { fr: 'Votre prénom', en: 'Your first name', it: 'Il vostro nome' },
     placeholderLastname: { fr: 'Votre nom', en: 'Your last name', it: 'Il vostro cognome' },
@@ -554,10 +553,35 @@ const strings = {
     placeholderPhone: { fr: '06 00 00 00 00', en: '+33 6 00 00 00 00', it: '+33 6 00 00 00 00' },
     placeholderMessage: { fr: 'Décrivez votre projet...', en: 'Describe your project...', it: 'Descrivete il vostro progetto...' },
     selectDefault: { fr: 'Sélectionnez...', en: 'Select...', it: 'Selezionate...' },
-    selectRenovation: { fr: 'Rénovation complète', en: 'Full Renovation', it: 'Ristrutturazione completa' },
-    selectDesign: { fr: 'Raffinement Intérieur', en: 'Interior Refinement', it: 'Interior Refinement' },
-    selectPrestige: { fr: 'Valorisation Patrimoniale', en: 'Property Enhancement', it: 'Valorizzazione Patrimoniale' },
-    selectOther: { fr: 'Autre', en: 'Other', it: 'Altro' },
+    /* Qualification commerciale (Pipedrive : Nature des travaux, Statut propriété, Budget déclaré,
+       Timeline projet). La valeur envoyée est toujours le libellé FR de même index — cf. docs/formulaire-pipedrive.md. */
+    labelNatureTravaux: { fr: 'Nature des travaux', en: 'Type of works', it: 'Tipo di lavori' },
+    optionsNatureTravaux: {
+      fr: ['Rénovation complète d’une villa', 'Rénovation d’un appartement', 'Aménagement et décoration intérieure', 'Mobilier et agencements sur mesure', 'Construction neuve ou extension', 'Valorisation avant location ou vente', 'Autre'],
+      en: ['Full villa renovation', 'Apartment renovation', 'Interior design and decoration', 'Bespoke furniture and joinery', 'New build or extension', 'Enhancement before letting or sale', 'Other'],
+      it: ['Ristrutturazione completa di una villa', 'Ristrutturazione di un appartamento', 'Allestimento e decorazione d’interni', 'Arredi e allestimenti su misura', 'Nuova costruzione o ampliamento', 'Valorizzazione prima di affitto o vendita', 'Altro'],
+    },
+    labelStatut: { fr: 'Où en êtes-vous ?', en: 'Where do you stand?', it: 'A che punto siete?' },
+    optionsStatut: {
+      fr: ['J’ai le bien', 'Acquisition en cours', 'Je cherche encore'],
+      en: ['I own the property', 'Purchase in progress', 'Still looking'],
+      it: ['Possiedo già l’immobile', 'Acquisto in corso', 'Sto ancora cercando'],
+    },
+    labelBudget: { fr: 'Budget travaux envisagé', en: 'Intended works budget', it: 'Budget previsto per i lavori' },
+    optionsBudget: {
+      fr: ['Moins de 100 000 €', '100 000 € – 250 000 €', '250 000 € – 500 000 €', 'Plus de 500 000 €', 'Je ne sais pas encore'],
+      en: ['Under €100,000', '€100,000 – €250,000', '€250,000 – €500,000', 'Over €500,000', 'I don’t know yet'],
+      it: ['Meno di 100.000 €', '100.000 € – 250.000 €', '250.000 € – 500.000 €', 'Oltre 500.000 €', 'Non lo so ancora'],
+    },
+    labelCodePostal: { fr: 'Code postal du bien', en: 'Property postcode', it: 'CAP dell’immobile' },
+    placeholderCodePostal: { fr: 'Ex. 83980', en: 'e.g. 83980', it: 'es. 83980' },
+    titleCodePostal: { fr: 'Code postal à 5 chiffres', en: '5-digit French postcode', it: 'CAP francese di 5 cifre' },
+    labelEcheance: { fr: 'Quand souhaitez-vous démarrer ?', en: 'When would you like to start?', it: 'Quando vorreste iniziare?' },
+    optionsEcheance: {
+      fr: ['Dès que possible', 'Dans les 3 mois', 'Dans 3 à 6 mois', 'Dans plus de 6 mois', 'Je ne sais pas encore'],
+      en: ['As soon as possible', 'Within 3 months', 'In 3 to 6 months', 'In more than 6 months', 'I don’t know yet'],
+      it: ['Il prima possibile', 'Entro 3 mesi', 'Tra 3 e 6 mesi', 'Oltre 6 mesi', 'Non lo so ancora'],
+    },
     submitBtn: { fr: 'Envoyer ma demande', en: 'Send My Request', it: 'Invia la mia richiesta' },
     coordTitle1: { fr: 'Nos', en: 'Our', it: 'I nostri' },
     coordTitle2: { fr: 'coordonnées', en: 'details', it: 'contatti' },
@@ -584,9 +608,9 @@ const strings = {
   // ── Page Projets ───────────────────────────────────────
   projetsPage: {
     metaTitle: {
-      fr: 'Réalisations — Architecte d\'intérieur Riviera | SB Design',
-      en: 'Projects — Interior architecture Riviera | SB Design',
-      it: 'Realizzazioni — Architetto d\'interni Riviera | SB Design',
+      fr: 'Réalisations — Architecte d’intérieur | SB Design Riviera',
+      en: 'Projects — Interior Architecture | SB Design Riviera',
+      it: 'Realizzazioni — Architetto d’interni | SB Design Riviera',
     },
     metaDesc: {
       fr: 'Découvrez les réalisations de SB Design Riviera : conception architecturale, raffinement intérieur et valorisation patrimoniale sur la Côte d\'Azur.',
@@ -668,12 +692,12 @@ const strings = {
     metaTitle: {
       fr: 'L\'Agence — Architecture & valorisation | SB Design Riviera',
       en: 'The Studio — Architecture & enhancement | SB Design Riviera',
-      it: 'L\'Agenzia — Architettura & valorizzazione | SB Design Riviera',
+      it: 'Agenzia — Architettura & valorizzazione | SB Design Riviera',
     },
     metaDesc: {
       fr: 'SB Design Riviera : agence de conception et de transformation de propriétés haut de gamme, partenaire des architectes locaux. Présence Riviera et Lyon.',
       en: 'SB Design Riviera: high-end property design and transformation studio, and operational partner for local architects. Riviera and Lyon (RS.D) presence.',
-      it: 'SB Design Riviera: studio di progettazione e trasformazione di immobili di pregio, e partner operativo degli architetti locali. Presenza Riviera e Lione (RS.D).',
+      it: 'SB Design Riviera: progettazione e trasformazione di immobili di pregio, partner operativo degli architetti locali. Presenza in Riviera e a Lione (RS.D).',
     },
     heroLabel: { fr: 'L\'Agence', en: 'The Studio', it: 'L\'Agenzia' },
     heroPrefix: { fr: 'Notre', en: 'Our', it: 'Il Nostro' },

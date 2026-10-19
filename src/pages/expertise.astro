@@ -11,6 +11,7 @@ import HeroInner from '@components/react/HeroInner';
 import TextRibbon from '@components/react/TextRibbon';
 import { t, tArray, getLocalizedPath } from '@i18n/index';
 import type { Locale } from '@i18n/languages';
+import Picture from '@components/ui/Picture.astro';
 
 const lang: Locale = 'fr';
 const p = 'expertisePage' as const;
@@ -23,9 +24,10 @@ const expertiseRibbon = [t(p, 's1Title1', lang), t(p, 's1Title2', lang), t(p, 's
   description={t(p, 'metaDesc', lang)}
 >
 
-  <div class="-mt-[80px]">
+  <div class="-mt-[var(--header-h)]">
     <HeroInner
       client:load
+      imageAlt="Jardin en terrasses et piscine à débordement face à la mer, Villa Azur au Rayol-Canadel"
       images={[
         '/images/projets/villa-azur-4.jpeg',
         '/images/projets/villa-azur-11.jpeg',
@@ -98,14 +100,14 @@ const expertiseRibbon = [t(p, 's1Title1', lang), t(p, 's1Title2', lang), t(p, 's
             </div>
             <div class="grid grid-cols-2 grid-rows-2 gap-2 h-[400px] md:h-[500px]">
               <div class="group relative col-span-2 overflow-hidden">
-                <img src="/images/projets/la-croix-valmer-2.jpg" alt="Rendu 3D villa contemporaine" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+                <Picture src="/images/projets/la-croix-valmer-2.jpg" alt="Rendu 3D villa contemporaine" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
               </div>
               <div class="group relative overflow-hidden">
-                <img src="/images/projets/la-croix-valmer-6.jpg" alt="Rendu 3D terrasse piscine" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+                <Picture src="/images/projets/la-croix-valmer-6.jpg" alt="Rendu 3D terrasse piscine" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
               </div>
               <div class="group relative overflow-hidden">
-                <img src="/images/projets/la-croix-valmer-9.jpg" alt="Insertion 3D projet" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+                <Picture src="/images/projets/la-croix-valmer-9.jpg" alt="Insertion 3D projet" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
               </div>
             </div>
           </div>
@@ -117,14 +119,14 @@ const expertiseRibbon = [t(p, 's1Title1', lang), t(p, 's1Title2', lang), t(p, 's
             </div>
             <div class="grid grid-cols-2 grid-rows-2 gap-2 h-[400px] md:h-[500px]">
               <div class="group relative col-span-2 overflow-hidden">
-                <img src="/images/projets/villa-azur-3.jpeg" alt="Villa contemporaine Côte d'Azur" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+                <Picture src="/images/projets/villa-azur-3.jpeg" alt="Villa contemporaine Côte d'Azur" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
               </div>
               <div class="group relative overflow-hidden">
-                <img src="/images/projets/villa-azur-5.jpeg" alt="Architecture résidentielle premium" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+                <Picture src="/images/projets/villa-azur-5.jpeg" alt="Architecture résidentielle premium" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
               </div>
               <div class="group relative overflow-hidden">
-                <img src="/images/projets/villa-azur-7.jpeg" alt="Conception architecturale villa" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+                <Picture src="/images/projets/villa-azur-7.jpeg" alt="Conception architecturale villa" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
               </div>
             </div>
           </div>
@@ -137,7 +139,7 @@ const expertiseRibbon = [t(p, 's1Title1', lang), t(p, 's1Title2', lang), t(p, 's
     <TextRibbon text={expertiseRibbon} direction="left" speed={35} client:visible />
   </div>
   <div class="group relative w-full h-[40vh] min-h-[280px] overflow-hidden" data-slide-in="left">
-    <img src="/images/projets/villa-azur-32.jpeg" alt="" class="w-full h-full object-cover transition-transform duration-[1.2s] ease-smooth group-hover:scale-[1.05]" data-parallax="0.1" loading="lazy" />
+    <Picture src="/images/projets/villa-azur-32.jpeg" alt="Jardin en terrasses et murets en pierre naturelle, Villa Azur au Rayol-Canadel" class="w-full h-full object-cover transition-transform duration-[1.2s] ease-smooth group-hover:scale-[1.05]" data-parallax="0.1" loading="lazy" />
   </div>
   <div class="overflow-hidden" style="background: linear-gradient(to bottom, var(--color-background), var(--color-primary-warm));">
     <TextRibbon text={expertiseRibbon} direction="right" speed={40} client:visible />
@@ -170,17 +172,17 @@ const expertiseRibbon = [t(p, 's1Title1', lang), t(p, 's1Title2', lang), t(p, 's
           </div>
           <div class="grid grid-cols-2 grid-rows-3 gap-2 h-[500px] lg:h-[75vh] lg:min-h-[600px]" data-reveal>
             <div class="group relative row-span-2 overflow-hidden">
-              <img src="/images/projets/villa-azur-62.jpeg" alt="Salon design villa Côte d'Azur" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+              <Picture src="/images/projets/villa-azur-62.jpeg" alt="Salon design villa Côte d'Azur" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
               <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
             </div>
             <div class="group relative overflow-hidden">
-              <img src="/images/projets/villa-azur-37.jpeg" alt="Cuisine sur-mesure haut de gamme" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+              <Picture src="/images/projets/villa-azur-37.jpeg" alt="Cuisine sur-mesure haut de gamme" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
             </div>
             <div class="group relative overflow-hidden">
-              <img src="/images/projets/villa-azur-49.jpeg" alt="Suite parentale luxe" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+              <Picture src="/images/projets/villa-azur-49.jpeg" alt="Suite parentale luxe" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
             </div>
             <div class="group relative col-span-2 overflow-hidden">
-              <img src="/images/projets/villa-azur-22.jpeg" alt="Salle de bains d'exception" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+              <Picture src="/images/projets/villa-azur-22.jpeg" alt="Salle de bains d'exception" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
               <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
             </div>
           </div>
@@ -193,7 +195,7 @@ const expertiseRibbon = [t(p, 's1Title1', lang), t(p, 's1Title2', lang), t(p, 's
     <TextRibbon text={expertiseRibbon} direction="right" speed={38} client:visible />
   </div>
   <div class="group relative w-full h-[40vh] min-h-[280px] overflow-hidden" data-slide-in="right">
-    <img src="/images/projets/villa-azur-6.jpeg" alt="" class="w-full h-full object-cover transition-transform duration-[1.2s] ease-smooth group-hover:scale-[1.05]" data-parallax="0.1" loading="lazy" />
+    <Picture src="/images/projets/villa-azur-6.jpeg" alt="Plage de piscine dallée et transats face à la mer, Villa Azur au Rayol-Canadel" class="w-full h-full object-cover transition-transform duration-[1.2s] ease-smooth group-hover:scale-[1.05]" data-parallax="0.1" loading="lazy" />
   </div>
   <div class="overflow-hidden" style="background: linear-gradient(to bottom, var(--color-background), var(--color-background));">
     <TextRibbon text={expertiseRibbon} direction="left" speed={42} client:visible />
@@ -207,14 +209,14 @@ const expertiseRibbon = [t(p, 's1Title1', lang), t(p, 's1Title2', lang), t(p, 's
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center" data-reveal>
           <div class="lg:-ml-8 grid grid-cols-3 grid-rows-2 gap-2 h-[500px] lg:h-[85vh] lg:min-h-[650px]" data-reveal>
             <div class="group relative col-span-2 row-span-2 overflow-hidden">
-              <img src="/images/projets/villa-azur-9.jpeg" alt="Villa avec terrasse et piscine Côte d'Azur" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+              <Picture src="/images/projets/villa-azur-9.jpeg" alt="Villa avec terrasse et piscine Côte d'Azur" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
               <div class="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
             </div>
             <div class="group relative overflow-hidden">
-              <img src="/images/projets/villa-azur-16.jpeg" alt="Villa moderne avec piscine" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+              <Picture src="/images/projets/villa-azur-16.jpeg" alt="Villa moderne avec piscine" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
             </div>
             <div class="group relative overflow-hidden">
-              <img src="/images/projets/villa-azur-13.jpeg" alt="Résidence haut de gamme vue mer" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
+              <Picture src="/images/projets/villa-azur-13.jpeg" alt="Résidence haut de gamme vue mer" class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.08]" loading="lazy" />
             </div>
           </div>
           <div>

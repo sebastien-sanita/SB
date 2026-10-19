@@ -8,6 +8,7 @@
 import { useRef, useMemo, useState, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
 import type { Project } from '../../data/projects';
+import Picture from '@components/react/Picture';
 
 interface Props {
   projects: Project[];
@@ -88,11 +89,13 @@ export default function ProjectGrid({ projects, basePath = '/projets' }: Props) 
             className={`group relative overflow-hidden cursor-pointer block ${size.col}`}
           >
             <div className="relative w-full h-full overflow-hidden">
-              <img
+              <Picture
                 src={project.coverImage}
                 alt={project.title}
                 className="w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:scale-[1.06]"
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 loading="lazy"
+                decoding="async"
               />
 
               {/* Gradient subtil permanent → overlay au hover */}

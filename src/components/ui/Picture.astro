@@ -1,0 +1,97 @@
+---
+/**
+ * <Picture> — composant image responsive avec fallback JPEG/PNG
+ * ----------------------------------------------------------------
+ * Lit src/data/image-manifest.json (généré par scripts/optimize-images.mjs)
+ * et émet un <picture> avec :
+ *   - <source type="image/webp" srcset="...-480.webp 480w, ...-960.webp 960w, ...">
+ *   - <img> fallback pointant sur l'original (pour les ~3% sans WebP)
+ *   - width/height intrinsèques (anti-CLS)
+ *   - loading=lazy + decoding=async par défaut
+ *
+ * Le <picture> est en display:contents → layout identique à un <img> nu.
+ *
+ * Usage :
+ *   <Picture src="/images/projets/villa-azur-11.jpeg" alt="..." />
+ *   <Picture src="..." alt="..." loading="eager" fetchpriority="high" />
+ *   <Picture src="..." alt="..." sizes="(max-width: 768px) 100vw, 50vw" />
+ */
+import manifest from '@/data/image-manifest.json';
+
+interface Props {
+  src: string;
+  alt: string;
+  class?: string;
+  sizes?: string;
+  loading?: 'lazy' | 'eager';
+  fetchpriority?: 'high' | 'auto' | 'low';
+  decoding?: 'async' | 'sync' | 'auto';
+  width?: number | string;
+  height?: number | string;
+  style?: string;
+  [key: `data-${string}`]: string | number | boolean | undefined;
+}
+
+const {
+  src,
+  alt,
+  class: className,
+  sizes = '100vw',
+  loading = 'lazy',
+  fetchpriority,
+  decoding = 'async',
+  width,
+  height,
+  style,
+  ...rest
+} = Astro.props;
+
+type Entry = { w: number; h: number; widths: number[] };
+const entry = (manifest as Record<string, Entry>)[src];
+
+// Dimensions explicites prioritaires, sinon celles du manifeste (anti-CLS)
+const w = width ?? entry?.w;
+const h = height ?? entry?.h;
+
+// Base du chemin sans extension → pour reconstruire les variantes WebP
+const lastDot = src.lastIndexOf('.');
+const base = lastDot > 0 ? src.slice(0, lastDot) : src;
+
+// Construit le srcset WebP à partir du manifeste
+const srcset = entry
+  ? entry.widths.map((variantW) => `${base}-${variantW}.webp ${variantW}w`).join(', ')
+  : null;
+---
+
+{
+  srcset ? (
+    <picture style="display: contents">
+      <source type="image/webp" srcset={srcset} sizes={sizes} />
+      <img
+        src={src}
+        alt={alt}
+        width={w}
+        height={h}
+        loading={loading}
+        decoding={decoding}
+        fetchpriority={fetchpriority}
+        class={className}
+        style={style}
+        {...rest}
+      />
+    </picture>
+  ) : (
+    <img
+      src={src}
+      alt={alt}
+      width={w}
+      height={h}
+      loading={loading}
+      decoding={decoding}
+      fetchpriority={fetchpriority}
+      class={className}
+      style={style}
+      {...rest}
+    />
+  )
+}

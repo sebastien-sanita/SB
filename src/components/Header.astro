@@ -1,11 +1,12 @@
 ---
 /**
  * Header — Navigation épurée luxe
- * Position fixed top, fond transparent → warm blur au scroll
+ * Position fixed top, bande crème translucide permanente (blur), renforcée au scroll
  * Liens fins, soulignement or au hover, switcher langue discret
  */
 import { t, getLocalizedPath, getLangFromUrl, getBasePathname } from '@i18n/index';
 import { locales, localeShortLabels, type Locale } from '@i18n/languages';
+import Picture from '@components/ui/Picture.astro';
 
 interface Props { lang?: Locale; }
 const lang = Astro.props.lang ?? getLangFromUrl(Astro.url);
@@ -30,12 +31,13 @@ function isActive(href: string) {
 <header
   id="main-nav"
   class="fixed top-0 left-0 right-0 z-sticky transition-all duration-500"
+  style="background: rgba(253,251,247,0.85); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);"
 >
   <div class="flex items-center justify-between px-6 md:px-10 lg:px-14 py-5 lg:py-6">
 
     {/* Logo */}
     <a id="header-logo" href={getLocalizedPath('/', lang)} class="hover:opacity-100 relative z-[1050] flex items-center">
-      <img src="/images/logo-sb.png" alt="SB Design" class="h-16 md:h-20 w-auto" />
+      <Picture src="/images/logo-sb.png" alt="SB Design Riviera" class="h-16 md:h-20 w-auto" />
     </a>
 
     {/* Navigation desktop — liens simples + langue */}
@@ -179,8 +181,8 @@ function isActive(href: string) {
   </div>
 </div>
 
-{/* Spacer pour compenser le header */}
-<div class="h-[80px]"></div>
+{/* Spacer pour compenser le header (hauteur réelle : --header-h dans global.css) */}
+<div class="h-[var(--header-h)]"></div>
 
 <script>
   const toggle = document.getElementById('mobile-menu-toggle');
@@ -240,30 +242,22 @@ function isActive(href: string) {
     link.addEventListener('click', () => closeMenu());
   });
 
-  // Scroll state — background + border
+  // Scroll state — bande crème toujours présente (jamais transparente),
+  // légèrement renforcée au scroll ; burger toujours --dark.
   const nav = document.getElementById('main-nav');
   const navBorder = document.getElementById('nav-border');
   if (nav) {
-    const burgerBars = document.querySelectorAll('.burger-bar');
     const onScroll = (scrollY: number) => {
       if (scrollY > 80) {
         nav.style.background = 'rgba(253,251,247,0.95)';
         nav.style.backdropFilter = 'blur(20px)';
         (nav.style as any).webkitBackdropFilter = 'blur(20px)';
         if (navBorder) navBorder.style.background = 'rgba(200,175,130,0.15)';
-        burgerBars.forEach((bar) => {
-          bar.classList.remove('burger-bar--light');
-          bar.classList.add('burger-bar--dark');
-        });
       } else {
-        nav.style.background = 'transparent';
-        nav.style.backdropFilter = 'none';
-        (nav.style as any).webkitBackdropFilter = 'none';
+        nav.style.background = 'rgba(253,251,247,0.85)';
+        nav.style.backdropFilter = 'blur(16px)';
+        (nav.style as any).webkitBackdropFilter = 'blur(16px)';
         if (navBorder) navBorder.style.background = 'transparent';
-        burgerBars.forEach((bar) => {
-          bar.classList.remove('burger-bar--dark');
-          bar.classList.add('burger-bar--light');
-        });
       }
     };
 

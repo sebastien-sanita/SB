@@ -15,7 +15,13 @@ function initPageLoader() {
 
   if (!loader || !loaderLogo || !loaderBar) return;
 
-  if (REDUCED_MOTION) {
+  // Mouvement réduit, ou filet de sécurité du <head> déjà déclenché (bundle
+  // arrivé après 4 s, page déjà révélée) : pas de rideau d'entrée.
+  const dismissed =
+    document.documentElement.classList.contains('reveal-fallback') ||
+    !document.body.classList.contains('is-loading');
+
+  if (REDUCED_MOTION || dismissed) {
     loader.style.display = 'none';
     document.body.classList.remove('is-loading');
     window.dispatchEvent(new CustomEvent('loaderComplete'));

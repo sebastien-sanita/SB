@@ -1,0 +1,166 @@
+---
+/**
+ * Page locale SEO — Architecte d'intérieur à Mougins (FR)
+ * Cible : « architecte d'intérieur Mougins » + arrière-pays cannois.
+ */
+import Layout from '@layouts/Layout.astro';
+import Section from '@components/ui/Section.astro';
+import Container from '@components/ui/Container.astro';
+import Button from '@components/ui/Button.astro';
+import HeroInner from '@components/react/HeroInner';
+import { projects } from '../data/projects';
+import { getLocalizedPath } from '@i18n/index';
+import type { Locale } from '@i18n/languages';
+import Picture from '@components/ui/Picture.astro';
+
+const lang: Locale = 'fr';
+const project = projects.find((p) => p.slug === 'villa-azur');
+
+const prestations = [
+  'Rénovation de villas et de domaines haut de gamme',
+  'Construction de villas et projets clé en main',
+  'Architecture et décoration d\'intérieur sur mesure',
+  'Valorisation patrimoniale et résidences secondaires',
+];
+---
+
+<Layout
+  lang={lang}
+  title="Architecte d’intérieur à Mougins | SB Design Riviera"
+  description="Architecte d'intérieur à Mougins : rénovation de villas et de domaines, construction clé en main et valorisation à Valbonne, Mouans-Sartoux et Le Cannet."
+  ogImage="/images/projets/villa-azur-2.jpeg"
+>
+
+  <div class="-mt-[var(--header-h)]">
+    <HeroInner
+      client:load
+      imageAlt="Façade de la Villa Azur au Rayol-Canadel, piscine à débordement et jardin méditerranéen"
+      images={[
+        '/images/projets/villa-azur-2.jpeg',
+        '/images/projets/villa-azur-15.jpeg',
+        '/images/projets/villa-azur-37.jpeg',
+      ]}
+      label="Mougins & arrière-pays cannois"
+      title={`Architecte d'intérieur<br /><span class="font-heading font-light text-[0.4em]">à Mougins</span>`}
+      subtitle="Du village historique aux domaines de l'arrière-pays, SB Design Riviera conçoit, rénove et construit les résidences d'exception."
+    />
+  </div>
+
+  <!-- 01 — Mougins -->
+  <Section padding="lg" background="white">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <span class="subsection-number">01</span>
+        <h2 class="font-display text-subsection font-bold uppercase text-primary-dark mt-4 mb-6">
+          Mougins, <span class="font-heading font-light">l'élégance discrète de l'arrière-pays</span>
+        </h2>
+        <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.75]">
+          À quelques minutes de Cannes, Mougins est l'un des secteurs les plus convoités de la Côte d'Azur —
+          village médiéval perché, domaines familiaux nichés dans les pinèdes, villas contemporaines sur les
+          hauteurs. SB Design Riviera y accompagne propriétaires privés et investisseurs internationaux dans la
+          rénovation, la construction et la valorisation de leurs résidences. Notre approche conjugue exigence
+          architecturale, raffinement des intérieurs et vision patrimoniale, pour révéler le plein potentiel de
+          chaque bien.
+        </p>
+      </div>
+    </Container>
+  </Section>
+
+  <!-- 02 — Nos prestations -->
+  <Section padding="lg" background="warm">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <span class="subsection-number">02</span>
+        <h2 class="font-display text-subsection font-bold uppercase text-primary-dark mt-4 mb-6">
+          Nos prestations <span class="font-heading font-light">à Mougins</span>
+        </h2>
+        <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.75] mb-8">
+          De la rénovation intégrale d'un domaine familial à la construction d'une villa contemporaine sur les
+          hauteurs, nous intervenons à chaque étape du projet : conception architecturale, sélection de
+          matériaux nobles, coordination de chantier et livraison clé en main — un accompagnement complet,
+          pensé pour les exigences de l'arrière-pays cannois.
+        </p>
+        <ul class="space-y-3">
+          {prestations.map((item) => (
+            <li class="flex items-start gap-3">
+              <svg class="w-5 h-5 text-accent-gold mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7" />
+              </svg>
+              <span class="font-body text-sm font-light text-[var(--color-text-light)]">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </Container>
+  </Section>
+
+  <!-- 03 — De Mougins à Valbonne -->
+  <Section padding="lg" background="white">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <span class="subsection-number">03</span>
+        <h2 class="font-display text-subsection font-bold uppercase text-primary-dark mt-4 mb-6">
+          De Mougins <span class="font-heading font-light">à Valbonne</span>
+        </h2>
+        <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.75]">
+          Notre studio intervient sur l'ensemble de l'arrière-pays cannois : Mougins et son vieux village,
+          Valbonne, Mouans-Sartoux, Le Cannet et Châteauneuf-Grasse. Chaque commune possède son identité — bourg
+          médiéval, plaine boisée, domaine familial — et chaque projet est conçu pour dialoguer avec son
+          environnement et la lumière particulière des collines.
+        </p>
+      </div>
+    </Container>
+  </Section>
+
+  <!-- 04 — Une réalisation -->
+  {project && (
+    <Section padding="lg" background="warm">
+      <Container>
+        <div class="max-w-3xl mb-10" data-reveal>
+          <h2 class="font-display text-subsection font-bold uppercase text-primary-dark">
+            Une réalisation <span class="font-heading font-light">sur la Côte d'Azur</span>
+          </h2>
+        </div>
+        <a
+          href={getLocalizedPath(`/projets/${project.slug}`, lang)}
+          class="group relative overflow-hidden block h-[320px] lg:h-[460px]"
+          data-reveal
+        >
+          <Picture
+            src={project.coverImage}
+            alt={`Rénovation de villa à ${project.location} — Côte d'Azur`}
+            class="w-full h-full object-cover transition-transform duration-700 ease-smooth group-hover:scale-[1.05]"
+            loading="lazy"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+          <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+            <span class="text-[11px] font-heading font-medium text-accent-gold uppercase tracking-[0.15em]">
+              {project.location}
+            </span>
+            <h3 class="font-display text-2xl md:text-3xl font-semibold uppercase text-white mt-1">
+              {project.title}
+            </h3>
+          </div>
+        </a>
+      </Container>
+    </Section>
+  )}
+
+  <!-- 05 — CTA -->
+  <Section background="dark" padding="lg">
+    <Container>
+      <div class="text-center max-w-2xl mx-auto" data-reveal>
+        <h2 class="font-display text-section font-bold uppercase text-white mb-6">
+          Un projet <span class="font-heading font-light">à Mougins ?</span>
+        </h2>
+        <p class="font-body text-lg font-light text-white/70 mb-10 leading-relaxed">
+          Échangeons sur votre projet de rénovation, de construction ou de valorisation. Consultation confidentielle et sans engagement.
+        </p>
+        <Button href={getLocalizedPath('/contact', lang)} variant="primary" size="lg">
+          Prendre rendez-vous
+        </Button>
+      </div>
+    </Container>
+  </Section>
+
+</Layout>

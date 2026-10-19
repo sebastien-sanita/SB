@@ -10,6 +10,7 @@ import Container from '@components/ui/Container.astro';
 import Button from '@components/ui/Button.astro';
 import TextMorph from '@components/react/TextMorph';
 import { t, tArray, getLocalizedPath, type Locale } from '@i18n/index';
+import Picture from '@components/ui/Picture.astro';
 
 interface Props { lang?: Locale; }
 const lang = Astro.props.lang ?? 'fr';
@@ -77,12 +78,11 @@ const projects = [
           >
             {/* Image */}
             <div class:list={['relative overflow-hidden', !isEven && 'md:order-2']}>
-              <img
+              <Picture
                 src={project.image}
                 alt={project.title}
                 class="w-full h-full object-cover transition-transform duration-slow ease-smooth group-hover:scale-[1.04]"
-                loading="lazy"
-              />
+                loading="lazy" />
             </div>
             {/* Infos */}
             <div class:list={[
@@ -115,12 +115,11 @@ const projects = [
           >
             {/* Image */}
             <div class:list={['relative overflow-hidden', !isEven && 'md:order-2']}>
-              <img
+              <Picture
                 src={project.image}
                 alt={project.title}
                 class="w-full h-full object-cover grayscale-[30%] opacity-80"
-                loading="lazy"
-              />
+                loading="lazy" />
             </div>
             {/* Infos */}
             <div class:list={[

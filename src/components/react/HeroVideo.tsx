@@ -4,6 +4,7 @@
  * titre Playfair animé, 2 CTAs pill, scroll indicator bounce
  */
 import { motion } from 'framer-motion';
+import Picture from '@components/react/Picture';
 
 export default function HeroVideo() {
   return (
@@ -15,19 +16,22 @@ export default function HeroVideo() {
         transition={{ duration: 12, ease: 'linear' }}
         className="absolute inset-0"
       >
-        <img
+        <Picture
           src="/images/projets/villa-azur-15.jpeg"
           alt="Intérieur luxueux avec lumière naturelle"
           className="w-full h-full object-cover"
+          sizes="100vw"
           loading="eager"
+          decoding="async"
+          fetchPriority="high"
         />
       </motion.div>
 
       {/* Overlay gradient — Ayocin subtil */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-black/60" />
 
-      {/* Contenu centré */}
-      <div className="relative z-10 flex flex-col items-center justify-center h-full px-6 text-center">
+      {/* Contenu centré — sous la bande du header */}
+      <div className="relative z-10 flex flex-col items-center justify-center h-full px-6 pt-[calc(var(--header-h)+24px)] text-center">
         <div className="max-w-5xl mx-auto">
           {/* Titre — Playfair Display, taille hero */}
           <motion.h1

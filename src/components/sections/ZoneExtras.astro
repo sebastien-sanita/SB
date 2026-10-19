@@ -1,0 +1,126 @@
+---
+/**
+ * ZoneExtras — sections complémentaires des pages zones (Nice, golfe de Saint-Tropez, Var) :
+ * méthode, exemple de calendrier saisonnier, FAQ et maillage « Nos secteurs ».
+ * Même facture visuelle que CommunePage.astro. Le schema FAQPage est passé au Layout
+ * par la page elle-même (prop `schema`, via faqSchema de src/utils/seo.ts).
+ */
+import Section from '@components/ui/Section.astro';
+import Container from '@components/ui/Container.astro';
+import { getLocalizedPath } from '@i18n/index';
+import type { Locale } from '@i18n/languages';
+import type { ZoneExtrasContent } from '@/data/zones/types';
+
+interface Props {
+  content: ZoneExtrasContent;
+  lang: Locale;
+  /** Numéro affiché de la première section (les suivantes s’incrémentent). */
+  start?: number;
+}
+
+const { content: z, lang, start = 4 } = Astro.props;
+const num = (offset: number) => String(start + offset).padStart(2, '0');
+
+const h2 = 'font-display text-subsection font-bold uppercase text-primary-dark mt-4 mb-6';
+const para = 'font-body text-base font-light text-[var(--color-text-light)] leading-[1.75]';
+const h3 = 'font-display text-lg font-semibold uppercase text-primary-dark mb-2';
+const small = 'font-body text-sm font-light text-[var(--color-text-light)] leading-[1.75]';
+---
+
+<!-- Méthode -->
+<Section padding="lg" background="white">
+  <Container>
+    <div class="max-w-3xl" data-reveal>
+      <span class="subsection-number">{num(0)}</span>
+      <h2 class={h2}>
+        {z.methode.title1} <span class="font-heading font-light">{z.methode.title2}</span>
+      </h2>
+      <p class={para}>{z.methode.intro}</p>
+    </div>
+    <ol class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 mt-12" data-reveal>
+      {z.methode.steps.map((step, i) => (
+        <li class="flex gap-5">
+          <span class="font-heading text-sm font-medium text-accent-gold tracking-[0.15em] pt-1 shrink-0">
+            {String(i + 1).padStart(2, '0')}
+          </span>
+          <div>
+            <h3 class={h3}>{step.title}</h3>
+            <p class={small}>{step.text}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </Container>
+</Section>
+
+<!-- Exemple de calendrier (phasage saisonnier, sans durée chiffrée) -->
+<Section padding="lg" background="warm">
+  <Container>
+    <div class="max-w-3xl" data-reveal>
+      <span class="subsection-number">{num(1)}</span>
+      <h2 class={h2}>
+        {z.calendrier.title1} <span class="font-heading font-light">{z.calendrier.title2}</span>
+      </h2>
+      <p class={para}>{z.calendrier.intro}</p>
+    </div>
+    <ol class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-10 mt-12" data-reveal>
+      {z.calendrier.phases.map((phase) => (
+        <li class="border-t border-accent-gold/40 pt-6">
+          <span class="block font-heading text-xs font-semibold text-accent-brown uppercase tracking-[0.15em] mb-3">
+            {phase.saison}
+          </span>
+          <h3 class={h3}>{phase.title}</h3>
+          <p class={small}>{phase.text}</p>
+        </li>
+      ))}
+    </ol>
+    <p class="font-body text-xs font-light italic text-[var(--color-text-light)] mt-10 max-w-3xl" data-reveal>
+      {z.calendrier.note}
+    </p>
+  </Container>
+</Section>
+
+<!-- Questions fréquentes (schema FAQPage côté page) -->
+<Section padding="lg" background="white">
+  <Container>
+    <div class="max-w-3xl" data-reveal>
+      <span class="subsection-number">{num(2)}</span>
+      <h2 class={h2}>
+        {z.faq.title1} <span class="font-heading font-light">{z.faq.title2}</span>
+      </h2>
+      <div class="divide-y divide-border">
+        {z.faq.items.map((item) => (
+          <div class="py-6">
+            <h3 class="font-display text-lg font-semibold text-primary-dark mb-3">{item.q}</h3>
+            <p class={para}>{item.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </Container>
+</Section>
+
+<!-- Nos secteurs (maillage interne vers les pages communes) -->
+{z.secteurs && z.secteurs.links.length > 0 && (
+  <Section padding="sm" background="warm">
+    <Container>
+      <div data-reveal>
+        <h2 class="font-heading text-xs font-semibold text-accent-brown uppercase tracking-[0.15em] mb-5">
+          {z.secteurs.title}
+        </h2>
+        <ul class="flex flex-wrap gap-3">
+          {z.secteurs.links.map((link) => (
+            <li>
+              <a
+                href={getLocalizedPath(link.path, lang)}
+                class="inline-flex items-center px-5 py-2.5 border border-border font-heading text-xs uppercase tracking-[0.15em] text-primary-dark hover:border-accent-gold hover:text-accent-brown transition-colors duration-300"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </Container>
+  </Section>
+)}

@@ -1,13 +1,15 @@
 ---
 /**
  * Footer — Noir corporate, style international luxe
- * Position fixed pour effet "reveal" au scroll
+ * Dans le flux par défaut (toujours atteignable) ; l'effet « reveal » (sticky
+ * sous le contenu) est activé par Layout.astro sur desktop uniquement.
  * Background #1A1A1A avec textes blancs/or
  * i18n support
  */
 import Container from '@components/ui/Container.astro';
 import { t, getLocalizedPath, getLangFromUrl } from '@i18n/index';
 import type { Locale } from '@i18n/languages';
+import Picture from '@components/ui/Picture.astro';
 
 interface Props { lang?: Locale; }
 const lang = Astro.props.lang ?? getLangFromUrl(Astro.url);
@@ -36,8 +38,7 @@ const zones: Array<{ path: string; label: Record<Locale, string> }> = [
 
 <footer
   id="main-footer"
-  class="bg-primary-dark text-white pt-24 md:pt-[120px] pb-10 px-6 md:px-10 relative overflow-hidden"
-  style="position: fixed; bottom: 0; left: 0; right: 0; z-index: 1;"
+  class="bg-primary-dark text-white pt-20 md:pt-[120px] pb-16 md:pb-10 px-6 md:px-10 relative overflow-hidden"
 >
   {/* Coins décoratifs SVG — style Aker */}
   <svg class="absolute top-6 left-6 w-8 h-8 text-white/[0.06]" viewBox="0 0 32 32" fill="currentColor">
@@ -56,11 +57,11 @@ const zones: Array<{ path: string; label: Record<Locale, string> }> = [
   <Container>
 
     {/* Grid 4 colonnes */}
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1.2fr] gap-12 lg:gap-16 mb-20 pb-16 border-b border-white/10">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1.2fr] gap-14 lg:gap-16 mb-14 pb-12 md:mb-20 md:pb-16 border-b border-white/10">
 
       {/* Col 1 : Branding */}
       <div>
-        <img src="/images/logo-sb.png" alt="SB Design Riviera" class="h-28 md:h-36 w-auto invert mb-6" />
+        <Picture src="/images/logo-sb.png" alt="SB Design Riviera" class="h-28 md:h-36 w-auto invert mb-6" />
         <p class="text-[15px] leading-[1.8] text-white/60 max-w-xs">
           {t('footer', 'desc', lang)}
         </p>
@@ -155,8 +156,8 @@ const zones: Array<{ path: string; label: Record<Locale, string> }> = [
     </div>
 
     {/* Footer bottom */}
-    <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/40">
-      <p>&copy; {new Date().getFullYear()} SB Design Riviera. {t('footer', 'copyright', lang)}</p>
+    <div class="flex flex-col md:flex-row justify-between items-center gap-5 md:gap-4 text-sm text-white/40">
+      <p class="text-center md:text-left">&copy; {new Date().getFullYear()} SB Design Riviera. {t('footer', 'copyright', lang)}</p>
       <div class="flex items-center gap-4">
         <span class="text-white/40">{t('footer', 'mentions', lang)}</span>
         <span class="text-white/20">&bull;</span>
