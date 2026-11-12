@@ -71,7 +71,7 @@ Recette : un envoi de test depuis la page, vérifier que l’affaire arrive dans
 # Formulaire agences `agence-var` (ajout du 12/11/2026)
 
 Pages `/partenaires-agences-var/` (FR) et `/en/real-estate-agents/` (EN), composant
-`src/components/sections/AgenceForm.astro`. **Ce formulaire ne va pas dans Pipedrive** : il part en
+`src/components/sections/AgenceForm.astro`. Ce formulaire part en
 **envoi natif** (pas d’AJAX, pas de `TrackingFields`) vers Netlify Forms, et c’est la **notification e-mail**
 de Netlify qui est lue par le script de premier avis de Savério (dans Mail, sur son Mac).
 
@@ -115,3 +115,32 @@ Limite Netlify : 8 Mo de fichiers par envoi ; le texte sous le formulaire invite
    les pièces jointes, puis la redirection vers la page de remerciement.
 
 Le dossier à télécharger est dans `public/docs/dossier-soumission-agences-sbdesign.pdf`.
+
+# Formulaires agences : Pipedrive et suivi (ajout du 12/11/2026)
+
+**Deux sorties par soumission, indépendantes :**
+1. la notification e-mail Netlify, lue par le script de premier avis de Savério (à créer dès qu'il a confirmé l'adresse) ;
+2. une notification Netlify « HTTP POST », limitée au formulaire `agence-var`, vers Zapier.
+
+**Zapier** : workflow « RSD & SB Design_Formulaire agences_Website_Pipedrive »
+(https://zapier.com/workflow/01a1cfd4-d650-7166-be83-46e4107b8255), un seul pour les deux sites, qui route sur `form_name` :
+`agence` → pipeline RSD Agencement, Marque RSD Agencements ; `agence-var` → pipeline SB Design, Marque SB Design
+(étape « Nouveau lead » dans les deux cas). Il retrouve ou crée l'organisation (l'agence, par nom exact) et la personne
+(l'agent, par e-mail), crée l'affaire « Agence · <agence> · <adresse> » avec Source du lead = « Agence immobilière (site web) »,
+puis une note récapitulative avec les liens vers les pièces jointes.
+
+**Champs d'affaire Pipedrive « — Agences »** (créés le 12/11/2026) : Adresse du bien, Surface habitable (m²), Prix affiché,
+En vente depuis (mois), État général, Travaux à prévoir, Acquéreur positionné, Étage, Année de construction, Copropriété,
+N° DPE, Classe DPE, Pièces disponibles, Ce qui bloque la vente. `type_bien` alimente le champ existant « Type de bien ».
+Les `value` du formulaire sont traduites en options Pipedrive dans le code du workflow : **changer une `value` ou ajouter
+une case à cocher impose de mettre à jour le workflow**, sinon la valeur reste dans la note mais pas dans le champ.
+
+**Suivi** : l'envoi natif recharge la page, c'est donc la page de remerciement (`/espace-agences-merci/` et `/en/espace-agences-merci/`) qui pousse `agence_lead` dans le
+dataLayer, avec `form_id`, et seulement après un vrai envoi (témoin `sessionStorage` `rsd_agence_envoi`). Dans GTM :
+déclencheur « CE - agence_lead », balises « GA4 - agence_lead » et « Meta Pixel - AgenceLead » (événement personnalisé
+`AgenceLead`). `agence_lead` est un événement clé GA4. Il est volontairement distinct de `generate_lead` / `Lead` :
+un agent immobilier n'est pas un prospect particulier.
+
+**Piège Netlify (constaté le 12/11/2026)** : Netlify ne garde qu'une définition par nom de formulaire. Toute page qui
+réutilise le formulaire `contact` doit déclarer **tous** ses champs (en cachés s'ils ne sont pas demandés), sinon la page
+Contact peut perdre ceux qui manquent. C'est le rôle des champs cachés vides du formulaire de la page climatisation.
