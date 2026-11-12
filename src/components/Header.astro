@@ -8,11 +8,23 @@ import { t, getLocalizedPath, getLangFromUrl, getBasePathname } from '@i18n/inde
 import { locales, localeShortLabels, type Locale } from '@i18n/languages';
 import Picture from '@components/ui/Picture.astro';
 
-interface Props { lang?: Locale; }
+interface Props {
+  lang?: Locale;
+  /** Versions réelles de la page (voir Layout) : une langue absente renvoie vers son accueil. */
+  alternates?: Partial<Record<Locale, string>>;
+}
 const lang = Astro.props.lang ?? getLangFromUrl(Astro.url);
+const { alternates } = Astro.props;
 
 const pathname = Astro.url.pathname;
 const basePath = getBasePathname(pathname);
+
+// Lien du sélecteur de langue : même page dans l'autre langue, sauf si la page déclare
+// ses propres versions (slug différent, langue manquante → accueil de cette langue).
+const switchHref = (loc: Locale) =>
+  alternates
+    ? alternates[loc] ?? getLocalizedPath('/', loc)
+    : getLocalizedPath(basePath || '/', loc);
 
 const navLinks = [
   { href: getLocalizedPath('/projets', lang),   label: t('nav', 'projets', lang) },
@@ -71,7 +83,7 @@ function isActive(href: string) {
       <div class="flex items-center gap-1">
         {locales.map((loc) => (
           <a
-            href={getLocalizedPath(basePath || '/', loc)}
+            href={switchHref(loc)}
             class:list={[
               'px-1.5 py-0.5 font-heading text-[11px] font-semibold uppercase tracking-wider transition-colors duration-300',
               loc === lang
@@ -157,7 +169,7 @@ function isActive(href: string) {
     <div class="flex items-center gap-6 mobile-nav-link" data-delay="5" style="opacity:0; transform:translateY(16px);">
       {locales.map((loc) => (
         <a
-          href={getLocalizedPath(basePath || '/', loc)}
+          href={switchHref(loc)}
           class:list={[
             'font-heading text-sm font-medium uppercase tracking-[0.15em] transition-all duration-300',
             loc === lang

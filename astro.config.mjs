@@ -19,6 +19,8 @@ export default defineConfig({
     react(),
     tailwind({ applyBaseStyles: false }),
     sitemap({
+      // Pages de remerciement de formulaire (noindex) : hors sitemap.
+      filter: (page) => !page.includes('/espace-agences-merci/'),
       // Annotations hreflang FR/EN/IT dans le sitemap (Problème 6 SEO).
       // FR = locale par défaut sans préfixe d'URL ; EN sous /en/, IT sous /it/.
       i18n: {

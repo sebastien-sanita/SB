@@ -15,6 +15,12 @@ import { zoneGroups, hubZones, zonesTitle } from '@/data/zones-intervention';
 interface Props { lang?: Locale; }
 const lang = Astro.props.lang ?? getLangFromUrl(Astro.url);
 
+// Page « Partenaires agences » (agences immobilières) : FR et EN uniquement, pas de version IT.
+const agencesLink: Partial<Record<Locale, { href: string; label: string }>> = {
+  fr: { href: '/partenaires-agences-var/', label: 'Partenaires agences' },
+  en: { href: '/en/real-estate-agents/', label: 'Estate agent partners' },
+};
+
 // Zones d'intervention : secteurs en liste, puis communes par département
 // (source unique partagée avec l'accueil : src/data/zones-intervention.ts)
 ---
@@ -88,6 +94,9 @@ const lang = Astro.props.lang ?? getLangFromUrl(Astro.url);
           <li><a href={getLocalizedPath('/agence', lang)} class="text-white/60 hover:text-white transition-colors duration-fast block py-[6px]">{t('nav', 'agence', lang)}</a></li>
           <li><a href={getLocalizedPath('/a-propos', lang)} class="text-white/60 hover:text-white transition-colors duration-fast block py-[6px]">{t('footer', 'leStudio', lang)}</a></li>
           <li><a href={getLocalizedPath('/contact', lang)} class="text-white/60 hover:text-white transition-colors duration-fast block py-[6px]">{t('nav', 'contact', lang)}</a></li>
+          {agencesLink[lang] && (
+            <li><a href={agencesLink[lang]?.href} class="text-white/60 hover:text-white transition-colors duration-fast block py-[6px]">{agencesLink[lang]?.label}</a></li>
+          )}
         </ul>
       </div>
 

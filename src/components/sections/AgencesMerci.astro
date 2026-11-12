@@ -1,0 +1,52 @@
+---
+/**
+ * AgencesMerci — page de remerciement du formulaire agences (`action` du formulaire `agence-var`).
+ * FR : /espace-agences-merci/ · EN : /en/espace-agences-merci/. En noindex et hors sitemap
+ * (filtre dans astro.config.mjs).
+ */
+import Layout from '@layouts/Layout.astro';
+import Section from '@components/ui/Section.astro';
+import Container from '@components/ui/Container.astro';
+import Button from '@components/ui/Button.astro';
+import { agencesContent, agencesEmail, agencesPaths, agencesMerciPaths, type AgencesLang } from '@/data/partenaires-agences';
+
+interface Props { lang: AgencesLang; }
+const { lang } = Astro.props;
+const m = agencesContent[lang].merci;
+---
+
+<Layout
+  lang={lang}
+  title={m.metaTitle}
+  description={m.metaDescription}
+  alternates={agencesMerciPaths}
+  noindex
+>
+  <Section padding="lg" background="white">
+    <Container>
+      <div class="max-w-3xl">
+        <span class="block font-heading text-xs font-semibold text-accent-brown uppercase tracking-[0.2em] mb-6">{m.label}</span>
+        <h1 class="font-display text-[clamp(32px,5vw,64px)] leading-[1.1] font-bold uppercase text-primary-dark mb-8">{m.title}</h1>
+        <p class="font-body text-lg font-light text-[var(--color-text-light)] leading-[1.75] mb-5">{m.text}</p>
+        <p class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.75] mb-10">
+          {m.more} <a href={`mailto:${agencesEmail}`} class="text-primary-dark underline underline-offset-4 decoration-accent-gold/60 hover:text-accent-brown transition-colors duration-300">{agencesEmail}</a>.
+        </p>
+        <Button href={agencesPaths[lang]} variant="primary" size="lg">{m.back}</Button>
+      </div>
+    </Container>
+  </Section>
+</Layout>
+
+<script is:inline>
+  /* Suivi GTM / GA4 : l'envoi natif recharge la page, l'événement part donc d'ici.
+     Le témoin posé à l'envoi évite de compter un rechargement ou une visite directe.
+     Événement distinct de `generate_lead` (prospects particuliers) : à déclarer dans GTM. */
+  (function () {
+    try {
+      if (sessionStorage.getItem('rsd_agence_envoi') !== '1') return;
+      sessionStorage.removeItem('rsd_agence_envoi');
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'agence_lead', form_id: 'agence-var' });
+    } catch (e) {}
+  })();
+</script>

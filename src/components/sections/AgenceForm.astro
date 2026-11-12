@@ -1,0 +1,210 @@
+---
+/**
+ * AgenceForm — formulaire « Soumettre un bien » des pages partenaires agences (FR/EN).
+ *
+ * Netlify Forms, formulaire `agence-var`, ENVOI NATIF (pas d'AJAX, pas de TrackingFields) :
+ * un script côté client (Mail) lit la notification e-mail. Ne pas renommer les champs,
+ * ne pas modifier le champ caché `subject` ni les `value` des options : ils sont lus tels quels.
+ * Seuls les libellés visibles sont traduits. Détail : docs/formulaire-pipedrive.md.
+ */
+import { agencesContent, agencesEmail, agencesMerciPaths, type AgencesLang } from '@/data/partenaires-agences';
+
+interface Props { lang: AgencesLang; }
+const { lang } = Astro.props;
+const f = agencesContent[lang].form;
+const o = f.options;
+
+// Valeurs envoyées (français, identiques dans les deux langues)
+const typeBien = ['Villa', 'Appartement', 'Maison'] as const;
+const etat = ['rafraichir', 'renover', 'lourd', 'bon'] as const;
+const acquereur = ['non', 'oui'] as const;
+const copropriete = ['oui', 'non'] as const;
+const dpeClasses = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
+const travaux = ['salle de bain', 'cuisine', 'climatisation', 'menuiseries', 'sols', 'électricité', 'redistribution'] as const;
+const documents = ['dpe', 'diagnostics', 'plans', 'photos', 'reglement_copro', 'pv_ag', 'copro_fiche', 'urbanisme_anterieur', 'taxe_fonciere', 'factures_travaux'] as const;
+
+const labelCls = 'block font-heading text-xs font-semibold text-accent-brown uppercase tracking-[0.15em] mb-3';
+const inputCls = 'w-full px-4 py-3.5 border border-border bg-background font-body text-sm text-primary-dark placeholder:text-[var(--color-text-light)]/50 focus:outline-none focus:border-accent-gold transition-colors duration-300';
+const selectCls = 'w-full px-4 py-3.5 border border-border bg-background font-body text-sm text-primary-dark focus:outline-none focus:border-accent-gold transition-colors duration-300';
+const fileCls = 'block w-full font-body text-sm text-[var(--color-text-light)] file:mr-4 file:px-4 file:py-2.5 file:border file:border-solid file:border-border file:bg-primary-warm file:font-heading file:text-xs file:uppercase file:tracking-[0.1em] file:text-primary-dark file:cursor-pointer';
+const legendCls = 'font-display text-lg font-semibold uppercase text-primary-dark mb-6';
+const fieldsetCls = 'min-w-0 border-0 p-0 m-0';
+const gridCls = 'grid grid-cols-1 sm:grid-cols-2 gap-6';
+const checkLabelCls = 'flex items-start gap-3 font-body text-sm font-light text-primary-dark cursor-pointer';
+const checkCls = 'mt-0.5 h-4 w-4 shrink-0 accent-[#C9A87C]';
+const optionalCls = 'font-light normal-case tracking-normal text-[var(--color-text-light)]';
+---
+
+<form
+  class="space-y-12"
+  id="agence-form"
+  name="agence-var"
+  method="POST"
+  action={agencesMerciPaths[lang]}
+  data-netlify="true"
+  netlify-honeypot="bot-field"
+  enctype="multipart/form-data"
+>
+  <input type="hidden" name="form-name" value="agence-var" />
+  <input type="hidden" name="subject" value="[RS.D AGENCE] SB Design Var — Nouveau mandat" />
+  <input type="hidden" name="travaux" id="travaux" value="" />
+  <input type="hidden" name="documents" id="documents" value="" />
+  <p class="hidden" aria-hidden="true">
+    <label>{f.honeypot} <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
+  </p>
+
+  <fieldset class={fieldsetCls}>
+    <legend class={legendCls}>{f.legendAgence}</legend>
+    <div class={gridCls}>
+      <div>
+        <label for="agence" class={labelCls}>{f.agence}</label>
+        <input type="text" id="agence" name="agence" required autocomplete="organization" class={inputCls} />
+      </div>
+      <div>
+        <label for="agent" class={labelCls}>{f.agent}</label>
+        <input type="text" id="agent" name="agent" required autocomplete="name" class={inputCls} />
+      </div>
+      <div>
+        <label for="telephone" class={labelCls}>{f.telephone}</label>
+        <input type="tel" id="telephone" name="telephone" required autocomplete="tel" class={inputCls} />
+      </div>
+      <div>
+        <label for="email" class={labelCls}>{f.email}</label>
+        <input type="email" id="email" name="email" required autocomplete="email" class={inputCls} />
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset class={fieldsetCls}>
+    <legend class={legendCls}>{f.legendBien}</legend>
+    <div class={gridCls}>
+      <div class="sm:col-span-2">
+        <label for="adresse" class={labelCls}>{f.adresse}</label>
+        <input type="text" id="adresse" name="adresse" required class={inputCls} placeholder={f.adressePlaceholder} />
+      </div>
+      <div>
+        <label for="type_bien" class={labelCls}>{f.typeBien}</label>
+        <select id="type_bien" name="type_bien" class={selectCls}>
+          {typeBien.map((v) => <option value={v}>{o.type_bien[v]}</option>)}
+        </select>
+      </div>
+      <div>
+        <label for="surface_m2" class={labelCls}>{f.surface}</label>
+        <input type="text" id="surface_m2" name="surface_m2" inputmode="numeric" class={inputCls} />
+      </div>
+      <div>
+        <label for="prix_affiche" class={labelCls}>{f.prix}</label>
+        <input type="text" id="prix_affiche" name="prix_affiche" class={inputCls} />
+      </div>
+      <div>
+        <label for="mois_en_vente" class={labelCls}>{f.mois}</label>
+        <input type="text" id="mois_en_vente" name="mois_en_vente" inputmode="numeric" class={inputCls} />
+      </div>
+      <div>
+        <label for="etat" class={labelCls}>{f.etat}</label>
+        <select id="etat" name="etat" class={selectCls}>
+          {etat.map((v) => <option value={v}>{o.etat[v]}</option>)}
+        </select>
+      </div>
+      <div>
+        <label for="acquereur" class={labelCls}>{f.acquereur}</label>
+        <select id="acquereur" name="acquereur" class={selectCls}>
+          {acquereur.map((v) => <option value={v}>{o.ouiNon[v]}</option>)}
+        </select>
+      </div>
+      <div class="sm:col-span-2" role="group" aria-labelledby="travaux-label">
+        <p id="travaux-label" class={labelCls}>{f.travaux}</p>
+        <div id="cases" class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3">
+          {travaux.map((v) => (
+            <label class={checkLabelCls}><input type="checkbox" value={v} class={checkCls} /><span>{o.travaux[v]}</span></label>
+          ))}
+        </div>
+      </div>
+      <div class="sm:col-span-2">
+        <label for="message" class={labelCls}>{f.message}</label>
+        <textarea id="message" name="message" rows="4" class={`${inputCls} resize-none`}></textarea>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset class={fieldsetCls}>
+    <legend class={legendCls}>{f.legendAnalyse}</legend>
+    <p class="font-body text-sm font-light text-[var(--color-text-light)] leading-[1.75] mb-8">{f.analyseIntro}</p>
+    <div class={gridCls}>
+      <div>
+        <label for="dpe_numero" class={labelCls}>{f.dpeNumero}</label>
+        <input type="text" id="dpe_numero" name="dpe_numero" maxlength="13" pattern={'[0-9A-Za-z]{13}'} title={f.dpeNumeroTitle} autocomplete="off" class={inputCls} placeholder={f.dpeNumeroPlaceholder} />
+      </div>
+      <div>
+        <label for="dpe_classe" class={labelCls}>{f.dpeClasse}</label>
+        <select id="dpe_classe" name="dpe_classe" class={selectCls}>
+          <option value="">{o.dpeInconnu}</option>
+          {dpeClasses.map((v) => <option value={v}>{v}</option>)}
+        </select>
+      </div>
+      <div>
+        <label for="etage" class={labelCls}>{f.etage}</label>
+        <input type="text" id="etage" name="etage" inputmode="numeric" class={inputCls} />
+      </div>
+      <div>
+        <label for="annee_construction" class={labelCls}>{f.annee}</label>
+        <input type="text" id="annee_construction" name="annee_construction" inputmode="numeric" class={inputCls} />
+      </div>
+      <div>
+        <label for="copropriete" class={labelCls}>{f.copropriete}</label>
+        <select id="copropriete" name="copropriete" class={selectCls}>
+          {copropriete.map((v) => <option value={v}>{o.ouiNon[v]}</option>)}
+        </select>
+      </div>
+      <div class="sm:col-span-2" role="group" aria-labelledby="documents-label">
+        <p id="documents-label" class={labelCls}>{f.documents}</p>
+        <div id="docs" class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3">
+          {documents.map((v) => (
+            <label class={checkLabelCls}><input type="checkbox" value={v} class={checkCls} /><span>{o.documents[v]}</span></label>
+          ))}
+        </div>
+      </div>
+      <div class="sm:col-span-2">
+        <label for="dpe_fichier" class={labelCls}>{f.dpeFichier} <span class={optionalCls}>({f.optional})</span></label>
+        <input type="file" id="dpe_fichier" name="dpe_fichier" accept="application/pdf,image/*" class={fileCls} />
+      </div>
+      <div>
+        <label for="photo1" class={labelCls}>{f.photo1} <span class={optionalCls}>({f.optional})</span></label>
+        <input type="file" id="photo1" name="photo1" accept="image/*" class={fileCls} />
+      </div>
+      <div>
+        <label for="photo2" class={labelCls}>{f.photo2} <span class={optionalCls}>({f.optional})</span></label>
+        <input type="file" id="photo2" name="photo2" accept="image/*" class={fileCls} />
+      </div>
+    </div>
+  </fieldset>
+
+  <div>
+    <button type="submit" class="inline-flex items-center justify-center px-8 py-4 bg-accent-gold text-white font-heading text-[15px] font-medium uppercase tracking-wider hover:bg-[#B8976B] transition-colors duration-500 w-full sm:w-auto">
+      {f.submit}
+    </button>
+    <p class="font-body text-sm font-light text-[var(--color-text-light)] leading-[1.75] mt-6">
+      {f.filesNote} <a href={`mailto:${agencesEmail}`} class="text-primary-dark underline underline-offset-4 decoration-accent-gold/60 hover:text-accent-brown transition-colors duration-300">{agencesEmail}</a>.
+    </p>
+  </div>
+</form>
+
+<!-- Cases cochées « travaux » et « documents » → champs cachés, jointes par « , » (script du modèle client) -->
+<script is:inline>
+  (function () {
+    var form = document.getElementById('agence-form');
+    if (!form) return;
+    var joinChecked = function (id) {
+      return Array.prototype.slice
+        .call(document.querySelectorAll('#' + id + ' input:checked'))
+        .map(function (c) { return c.value; })
+        .join(', ');
+    };
+    form.addEventListener('submit', function () {
+      document.getElementById('travaux').value = joinChecked('cases');
+      document.getElementById('documents').value = joinChecked('docs');
+      /* Témoin lu par la page de remerciement pour l'événement GTM `agence_lead`. */
+      try { sessionStorage.setItem('rsd_agence_envoi', '1'); } catch (err) {}
+    });
+  })();
+</script>

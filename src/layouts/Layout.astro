@@ -21,6 +21,14 @@ interface Props {
   preloadImage?: string;
   /** Schema.org JSON-LD additionnel propre à la page (objet ou tableau). */
   schema?: Record<string, unknown> | Record<string, unknown>[];
+  /**
+   * Versions linguistiques réelles de la page (chemins avec slash final), quand elles ne suivent
+   * pas le schéma /{lang}/même-slug/ : page sans version IT, slug différent en anglais…
+   * Sert aux balises hreflang et au sélecteur de langue du Header. Absent = comportement habituel.
+   */
+  alternates?: Partial<Record<Locale, string>>;
+  /** Page hors index (remerciement de formulaire…) : meta robots noindex, pas de hreflang. */
+  noindex?: boolean;
 }
 
 const defaultDescriptions: Record<Locale, string> = {
@@ -37,6 +45,8 @@ const {
   class: className,
   preloadImage,
   schema,
+  alternates,
+  noindex = false,
 } = Astro.props;
 
 // Schema.org propre à la page → normalisé en tableau
@@ -54,7 +64,12 @@ if (preloadImage) {
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const hreflangAlternates = getHreflangAlternates(Astro.url.pathname, Astro.site?.toString().replace(/\/$/, '') ?? '');
+const hreflangAlternates = alternates
+  ? (Object.entries(alternates) as Array<[Locale, string]>).map(([lang, path]) => ({
+      lang,
+      href: new URL(path, Astro.site).href,
+    }))
+  : getHreflangAlternates(Astro.url.pathname, Astro.site?.toString().replace(/\/$/, '') ?? '');
 
 // Open Graph — image absolue (fallback global si la page n'en fournit pas)
 const ogImageURL = new URL(ogImage ?? '/images/projets/villa-azur-11.jpeg', Astro.site);
@@ -69,6 +84,9 @@ const breadcrumbLabels: Record<string, Record<Locale, string>> = {
   contact: { fr: 'Contact', en: 'Contact', it: 'Contatto' },
   'a-propos': { fr: 'À propos', en: 'About', it: 'Chi siamo' },
   agence: { fr: 'Agence', en: 'Agency', it: 'Agenzia' },
+  'partenaires-agences-var': { fr: 'Partenaires agences', en: 'Estate agent partners', it: 'Partner agenzie' },
+  'real-estate-agents': { fr: 'Partenaires agences', en: 'Estate agent partners', it: 'Partner agenzie' },
+  'climatisation-villa-var': { fr: 'Climatisation invisible', en: 'Invisible air conditioning', it: 'Climatizzazione invisibile' },
   'architecte-interieur-saint-tropez': {
     fr: "Architecte d'intérieur Saint-Tropez",
     en: 'Interior Architect Saint-Tropez',
@@ -218,12 +236,13 @@ for (const seg of crumbSegments) {
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL.href} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
 
     <!-- Hreflang alternates for i18n SEO -->
-    {hreflangAlternates.map(({ lang, href }) => (
+    {!noindex && hreflangAlternates.map(({ lang, href }) => (
       <link rel="alternate" hreflang={lang} href={href} />
     ))}
-    <link rel="alternate" hreflang="x-default" href={hreflangAlternates.find(a => a.lang === 'fr')?.href ?? canonicalURL.href} />
+    {!noindex && <link rel="alternate" hreflang="x-default" href={hreflangAlternates.find(a => a.lang === 'fr')?.href ?? canonicalURL.href} />}
 
     <!-- Schema.org LocalBusiness -->
     <script type="application/ld+json" is:inline set:html={JSON.stringify({
@@ -322,7 +341,7 @@ for (const seg of crumbSegments) {
       </div>
     </div>
 
-    <Header lang={currentLang} />
+    <Header lang={currentLang} alternates={alternates} />
 
     <main>
       <slot />

@@ -38,3 +38,80 @@ Points d’attention côté Pipedrive :
 Recette : un envoi de test par langue, puis vérifier dans Pipedrive que l’affaire arrive dans le pipeline SB Design
 avec Marque, Source du lead, Nature des travaux, Budget déclaré, Statut propriété, Timeline projet et code postal renseignés.
 Supprimer ensuite les affaires de test.
+
+---
+
+# Variante « climatisation » du formulaire de contact (ajout du 12/11/2026)
+
+Page `/climatisation-villa-var/` (`src/pages/climatisation-villa-var.astro`). **Même circuit que le contact** :
+même Netlify Form `contact`, même script `src/scripts/contact-form.ts` (envoi AJAX, `TrackingFields`, honeypot),
+mêmes champs cachés `marque` = `SB Design`, `pipeline` = `SB Design`, `lang` = `fr`. Seule différence :
+**`source_lead` = `Page climatisation`** (au lieu de `Site web`). Aucun nouveau nom de champ.
+
+| Champ visible | `name` envoyé (existant) | Obligatoire | Valeurs |
+|---|---|---|---|
+| Nom | `lastname` | oui | texte libre (pas de champ prénom : `firstname` n’est pas envoyé) |
+| Téléphone | `phone` | oui | — |
+| E-mail | `email` | non | — |
+| Formule | `nature_travaux` | oui | Clim + suite parentale · Clim + pièce de vie · Clim + rénovation complète · Clim seule |
+| Ville ou code postal de la villa | `code_postal` | non | texte libre (pas de contrôle « 5 chiffres » sur cette page) |
+| Message | `message` | non | — |
+
+Non envoyés par cette page : `firstname`, `statut_propriete`, `budget_travaux`, `echeance`.
+
+À vérifier côté Pipedrive / Zap avant la mise en ligne :
+- si **Source du lead** est un champ à options, y ajouter « Page climatisation » ;
+- si **Nature des travaux** est un champ à options, y ajouter les quatre formules ci-dessus ;
+- `code_postal` peut contenir un nom de commune (« Bormes-les-Mimosas ») : le champ cible doit accepter du texte ;
+- le Zap ne doit pas exiger `firstname`, `email`, `budget_travaux`, `statut_propriete` ni `echeance`.
+
+Recette : un envoi de test depuis la page, vérifier que l’affaire arrive dans le pipeline SB Design avec la source
+« Page climatisation » et la formule, puis supprimer l’affaire de test.
+
+# Formulaire agences `agence-var` (ajout du 12/11/2026)
+
+Pages `/partenaires-agences-var/` (FR) et `/en/real-estate-agents/` (EN), composant
+`src/components/sections/AgenceForm.astro`. **Ce formulaire ne va pas dans Pipedrive** : il part en
+**envoi natif** (pas d’AJAX, pas de `TrackingFields`) vers Netlify Forms, et c’est la **notification e-mail**
+de Netlify qui est lue par le script de premier avis de Savério (dans Mail, sur son Mac).
+
+- Nom du formulaire Netlify : `agence-var` — `method="POST"`, `enctype="multipart/form-data"`, honeypot `bot-field`.
+- Page de remerciement (`action`) : `/espace-agences-merci/` (FR) ou `/en/espace-agences-merci/` (EN), toutes deux
+  en `noindex` et exclues du sitemap (`filter` dans `astro.config.mjs`).
+- Champ caché `subject`, à ne jamais modifier : `[RS.D AGENCE] SB Design Var — Nouveau mandat`
+  (le script ne lit que les mails dont le sujet contient `[RS.D AGENCE]`).
+- **Ne renommer aucun champ et ne pas changer les `value` des options** : la page anglaise envoie les mêmes
+  valeurs françaises, seuls les libellés visibles sont traduits (`src/data/partenaires-agences.ts`).
+
+| Champ | Type | Obligatoire | Valeurs envoyées |
+|---|---|---|---|
+| `agence`, `agent` | texte | oui | — |
+| `telephone` | téléphone | oui | — |
+| `email` | e-mail | oui | — |
+| `adresse` | texte | oui | numéro, rue, code postal, ville |
+| `type_bien` | liste | — | Villa · Appartement · Maison |
+| `surface_m2`, `prix_affiche`, `mois_en_vente` | texte | non | — |
+| `etat` | liste | — | `rafraichir` · `renover` · `lourd` · `bon` |
+| `acquereur` | liste | — | `non` · `oui` |
+| `travaux` | caché, rempli à l’envoi | — | cases cochées jointes par « , » : salle de bain, cuisine, climatisation, menuiseries, sols, électricité, redistribution |
+| `message` | texte long | non | ce qui bloque la vente |
+| `dpe_numero` | texte, 13 caractères (`pattern="[0-9A-Za-z]{13}"`) | non | ex. 2369E1234567X |
+| `dpe_classe` | liste | — | vide (« je ne sais pas ») · A à G |
+| `etage`, `annee_construction` | texte | non | — |
+| `copropriete` | liste | — | `oui` · `non` |
+| `documents` | caché, rempli à l’envoi | — | cases cochées jointes par « , » : dpe, diagnostics, plans, photos, reglement_copro, pv_ag, copro_fiche, urbanisme_anterieur, taxe_fonciere, factures_travaux |
+| `dpe_fichier` | fichier (PDF ou image) | non | — |
+| `photo1`, `photo2` | fichier (image) | non | — |
+
+`travaux` et `documents` sont remplis par le petit script en bas du composant (sans JavaScript, ils partent vides).
+Limite Netlify : 8 Mo de fichiers par envoi ; le texte sous le formulaire invite à envoyer le reste par e-mail
+(info@sbdesign.fr).
+
+À faire dans Netlify **après le premier déploiement** qui contient le formulaire :
+1. Forms → vérifier que `agence-var` apparaît avec tous les champs ci-dessus ;
+2. Forms → `agence-var` → Form notifications → **Add notification → Email notification** vers l’adresse relevée
+   par Mail sur le Mac de Savério (à confirmer par Savério : decosanit@me.com ou contact@rsd-agencements.com) ;
+3. un envoi de test par langue : vérifier le sujet du mail reçu, la présence de `travaux` et `documents`,
+   les pièces jointes, puis la redirection vers la page de remerciement.
+
+Le dossier à télécharger est dans `public/docs/dossier-soumission-agences-sbdesign.pdf`.
