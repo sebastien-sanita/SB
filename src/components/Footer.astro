@@ -10,30 +10,13 @@ import Container from '@components/ui/Container.astro';
 import { t, getLocalizedPath, getLangFromUrl } from '@i18n/index';
 import type { Locale } from '@i18n/languages';
 import Picture from '@components/ui/Picture.astro';
+import { zoneGroups, hubZones, zonesTitle } from '@/data/zones-intervention';
 
 interface Props { lang?: Locale; }
 const lang = Astro.props.lang ?? getLangFromUrl(Astro.url);
 
-// Zones d'intervention — landing pages SEO locales (FR/EN/IT)
-const zonesTitle: Record<Locale, string> = {
-  fr: "Zones d'intervention",
-  en: 'Areas we cover',
-  it: 'Zone di intervento',
-};
-const zones: Array<{ path: string; label: Record<Locale, string> }> = [
-  {
-    path: '/architecte-interieur-saint-tropez',
-    label: { fr: 'Golfe de Saint-Tropez', en: 'Gulf of Saint-Tropez', it: 'Golfo di Saint-Tropez' },
-  },
-  {
-    path: '/architecte-interieur-var',
-    label: { fr: 'Corniche des Maures · Var', en: 'Corniche des Maures · Var', it: 'Corniche des Maures · Var' },
-  },
-  {
-    path: '/architecte-interieur-nice',
-    label: { fr: 'Nice & Villefranche-sur-Mer', en: 'Nice & Villefranche-sur-Mer', it: 'Nizza & Villefranche-sur-Mer' },
-  },
-];
+// Zones d'intervention : secteurs en liste, puis communes par département
+// (source unique partagée avec l'accueil : src/data/zones-intervention.ts)
 ---
 
 <footer
@@ -124,10 +107,20 @@ const zones: Array<{ path: string; label: Record<Locale, string> }> = [
             {zonesTitle[lang]}
           </h4>
           <ul class="space-y-3">
-            {zones.map((zone) => (
+            {hubZones.map((zone) => (
               <li><a href={getLocalizedPath(zone.path, lang)} class="text-white/60 hover:text-white transition-colors duration-fast block py-[6px]">{zone.label[lang]}</a></li>
             ))}
           </ul>
+          <div class="mt-6 space-y-4">
+            {zoneGroups.map((group) => (
+              <p class="text-[14px] leading-[1.9] text-white/30">
+                <span class="block font-heading text-[11px] font-semibold uppercase tracking-[0.2em] text-white/40 mb-1">{group.name[lang]}</span>
+                {group.zones.filter((zone) => !zone.hub).map((zone, i) => (
+                  <Fragment>{i > 0 && <Fragment><span aria-hidden="true" class="ml-1.5 mr-0.5">·</span>{' '}</Fragment>}<a href={getLocalizedPath(zone.path, lang)} class="whitespace-nowrap text-white/60 hover:text-white transition-colors duration-fast">{zone.label[lang]}</a></Fragment>
+                ))}
+              </p>
+            ))}
+          </div>
         </div>
       </div>
 

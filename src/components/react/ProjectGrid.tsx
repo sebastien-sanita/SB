@@ -79,7 +79,7 @@ export default function ProjectGrid({ projects, basePath = '/projets' }: Props) 
         return (
           <motion.a
             key={project.id}
-            href={`${basePath}/${project.slug}`}
+            href={`${basePath}/${project.slug}/`}
             initial={{ opacity: 0, clipPath: clipDirections[i % clipDirections.length] }}
             animate={isInView
               ? { opacity: 1, clipPath: 'inset(0 0 0 0)' }

@@ -1,0 +1,72 @@
+---
+/**
+ * ZonesIntervention — section de l'accueil (FR/EN/IT) qui relie les 12 pages de
+ * zones : secteurs et communes, par département (liste : src/data/zones-intervention.ts).
+ * Contenu rendu côté serveur, lisible sans JS ; data-reveal n'agit qu'avec html.js.
+ */
+import Section from '@components/ui/Section.astro';
+import Container from '@components/ui/Container.astro';
+import { getLocalizedPath } from '@i18n/index';
+import type { Locale } from '@i18n/languages';
+import { zoneGroups, zonesTitle } from '@/data/zones-intervention';
+
+interface Props { lang: Locale; }
+const { lang } = Astro.props;
+
+const copy: Record<Locale, { title: string; intro: string }> = {
+  fr: {
+    title: 'Du golfe de Saint-Tropez à Nice',
+    intro:
+      "Nous concevons et rénovons des résidences dans le Var et les Alpes-Maritimes. Chaque commune a son bâti, ses règles d'urbanisme et ses artisans : voici les secteurs où nous intervenons.",
+  },
+  en: {
+    title: 'From the Gulf of Saint-Tropez to Nice',
+    intro:
+      'We design and renovate homes across the Var and the Alpes-Maritimes. Every town has its own architecture, planning rules and craftsmen: these are the areas we work in.',
+  },
+  it: {
+    title: 'Dal golfo di Saint-Tropez a Nizza',
+    intro:
+      'Progettiamo e ristrutturiamo residenze nel Var e nelle Alpi Marittime. Ogni comune ha la sua architettura, le sue regole urbanistiche e i suoi artigiani: ecco le zone in cui interveniamo.',
+  },
+};
+---
+
+<Section background="warm" padding="lg">
+  <Container>
+    <div class="max-w-2xl mb-12 md:mb-16" data-reveal>
+      <span class="font-heading text-xs font-semibold text-accent-gold uppercase tracking-[0.2em] mb-4 block">
+        {zonesTitle[lang]}
+      </span>
+      <h2 class="font-display text-[clamp(28px,4vw,44px)] font-bold uppercase text-primary-dark leading-[1.15]">
+        {copy[lang].title}
+      </h2>
+      <p class="font-body text-lg font-light text-[var(--color-text-light)] mt-4 leading-[1.8]">
+        {copy[lang].intro}
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-12 md:gap-16" data-reveal>
+      {zoneGroups.map((group) => (
+        <div>
+          <h3 class="font-heading text-sm font-semibold uppercase tracking-[0.2em] text-primary-dark/50 mb-4">
+            {group.name[lang]}
+          </h3>
+          <ul class="border-t border-primary-dark/10">
+            {group.zones.map((zone) => (
+              <li class="border-b border-primary-dark/10">
+                <a
+                  href={getLocalizedPath(zone.path, lang)}
+                  class="group flex items-center justify-between gap-4 py-4 font-body text-base md:text-lg text-primary-dark hover:text-accent-gold transition-colors duration-fast"
+                >
+                  <span>{zone.label[lang]}</span>
+                  <span aria-hidden="true" class="text-primary-dark/30 group-hover:text-accent-gold transition-transform duration-fast group-hover:translate-x-1">→</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </Container>
+</Section>

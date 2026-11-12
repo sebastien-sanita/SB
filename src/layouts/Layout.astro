@@ -142,7 +142,7 @@ for (const seg of crumbSegments) {
   crumbAcc += `/${seg}`;
   breadcrumbItems.push({
     name: breadcrumbLabels[seg]?.[currentLang] ?? titleCase(seg),
-    url: `${siteBase}${getLocalizedPath(crumbAcc, currentLang)}/`,
+    url: `${siteBase}${getLocalizedPath(crumbAcc, currentLang)}`,
   });
 }
 ---

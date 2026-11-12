@@ -21,6 +21,7 @@ import WhatWeDo from '@components/sections/WhatWeDo.astro';
 import PortfolioPreview from '@components/sections/PortfolioPreview.astro';
 import ProcessTimeline from '@components/sections/ProcessTimeline.astro';
 import WhoWeServe from '@components/sections/WhoWeServe.astro';
+import ZonesIntervention from '@components/sections/ZonesIntervention.astro';
 import FeaturedProjects from '@components/sections/FeaturedProjects.astro';
 import Marquee from '@components/sections/Marquee.astro';
 
@@ -150,6 +151,9 @@ const lang: Locale = 'fr';
       <TestimonialsSlider client:visible />
     </Container>
   </Section>
+
+  <!-- Zones d'intervention : liens vers les 12 pages secteurs et communes -->
+  <ZonesIntervention lang={lang} />
 
   <!-- SECTION 08 : CTA Final -->
   <section class="relative py-28 md:py-50 overflow-hidden">

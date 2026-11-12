@@ -54,15 +54,27 @@ export function tArray<
 }
 
 /**
- * Build a localized path.
- * getLocalizedPath('/projets', 'en') → '/en/projets'
- * getLocalizedPath('/projets', 'fr') → '/projets'
+ * Build a localized path, toujours terminé par un slash : c'est la forme
+ * canonique des pages (sans slash, Netlify répond par une redirection 301).
+ * getLocalizedPath('/projets', 'en') → '/en/projets/'
+ * getLocalizedPath('/projets', 'fr') → '/projets/'
+ * getLocalizedPath('/expertise#design', 'fr') → '/expertise/#design'
  */
 export function getLocalizedPath(path: string, lang: Locale): string {
-  if (lang === defaultLocale) return path;
   // Avoid double prefix
-  const cleanPath = path.startsWith('/') ? path : `/${path}`;
+  const cleanPath = withTrailingSlash(path.startsWith('/') ? path : `/${path}`);
+  if (lang === defaultLocale) return cleanPath;
   return `/${lang}${cleanPath}`;
+}
+
+/** Ajoute le slash final (avant ? ou #), sauf pour un fichier (.pdf, .jpg…). */
+function withTrailingSlash(path: string): string {
+  const cut = path.search(/[?#]/);
+  const pathname = cut === -1 ? path : path.slice(0, cut);
+  const rest = cut === -1 ? '' : path.slice(cut);
+  const lastSegment = pathname.split('/').pop() ?? '';
+  if (pathname.endsWith('/') || /\.[a-z0-9]+$/i.test(lastSegment)) return path;
+  return `${pathname}/${rest}`;
 }
 
 /**
