@@ -6,16 +6,16 @@
 
 export const climContent = {
   meta: {
-    title: "Climatisation invisible en villa, Var | SB Design",
+    title: "Climatisation invisible, Bormes et Le Lavandou | SB Design",
     description:
-      "Climatisation pensée avec le projet : unités cachées, groupes dissimulés, démarches en site classé, suivi à distance.",
+      "Climatisation pensée avec le projet, de Bormes-les-Mimosas au Rayol-Canadel : unités cachées, groupes dissimulés, démarches, suivi à distance.",
   },
   hero: {
-    label: "Climatisation invisible · Var et Côte d’Azur",
+    label: "Climatisation invisible · Bormes-les-Mimosas et Le Lavandou",
     titleLine1: "Une villa fraîche,",
     titleLine2: "sans rien qui dépasse",
     subtitle:
-      "Nous intégrons la climatisation au projet d’architecture intérieure : unités cachées en faux plafond ou dans le mobilier, groupes extérieurs dissimulés dans un local technique ou derrière un habillage, réseaux encastrés pendant les travaux.",
+      "Nous intégrons la climatisation au projet d’architecture intérieure, de Bormes-les-Mimosas au Rayol-Canadel : unités cachées en faux plafond ou dans le mobilier, groupes extérieurs dissimulés dans un local technique ou derrière un habillage, réseaux encastrés pendant les travaux.",
     imageAlt:
       "Salon de la Villa Azur vu à travers une verrière : canapé d’angle, bibliothèque intégrée et plafond lisse à spots encastrés",
   },
@@ -87,6 +87,38 @@ export const climContent = {
       { title: "Chantier et mise en service", text: "Pose, finitions, réglages, contrat d’entretien proposé." },
     ],
   },
+  chantiers: {
+    title1: "Sur nos",
+    title2: "chantiers",
+    intro:
+      "Les unités se posent avant la fermeture des plafonds. Une fois les finitions faites, il ne reste qu’une grille fine.",
+    items: [
+      {
+        src: "/images/projets/climatisation-villa-construction-unites-gainables.jpg",
+        tag: "Chantier",
+        caption: "Villa en construction : les unités gainables sont suspendues sous la dalle, avant les plafonds.",
+        alt: "Villa en construction : unités de climatisation gainables suspendues sous la dalle, gaines et câbles en attente avant la pose des plafonds",
+      },
+      {
+        src: "/images/projets/climatisation-villa-renovation-unite-gainable.jpg",
+        tag: "Chantier",
+        caption: "Villa en rénovation : l’unité gainable est logée sous la dalle, avant l’habillage du plafond.",
+        alt: "Villa en rénovation : unité de climatisation gainable fixée sous la dalle, liaisons et câbles en attente avant l’habillage du plafond",
+      },
+      {
+        src: "/images/projets/climatisation-faux-plafond-fente-soufflage-chantier.jpg",
+        tag: "Chantier",
+        caption: "Le faux plafond se referme : la fente de soufflage est réservée dans les plaques.",
+        alt: "Pièce en travaux : faux plafond en plaques de plâtre avec la fente de soufflage de la climatisation réservée, avant les finitions",
+      },
+      {
+        src: "/images/projets/climatisation-cuisine-grille-lineaire-faux-plafond.jpg",
+        tag: "Terminé",
+        caption: "Une fois fini : une grille linéaire noire, alignée dans le faux plafond de la cuisine.",
+        alt: "Cuisine rénovée avec îlot bleu : grille de climatisation linéaire noire intégrée au faux plafond, spots encastrés",
+      },
+    ],
+  },
   faq: {
     title1: "Questions",
     title2: "fréquentes",
@@ -117,7 +149,7 @@ export const climContent = {
     title1: "Demander une étude",
     title2: "d’intégration",
     intro:
-      "Dites-nous où se trouve la villa et ce que vous envisagez. Nous vous rappelons pour fixer la visite, sur place ou en visio.",
+      "Dites-nous où se trouve la villa et ce que vous envisagez. Nous intervenons de Bormes-les-Mimosas au Rayol-Canadel, en passant par Le Lavandou, La Fossette, Aiguebelle et Cavalière. Nous vous rappelons pour fixer la visite, sur place ou en visio.",
     honeypot: "Ne pas remplir",
     nom: "Nom",
     telephone: "Téléphone",

@@ -27,16 +27,16 @@ export const agencesMerciPaths: Record<AgencesLang, string> = {
 
 const fr = {
   meta: {
-    title: "Partenaires agences immobilières du Var | SB Design Riviera",
+    title: "Partenaires agences à Bormes et au Lavandou | SB Design",
     description:
-      "Villas à rénover de Hyères à Saint-Tropez : premier avis sous 24 h, projet chiffré et vues 3D pour vos acquéreurs, en français et en anglais.",
+      "Villas à rénover à Bormes-les-Mimosas, au Lavandou et au Rayol-Canadel : premier avis sous 24 h, projet chiffré et vues 3D pour vos acquéreurs.",
   },
   hero: {
-    label: "Partenaires agences · Var et Côte d’Azur",
+    label: "Partenaires agences · Bormes-les-Mimosas et Le Lavandou",
     titleLine1: "Une villa qui ne se vend pas ?",
     titleLine2: "Vendez-la avec son projet",
     subtitle:
-      "Pour les agences de Hyères à Saint-Tropez et Sainte-Maxime. Sous 24 h, un premier avis. Après une visite, sous 72 h, un dossier en trois scénarios, en français et en anglais, pour vos vendeurs et vos acquéreurs, y compris à l’étranger.",
+      "Pour les agences de Bormes-les-Mimosas au Rayol-Canadel, en passant par Le Lavandou, La Fossette, Aiguebelle et Cavalière. Sous 24 h, un premier avis. Après une visite, sous 72 h, un dossier en trois scénarios, en français et en anglais, pour vos vendeurs et vos acquéreurs, y compris à l’étranger.",
     imageAlt:
       "Villa Aiguebelle au Lavandou : allée dallée entre palmiers et murets en pierre, piscine et vue sur la mer",
   },
@@ -180,16 +180,16 @@ const fr = {
 
 const en: typeof fr = {
   meta: {
-    title: "Estate agent partners in the Var | SB Design Riviera",
+    title: "Estate agent partners, Bormes & Le Lavandou | SB Design",
     description:
-      "Villas to renovate from Hyères to Saint-Tropez: a first opinion within 24 hours, a costed project and 3D views for your buyers, in French and English.",
+      "Villas to renovate in Bormes-les-Mimosas, Le Lavandou and Le Rayol-Canadel: a first opinion within 24 hours, a costed project and 3D views for buyers.",
   },
   hero: {
-    label: "Estate agent partners · Var and French Riviera",
+    label: "Estate agent partners · Bormes-les-Mimosas and Le Lavandou",
     titleLine1: "A villa that will not sell?",
     titleLine2: "Sell it with its project",
     subtitle:
-      "For estate agencies from Hyères to Saint-Tropez and Sainte-Maxime. A first opinion within 24 hours. Then, within 72 hours of a site visit, a report setting out three scenarios, in French and in English, for your vendors and your buyers, including those based abroad.",
+      "For estate agencies from Bormes-les-Mimosas to Le Rayol-Canadel, including Le Lavandou, La Fossette, Aiguebelle and Cavalière. A first opinion within 24 hours. Then, within 72 hours of a site visit, a report setting out three scenarios, in French and in English, for your vendors and your buyers, including those based abroad.",
     imageAlt:
       "Villa Aiguebelle in Le Lavandou: paved path between palm trees and dry-stone walls, swimming pool and sea view",
   },

@@ -11,6 +11,7 @@ import { t, getLocalizedPath, getLangFromUrl } from '@i18n/index';
 import type { Locale } from '@i18n/languages';
 import Picture from '@components/ui/Picture.astro';
 import { zoneGroups, hubZones, zonesTitle } from '@/data/zones-intervention';
+import publication from '@/data/publication.json';
 
 interface Props { lang?: Locale; }
 const lang = Astro.props.lang ?? getLangFromUrl(Astro.url);
@@ -94,7 +95,7 @@ const agencesLink: Partial<Record<Locale, { href: string; label: string }>> = {
           <li><a href={getLocalizedPath('/agence', lang)} class="text-white/60 hover:text-white transition-colors duration-fast block py-[6px]">{t('nav', 'agence', lang)}</a></li>
           <li><a href={getLocalizedPath('/a-propos', lang)} class="text-white/60 hover:text-white transition-colors duration-fast block py-[6px]">{t('footer', 'leStudio', lang)}</a></li>
           <li><a href={getLocalizedPath('/contact', lang)} class="text-white/60 hover:text-white transition-colors duration-fast block py-[6px]">{t('nav', 'contact', lang)}</a></li>
-          {agencesLink[lang] && (
+          {publication.agencesClimPubliees && agencesLink[lang] && (
             <li><a href={agencesLink[lang]?.href} class="text-white/60 hover:text-white transition-colors duration-fast block py-[6px]">{agencesLink[lang]?.label}</a></li>
           )}
         </ul>

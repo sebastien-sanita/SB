@@ -12,6 +12,7 @@ import Button from '@components/ui/Button.astro';
 import HeroInner from '@components/react/HeroInner';
 import AgenceForm from '@components/sections/AgenceForm.astro';
 import { agencesContent, agencesPaths, agencesPdf, type AgencesLang } from '@/data/partenaires-agences';
+import publication from '@/data/publication.json';
 
 interface Props { lang: AgencesLang; }
 const { lang } = Astro.props;
@@ -33,6 +34,7 @@ const h3 = 'font-display text-lg font-semibold uppercase text-primary-dark mb-2'
   ogImage={heroImage}
   preloadImage={heroImage}
   alternates={agencesPaths}
+  noindex={!publication.agencesClimPubliees}
 >
 
   <div class="-mt-[var(--header-h)]">

@@ -1,6 +1,6 @@
 ---
 /**
- * Climatisation invisible en villa — Var et Côte d'Azur (FR uniquement).
+ * Climatisation invisible en villa — de Bormes-les-Mimosas au Rayol-Canadel (FR uniquement).
  * Contenu : src/data/climatisation-villa.ts (maquette client du 12/11/2026, aucun prix).
  *
  * Formulaire de rappel : MÊME circuit que le formulaire de contact (Netlify Form `contact`,
@@ -19,6 +19,8 @@ import TrackingFields from '@components/TrackingFields.astro';
 import type { Locale } from '@i18n/languages';
 import { faqSchema } from '@utils/seo';
 import { climContent as c } from '@/data/climatisation-villa';
+import Picture from '@components/ui/Picture.astro';
+import publication from '@/data/publication.json';
 
 const lang: Locale = 'fr';
 const heroImage = '/images/projets/villa-azur-62.jpeg';
@@ -44,6 +46,7 @@ const anchor = 'scroll-mt-[calc(var(--header-h)+24px)]';
   preloadImage={heroImage}
   schema={faqSchema(c.faq.items)}
   alternates={{ fr: '/climatisation-villa-var/' }}
+  noindex={!publication.agencesClimPubliees}
 >
 
   <div class="-mt-[var(--header-h)]">
@@ -130,11 +133,37 @@ const anchor = 'scroll-mt-[calc(var(--header-h)+24px)]';
     </Container>
   </Section>
 
-  <!-- 04 — FAQ (schema FAQPage passé au Layout) -->
-  <Section padding="lg" background="warm">
+  <!-- 04 — Sur nos chantiers : du gainable posé à la grille finie (photos client du 12/11/2026) -->
+  <Section padding="lg" background="dark">
     <Container>
       <div class="max-w-3xl" data-reveal>
         <span class="subsection-number">04</span>
+        <h2 class="font-display text-subsection font-bold uppercase text-white mt-4 mb-6">
+          {c.chantiers.title1} <span class="font-heading font-light">{c.chantiers.title2}</span>
+        </h2>
+        <p class="font-body text-base font-light text-white/70 leading-[1.75]">{c.chantiers.intro}</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-12 mt-12">
+        {c.chantiers.items.map((item) => (
+          <figure data-reveal>
+            <div class="aspect-[4/3] overflow-hidden bg-white/5">
+              <Picture src={item.src} alt={item.alt} class="w-full h-full object-cover" sizes="(max-width: 640px) 100vw, 50vw" />
+            </div>
+            <figcaption class="mt-4">
+              <span class="block font-heading text-[11px] font-semibold uppercase tracking-[0.2em] text-accent-gold mb-2">{item.tag}</span>
+              <span class="font-body text-sm font-light text-white/70 leading-[1.75]">{item.caption}</span>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </Container>
+  </Section>
+
+  <!-- 05 — FAQ (schema FAQPage passé au Layout) -->
+  <Section padding="lg" background="warm">
+    <Container>
+      <div class="max-w-3xl" data-reveal>
+        <span class="subsection-number">05</span>
         <h2 class={h2}>
           {c.faq.title1} <span class="font-heading font-light">{c.faq.title2}</span>
         </h2>
@@ -150,12 +179,12 @@ const anchor = 'scroll-mt-[calc(var(--header-h)+24px)]';
     </Container>
   </Section>
 
-  <!-- 05 — Formulaire de rappel (circuit du formulaire de contact) -->
+  <!-- 06 — Formulaire de rappel (circuit du formulaire de contact) -->
   <Section padding="lg" background="white" id="etude" class={anchor}>
     <Container>
       <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] gap-12 lg:gap-20">
         <div data-reveal>
-          <span class="subsection-number">05</span>
+          <span class="subsection-number">06</span>
           <h2 class={h2}>
             {c.form.title1} <span class="font-heading font-light">{c.form.title2}</span>
           </h2>
