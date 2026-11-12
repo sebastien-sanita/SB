@@ -177,6 +177,12 @@ const anchor = 'scroll-mt-[calc(var(--header-h)+24px)]';
             <input type="hidden" name="marque" value="SB Design" />
             <input type="hidden" name="source_lead" value="Page climatisation" />
             <input type="hidden" name="pipeline" value="SB Design" />
+            {/* Champs du formulaire contact non demandés ici. À GARDER : Netlify ne retient qu'une
+                définition par nom de formulaire ; sans eux, la page Contact pourrait perdre ces champs. */}
+            <input type="hidden" name="firstname" value="" />
+            <input type="hidden" name="statut_propriete" value="" />
+            <input type="hidden" name="budget_travaux" value="" />
+            <input type="hidden" name="echeance" value="" />
             <p class="hidden" aria-hidden="true">
               <label>{c.form.honeypot} : <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
             </p>
