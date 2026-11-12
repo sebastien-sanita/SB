@@ -1,3 +1,11 @@
+# ── Copies techniques du site → vrai domaine (à garder EN PREMIER) ──
+# Le sous-domaine Netlify par défaut et celui de la branche de
+# production servaient une copie complète du site (HTTP 200).
+# Les copies *.pages.dev (Cloudflare Pages) sont redirigées par
+# functions/_middleware.js : Cloudflare n'applique pas ces règles.
+https://sb-design-riviera.netlify.app/*           https://www.sbdesign.fr/:splat   301!
+https://master--sb-design-riviera.netlify.app/*   https://www.sbdesign.fr/:splat   301!
+
 # ───────────────────────────────────────────────────────────────
 # Redirections de domaine — SBDESIGN RIVIERA
 # ───────────────────────────────────────────────────────────────
