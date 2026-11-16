@@ -86,6 +86,10 @@ export const commune: Commune = {
           text: 'Du village médiéval au Cap Bénat, les règles d’aspect sont souvent strictes à Bormes-les-Mimosas : nous y intégrons une climatisation réversible qui ne se voit pas, démarches auprès de la mairie et des Bâtiments de France comprises.',
           label: 'Climatisation réversible et invisible',
         },
+        agencesLink: {
+          text: 'Agences immobilières de Bormes-les-Mimosas : pour une villa à rénover, du Pin de Bormes à Cabasson, nous préparons l’estimation des travaux et les vues 3D qui aident à vendre.',
+          label: 'Devenir agence partenaire',
+        },
       },
       contraintes: {
         title1: 'Ce qu’il faut savoir',
@@ -270,6 +274,10 @@ export const commune: Commune = {
         climLink: {
           text: 'From the medieval village to Cap Bénat, rules on external appearance are often strict in Bormes-les-Mimosas: we install reversible air conditioning that cannot be seen, including the applications to the town hall and the heritage architects.',
           label: 'Reversible, invisible air conditioning',
+        },
+        agencesLink: {
+          text: 'Estate agencies in Bormes-les-Mimosas: for a villa to renovate, from Le Pin de Bormes to Cabasson, we prepare the cost estimate and 3D views that help it sell.',
+          label: 'Become a partner agency',
         },
       },
       contraintes: {

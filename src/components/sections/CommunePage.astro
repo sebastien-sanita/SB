@@ -36,6 +36,8 @@ const para = 'font-body text-base font-light text-[var(--color-text-light)] lead
 const h3 = 'font-display text-lg font-semibold uppercase text-primary-dark mb-2';
 const cardsGrid = cards.length > 1 ? 'grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4' : 'grid grid-cols-1 gap-3 md:gap-4';
 import { climPaths, type ClimLang } from '@/data/climatisation-villa';
+import { agencesPaths, type AgencesLang } from '@/data/partenaires-agences';
+import publication from '@/data/publication.json';
 ---
 
 <Layout
@@ -125,6 +127,15 @@ import { climPaths, type ClimLang } from '@/data/climatisation-villa';
             <p class={para}>{c.biens.climLink.text}</p>
             <p class="mt-4">
               <a href={climPaths[lang as ClimLang]} class="font-body text-base text-primary-dark underline underline-offset-4 decoration-accent-gold/60 hover:text-accent-brown transition-colors duration-300">{c.biens.climLink.label}&nbsp;→</a>
+            </p>
+          </div>
+        )}
+        {/* Lien agences : seulement quand la page est publiée (src/data/publication.json) et en FR/EN */}
+        {publication.agencesClimPubliees && c.biens.agencesLink && agencesPaths[lang as AgencesLang] && (
+          <div class="mt-10">
+            <p class={para}>{c.biens.agencesLink.text}</p>
+            <p class="mt-4">
+              <a href={agencesPaths[lang as AgencesLang]} class="font-body text-base text-primary-dark underline underline-offset-4 decoration-accent-gold/60 hover:text-accent-brown transition-colors duration-300">{c.biens.agencesLink.label}&nbsp;→</a>
             </p>
           </div>
         )}

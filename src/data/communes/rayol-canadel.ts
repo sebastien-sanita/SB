@@ -82,6 +82,10 @@ export const commune: Commune = {
           text: 'Sur les pentes du Rayol et du Canadel, face à la mer, la vue ne doit rien perdre : nous intégrons une climatisation gainable dont les groupes extérieurs restent hors de vue de la terrasse et de la piscine.',
           label: 'Climatisation gainable intégrée',
         },
+        agencesLink: {
+          text: 'Au Rayol-Canadel, une villa face à la mer se vend mieux avec son projet. Agents immobiliers, soumettez-nous le bien : premier avis sous 24 h.',
+          label: 'Soumettre une villa à rénover',
+        },
       },
       contraintes: {
         title1: 'Ce qu’il faut savoir',
@@ -262,6 +266,10 @@ export const commune: Commune = {
         climLink: {
           text: 'On the slopes of Le Rayol and Le Canadel, facing the sea, the view must lose nothing: we install ducted air conditioning with outdoor units kept out of sight of the terrace and pool.',
           label: 'Integrated ducted air conditioning',
+        },
+        agencesLink: {
+          text: 'In Le Rayol-Canadel, a sea-facing villa sells better with its project. Estate agents, send us the property: first opinion within 24 hours.',
+          label: 'Submit a villa to renovate',
         },
       },
       contraintes: {

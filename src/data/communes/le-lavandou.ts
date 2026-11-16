@@ -94,6 +94,10 @@ export const commune: Commune = {
           text: 'Pour une villa au Lavandou, de Saint-Clair à Cavalière, nous intégrons aussi la climatisation dès les plans : unité gainable cachée en faux plafond, groupe extérieur dissimulé, aucun appareil en vue.',
           label: 'Climatisation invisible en villa',
         },
+        agencesLink: {
+          text: 'Vous êtes agent immobilier au Lavandou et une villa à rénover ne trouve pas preneur ? Nous vous rendons un premier avis sous 24 h, puis un projet chiffré pour vos acquéreurs.',
+          label: 'Espace partenaires agences',
+        },
       },
       contraintes: {
         title1: 'Ce qu’il faut savoir',
@@ -286,6 +290,10 @@ export const commune: Commune = {
         climLink: {
           text: 'For a villa in Le Lavandou, from Saint-Clair to Cavalière, we also design the air conditioning in from the drawings: a ducted unit hidden in the false ceiling, a screened outdoor unit, no appliance on show.',
           label: 'Invisible villa air conditioning',
+        },
+        agencesLink: {
+          text: 'Are you an estate agent in Le Lavandou with a villa to renovate that will not sell? We send you a first opinion within 24 hours, then a costed project for your buyers.',
+          label: 'Estate agent partners',
         },
       },
       contraintes: {
