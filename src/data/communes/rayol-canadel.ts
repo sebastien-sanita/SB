@@ -452,6 +452,10 @@ export const commune: Commune = {
           text: 'Sui pendii di Le Rayol e Le Canadel, di fronte al mare, la vista non deve perdere nulla: integriamo una climatizzazione canalizzata con le unità esterne fuori dalla vista di terrazza e piscina.',
           label: 'Climatizzazione canalizzata integrata',
         },
+        agencesLink: {
+          text: 'A Le Rayol-Canadel, una villa fronte mare si vende meglio con il suo progetto. Agenti immobiliari, proponeteci l’immobile: primo parere entro 24 ore.',
+          label: 'Proporre una villa da ristrutturare',
+        },
       },
       contraintes: {
         title1: 'Cosa sapere',

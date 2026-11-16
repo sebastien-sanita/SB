@@ -488,6 +488,10 @@ export const commune: Commune = {
           text: 'Per una villa a Le Lavandou, da Saint-Clair a Cavalière, integriamo anche la climatizzazione fin dal progetto: unità canalizzata nascosta nel controsoffitto, unità esterna schermata, nessun apparecchio in vista.',
           label: 'Climatizzazione invisibile in villa',
         },
+        agencesLink: {
+          text: 'Siete agenti immobiliari a Le Lavandou e una villa da ristrutturare non trova acquirenti? Vi inviamo un primo parere entro 24 ore, poi un progetto stimato per i vostri acquirenti.',
+          label: 'Agenzie partner',
+        },
       },
       contraintes: {
         title1: 'Cosa sapere',

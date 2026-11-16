@@ -7,7 +7,7 @@
  * langues : elles sont définies dans src/components/sections/AgenceForm.astro, pas ici.
  */
 
-export type AgencesLang = "fr" | "en";
+export type AgencesLang = "fr" | "en" | "it";
 
 /** Adresse e-mail de contact affichée sur le site (pied de page, page contact). */
 export const agencesEmail = "info@sbdesign.fr";
@@ -18,11 +18,13 @@ export const agencesPdf = "/docs/dossier-soumission-agences-sbdesign.pdf";
 export const agencesPaths: Record<AgencesLang, string> = {
   fr: "/partenaires-agences-var/",
   en: "/en/real-estate-agents/",
+  it: "/it/partner-agenzie-immobiliari/",
 };
 
 export const agencesMerciPaths: Record<AgencesLang, string> = {
   fr: "/espace-agences-merci/",
   en: "/en/espace-agences-merci/",
+  it: "/it/espace-agences-merci/",
 };
 
 const fr = {
@@ -333,4 +335,158 @@ const en: typeof fr = {
   },
 };
 
-export const agencesContent: Record<AgencesLang, typeof fr> = { fr, en };
+const it: typeof fr = {
+  meta: {
+    title: "Ristrutturazione ville prima della vendita | SB Design",
+    description:
+      "Agenzie immobiliari di Bormes-les-Mimosas e Le Lavandou: villa da ristrutturare stimata in 24 ore, viste 3D e preventivo fisso per vendere prima.",
+  },
+  hero: {
+    label: "Agenzie partner · Bormes-les-Mimosas · Le Lavandou",
+    titlePrefix: "Ville",
+    titleMorphWords: ["Da ristrutturare", "Da valorizzare", "Da vendere"],
+    subtitle:
+      "Una villa che non si vende? Vendetela con il suo progetto. Per le agenzie immobiliari da Bormes-les-Mimosas a Le Rayol-Canadel: un primo parere entro 24 ore, poi stima dei lavori, viste 3D e preventivo fisso per i vostri acquirenti, in Francia come all’estero.",
+    imageAlt:
+      "Villa Aiguebelle a Le Lavandou: vialetto lastricato tra palme e muretti in pietra, piscina e vista sul mare",
+  },
+  cta: { submit: "Proporre un immobile", download: "Scaricare il dossier" },
+  scenarios: {
+    title1: "Tre scenari",
+    title2: "per sbloccare la vendita",
+    keyLabel: "Scenario",
+    intro:
+      "La nostra convinzione: ogni villa ha un potenziale, e il nostro ruolo è rivelarlo, cifre alla mano. Un acquirente ragiona in budget complessivo: acquisto più lavori. Gli diamo questa cifra prima che la immagini troppo alta, con un preventivo professionale, quello che le banche richiedono per finanziare i lavori.",
+    items: [
+      {
+        key: "1",
+        title: "Vendere così com’è",
+        text: "Il costo reale dei lavori, voce per voce, per difendere il prezzo o giustificare un adeguamento.",
+        quote: "I lavori sono stimati, non indovinati.",
+      },
+      {
+        key: "2",
+        title: "Rinfrescare prima della vendita",
+        text: "Prima della stagione: pittura, suite padronale, climatizzazione invisibile, esterni.",
+        quote: "L’immobile si presenta all’altezza del suo prezzo.",
+      },
+      {
+        key: "3",
+        title: "Venduta con il suo progetto",
+        text: "Planimetrie, viste 3D del progetto (molto più di un home staging virtuale) e preventivo fisso valido 6 mesi: l’acquirente a distanza sa cosa compra.",
+        quote: "L’acquirente compra un progetto, non un cantiere.",
+      },
+    ],
+    quoteOpen: "«",
+    quoteClose: "»",
+  },
+  avis: {
+    title1: "Il primo parere,",
+    title2: "entro 24 ore",
+    intro: "A partire dall’indirizzo e dai documenti del vostro mandato.",
+    items: [
+      "DPE ufficiale dell’immobile (certificazione energetica francese), recuperato dal registro dell’ADEME",
+      "Vendite reali del quartiere (dati DVF): prezzo mediano al m² e fascia alta del mercato",
+      "Prezzo richiesto più lavori, confrontato con il mercato, per il venditore e per l’acquirente",
+      "Urbanistica: PLU (piano locale), legge sul litorale, siti tutelati, ABF (architetto dei beni culturali), rischi (incendi boschivi, mareggiate)",
+      "Budget dei lavori basato sui nostri cantieri recenti",
+    ],
+  },
+  dossier: {
+    title1: "Il dossier,",
+    title2: "72 ore dopo il sopralluogo",
+    intro: "Mezza giornata sul posto con rilievo 3D. Poi un solo interlocutore, dalla stima dei lavori alla ristrutturazione chiavi in mano.",
+    steps: [
+      { title: "Costo reale dei lavori", text: "Voce per voce, senza sorprese per l’acquirente." },
+      { title: "Viste 3D del progetto", text: "Per i vostri annunci e le vostre visite." },
+      { title: "Preventivo fisso 6 mesi", text: "L’acquirente sa cosa firma." },
+    ],
+    note: "Il primo dossier è offerto a ogni nuova agenzia partner. Versione inglese su richiesta.",
+  },
+  soumission: {
+    title1: "Il dossier",
+    title2: "di presentazione",
+    intro:
+      "La scheda dell’immobile e l’elenco dei documenti da allegare. Questi documenti sono in genere già nel vostro dossier di mandato.",
+    fileLabel: "Dossier di presentazione SB Design Riviera",
+    fileMeta:
+      "PDF, in francese · 2 pagine · scheda dell’immobile ed elenco dei documenti (DPE completo, diagnosi, planimetrie, foto, regolamento di condominio, verbali di assemblea…)",
+  },
+  form: {
+    title1: "Proporre",
+    title2: "un immobile",
+    honeypot: "Non compilare",
+    legendAgence: "La vostra agenzia",
+    legendBien: "L’immobile",
+    legendAnalyse: "Per un’analisi affidabile fin dal primo parere",
+    analyseIntro:
+      "Queste informazioni sono in genere già nel vostro dossier di mandato. Con il numero del DPE recuperiamo la diagnosi completa dal registro ufficiale dell’ADEME.",
+    agence: "Agenzia",
+    agent: "Il vostro nome",
+    telephone: "Telefono",
+    email: "E-mail",
+    adresse: "Indirizzo completo dell’immobile",
+    adressePlaceholder: "numero, via, codice postale, comune",
+    typeBien: "Tipo",
+    surface: "Superficie abitabile (m²)",
+    prix: "Prezzo richiesto",
+    mois: "In vendita da (mesi)",
+    etat: "Stato generale",
+    acquereur: "C’è già un acquirente interessato?",
+    travaux: "Lavori da prevedere secondo voi",
+    message: "Cosa blocca la vendita, secondo voi",
+    dpeNumero: "Numero del DPE (13 caratteri)",
+    dpeNumeroPlaceholder: "es. 2369E1234567X",
+    dpeNumeroTitle: "13 caratteri, cifre e lettere",
+    dpeClasse: "Classe DPE",
+    etage: "Piano (0 = piano terra)",
+    annee: "Anno di costruzione",
+    copropriete: "In condominio (copropriété)?",
+    documents: "Documenti che potete inviarci",
+    dpeFichier: "DPE o diagnosi (PDF)",
+    photo1: "Foto 1",
+    photo2: "Foto 2",
+    optional: "facoltativo",
+    submit: "Richiedere il primo parere",
+    filesNote:
+      "8 MB in totale per i file. Per il resto del dossier (planimetrie, verbali di assemblea, altre foto), rispondete semplicemente al nostro primo parere oppure scriveteci a",
+    options: {
+      type_bien: { Villa: "Villa", Appartement: "Appartamento", Maison: "Casa" },
+      etat: { rafraichir: "Da rinfrescare", renover: "Da ristrutturare", lourd: "Ristrutturazione importante", bon: "Buono stato" },
+      ouiNon: { oui: "sì", non: "no" },
+      dpeInconnu: "Non lo so",
+      travaux: {
+        "salle de bain": "Bagno",
+        cuisine: "Cucina",
+        climatisation: "Climatizzazione",
+        menuiseries: "Serramenti",
+        sols: "Pavimenti",
+        "électricité": "Impianto elettrico",
+        redistribution: "Ridistribuzione degli spazi",
+      },
+      documents: {
+        dpe: "DPE completo",
+        diagnostics: "Diagnosi (amianto, piombo, elettricità, gas)",
+        plans: "Planimetrie o misurazione Carrez",
+        photos: "Foto di tutte le stanze",
+        reglement_copro: "Regolamento di condominio",
+        pv_ag: "Verbali delle ultime 3 assemblee",
+        copro_fiche: "Libretto di manutenzione / piano lavori del condominio",
+        urbanisme_anterieur: "Permessi o dichiarazioni precedenti",
+        taxe_fonciere: "Avviso della tassa fondiaria (taxe foncière)",
+        factures_travaux: "Fatture di lavori recenti",
+      },
+    },
+  },
+  merci: {
+    metaTitle: "Richiesta ricevuta | SB Design Riviera",
+    metaDescription: "La vostra richiesta è stata ricevuta: primo parere entro un giorno lavorativo.",
+    label: "Agenzie partner",
+    title: "La vostra richiesta è stata ricevuta",
+    text: "Grazie. Stiamo esaminando l’immobile e vi invieremo un primo parere entro un giorno lavorativo.",
+    more: "Per completare il dossier (planimetrie, verbali di assemblea, altre foto), rispondete semplicemente a quel primo parere oppure scriveteci a",
+    back: "Torna alla pagina partner",
+  },
+};
+
+export const agencesContent: Record<AgencesLang, typeof fr> = { fr, en, it };

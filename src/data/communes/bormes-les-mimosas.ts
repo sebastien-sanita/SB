@@ -464,6 +464,10 @@ export const commune: Commune = {
           text: 'Dal borgo medievale a Cap Bénat, a Bormes-les-Mimosas le regole sull’aspetto esterno sono spesso severe: integriamo una climatizzazione reversibile che non si vede, pratiche con il comune e i Bâtiments de France comprese.',
           label: 'Climatizzazione reversibile e invisibile',
         },
+        agencesLink: {
+          text: 'Agenzie immobiliari di Bormes-les-Mimosas: per una villa da ristrutturare, dal Pin de Bormes a Cabasson, prepariamo la stima dei lavori e le viste 3D che aiutano a vendere.',
+          label: 'Diventare agenzia partner',
+        },
       },
       contraintes: {
         title1: 'Cosa sapere',

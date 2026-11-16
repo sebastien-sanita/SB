@@ -130,7 +130,7 @@ import publication from '@/data/publication.json';
             </p>
           </div>
         )}
-        {/* Lien agences : seulement quand la page est publiée (src/data/publication.json) et en FR/EN */}
+        {/* Lien agences : seulement quand la page est publiée (src/data/publication.json) */}
         {publication.agencesClimPubliees && c.biens.agencesLink && agencesPaths[lang as AgencesLang] && (
           <div class="mt-10">
             <p class={para}>{c.biens.agencesLink.text}</p>

@@ -22,6 +22,7 @@ const lang = Astro.props.lang ?? getLangFromUrl(Astro.url);
 const agencesLink: Partial<Record<Locale, { href: string; label: string }>> = {
   fr: { href: '/partenaires-agences-var/', label: 'Partenaires agences' },
   en: { href: '/en/real-estate-agents/', label: 'Estate agent partners' },
+  it: { href: '/it/partner-agenzie-immobiliari/', label: 'Agenzie partner' },
 };
 
 // Zones d'intervention : secteurs en liste, puis communes par département
