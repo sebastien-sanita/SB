@@ -15,13 +15,15 @@ interface Props {
   subtitle: string;
   titlePrefix?: string;
   titleMorphWords?: string[];
+  /** Taille du titre à mot changeant (facultatif) : pour des mots longs qui doivent tenir sur mobile. */
+  titleSizeClass?: string;
   /** Alt de l'image de fond. Repli : titre en texte brut + « — SB Design Riviera » (jamais vide). */
   imageAlt?: string;
 }
 
 const easeOutQuart = [0.25, 1, 0.5, 1] as const;
 
-export default function HeroInner({ images, label, title, subtitle, titlePrefix, titleMorphWords, imageAlt }: Props) {
+export default function HeroInner({ images, label, title, subtitle, titlePrefix, titleMorphWords, imageAlt, titleSizeClass = 'text-[clamp(56px,10vw,130px)]' }: Props) {
   const [current, setCurrent] = useState(0);
 
   // Alt descriptif : fourni par la page, sinon dérivé du titre (balises retirées).
@@ -88,7 +90,7 @@ export default function HeroInner({ images, label, title, subtitle, titlePrefix,
                 initial={{ opacity: 0, y: 30, filter: 'blur(8px)' }}
                 animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
                 transition={{ duration: 1.2, delay: 0.15, ease: easeOutQuart }}
-                className="grid font-display text-[clamp(56px,10vw,130px)] uppercase text-white leading-[1.05] tracking-[-0.04em] mb-6"
+                className={`grid font-display ${titleSizeClass} uppercase text-white leading-[1.05] tracking-[-0.04em] mb-6`}
               >
                 {/* Fantômes empilés dans la même cellule, HORS du h1 : le conteneur (donc le hero, dimensionné par
                     son contenu) garde la hauteur du mot qui prend le plus de lignes — la page
@@ -101,7 +103,7 @@ export default function HeroInner({ images, label, title, subtitle, titlePrefix,
                 ))}
                 {/* Le <h1> ne contient que la formule affichée. Il reprend les classes typographiques du
                     conteneur : la règle globale h1 (couleur, interlignage, approche) écraserait l'héritage. */}
-                <h1 className="col-start-1 row-start-1 font-display text-[clamp(56px,10vw,130px)] uppercase text-white leading-[1.05] tracking-[-0.04em]">
+                <h1 className={`col-start-1 row-start-1 font-display ${titleSizeClass} uppercase text-white leading-[1.05] tracking-[-0.04em]`}>
                   <span className="font-['Playfair_Display'] font-light text-white/40">{titlePrefix}</span>{' '}
                   <TextMorph
                     words={titleMorphWords}

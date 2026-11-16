@@ -27,16 +27,16 @@ export const agencesMerciPaths: Record<AgencesLang, string> = {
 
 const fr = {
   meta: {
-    title: "Partenaires agences à Bormes et au Lavandou | SB Design",
+    title: "Rénovation de villas avant vente, Bormes | SB Design",
     description:
-      "Villas à rénover à Bormes-les-Mimosas, au Lavandou et au Rayol-Canadel : premier avis sous 24 h, projet chiffré et vues 3D pour vos acquéreurs.",
+      "Agences immobilières de Bormes-les-Mimosas et du Lavandou : villa à rénover chiffrée sous 24 h, vues 3D et devis ferme pour vendre plus vite.",
   },
   hero: {
-    label: "Partenaires agences · Bormes-les-Mimosas et Le Lavandou",
-    titleLine1: "Une villa qui ne se vend pas ?",
-    titleLine2: "Vendez-la avec son projet",
+    label: "Partenaires agences · Bormes-les-Mimosas · Le Lavandou",
+    titlePrefix: "Villas",
+    titleMorphWords: ["À rénover", "À valoriser", "À vendre"],
     subtitle:
-      "Pour les agences de Bormes-les-Mimosas au Rayol-Canadel, en passant par Le Lavandou, La Fossette, Aiguebelle et Cavalière. Sous 24 h, un premier avis. Après une visite, sous 72 h, un dossier en trois scénarios, en français et en anglais, pour vos vendeurs et vos acquéreurs, y compris à l’étranger.",
+      "Une villa qui ne se vend pas ? Vendez-la avec son projet. Pour les agences immobilières de Bormes-les-Mimosas au Rayol-Canadel : premier avis sous 24 h, puis estimation des travaux, vues 3D et devis ferme pour vos acquéreurs, en France comme à l’étranger.",
     imageAlt:
       "Villa Aiguebelle au Lavandou : allée dallée entre palmiers et murets en pierre, piscine et vue sur la mer",
   },
@@ -45,7 +45,7 @@ const fr = {
     title1: "Trois scénarios",
     title2: "pour débloquer la vente",
     intro:
-      "Un acquéreur raisonne en budget global : achat plus travaux. Nous lui donnons ce chiffre avant qu’il ne l’imagine trop haut.",
+      "Notre conviction : chaque villa a un potentiel, et notre rôle est de le révéler, chiffres à l’appui. Un acquéreur raisonne en budget global : achat plus travaux. Nous lui donnons ce chiffre avant qu’il ne l’imagine trop haut, avec un devis professionnel, celui que demandent les banques pour financer les travaux.",
     items: [
       {
         key: "A",
@@ -62,7 +62,7 @@ const fr = {
       {
         key: "C",
         title: "Vendu avec son projet",
-        text: "Plans, vues 3D et devis ferme valable 6 mois : l’acquéreur à distance sait ce qu’il achète.",
+        text: "Plans, vues 3D du projet (bien plus qu’un home staging virtuel) et devis ferme valable 6 mois : l’acquéreur à distance sait ce qu’il achète.",
         quote: "L’acquéreur achète un projet, pas un chantier.",
       },
     ],
@@ -84,7 +84,7 @@ const fr = {
   dossier: {
     title1: "Le dossier,",
     title2: "72 h après la visite",
-    intro: "Une demi-journée sur place avec relevé 3D.",
+    intro: "Une demi-journée sur place avec relevé 3D. Puis un seul interlocuteur, de l’estimation des travaux à la rénovation clé en main.",
     steps: [
       { title: "Coût réel des travaux", text: "Lot par lot, sans surprise pour l’acquéreur." },
       { title: "Vues 3D du projet", text: "Pour les annonces et les visites." },
@@ -180,16 +180,16 @@ const fr = {
 
 const en: typeof fr = {
   meta: {
-    title: "Estate agent partners, Bormes & Le Lavandou | SB Design",
+    title: "Villa Renovation Before Sale, Le Lavandou | SB Design",
     description:
-      "Villas to renovate in Bormes-les-Mimosas, Le Lavandou and Le Rayol-Canadel: a first opinion within 24 hours, a costed project and 3D views for buyers.",
+      "Estate agents in Bormes-les-Mimosas and Le Lavandou: villas with renovation potential costed within 24 hours, 3D views and a fixed quote to sell faster.",
   },
   hero: {
-    label: "Estate agent partners · Bormes-les-Mimosas and Le Lavandou",
-    titleLine1: "A villa that will not sell?",
-    titleLine2: "Sell it with its project",
+    label: "Estate agent partners · Bormes-les-Mimosas · Le Lavandou",
+    titlePrefix: "Villas",
+    titleMorphWords: ["To renovate", "With potential", "To sell"],
     subtitle:
-      "For estate agencies from Bormes-les-Mimosas to Le Rayol-Canadel, including Le Lavandou, La Fossette, Aiguebelle and Cavalière. A first opinion within 24 hours. Then, within 72 hours of a site visit, a report setting out three scenarios, in French and in English, for your vendors and your buyers, including those based abroad.",
+      "A villa that will not sell? Sell it with its project. For estate agencies from Bormes-les-Mimosas to Le Rayol-Canadel: a first opinion within 24 hours, then a renovation cost estimate, 3D views and a fixed quotation for your buyers, in France or abroad.",
     imageAlt:
       "Villa Aiguebelle in Le Lavandou: paved path between palm trees and dry-stone walls, swimming pool and sea view",
   },
@@ -198,7 +198,7 @@ const en: typeof fr = {
     title1: "Three scenarios",
     title2: "to unlock the sale",
     intro:
-      "A buyer thinks in terms of an overall budget: purchase plus works. We give them that figure before they imagine it far too high.",
+      "Our conviction: every villa has potential, and our role is to reveal it, with figures to back it up. A buyer thinks in terms of an overall budget: purchase plus works. We give them that figure before they imagine it far too high, with a professional quotation of the kind banks ask for to finance the works.",
     items: [
       {
         key: "A",
@@ -215,7 +215,7 @@ const en: typeof fr = {
       {
         key: "C",
         title: "Sold with its project",
-        text: "Plans, 3D views and a fixed quotation valid for six months: a buyer at a distance knows exactly what they are buying.",
+        text: "Plans, 3D views of the project (far more than virtual staging) and a fixed quotation valid for six months: a buyer at a distance knows exactly what they are buying.",
         quote: "The buyer is purchasing a project, not a building site.",
       },
     ],
@@ -237,7 +237,7 @@ const en: typeof fr = {
   dossier: {
     title1: "The report,",
     title2: "72 hours after the visit",
-    intro: "Half a day on site, with a 3D survey.",
+    intro: "Half a day on site, with a 3D survey. Then a single contact, from the cost estimate to turnkey renovation.",
     steps: [
       { title: "True cost of the works", text: "Trade by trade, with no surprises for the buyer." },
       { title: "3D views of the project", text: "For your listings and your viewings." },

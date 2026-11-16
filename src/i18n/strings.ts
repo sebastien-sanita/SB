@@ -704,7 +704,7 @@ const strings = {
     heroMorphWords: {
       fr: ['Méthode', 'Maîtrise', 'Engagement'],
       en: ['Approach', 'Mastery', 'Commitment'],
-      it: ['Metodo', 'Padronanza', 'Impegno'],
+      it: ['Metodo', 'Rigore', 'Impegno'],
     },
     heroSubtitle: {
       fr: 'Une maîtrise complète de la transformation immobilière haut de gamme sur la Côte d\'Azur.',

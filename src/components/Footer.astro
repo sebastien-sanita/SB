@@ -12,6 +12,8 @@ import type { Locale } from '@i18n/languages';
 import Picture from '@components/ui/Picture.astro';
 import { zoneGroups, hubZones, zonesTitle } from '@/data/zones-intervention';
 import publication from '@/data/publication.json';
+import { climPaths, type ClimLang } from '@/data/climatisation-villa';
+const climFooterLabel: Record<ClimLang, string> = { fr: 'Climatisation invisible', en: 'Invisible air conditioning', it: 'Climatizzazione invisibile' };
 
 interface Props { lang?: Locale; }
 const lang = Astro.props.lang ?? getLangFromUrl(Astro.url);
@@ -110,6 +112,10 @@ const agencesLink: Partial<Record<Locale, { href: string; label: string }>> = {
           <li><a href={`${getLocalizedPath('/projets', lang)}?type=renovation`} class="text-white/60 hover:text-white transition-colors duration-fast block py-[6px]">{t('footer', 'renovation', lang)}</a></li>
           <li><a href={`${getLocalizedPath('/projets', lang)}?type=construction`} class="text-white/60 hover:text-white transition-colors duration-fast block py-[6px]">{t('footer', 'construction', lang)}</a></li>
           <li><a href={getLocalizedPath('/projets', lang)} class="text-white/60 hover:text-white transition-colors duration-fast block py-[6px]">{t('footer', 'amenagement', lang)}</a></li>
+          {/* Page climatisation invisible en villa (FR / EN / IT) */}
+          {climPaths[lang as ClimLang] && (
+            <li><a href={climPaths[lang as ClimLang]} class="text-white/60 hover:text-white transition-colors duration-fast block py-[6px]">{climFooterLabel[lang as ClimLang]}</a></li>
+          )}
         </ul>
 
         <div class="mt-10">
