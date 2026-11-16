@@ -35,6 +35,7 @@ const h2 = 'font-display text-subsection font-bold uppercase text-primary-dark m
 const para = 'font-body text-base font-light text-[var(--color-text-light)] leading-[1.75]';
 const h3 = 'font-display text-lg font-semibold uppercase text-primary-dark mb-2';
 const cardsGrid = cards.length > 1 ? 'grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4' : 'grid grid-cols-1 gap-3 md:gap-4';
+import { climPaths, type ClimLang } from '@/data/climatisation-villa';
 ---
 
 <Layout
@@ -119,6 +120,14 @@ const cardsGrid = cards.length > 1 ? 'grid grid-cols-1 md:grid-cols-2 gap-3 md:g
             </li>
           ))}
         </ul>
+        {c.biens.climLink && (
+          <div class="mt-10">
+            <p class={para}>{c.biens.climLink.text}</p>
+            <p class="mt-4">
+              <a href={climPaths[lang as ClimLang]} class="font-body text-base text-primary-dark underline underline-offset-4 decoration-accent-gold/60 hover:text-accent-brown transition-colors duration-300">{c.biens.climLink.label}&nbsp;→</a>
+            </p>
+          </div>
+        )}
       </div>
     </Container>
   </Section>

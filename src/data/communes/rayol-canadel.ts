@@ -78,6 +78,10 @@ export const commune: Commune = {
           'Extérieurs : piscine, terrasses, cuisine d’été, éclairage',
           'Valorisation avant mise en location saisonnière ou vente',
         ],
+        climLink: {
+          text: 'Sur les pentes du Rayol et du Canadel, face à la mer, la vue ne doit rien perdre : nous intégrons une climatisation gainable dont les groupes extérieurs restent hors de vue de la terrasse et de la piscine.',
+          label: 'Climatisation gainable intégrée',
+        },
       },
       contraintes: {
         title1: 'Ce qu’il faut savoir',
@@ -255,6 +259,10 @@ export const commune: Commune = {
           'Outdoor spaces: pool, terraces, summer kitchen, lighting',
           'Enhancement before seasonal letting or sale',
         ],
+        climLink: {
+          text: 'On the slopes of Le Rayol and Le Canadel, facing the sea, the view must lose nothing: we install ducted air conditioning with outdoor units kept out of sight of the terrace and pool.',
+          label: 'Integrated ducted air conditioning',
+        },
       },
       contraintes: {
         title1: 'What to know',
@@ -432,6 +440,10 @@ export const commune: Commune = {
           'Esterni: piscina, terrazze, cucina estiva, illuminazione',
           'Valorizzazione prima della locazione stagionale o della vendita',
         ],
+        climLink: {
+          text: 'Sui pendii di Le Rayol e Le Canadel, di fronte al mare, la vista non deve perdere nulla: integriamo una climatizzazione canalizzata con le unità esterne fuori dalla vista di terrazza e piscina.',
+          label: 'Climatizzazione canalizzata integrata',
+        },
       },
       contraintes: {
         title1: 'Cosa sapere',

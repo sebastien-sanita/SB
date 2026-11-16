@@ -24,6 +24,8 @@ export interface CommuneContent {
     items: string[];
     prestationsTitle: string;
     prestations: string[];
+    /** Lien facultatif vers la page climatisation invisible en villa */
+    climLink?: { text: string; label: string };
   };
   /** 03 — Contraintes locales (formulations prudentes) */
   contraintes: {

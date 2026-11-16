@@ -82,6 +82,10 @@ export const commune: Commune = {
           'Construction neuve et extension, de la conception à la livraison',
           'Valorisation avant mise en location saisonnière ou vente',
         ],
+        climLink: {
+          text: 'Du village médiéval au Cap Bénat, les règles d’aspect sont souvent strictes à Bormes-les-Mimosas : nous y intégrons une climatisation réversible qui ne se voit pas, démarches auprès de la mairie et des Bâtiments de France comprises.',
+          label: 'Climatisation réversible et invisible',
+        },
       },
       contraintes: {
         title1: 'Ce qu’il faut savoir',
@@ -263,6 +267,10 @@ export const commune: Commune = {
           'New builds and extensions, from design to delivery',
           'Enhancement before seasonal letting or sale',
         ],
+        climLink: {
+          text: 'From the medieval village to Cap Bénat, rules on external appearance are often strict in Bormes-les-Mimosas: we install reversible air conditioning that cannot be seen, including the applications to the town hall and the heritage architects.',
+          label: 'Reversible, invisible air conditioning',
+        },
       },
       contraintes: {
         title1: 'What to know',
@@ -444,6 +452,10 @@ export const commune: Commune = {
           'Nuove costruzioni e ampliamenti, dal progetto alla consegna',
           'Valorizzazione prima della locazione stagionale o della vendita',
         ],
+        climLink: {
+          text: 'Dal borgo medievale a Cap Bénat, a Bormes-les-Mimosas le regole sull’aspetto esterno sono spesso severe: integriamo una climatizzazione reversibile che non si vede, pratiche con il comune e i Bâtiments de France comprese.',
+          label: 'Climatizzazione reversibile e invisibile',
+        },
       },
       contraintes: {
         title1: 'Cosa sapere',

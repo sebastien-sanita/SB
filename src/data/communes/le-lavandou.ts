@@ -90,6 +90,10 @@ export const commune: Commune = {
           'Aménagement des extérieurs : terrasses, piscine, cuisine d’été',
           'Valorisation avant mise en location saisonnière ou vente',
         ],
+        climLink: {
+          text: 'Pour une villa au Lavandou, de Saint-Clair à Cavalière, nous intégrons aussi la climatisation dès les plans : unité gainable cachée en faux plafond, groupe extérieur dissimulé, aucun appareil en vue.',
+          label: 'Climatisation invisible en villa',
+        },
       },
       contraintes: {
         title1: 'Ce qu’il faut savoir',
@@ -279,6 +283,10 @@ export const commune: Commune = {
           'Outdoor design: terraces, pool, summer kitchen',
           'Enhancement before seasonal letting or sale',
         ],
+        climLink: {
+          text: 'For a villa in Le Lavandou, from Saint-Clair to Cavalière, we also design the air conditioning in from the drawings: a ducted unit hidden in the false ceiling, a screened outdoor unit, no appliance on show.',
+          label: 'Invisible villa air conditioning',
+        },
       },
       contraintes: {
         title1: 'What to know',
@@ -468,6 +476,10 @@ export const commune: Commune = {
           'Sistemazione degli esterni: terrazze, piscina, cucina estiva',
           'Valorizzazione prima della locazione stagionale o della vendita',
         ],
+        climLink: {
+          text: 'Per una villa a Le Lavandou, da Saint-Clair a Cavalière, integriamo anche la climatizzazione fin dal progetto: unità canalizzata nascosta nel controsoffitto, unità esterna schermata, nessun apparecchio in vista.',
+          label: 'Climatizzazione invisibile in villa',
+        },
       },
       contraintes: {
         title1: 'Cosa sapere',
