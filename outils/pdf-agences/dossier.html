@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --dark:#1A1A1A; --gold:#C9A87C; --brown:#8B7355; --warm:#F5EFE7; --line:#DCD3C6; --muted:#6B6B6B; }
+  body { font-family: Inter, sans-serif; color: var(--dark); font-size: 9.5pt; line-height: 1.45; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .page { width: 210mm; height: 297mm; padding: 14mm 16mm 0; position: relative; page-break-after: always; overflow: hidden; }
+  .page:last-child { page-break-after: auto; }
+  header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 5mm; border-bottom: 0.6pt solid var(--gold); }
+  header img { height: 22mm; width: auto; margin: -4mm 0 -4mm -3mm; }
+  header .contact { text-align: right; font-size: 8pt; color: var(--muted); line-height: 1.5; }
+  header .contact strong { color: var(--dark); font-weight: 500; }
+  footer { position: absolute; left: 16mm; right: 16mm; bottom: 9mm; display: flex; justify-content: space-between; font-size: 7.5pt; color: var(--muted); border-top: 0.4pt solid var(--line); padding-top: 2.5mm; }
+  .kicker { font-size: 7.5pt; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--brown); }
+  h1 { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 22pt; line-height: 1.1; text-transform: uppercase; letter-spacing: .01em; }
+  h1 span { font-family: Inter, sans-serif; font-weight: 300; }
+  .sub { margin-top: 2mm; color: var(--muted); font-size: 9pt; }
+  .steps { margin-top: 4mm; display: grid; grid-template-columns: repeat(3, 1fr); gap: 3mm; }
+  .step { background: var(--warm); padding: 2.6mm 3.2mm; }
+  .step .n { font-family: 'Playfair Display', serif; font-size: 13pt; color: var(--gold); font-weight: 700; line-height: 1; }
+  .step p { margin-top: 1.5mm; font-size: 8pt; line-height: 1.45; }
+  h2 { display: flex; align-items: baseline; gap: 3mm; margin: 5mm 0 2.4mm; font-family: 'Playfair Display', serif; font-size: 13pt; font-weight: 700; text-transform: uppercase; }
+  h2 .num { font-family: Inter, sans-serif; font-size: 8pt; font-weight: 500; color: var(--gold); letter-spacing: .1em; }
+  h2 span.l { font-family: Inter, sans-serif; font-weight: 300; }
+  .grid { display: grid; gap: 2.6mm 4mm; }
+  .g2 { grid-template-columns: 1fr 1fr; }
+  .g3 { grid-template-columns: 1fr 1fr 1fr; }
+  .g4 { grid-template-columns: 1.4fr 1fr 1fr 1fr; }
+  .f label { display: block; font-size: 7.5pt; font-weight: 500; color: var(--brown); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 1mm; }
+  .f label em { font-style: normal; text-transform: none; letter-spacing: 0; color: var(--muted); font-weight: 400; }
+  .box { height: 7mm; border: 0.6pt solid var(--line); background: #fff; border-radius: 1pt; }
+  .box.tall { height: 13mm; }
+  .row { margin-top: 2.6mm; }
+  .choices { display: flex; flex-wrap: wrap; gap: 1.6mm 5mm; min-height: 7.5mm; align-items: center; }
+  .c { display: inline-flex; align-items: center; gap: 1.8mm; font-size: 8.8pt; }
+  .cb { width: 3.6mm; height: 3.6mm; flex: none; }
+  table { width: 100%; border-collapse: collapse; }
+  th { text-align: left; font-size: 7.5pt; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--brown); padding: 0 2.5mm 2mm; border-bottom: 0.6pt solid var(--gold); }
+  td { padding: 1.5mm 2.5mm; border-bottom: 0.4pt solid var(--line); vertical-align: top; font-size: 8.6pt; }
+  td.why { color: var(--muted); font-size: 7.8pt; width: 40%; }
+  td .item { display: flex; gap: 2.5mm; align-items: flex-start; }
+  td .item .cb { margin-top: 0.5mm; }
+  td b { font-weight: 600; }
+  td small { color: var(--muted); font-size: 7.5pt; }
+  .intro { color: var(--muted); font-size: 8.5pt; margin-bottom: 3mm; }
+  ul.deliver { list-style: none; display: grid; gap: 1.4mm; }
+  ul.deliver li { padding-left: 5mm; position: relative; font-size: 8.8pt; }
+  ul.deliver li::before { content: ''; position: absolute; left: 0; top: 2mm; width: 2.4mm; height: 0.6pt; background: var(--gold); }
+  .send { margin-top: 4mm; background: var(--warm); padding: 3mm 4mm; font-size: 8.8pt; }
+  .send strong { font-weight: 600; }
+  .legal { margin-top: 3mm; font-size: 7.5pt; color: var(--muted); }
+</style>
+</head>
+<body>
+
+<section class="page">
+  <header>
+    <img src="logo.png" alt="SB Design">
+    <div class="contact"><strong>SB Design Riviera</strong><br>info@sbdesign.fr · +33 6 09 45 92 45<br>sbdesign.fr</div>
+  </header>
+
+  <p class="kicker" style="margin-top:6mm">Partenaires agences immobilières</p>
+  <h1 style="margin-top:1.5mm">Dossier <span>de soumission</span></h1>
+  <p class="sub">Villas à rénover ou à valoriser · de Bormes-les-Mimosas au Rayol-Canadel, par Le Lavandou</p>
+
+  <div class="steps">
+    <div class="step"><div class="n">01</div><p><b>Remplissez cette fiche</b> (directement dans le PDF) et rassemblez les pièces de la page 2, en général déjà dans votre dossier de mandat.</p></div>
+    <div class="step"><div class="n">02</div><p><b>Premier avis sous 24 h ouvrées</b> : DPE officiel, ventes réelles du quartier (DVF), urbanisme et enveloppe de travaux.</p></div>
+    <div class="step"><div class="n">03</div><p><b>Dossier sous 72 h</b> après une visite d'une demi-journée avec relevé 3D : trois scénarios et un devis ferme valable 6 mois.</p></div>
+  </div>
+
+  <h2><span class="num">01</span>L'agence</h2>
+  <div class="grid g4" style="grid-template-columns: 1fr 1fr 0.8fr 1.2fr;">
+    <div class="f"><label>Agence</label><div class="box" data-field="agence"></div></div>
+    <div class="f"><label>Agent</label><div class="box" data-field="agent"></div></div>
+    <div class="f"><label>Téléphone</label><div class="box" data-field="telephone"></div></div>
+    <div class="f"><label>E-mail</label><div class="box" data-field="email"></div></div>
+  </div>
+
+  <h2><span class="num">02</span>Le bien</h2>
+  <div class="f"><label>Adresse complète <em>(numéro, rue, code postal, commune)</em></label><div class="box" data-field="adresse"></div></div>
+  <div class="grid g2 row">
+    <div class="f"><label>Type</label><div class="choices">
+      <span class="c"><span class="cb" data-check="type_villa"></span>Villa</span>
+      <span class="c"><span class="cb" data-check="type_maison"></span>Maison</span>
+      <span class="c"><span class="cb" data-check="type_appartement"></span>Appartement</span>
+    </div></div>
+    <div class="f"><label>État général</label><div class="choices">
+      <span class="c"><span class="cb" data-check="etat_rafraichir"></span>À rafraîchir</span>
+      <span class="c"><span class="cb" data-check="etat_renover"></span>À rénover</span>
+      <span class="c"><span class="cb" data-check="etat_lourd"></span>Lourd</span>
+    </div></div>
+  </div>
+  <div class="grid g4 row">
+    <div class="f"><label>Surface habitable <em>(m²)</em></label><div class="box" data-field="surface"></div></div>
+    <div class="f"><label>Étage</label><div class="box" data-field="etage"></div></div>
+    <div class="f"><label>Ascenseur</label><div class="choices">
+      <span class="c"><span class="cb" data-check="ascenseur_oui"></span>Oui</span>
+      <span class="c"><span class="cb" data-check="ascenseur_non"></span>Non</span>
+    </div></div>
+    <div class="f"><label>Construit en</label><div class="box" data-field="annee"></div></div>
+  </div>
+  <div class="grid g4 row">
+    <div class="f"><label>Copropriété</label><div class="choices">
+      <span class="c"><span class="cb" data-check="copro_oui"></span>Oui</span>
+      <span class="c"><span class="cb" data-check="copro_non"></span>Non</span>
+    </div></div>
+    <div class="f"><label>Nombre de lots</label><div class="box" data-field="lots"></div></div>
+    <div class="f"><label>Prix affiché</label><div class="box" data-field="prix"></div></div>
+    <div class="f"><label>En vente depuis <em>(mois)</em></label><div class="box" data-field="mois"></div></div>
+  </div>
+  <div class="grid g2 row">
+    <div class="f"><label>Numéro du DPE <em>(13 caractères)</em></label><div class="box" data-field="dpe_numero"></div></div>
+    <div class="f"><label>Classe DPE</label><div class="choices">
+      <span class="c"><span class="cb" data-check="dpe_A"></span>A</span><span class="c"><span class="cb" data-check="dpe_B"></span>B</span><span class="c"><span class="cb" data-check="dpe_C"></span>C</span><span class="c"><span class="cb" data-check="dpe_D"></span>D</span><span class="c"><span class="cb" data-check="dpe_E"></span>E</span><span class="c"><span class="cb" data-check="dpe_F"></span>F</span><span class="c"><span class="cb" data-check="dpe_G"></span>G</span>
+    </div></div>
+  </div>
+  <div class="f row"><label>Travaux pressentis</label><div class="choices">
+    <span class="c"><span class="cb" data-check="trav_sdb"></span>Salle de bains</span>
+    <span class="c"><span class="cb" data-check="trav_cuisine"></span>Cuisine</span>
+    <span class="c"><span class="cb" data-check="trav_clim"></span>Climatisation</span>
+    <span class="c"><span class="cb" data-check="trav_menuiseries"></span>Fenêtres</span>
+    <span class="c"><span class="cb" data-check="trav_sols"></span>Sols</span>
+    <span class="c"><span class="cb" data-check="trav_elec"></span>Électricité</span>
+    <span class="c"><span class="cb" data-check="trav_redistribution"></span>Redistribution</span>
+  </div></div>
+
+  <h2><span class="num">03</span>La vente</h2>
+  <div class="f"><label>Ce qui bloque la vente, selon vous</label><div class="box tall" data-field="blocage" data-multi></div></div>
+  <div class="grid row" style="grid-template-columns: 1fr 3fr; gap: 4mm;">
+    <div class="f"><label>Acquéreur positionné</label><div class="choices">
+      <span class="c"><span class="cb" data-check="acquereur_oui"></span>Oui</span>
+      <span class="c"><span class="cb" data-check="acquereur_non"></span>Non</span>
+    </div></div>
+    <div class="f"><label>Ses attentes</label><div class="box" data-field="attentes"></div></div>
+  </div>
+
+  <footer><span>SB Design Riviera · info@sbdesign.fr · +33 6 09 45 92 45 · dossier de soumission agences</span><span>1 / 2</span></footer>
+</section>
+
+<section class="page">
+  <header>
+    <img src="logo.png" alt="SB Design">
+    <div class="contact"><strong>SB Design Riviera</strong><br>info@sbdesign.fr · +33 6 09 45 92 45<br>sbdesign.fr</div>
+  </header>
+
+  <h2 style="margin-top:6mm"><span class="num">04</span><span>Les pièces <span class="l">à joindre</span></span></h2>
+  <p class="intro">En gras : indispensables pour une analyse fiable. Les autres si elles sont disponibles.</p>
+  <table>
+    <thead><tr><th>Pièce</th><th>Pour quoi faire</th></tr></thead>
+    <tbody>
+      <tr><td><div class="item"><span class="cb" data-check="p_dpe"></span><span><b>DPE complet</b> (le rapport, pas seulement l'étiquette)</span></div></td><td class="why">Isolation, chauffage, ventilation, menuiseries : base des scénarios énergie et climatisation</td></tr>
+      <tr><td><div class="item"><span class="cb" data-check="p_diag"></span><span><b>Diagnostics techniques</b> (amiante, plomb, électricité, gaz, termites, ERP)</span></div></td><td class="why">Amiante et plomb conditionnent la démolition ; électricité et gaz chiffrent la remise aux normes</td></tr>
+      <tr><td><div class="item"><span class="cb" data-check="p_plans"></span><span><b>Plans du logement</b> ou mesurage (Carrez / Boutin)</span></div></td><td class="why">Pré-chiffrage avant visite, préparation du relevé 3D</td></tr>
+      <tr><td><div class="item"><span class="cb" data-check="p_photos"></span><span><b>Photos de toutes les pièces</b>, y compris salle de bains, cuisine, tableau électrique, chaudière</span></div></td><td class="why">Estimer l'état sans attendre la visite</td></tr>
+      <tr><td><div class="item"><span class="cb" data-check="p_reglement"></span><span><b>Règlement de copropriété</b> et état descriptif de division <small>(copropriété)</small></span></div></td><td class="why">Ce qui est privatif ou commun (murs, fenêtres, balcons), règles sur la climatisation et l'aspect extérieur</td></tr>
+      <tr><td><div class="item"><span class="cb" data-check="p_pv"></span><span><b>Procès-verbaux des 3 dernières AG</b> <small>(copropriété)</small></span></div></td><td class="why">Travaux votés ou à venir, refus passés (climatisation, menuiseries), litiges</td></tr>
+      <tr><td><div class="item"><span class="cb" data-check="p_fiche"></span><span>Fiche synthétique, carnet d'entretien, DTG ou plan pluriannuel de travaux <small>(copropriété)</small></span></div></td><td class="why">État des réseaux et de la toiture, ravalement à venir</td></tr>
+      <tr><td><div class="item"><span class="cb" data-check="p_urba"></span><span>Autorisations d'urbanisme antérieures (permis, déclarations) et certificats de conformité</span></div></td><td class="why">Surfaces régulières, extensions non déclarées</td></tr>
+      <tr><td><div class="item"><span class="cb" data-check="p_taxe"></span><span>Dernière taxe foncière</span></div></td><td class="why">Vérifier la surface et les annexes déclarées</td></tr>
+      <tr><td><div class="item"><span class="cb" data-check="p_factures"></span><span>Factures et garanties décennales des travaux de moins de 10 ans</span></div></td><td class="why">Ce qui peut être conservé et reste garanti</td></tr>
+      <tr><td><div class="item"><span class="cb" data-check="p_spanc"></span><span>Contrôle d'assainissement (SPANC) si pas de tout-à-l'égout <small>(maison)</small></span></div></td><td class="why">Mise aux normes à chiffrer</td></tr>
+      <tr><td><div class="item"><span class="cb" data-check="p_bornage"></span><span>Plan de bornage ou cadastre, servitudes du titre de propriété <small>(maison)</small></span></div></td><td class="why">Limites, vues, droits de passage avant toute extension</td></tr>
+    </tbody>
+  </table>
+
+  <h2 style="margin-top:5mm"><span class="num">05</span><span>Ce que nous <span class="l">vous remettons</span></span></h2>
+  <ul class="deliver">
+    <li>Un premier avis écrit, à partager avec votre vendeur.</li>
+    <li>Après visite : le coût réel des travaux lot par lot, des vues 3D, un scénario de rafraîchissement et un projet complet prêt à signer pour l'acquéreur.</li>
+    <li>Le premier dossier est offert à chaque nouvelle agence partenaire. Disponible en français et en anglais pour les acquéreurs étrangers.</li>
+  </ul>
+
+  <div class="send"><strong>Envoyer le dossier :</strong> depuis le formulaire « Partenaires agences » sur sbdesign.fr, ou par e-mail à <strong>info@sbdesign.fr</strong> avec les pièces jointes.</div>
+
+  <p class="legal">Les informations et documents transmis servent uniquement à l'étude du bien et ne sont pas communiqués à des tiers. Les chiffres de marché sont un repère statistique, pas une estimation immobilière.</p>
+
+  <footer><span>SB Design Riviera · info@sbdesign.fr · +33 6 09 45 92 45 · dossier de soumission agences</span><span>2 / 2</span></footer>
+</section>
+</body>
+</html>
