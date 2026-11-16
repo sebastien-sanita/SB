@@ -44,23 +44,24 @@ const fr = {
   scenarios: {
     title1: "Trois scénarios",
     title2: "pour débloquer la vente",
+    keyLabel: "Scénario",
     intro:
       "Notre conviction : chaque villa a un potentiel, et notre rôle est de le révéler, chiffres à l’appui. Un acquéreur raisonne en budget global : achat plus travaux. Nous lui donnons ce chiffre avant qu’il ne l’imagine trop haut, avec un devis professionnel, celui que demandent les banques pour financer les travaux.",
     items: [
       {
-        key: "A",
+        key: "1",
         title: "Vendre en l’état",
         text: "Le coût réel des travaux lot par lot, pour défendre le prix ou justifier un ajustement.",
         quote: "Les travaux sont chiffrés, pas devinés.",
       },
       {
-        key: "B",
+        key: "2",
         title: "Rafraîchir avant la vente",
         text: "Avant la saison : peinture, suite parentale, climatisation invisible, extérieurs.",
         quote: "Le bien se présente au niveau de son prix.",
       },
       {
-        key: "C",
+        key: "3",
         title: "Vendu avec son projet",
         text: "Plans, vues 3D du projet (bien plus qu’un home staging virtuel) et devis ferme valable 6 mois : l’acquéreur à distance sait ce qu’il achète.",
         quote: "L’acquéreur achète un projet, pas un chantier.",
@@ -197,23 +198,24 @@ const en: typeof fr = {
   scenarios: {
     title1: "Three scenarios",
     title2: "to unlock the sale",
+    keyLabel: "Scenario",
     intro:
       "Our conviction: every villa has potential, and our role is to reveal it, with figures to back it up. A buyer thinks in terms of an overall budget: purchase plus works. We give them that figure before they imagine it far too high, with a professional quotation of the kind banks ask for to finance the works.",
     items: [
       {
-        key: "A",
+        key: "1",
         title: "Sell as it stands",
         text: "The true cost of the works, trade by trade, to defend the asking price or justify an adjustment.",
         quote: "The works are costed, not guessed.",
       },
       {
-        key: "B",
+        key: "2",
         title: "Refresh before the sale",
         text: "Ahead of the season: paintwork, master suite, invisible air conditioning, outdoor areas.",
         quote: "The property presents at the level of its price.",
       },
       {
-        key: "C",
+        key: "3",
         title: "Sold with its project",
         text: "Plans, 3D views of the project (far more than virtual staging) and a fixed quotation valid for six months: a buyer at a distance knows exactly what they are buying.",
         quote: "The buyer is purchasing a project, not a building site.",
