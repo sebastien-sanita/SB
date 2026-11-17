@@ -2,8 +2,8 @@
 /**
  * AgenceGate — fenêtre d'accueil de la page « Partenaires agences » (17/11/2026).
  * Demande au visiteur de confirmer qu'il est une agence immobilière (bouton « Continuer »)
- * ou le renvoie vers la page contact s'il est un particulier. Le choix est mémorisé
- * dans le navigateur (localStorage « sbd-agence-ok »).
+ * ou le renvoie vers la page contact s'il est un particulier. Le choix n'est pas mémorisé :
+ * la fenêtre s'affiche à chaque visite.
  * Ce n'est pas une sécurité : le contenu reste dans la page (lisible par Google).
  */
 import { getLocalizedPath } from '@i18n/index';
@@ -69,19 +69,15 @@ const contactHref = getLocalizedPath('/contact', lang);
 
 <script is:inline>
   (function () {
-    var KEY = 'sbd-agence-ok';
+    // Choix NON mémorisé (demande de Dino, 17/11/2026) : la fenêtre s'affiche à chaque visite.
     var gate = document.getElementById('agence-gate');
     if (!gate) return;
-    var ok = false;
-    try { ok = localStorage.getItem(KEY) === '1'; } catch (e) {}
-    if (ok) return;
     gate.classList.remove('hidden');
     gate.classList.add('flex');
     document.documentElement.style.overflow = 'hidden';
     var btn = document.getElementById('agence-gate-ok');
     btn.focus();
     btn.addEventListener('click', function () {
-      try { localStorage.setItem(KEY, '1'); } catch (e) {}
       gate.classList.add('hidden');
       gate.classList.remove('flex');
       document.documentElement.style.overflow = '';
