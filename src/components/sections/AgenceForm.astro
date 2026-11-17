@@ -1,6 +1,6 @@
 ---
 /**
- * AgenceForm — formulaire « Soumettre un bien » des pages partenaires agences (FR/EN).
+ * AgenceForm — formulaire « Soumettre un bien » des pages partenaires agences (FR/EN/IT).
  *
  * Netlify Forms, formulaire `agence-var`, ENVOI NATIF (pas d'AJAX, pas de TrackingFields) :
  * un script côté client (Mail) lit la notification e-mail. Ne pas renommer les champs,
@@ -13,6 +13,7 @@ interface Props { lang: AgencesLang; }
 const { lang } = Astro.props;
 const f = agencesContent[lang].form;
 const o = f.options;
+const fx = f.fichiers;
 
 // Valeurs envoyées (français, identiques dans les deux langues)
 const typeBien = ['Villa', 'Appartement', 'Maison'] as const;
@@ -38,6 +39,13 @@ const optionalCls = 'font-light normal-case tracking-normal text-[var(--color-te
 <form
   class="space-y-12"
   id="agence-form"
+  data-msg-toomany={fx.tooMany}
+  data-msg-notpdf={fx.notPdf}
+  data-msg-total={fx.total}
+  data-msg-toobig={fx.tooBig}
+  data-msg-wait={fx.wait}
+  data-email={agencesEmail}
+  data-unit={lang === 'fr' ? 'Mo' : 'MB'}
   name="agence-var"
   method="POST"
   action={agencesMerciPaths[lang]}
@@ -164,19 +172,32 @@ const optionalCls = 'font-light normal-case tracking-normal text-[var(--color-te
           ))}
         </div>
       </div>
+    </div>
+  </fieldset>
+
+  <!-- Pièces jointes : PDF pour les documents ; une seule zone photos (4 max), réduites dans le navigateur
+       puis réparties dans photo1…photo4 (Netlify : un fichier par champ, 8 Mo par envoi). -->
+  <fieldset class={fieldsetCls}>
+    <legend class={legendCls}>{fx.legend}</legend>
+    <p class="font-body text-sm font-light text-[var(--color-text-light)] leading-[1.75] mb-6 -mt-2">{fx.intro}</p>
+    <div class={gridCls}>
+      {fx.docs.map((d) => (
+        <div>
+          <label for={d.name} class={labelCls}>{d.label} <span class={optionalCls}>(PDF, {f.optional})</span></label>
+          <input type="file" id={d.name} name={d.name} accept="application/pdf,.pdf" data-pdf class={fileCls} />
+        </div>
+      ))}
       <div class="sm:col-span-2">
-        <label for="dpe_fichier" class={labelCls}>{f.dpeFichier} <span class={optionalCls}>({f.optional})</span></label>
-        <input type="file" id="dpe_fichier" name="dpe_fichier" accept="application/pdf,image/*" class={fileCls} />
-      </div>
-      <div>
-        <label for="photo1" class={labelCls}>{f.photo1} <span class={optionalCls}>({f.optional})</span></label>
-        <input type="file" id="photo1" name="photo1" accept="image/*" class={fileCls} />
-      </div>
-      <div>
-        <label for="photo2" class={labelCls}>{f.photo2} <span class={optionalCls}>({f.optional})</span></label>
-        <input type="file" id="photo2" name="photo2" accept="image/*" class={fileCls} />
+        <label for="photos_choix" class={labelCls}>{fx.photos} <span class={optionalCls}>(JPG, {f.optional})</span></label>
+        <p class="font-body text-sm font-light text-[var(--color-text-light)] mb-3">{fx.photosHint}</p>
+        <input type="file" id="photos_choix" accept="image/jpeg,image/png,.jpg,.jpeg,.png" multiple class={fileCls} />
+        {[1, 2, 3, 4].map((i) => (
+          <input type="file" name={`photo${i}`} class="hidden" tabindex="-1" aria-hidden="true" />
+        ))}
+        <ul id="photos_liste" class="mt-3 space-y-1 font-body text-sm text-primary-dark"></ul>
       </div>
     </div>
+    <p id="fichiers_total" class="font-body text-sm text-[var(--color-text-light)] mt-6" aria-live="polite"></p>
   </fieldset>
 
   <div>
@@ -205,6 +226,101 @@ const optionalCls = 'font-light normal-case tracking-normal text-[var(--color-te
       document.getElementById('documents').value = joinChecked('docs');
       /* Témoin lu par la page de remerciement pour l'événement GTM `agence_lead`. */
       try { sessionStorage.setItem('rsd_agence_envoi', '1'); } catch (err) {}
+    });
+  })();
+</script>
+
+<!-- Fichiers : PDF seulement pour les documents, photos réduites (1600 px, JPG) et réparties dans photo1…photo4,
+     total limité à 8 Mo (limite Netlify) : l'envoi est bloqué avec un message au-delà. -->
+<script is:inline>
+  (function () {
+    var form = document.getElementById('agence-form');
+    if (!form || !window.DataTransfer) return;
+    var LIMIT = 8 * 1024 * 1024;
+    var picker = document.getElementById('photos_choix');
+    var slots = [1, 2, 3, 4].map(function (i) { return form.querySelector('input[name="photo' + i + '"]'); });
+    var list = document.getElementById('photos_liste');
+    var totalEl = document.getElementById('fichiers_total');
+    var busy = false;
+    var msg = function (k) { return form.getAttribute('data-msg-' + k); };
+    var fr = form.getAttribute('data-unit') === 'Mo';
+    var size = function (n) { return n < 1024 * 1024 ? Math.round(n / 1024) + (fr ? ' Ko' : ' KB') : (n / 1048576).toFixed(1).replace('.', fr ? ',' : '.') + (fr ? ' Mo' : ' MB'); };
+    var total = function () {
+      var t = 0;
+      form.querySelectorAll('input[type="file"][name]').forEach(function (i) { for (var k = 0; k < i.files.length; k++) t += i.files[k].size; });
+      return t;
+    };
+    var refresh = function () {
+      var t = total();
+      if (!t) { totalEl.textContent = ''; return; }
+      totalEl.textContent = msg('total') + (fr ? '\u00a0: ' : ': ') + size(t) + ' / 8 ' + form.getAttribute('data-unit') + (t > LIMIT ? ' — ' + msg('toobig') + ' ' + form.getAttribute('data-email') + '.' : '');
+      totalEl.style.color = t > LIMIT ? '#B4532A' : '';
+    };
+    var compress = function (file) {
+      return new Promise(function (resolve) {
+        if (!/^image\//.test(file.type)) return resolve(file);
+        var url = URL.createObjectURL(file);
+        var img = new Image();
+        img.onload = function () {
+          var k = Math.min(1, 1600 / Math.max(img.naturalWidth, img.naturalHeight));
+          var c = document.createElement('canvas');
+          c.width = Math.round(img.naturalWidth * k);
+          c.height = Math.round(img.naturalHeight * k);
+          c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+          URL.revokeObjectURL(url);
+          c.toBlob(function (b) {
+            if (!b || b.size >= file.size) return resolve(file);
+            resolve(new File([b], file.name.replace(/\.[^.]+$/, '') + '.jpg', { type: 'image/jpeg' }));
+          }, 'image/jpeg', 0.82);
+        };
+        img.onerror = function () { URL.revokeObjectURL(url); resolve(file); };
+        img.src = url;
+      });
+    };
+    picker.addEventListener('change', function () {
+      var files = Array.prototype.slice.call(picker.files);
+      var extra = files.length > 4;
+      files = files.slice(0, 4);
+      busy = true;
+      list.innerHTML = '<li>' + msg('wait') + '</li>';
+      Promise.all(files.map(compress)).then(function (out) {
+        slots.forEach(function (slot, i) {
+          var dt = new DataTransfer();
+          if (out[i]) dt.items.add(out[i]);
+          slot.files = dt.files;
+        });
+        list.innerHTML = '';
+        out.forEach(function (f) {
+          var li = document.createElement('li');
+          li.textContent = '✓ ' + f.name + ' · ' + size(f.size);
+          list.appendChild(li);
+        });
+        if (extra) {
+          var li = document.createElement('li');
+          li.textContent = msg('toomany');
+          li.style.color = '#B4532A';
+          list.appendChild(li);
+        }
+        busy = false;
+        refresh();
+      });
+    });
+    form.querySelectorAll('input[data-pdf]').forEach(function (input) {
+      input.addEventListener('change', function () {
+        var f = input.files[0];
+        if (f && !/\.pdf$/i.test(f.name) && f.type !== 'application/pdf') {
+          alert(msg('notpdf'));
+          input.value = '';
+        }
+        refresh();
+      });
+    });
+    form.addEventListener('submit', function (e) {
+      if (busy || total() > LIMIT) {
+        e.preventDefault();
+        refresh();
+        totalEl.scrollIntoView({ block: 'center' });
+      }
     });
   })();
 </script>

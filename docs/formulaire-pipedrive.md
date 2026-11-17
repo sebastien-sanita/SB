@@ -100,11 +100,12 @@ de Netlify qui est lue par le script de premier avis de Savério (dans Mail, sur
 | `etage`, `annee_construction` | texte | non | — |
 | `copropriete` | liste | — | `oui` · `non` |
 | `documents` | caché, rempli à l’envoi | — | cases cochées jointes par « , » : dpe, diagnostics, plans, photos, reglement_copro, pv_ag, copro_fiche, urbanisme_anterieur, taxe_fonciere, factures_travaux |
-| `dpe_fichier` | fichier (PDF ou image) | non | — |
-| `photo1`, `photo2` | fichier (image) | non | — |
+| `dpe_fichier` | fichier PDF (DPE complet) | non | — |
+| `diagnostics_fichier`, `plans_fichier`, `copro_fichier`, `autre_fichier` | fichier PDF | non | **ajoutés le 17/11/2026** |
+| `photo1` … `photo4` | fichier JPG | non | une seule zone « Photos (4 max) » visible ; le navigateur réduit les photos (1600 px, JPG) et les répartit dans `photo1`…`photo4`. `photo3` et `photo4` **ajoutés le 17/11/2026** |
 
 `travaux` et `documents` sont remplis par le petit script en bas du composant (sans JavaScript, ils partent vides).
-Limite Netlify : 8 Mo de fichiers par envoi ; le texte sous le formulaire invite à envoyer le reste par e-mail
+Limite Netlify : 8 Mo de fichiers par envoi ; le formulaire affiche le total et bloque l'envoi au-delà (17/11/2026), le texte sous le formulaire invite à envoyer le reste par e-mail
 (info@sbdesign.fr).
 
 À faire dans Netlify **après le premier déploiement** qui contient le formulaire :
@@ -128,6 +129,7 @@ Le dossier à télécharger est dans `public/docs/dossier-soumission-agences-sbd
 (étape « Nouveau lead » dans les deux cas). Il retrouve ou crée l'organisation (l'agence, par nom exact) et la personne
 (l'agent, par e-mail), crée l'affaire « Agence · <agence> · <adresse> » avec Source du lead = « Agence immobilière (site web) »,
 puis une note récapitulative avec les liens vers les pièces jointes.
+**17/11/2026 : 6 nouveaux champs fichiers** (`diagnostics_fichier`, `plans_fichier`, `copro_fichier`, `autre_fichier`, `photo3`, `photo4`) : à ajouter à la note du workflow Zapier, sinon leurs liens n'y apparaissent pas (ils restent dans Netlify et dans la notification e-mail).
 
 **Champs d'affaire Pipedrive « — Agences »** (créés le 12/11/2026) : Adresse du bien, Surface habitable (m²), Prix affiché,
 En vente depuis (mois), État général, Travaux à prévoir, Acquéreur positionné, Étage, Année de construction, Copropriété,
