@@ -301,21 +301,6 @@ const strings = {
     card3Tag: { fr: 'Projet clé en main sur-mesure', en: 'Bespoke turnkey project', it: 'Progetto chiavi in mano su misura' },
   },
 
-  // ── Section 07 — Témoignages ────────────────────────────
-  temoignages: {
-    number:   { fr: '07 — Témoignages', en: '07 — Testimonials', it: '07 — Testimonianze' },
-    title1:   { fr: 'Ce que disent', en: 'What', it: 'Cosa dicono' },
-    morphWords: {
-      fr: ['nos clients', 'nos partenaires', 'ceux qui nous font confiance'],
-      en: ['our clients say', 'our partners share', 'they say about us'],
-      it: ['i nostri clienti', 'i nostri partner', 'chi si fida di noi'],
-    },
-    subtitle: {
-      fr: 'La satisfaction de nos clients est notre plus belle récompense',
-      en: 'Client satisfaction is our greatest reward',
-      it: 'La soddisfazione dei nostri clienti è la nostra più bella ricompensa',
-    },
-  },
 
   // ── Section 08 — CTA Final ──────────────────────────────
   cta: {
@@ -335,14 +320,9 @@ const strings = {
     },
     navTitle:      { fr: 'Navigation', en: 'Navigation', it: 'Navigazione' },
     projetsTitle:  { fr: 'Projets', en: 'Projects', it: 'Progetti' },
-    contactTitle:  { fr: 'Contact', en: 'Contact', it: 'Contatti' },
     accueil:       { fr: 'Accueil', en: 'Home', it: 'Home' },
-    nosProjets:    { fr: 'Nos Projets', en: 'Our Projects', it: 'I Nostri Progetti' },
-    notreExpertise: { fr: 'Notre Expertise', en: 'Our Expertise', it: 'La Nostra Expertise' },
-    leStudio:      { fr: 'Le Studio', en: 'The Studio', it: 'Lo Studio' },
     renovation:    { fr: 'Rénovation', en: 'Renovation', it: 'Ristrutturazione' },
     construction:  { fr: 'Construction', en: 'Construction', it: 'Costruzione' },
-    amenagement:   { fr: 'Aménagement', en: 'Interior Design', it: 'Arredamento' },
     copyright:     { fr: 'Tous droits réservés.', en: 'All rights reserved.', it: 'Tutti i diritti riservati.' },
     mentions:      { fr: 'Mentions légales', en: 'Legal Notice', it: 'Note Legali' },
     confidentialite: { fr: 'Confidentialité', en: 'Privacy Policy', it: 'Privacy' },

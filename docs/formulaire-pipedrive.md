@@ -110,8 +110,8 @@ Limite Netlify : 8 Mo de fichiers par envoi ; le formulaire affiche le total et 
 
 À faire dans Netlify **après le premier déploiement** qui contient le formulaire :
 1. Forms → vérifier que `agence-var` apparaît avec tous les champs ci-dessus ;
-2. Forms → `agence-var` → Form notifications → **Add notification → Email notification** vers l’adresse relevée
-   par Mail sur le Mac de Savério (à confirmer par Savério : decosanit@me.com ou contact@rsd-agencements.com) ;
+2. Forms → `agence-var` → Form notifications → **Add notification → Email notification** vers **info@sbdesign.fr**
+   (adresse de réception des dossiers agences, confirmée le 17/11/2026) ;
 3. un envoi de test par langue : vérifier le sujet du mail reçu, la présence de `travaux` et `documents`,
    les pièces jointes, puis la redirection vers la page de remerciement.
 
@@ -120,7 +120,7 @@ Le dossier à télécharger est dans `public/docs/dossier-soumission-agences-sbd
 # Formulaires agences : Pipedrive et suivi (ajout du 12/11/2026)
 
 **Deux sorties par soumission, indépendantes :**
-1. la notification e-mail Netlify, lue par le script de premier avis de Savério (à créer dès qu'il a confirmé l'adresse) ;
+1. la notification e-mail Netlify, lue par le script de premier avis de Savério (adresse : info@sbdesign.fr) ;
 2. une notification Netlify « HTTP POST », limitée au formulaire `agence-var`, vers Zapier.
 
 **Zapier** : workflow « RSD & SB Design_Formulaire agences_Website_Pipedrive »
