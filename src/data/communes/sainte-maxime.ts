@@ -71,6 +71,10 @@ export const commune: Commune = {
           'Sainte-Maxime est d’abord une ville d’appartements et de villas de vacances devenues, pour beaucoup, des résidences semi-principales. Les appartements de résidences des hauteurs offrent des vues imprenables mais des plans souvent datés : cuisines fermées, salles de bains étroites, rangements insuffisants. Les villas du Sémaphore, de La Croisette ou de Beauvallon, construites entre les années 1960 et 1990, demandent une remise à niveau complète — isolation, menuiseries, réseaux — avant de retrouver des volumes généreux ouverts sur le golfe.',
           'Nous concevons ces transformations en pensant à l’usage réel : une famille l’été, un couple hors saison, parfois des locataires entre les deux. Matériaux résistants, rangements fermés, extérieurs faciles à vivre, et une décoration qui ne vieillit pas d’une saison à l’autre.',
         ],
+        climLink: {
+          text: 'À Sainte-Maxime, des villas tournées vers le golfe aux maisons de bord de mer, nous intégrons une climatisation invisible pendant la rénovation : unités cachées, groupe extérieur dissimulé.',
+          label: 'Climatiser une villa sans la dénaturer',
+        },
         items: [
           'Appartements de résidences avec vue sur le golfe, à restructurer',
           'Villas des années 1960 à 1990 du Sémaphore et de La Croisette, à rénover',
@@ -255,6 +259,10 @@ export const commune: Commune = {
           'Sainte-Maxime is first and foremost a town of apartments and holiday villas that have become, for many owners, semi-permanent homes. Apartments in the hillside residences offer uninterrupted views but often dated layouts: closed kitchens, narrow bathrooms, insufficient storage. The villas of Le Sémaphore, La Croisette or Beauvallon, built between the 1960s and the 1990s, need a complete upgrade — insulation, windows, services — before regaining generous volumes open onto the gulf.',
           'We design these transformations with real use in mind: a family in summer, a couple off season, sometimes tenants in between. Hard-wearing materials, closed storage, easy-to-live-with outdoor spaces, and decoration that does not age from one season to the next.',
         ],
+        climLink: {
+          text: 'In Sainte-Maxime, from villas overlooking the gulf to seafront homes, we build invisible air conditioning into the renovation: concealed units and a hidden outdoor unit.',
+          label: 'Air-conditioning a villa without spoiling it',
+        },
         items: [
           'Apartments in residences overlooking the gulf, to be restructured',
           'Villas from the 1960s to the 1990s in Le Sémaphore and La Croisette, to be renovated',
@@ -439,6 +447,10 @@ export const commune: Commune = {
           'Sainte-Maxime è innanzitutto una città di appartamenti e ville per le vacanze diventate, per molti, residenze semi-principali. Gli appartamenti nei residence delle alture offrono viste imprendibili ma piante spesso datate: cucine chiuse, bagni stretti, armadi insufficienti. Le ville del Sémaphore, di La Croisette o di Beauvallon, costruite tra gli anni Sessanta e Novanta, richiedono un rinnovamento completo — isolamento, serramenti, impianti — prima di ritrovare volumi generosi aperti sul golfo.',
           'Progettiamo queste trasformazioni pensando all’uso reale: una famiglia d’estate, una coppia in bassa stagione, talvolta inquilini nel frattempo. Materiali resistenti, armadi chiusi, esterni facili da vivere e una decorazione che non invecchia da una stagione all’altra.',
         ],
+        climLink: {
+          text: 'A Sainte-Maxime, dalle ville affacciate sul golfo alle case sul mare, integriamo una climatizzazione invisibile durante la ristrutturazione: unità nascoste e unità esterna dissimulata.',
+          label: 'Climatizzare una villa senza snaturarla',
+        },
         items: [
           'Appartamenti in residence con vista sul golfo, da ristrutturare',
           'Ville degli anni Sessanta-Novanta del Sémaphore e di La Croisette, da rinnovare',

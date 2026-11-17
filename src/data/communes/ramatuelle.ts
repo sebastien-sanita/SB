@@ -67,6 +67,10 @@ export const commune: Commune = {
           'À Ramatuelle, le bien dicte le projet. Une villa de domaine des années 1970 ou 1980, dans la pinède de Pampelonne, se transforme en profondeur : ouverture des volumes, isolation, menuiseries, nouvelle cuisine, suites avec salles de bains, extérieurs entièrement redessinés. Une bastide au milieu des vignes se rénove dans le respect de ses murs épais, de ses tomettes et de ses proportions. Une maison du village se repense autour de la lumière et des circulations verticales.',
           'Nous concevons pour un usage précis — résidence de famille, maison de location haut de gamme, ou les deux — avec des matériaux qui vieillissent bien sous le soleil et le vent : pierre, bois, chaux, métal laqué, pierre de Bourgogne ou terre cuite au sol.',
         ],
+        climLink: {
+          text: 'À Ramatuelle, entre Pampelonne et L’Escalet, la climatisation se fait oublier : gainable dans les faux plafonds, groupe extérieur à l’abri des regards, dans le respect des sites protégés.',
+          label: 'Une climatisation qui se fait oublier',
+        },
         items: [
           'Villas de pinède dans les domaines gardiennés de Pampelonne',
           'Mas et bastides au milieu des vignes, à rénover avec respect',
@@ -247,6 +251,10 @@ export const commune: Commune = {
           'In Ramatuelle, the property dictates the project. A 1970s or 1980s estate villa in the Pampelonne pines is transformed in depth: opened-up volumes, insulation, windows, a new kitchen, en-suite bedrooms, entirely redesigned outdoor spaces. A bastide among the vines is renovated with respect for its thick walls, terracotta floors and proportions. A village house is rethought around light and vertical circulation.',
           'We design for a precise use — family home, high-end rental house, or both — with materials that age well under sun and wind: stone, wood, lime, lacquered metal, Burgundy stone or terracotta floors.',
         ],
+        climLink: {
+          text: 'In Ramatuelle, between Pampelonne and L’Escalet, air conditioning disappears: ducted units in the ceilings and an outdoor unit out of sight, in keeping with protected sites.',
+          label: 'Air conditioning you forget is there',
+        },
         items: [
           'Pine-wood villas in the gated estates of Pampelonne',
           'Farmhouses and bastides among the vines, to be renovated with respect',
@@ -427,6 +435,10 @@ export const commune: Commune = {
           'A Ramatuelle l’immobile detta il progetto. Una villa di comprensorio degli anni Settanta o Ottanta, nella pineta di Pampelonne, si trasforma in profondità: apertura dei volumi, isolamento, serramenti, nuova cucina, suite con bagno, esterni interamente ridisegnati. Una bastide tra le vigne si ristruttura nel rispetto dei muri spessi, dei pavimenti in cotto e delle proporzioni. Una casa del borgo si ripensa intorno alla luce e ai collegamenti verticali.',
           'Progettiamo per un uso preciso — casa di famiglia, villa da locazione di lusso, o entrambi — con materiali che invecchiano bene sotto il sole e il vento: pietra, legno, calce, metallo laccato, pietra di Borgogna o cotto a pavimento.',
         ],
+        climLink: {
+          text: 'A Ramatuelle, tra Pampelonne e L’Escalet, la climatizzazione si fa dimenticare: canalizzata nei controsoffitti, unità esterna al riparo dagli sguardi, nel rispetto dei siti tutelati.',
+          label: 'Una climatizzazione che si fa dimenticare',
+        },
         items: [
           'Ville nella pineta nei comprensori custoditi di Pampelonne',
           'Mas e bastide tra le vigne, da ristrutturare con rispetto',

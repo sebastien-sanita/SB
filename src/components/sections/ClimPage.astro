@@ -20,8 +20,23 @@ import HeroInner from '@components/react/HeroInner';
 import TrackingFields from '@components/TrackingFields.astro';
 import type { Locale } from '@i18n/languages';
 import { faqSchema } from '@utils/seo';
+import { getLocalizedPath } from '@i18n/index';
 import { climContentByLang, climPaths, climFormuleValues, type ClimLang } from '@/data/climatisation-villa';
 import Picture from '@components/ui/Picture.astro';
+
+/* Maillage : la page clim renvoie vers les 5 communes du Var (qui renvoient vers elle). */
+const climCommunes = [
+  ['/architecte-interieur-le-lavandou', 'Le Lavandou'],
+  ['/architecte-interieur-bormes-les-mimosas', 'Bormes-les-Mimosas'],
+  ['/architecte-interieur-rayol-canadel', 'Rayol-Canadel'],
+  ['/architecte-interieur-sainte-maxime', 'Sainte-Maxime'],
+  ['/architecte-interieur-ramatuelle', 'Ramatuelle'],
+];
+const climCommunesLabel: Record<ClimLang, string> = {
+  fr: 'Nous intervenons notamment à',
+  en: 'We work in particular in',
+  it: 'Interveniamo in particolare a',
+};
 import publication from '@/data/publication.json';
 
 interface Props { lang: ClimLang; }
@@ -181,6 +196,14 @@ const anchor = 'scroll-mt-[calc(var(--header-h)+24px)]';
             </div>
           ))}
         </div>
+        <p class="font-body text-sm font-light text-[var(--color-text-light)] leading-[1.9] mt-8 pt-6 border-t border-border">
+          {climCommunesLabel[Astro.props.lang]}{Astro.props.lang === 'fr' ? '\u00a0:' : ':'}{' '}
+          {climCommunes.map(([path, name], i) => (
+            <>
+              <a href={getLocalizedPath(path, Astro.props.lang as Locale)} class="text-primary-dark underline underline-offset-4 decoration-accent-gold/60 hover:text-accent-brown transition-colors duration-300 whitespace-nowrap">{name}</a>{i < climCommunes.length - 1 ? ' · ' : '.'}
+            </>
+          ))}
+        </p>
       </div>
     </Container>
   </Section>
