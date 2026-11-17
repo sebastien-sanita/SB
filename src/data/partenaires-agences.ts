@@ -99,7 +99,7 @@ const fr = {
     title1: "La version",
     title2: "PDF",
     intro:
-      "Vous préférez un document ? Téléchargez la fiche, remplissez-la à l’écran et renvoyez-la à info@sbdesign.fr avec vos pièces. Elle reprend les questions du formulaire ci-dessus : inutile de remplir les deux. Elle donne aussi la liste complète des pièces utiles, en général déjà dans votre dossier de mandat.",
+      "Vous préférez un document ? Téléchargez la fiche : les mêmes questions que le formulaire ci-dessus, à remplir à l’écran. Envoyez-la à info@sbdesign.fr avec vos documents en PDF et 4 photos maximum. Une seule des deux façons suffit.",
     button: "Télécharger le PDF",
     fileLabel: "Dossier de soumission SB Design Riviera",
     fileMeta:
@@ -108,7 +108,7 @@ const fr = {
   form: {
     title1: "Soumettre",
     title2: "un bien en ligne",
-    lead: "Le plus rapide : quelques minutes, votre DPE et deux photos. Premier avis sous 24 h ouvrées.",
+    lead: "Le plus rapide : quelques minutes, vos documents en PDF et jusqu’à 4 photos. Premier avis sous 24 h ouvrées.",
     honeypot: "Ne pas remplir",
     legendAgence: "Votre agence",
     legendBien: "Le bien",
@@ -270,7 +270,7 @@ const en: typeof fr = {
     title1: "The PDF",
     title2: "version",
     intro:
-      "Prefer a document? Download the form, fill it in on screen and send it back to info@sbdesign.fr with your documents. It asks the same questions as the online form above, so there is no need to complete both. It also lists every useful document, usually already in your instruction file.",
+      "Prefer a document? Download the form: the same questions as the online form above, to fill in on screen. Send it to info@sbdesign.fr with your documents as PDF and up to 4 photographs. One of the two is enough.",
     button: "Download the PDF",
     fileLabel: "SB Design Riviera submission pack",
     fileMeta:
@@ -279,7 +279,7 @@ const en: typeof fr = {
   form: {
     title1: "Submit",
     title2: "a property online",
-    lead: "The quickest way: a few minutes, your DPE and two photographs. First opinion within one working day.",
+    lead: "The quickest way: a few minutes, your documents as PDF and up to 4 photographs. First opinion within one working day.",
     honeypot: "Do not fill in",
     legendAgence: "Your agency",
     legendBien: "The property",
@@ -441,7 +441,7 @@ const it: typeof fr = {
     title1: "La versione",
     title2: "PDF",
     intro:
-      "Preferite un documento? Scaricate la scheda, compilatela sullo schermo e rinviatela a info@sbdesign.fr con i vostri documenti. Riprende le domande del modulo qui sopra: non serve compilarli entrambi. Contiene anche l’elenco completo dei documenti utili, in genere già nel vostro dossier di mandato.",
+      "Preferite un documento? Scaricate la scheda: le stesse domande del modulo qui sopra, da compilare sullo schermo. Inviatela a info@sbdesign.fr con i documenti in PDF e al massimo 4 foto. Basta uno dei due modi.",
     button: "Scaricare il PDF",
     fileLabel: "Dossier di presentazione SB Design Riviera",
     fileMeta:
@@ -450,7 +450,7 @@ const it: typeof fr = {
   form: {
     title1: "Proporre",
     title2: "un immobile online",
-    lead: "Il modo più rapido: pochi minuti, il DPE e due foto. Primo parere entro un giorno lavorativo.",
+    lead: "Il modo più rapido: pochi minuti, i documenti in PDF e fino a 4 foto. Primo parere entro un giorno lavorativo.",
     honeypot: "Non compilare",
     legendAgence: "La vostra agenzia",
     legendBien: "L’immobile",
