@@ -9,7 +9,6 @@ import Button from '@components/ui/Button.astro';
 
 import HeroMinimal from '@components/react/HeroMinimal';
 import StatsCounter from '@components/react/StatsCounter';
-import TestimonialsSlider from '@components/react/TestimonialsSlider';
 import TextMorph from '@components/react/TextMorph';
 
 import Manifeste from '@components/sections/Manifeste.astro';
@@ -115,24 +114,6 @@ const lang: Locale = 'en';
   </Section>
 
   <WhoWeServe lang={lang} />
-
-  <Section padding="lg">
-    <Container>
-      <div class="relative mb-16 md:mb-24" data-reveal>
-        <span class="section-number-xl">07</span>
-        <span class="section-number">{t('temoignages', 'number', lang)}</span>
-        <h2 class="editorial-breadcrumb font-display text-section uppercase text-primary-dark mt-6 cursor-default">
-          <span class="editorial-nav-item font-light text-primary-dark/10">{t('temoignages', 'title1', lang)}</span>
-          <span class="font-extralight text-primary-dark/15 mx-1 select-none">/</span>
-          <TextMorph client:visible words={tArray('temoignages', 'morphWords', lang)} className="editorial-nav-item font-display font-bold uppercase text-primary-dark" />
-        </h2>
-        <p class="font-body text-lg font-light text-[var(--color-text-light)] mt-4 max-w-xl">
-          {t('temoignages', 'subtitle', lang)}
-        </p>
-      </div>
-      <TestimonialsSlider client:visible />
-    </Container>
-  </Section>
 
   <!-- Zones d'intervention : liens vers les 12 pages secteurs et communes -->
   <ZonesIntervention lang={lang} />

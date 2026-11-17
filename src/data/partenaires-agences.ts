@@ -94,7 +94,7 @@ const fr = {
       { title: "Vues 3D du projet", text: "Pour les annonces et les visites." },
       { title: "Devis ferme 6 mois", text: "L’acquéreur sait ce qu’il signe." },
     ],
-    note: "Le premier dossier est offert à chaque nouvelle agence partenaire. Version anglaise sur demande.",
+    note: "Offre de bienvenue : le premier dossier d’inspection est offert à chaque nouvelle agence partenaire ; les dossiers suivants sont facturés. Version anglaise sur demande.",
   },
   depot: {
     kicker: "Espace agences",
@@ -263,7 +263,7 @@ const en: typeof fr = {
       { title: "3D views of the project", text: "For your listings and your viewings." },
       { title: "Fixed quotation, six months", text: "The buyer knows what they are signing." },
     ],
-    note: "The first report is offered to every new partner agency. English version on request.",
+    note: "Welcome offer: the first inspection report is free for every new partner agency; further reports are invoiced. English version on request.",
   },
   depot: {
     kicker: "Estate agent area",
@@ -432,7 +432,7 @@ const it: typeof fr = {
       { title: "Viste 3D del progetto", text: "Per i vostri annunci e le vostre visite." },
       { title: "Preventivo fisso 6 mesi", text: "L’acquirente sa cosa firma." },
     ],
-    note: "Il primo dossier è offerto a ogni nuova agenzia partner. Versione inglese su richiesta.",
+    note: "Offerta di benvenuto: il primo dossier di ispezione è gratuito per ogni nuova agenzia partner; i dossier successivi sono a pagamento. Versione inglese su richiesta.",
   },
   depot: {
     kicker: "Area agenzie",
