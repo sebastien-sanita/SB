@@ -22,7 +22,6 @@ const acquereur = ['non', 'oui'] as const;
 const copropriete = ['oui', 'non'] as const;
 const dpeClasses = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
 const travaux = ['salle de bain', 'cuisine', 'climatisation', 'menuiseries', 'sols', 'électricité', 'redistribution'] as const;
-const documents = ['dpe', 'diagnostics', 'plans', 'photos', 'reglement_copro', 'pv_ag', 'copro_fiche', 'urbanisme_anterieur', 'taxe_fonciere', 'factures_travaux'] as const;
 
 const labelCls = 'block font-heading text-xs font-semibold text-accent-brown uppercase tracking-[0.15em] mb-3';
 const inputCls = 'w-full px-4 py-3.5 border border-border bg-background font-body text-sm text-primary-dark placeholder:text-[var(--color-text-light)]/50 focus:outline-none focus:border-accent-gold transition-colors duration-300';
@@ -164,14 +163,6 @@ const optionalCls = 'font-light normal-case tracking-normal text-[var(--color-te
           {copropriete.map((v) => <option value={v}>{o.ouiNon[v]}</option>)}
         </select>
       </div>
-      <div class="sm:col-span-2" role="group" aria-labelledby="documents-label">
-        <p id="documents-label" class={labelCls}>{f.documents}</p>
-        <div id="docs" class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3">
-          {documents.map((v) => (
-            <label class={checkLabelCls}><input type="checkbox" value={v} class={checkCls} /><span>{o.documents[v]}</span></label>
-          ))}
-        </div>
-      </div>
     </div>
   </fieldset>
 
@@ -223,7 +214,12 @@ const optionalCls = 'font-light normal-case tracking-normal text-[var(--color-te
     };
     form.addEventListener('submit', function () {
       document.getElementById('travaux').value = joinChecked('cases');
-      document.getElementById('documents').value = joinChecked('docs');
+      /* « Pièces disponibles » (Pipedrive) : déduites des fichiers joints, mêmes valeurs qu'avant. */
+      var pieces = { dpe_fichier: 'dpe', diagnostics_fichier: 'diagnostics', plans_fichier: 'plans', photo1: 'photos', copro_fichier: 'reglement_copro, pv_ag', autre_fichier: 'urbanisme_anterieur, taxe_fonciere, factures_travaux' };
+      document.getElementById('documents').value = Object.keys(pieces).filter(function (n) {
+        var i = form.querySelector('input[name="' + n + '"]');
+        return i && i.files && i.files.length;
+      }).map(function (n) { return pieces[n]; }).join(', ');
       /* Témoin lu par la page de remerciement pour l'événement GTM `agence_lead`. */
       try { sessionStorage.setItem('rsd_agence_envoi', '1'); } catch (err) {}
     });

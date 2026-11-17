@@ -99,7 +99,7 @@ de Netlify qui est lue par le script de premier avis de Savério (dans Mail, sur
 | `dpe_classe` | liste | — | vide (« je ne sais pas ») · A à G |
 | `etage`, `annee_construction` | texte | non | — |
 | `copropriete` | liste | — | `oui` · `non` |
-| `documents` | caché, rempli à l’envoi | — | cases cochées jointes par « , » : dpe, diagnostics, plans, photos, reglement_copro, pv_ag, copro_fiche, urbanisme_anterieur, taxe_fonciere, factures_travaux |
+| `documents` | caché, rempli à l’envoi | — | **depuis le 17/11/2026 : déduit des fichiers joints** (plus de cases à cocher ; dpe_fichier→dpe, diagnostics_fichier→diagnostics, plans_fichier→plans, photos→photos, copro_fichier→reglement_copro, pv_ag, autre_fichier→urbanisme_anterieur, taxe_fonciere, factures_travaux), mêmes valeurs : dpe, diagnostics, plans, photos, reglement_copro, pv_ag, copro_fiche, urbanisme_anterieur, taxe_fonciere, factures_travaux |
 | `dpe_fichier` | fichier PDF (DPE complet) | non | — |
 | `diagnostics_fichier`, `plans_fichier`, `copro_fichier`, `autre_fichier` | fichier PDF | non | **ajoutés le 17/11/2026** |
 | `photo1` … `photo4` | fichier JPG | non | une seule zone « Photos (4 max) » visible ; le navigateur réduit les photos (1600 px, JPG) et les répartit dans `photo1`…`photo4`. `photo3` et `photo4` **ajoutés le 17/11/2026** |
