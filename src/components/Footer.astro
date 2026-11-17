@@ -27,7 +27,7 @@ const footerLabels: Record<Locale, { savoirFaire: string; tousProjets: string; c
 };
 const L = footerLabels[lang];
 const linkCls = 'text-white/60 hover:text-white transition-colors duration-fast block py-[6px]';
-const titleCls = 'font-heading text-sm font-semibold uppercase tracking-[0.2em] text-white/40 mb-6';
+const titleCls = 'font-heading text-sm font-semibold uppercase tracking-[0.2em] text-accent-gold/80 mb-6';
 // Page « Partenaires agences » (FR/EN/IT) : affichée seulement une fois publiée (publication.json).
 const agencesLink: Partial<Record<Locale, { href: string; label: string }>> = {
   fr: { href: '/partenaires-agences-var/', label: 'Partenaires agences' },
@@ -64,7 +64,7 @@ const agencesLink: Partial<Record<Locale, { href: string; label: string }>> = {
 
       {/* Col 1 : Branding */}
       <div>
-        <Picture src="/images/logo-sb.png" alt="SB Design Riviera" class="h-28 md:h-36 w-auto invert mb-6" />
+        <Picture src="/images/logo-sb.png" alt="SB Design Riviera" class="h-28 md:h-36 w-auto invert -mt-[38px] md:-mt-[49px] -mb-2 md:-mb-4" />
         <p class="text-[15px] leading-[1.8] text-white/60 max-w-xs">
           {t('footer', 'desc', lang)}
         </p>
