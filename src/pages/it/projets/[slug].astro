@@ -3,6 +3,7 @@
  * Page projet individuelle — Editorial Luxe (IT)
  * Route dynamique : /projets/[slug]
  */
+import { localizeProject } from '@/data/projects-i18n';
 import Layout from '@layouts/Layout.astro';
 import Section from '@components/ui/Section.astro';
 import Container from '@components/ui/Container.astro';
@@ -30,7 +31,7 @@ interface Props {
   project: Project;
 }
 
-const { project } = Astro.props;
+const project = localizeProject(Astro.props.project, lang);
 
 const categoryLabels: Record<string, string> = {
   appartement: t(d, 'catAppartement', lang),
