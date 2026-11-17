@@ -1,10 +1,11 @@
 ---
 /**
  * AgenceGate — fenêtre d'accueil de la page « Partenaires agences » (17/11/2026).
- * Demande au visiteur de confirmer qu'il est une agence immobilière (bouton « Continuer »)
- * ou le renvoie vers la page contact s'il est un particulier. Le choix n'est pas mémorisé :
- * la fenêtre s'affiche à chaque visite.
+ * Deux choix de même poids : « Agence immobilière » (accès professionnel, ferme la fenêtre)
+ * ou « Propriétaire » (prise de rendez-vous sur la page contact). Mention carte T en bas.
+ * Choix non mémorisé : la fenêtre s'affiche à chaque visite.
  * Ce n'est pas une sécurité : le contenu reste dans la page (lisible par Google).
+ * Version précédente (un bouton « Continuer » + lien « particulier ») : commit ba83544.
  */
 import { getLocalizedPath } from '@i18n/index';
 import type { AgencesLang } from '@/data/partenaires-agences';
@@ -16,29 +17,42 @@ const txt = {
   fr: {
     kicker: 'Espace professionnel',
     title: 'Réservé aux agences immobilières',
-    text: 'Cette page présente notre offre aux agents immobiliers du Var et leur permet de nous soumettre un bien à valoriser.',
-    ok: 'Je suis une agence, continuer',
-    other: 'Je suis un particulier',
-    otherHint: 'Notre équipe vous répond sur la page contact.',
+    proTag: 'Agence immobilière',
+    proText: 'Soumettez un bien à valoriser et recevez notre dossier d’inspection.',
+    proBtn: 'Accès professionnel',
+    ownerTag: 'Propriétaire',
+    ownerText: 'Vous vendez, achetez ou rénovez une villa ? Parlons de votre projet.',
+    ownerBtn: 'Prendre rendez-vous',
+    note: 'Accès réservé aux titulaires de la carte professionnelle (carte T).',
   },
   en: {
     kicker: 'Professional area',
     title: 'For real estate agencies',
-    text: 'This page presents our offer to estate agents in the Var and lets them submit a property for us to assess.',
-    ok: 'I am an agency, continue',
-    other: 'I am a private owner',
-    otherHint: 'Our team will answer you on the contact page.',
+    proTag: 'Estate agency',
+    proText: 'Submit a property to enhance and receive our inspection report.',
+    proBtn: 'Professional access',
+    ownerTag: 'Owner',
+    ownerText: 'Selling, buying or renovating a villa? Let’s talk about your project.',
+    ownerBtn: 'Book a consultation',
+    note: 'Access reserved for licensed estate agents (French carte T).',
   },
   it: {
     kicker: 'Area professionisti',
     title: 'Riservato alle agenzie immobiliari',
-    text: 'Questa pagina presenta la nostra offerta agli agenti immobiliari del Var e permette loro di sottoporci un immobile da valorizzare.',
-    ok: 'Sono un’agenzia, continua',
-    other: 'Sono un privato',
-    otherHint: 'Il nostro team vi risponde nella pagina contatti.',
+    proTag: 'Agenzia immobiliare',
+    proText: 'Sottoponeteci un immobile da valorizzare e ricevete il nostro dossier di ispezione.',
+    proBtn: 'Accesso professionisti',
+    ownerTag: 'Proprietario',
+    ownerText: 'Vendete, acquistate o ristrutturate una villa? Parliamo del vostro progetto.',
+    ownerBtn: 'Prenota un appuntamento',
+    note: 'Accesso riservato agli agenti immobiliari abilitati (carte T francese).',
   },
 }[lang];
 const contactHref = getLocalizedPath('/contact', lang);
+const card = 'flex flex-col text-left bg-white border border-border px-5 py-5 sm:px-7 sm:py-8';
+const tagCls = 'block font-heading text-[11px] font-semibold uppercase tracking-[0.2em] text-accent-brown mb-2 sm:mb-3';
+const textCls = 'font-body text-sm sm:text-[15px] font-light text-[var(--color-text-light)] leading-[1.65] mb-4 sm:mb-7 flex-1';
+const btnBase = 'w-full inline-flex items-center justify-center text-center gap-2 font-heading text-[11px] sm:text-xs font-semibold uppercase tracking-[0.16em] px-4 py-3.5 sm:py-4 transition-colors duration-base';
 ---
 
 <div
@@ -46,37 +60,47 @@ const contactHref = getLocalizedPath('/contact', lang);
   role="dialog"
   aria-modal="true"
   aria-labelledby="agence-gate-title"
-  aria-describedby="agence-gate-text"
-  class="fixed inset-0 z-[2000] hidden items-center justify-center bg-primary-dark/70 backdrop-blur-sm px-4"
+  class="fixed inset-0 z-[2000] hidden justify-center bg-primary-dark/70 backdrop-blur-sm px-3 py-4 sm:px-4 sm:py-6 overflow-y-auto"
 >
-  <div class="w-full max-w-[520px] bg-primary-warm border border-accent-gold/30 shadow-2xl px-7 py-10 sm:px-12 sm:py-14 text-center">
-    <span class="block font-heading text-[11px] font-semibold uppercase tracking-[0.25em] text-accent-gold mb-5">{txt.kicker}</span>
-    <h2 id="agence-gate-title" class="font-display text-2xl sm:text-3xl font-bold uppercase text-primary-dark leading-tight mb-5">{txt.title}</h2>
-    <p id="agence-gate-text" class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.75] mb-9">{txt.text}</p>
-    <button
-      type="button"
-      id="agence-gate-ok"
-      class="w-full inline-flex items-center justify-center gap-2 bg-primary-dark text-white font-heading text-xs font-semibold uppercase tracking-[0.2em] px-6 py-4 hover:bg-accent-brown transition-colors duration-base"
-    >
-      {txt.ok}&nbsp;→
-    </button>
-    <a href={contactHref} class="mt-6 inline-block font-heading text-xs font-medium uppercase tracking-[0.15em] text-primary-dark/70 underline underline-offset-4 decoration-accent-gold/60 hover:text-primary-dark">
-      {txt.other}
-    </a>
-    <p class="mt-2 font-body text-xs font-light text-[var(--color-text-light)]">{txt.otherHint}</p>
+  <div class="w-full max-w-[760px] my-auto bg-primary-warm border border-accent-gold/30 shadow-2xl px-4 py-6 sm:px-10 sm:py-12">
+    <div class="text-center mb-5 sm:mb-10">
+      <span class="block font-heading text-[11px] font-semibold uppercase tracking-[0.25em] text-accent-gold mb-2 sm:mb-4">{txt.kicker}</span>
+      <h2 id="agence-gate-title" class="font-display text-xl sm:text-3xl font-bold uppercase text-primary-dark leading-tight">{txt.title}</h2>
+    </div>
+
+    <div class="grid gap-3 sm:gap-5 sm:grid-cols-2">
+      <div class={card}>
+        <span class={tagCls}>{txt.proTag}</span>
+        <p class={textCls}>{txt.proText}</p>
+        <button type="button" id="agence-gate-ok" class={`${btnBase} bg-primary-dark text-white hover:bg-accent-brown`}>
+          {txt.proBtn}&nbsp;→
+        </button>
+      </div>
+      <div class={card}>
+        <span class={tagCls}>{txt.ownerTag}</span>
+        <p class={textCls}>{txt.ownerText}</p>
+        <a href={contactHref} id="agence-gate-owner" class={`${btnBase} bg-accent-gold text-primary-dark hover:bg-accent-brown hover:text-white`}>
+          {txt.ownerBtn}&nbsp;→
+        </a>
+      </div>
+    </div>
+
+    <p class="mt-4 sm:mt-7 text-center font-body text-[11px] sm:text-xs font-light text-[var(--color-text-light)]">{txt.note}</p>
   </div>
 </div>
 
 <script is:inline>
   (function () {
-    // Choix NON mémorisé (demande de Dino, 17/11/2026) : la fenêtre s'affiche à chaque visite.
+    // Choix non mémorisé : la fenêtre s'affiche à chaque visite.
     var gate = document.getElementById('agence-gate');
     if (!gate) return;
+    // sortie du contenu de la page pour passer au-dessus du menu du site
+    document.body.appendChild(gate);
     gate.classList.remove('hidden');
     gate.classList.add('flex');
     document.documentElement.style.overflow = 'hidden';
     var btn = document.getElementById('agence-gate-ok');
-    btn.focus();
+    btn.focus({ preventScroll: true });
     btn.addEventListener('click', function () {
       gate.classList.add('hidden');
       gate.classList.remove('flex');
