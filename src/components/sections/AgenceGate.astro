@@ -1,0 +1,98 @@
+---
+/**
+ * AgenceGate — fenêtre d'accueil de la page « Partenaires agences » (17/11/2026).
+ * Demande au visiteur de confirmer qu'il est une agence immobilière (bouton « Continuer »)
+ * ou le renvoie vers la page contact s'il est un particulier. Le choix est mémorisé
+ * dans le navigateur (localStorage « sbd-agence-ok »).
+ * Ce n'est pas une sécurité : le contenu reste dans la page (lisible par Google).
+ */
+import { getLocalizedPath } from '@i18n/index';
+import type { AgencesLang } from '@/data/partenaires-agences';
+
+interface Props { lang: AgencesLang; }
+const { lang } = Astro.props;
+
+const txt = {
+  fr: {
+    kicker: 'Espace professionnel',
+    title: 'Réservé aux agences immobilières',
+    text: 'Cette page présente notre offre aux agents immobiliers du Var et leur permet de nous soumettre un bien à valoriser.',
+    ok: 'Je suis une agence, continuer',
+    other: 'Je suis un particulier',
+    otherHint: 'Notre équipe vous répond sur la page contact.',
+  },
+  en: {
+    kicker: 'Professional area',
+    title: 'For real estate agencies',
+    text: 'This page presents our offer to estate agents in the Var and lets them submit a property for us to assess.',
+    ok: 'I am an agency, continue',
+    other: 'I am a private owner',
+    otherHint: 'Our team will answer you on the contact page.',
+  },
+  it: {
+    kicker: 'Area professionisti',
+    title: 'Riservato alle agenzie immobiliari',
+    text: 'Questa pagina presenta la nostra offerta agli agenti immobiliari del Var e permette loro di sottoporci un immobile da valorizzare.',
+    ok: 'Sono un’agenzia, continua',
+    other: 'Sono un privato',
+    otherHint: 'Il nostro team vi risponde nella pagina contatti.',
+  },
+}[lang];
+const contactHref = getLocalizedPath('/contact', lang);
+---
+
+<div
+  id="agence-gate"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="agence-gate-title"
+  aria-describedby="agence-gate-text"
+  class="fixed inset-0 z-[2000] hidden items-center justify-center bg-primary-dark/70 backdrop-blur-sm px-4"
+>
+  <div class="w-full max-w-[520px] bg-primary-warm border border-accent-gold/30 shadow-2xl px-7 py-10 sm:px-12 sm:py-14 text-center">
+    <span class="block font-heading text-[11px] font-semibold uppercase tracking-[0.25em] text-accent-gold mb-5">{txt.kicker}</span>
+    <h2 id="agence-gate-title" class="font-display text-2xl sm:text-3xl font-bold uppercase text-primary-dark leading-tight mb-5">{txt.title}</h2>
+    <p id="agence-gate-text" class="font-body text-base font-light text-[var(--color-text-light)] leading-[1.75] mb-9">{txt.text}</p>
+    <button
+      type="button"
+      id="agence-gate-ok"
+      class="w-full inline-flex items-center justify-center gap-2 bg-primary-dark text-white font-heading text-xs font-semibold uppercase tracking-[0.2em] px-6 py-4 hover:bg-accent-brown transition-colors duration-base"
+    >
+      {txt.ok}&nbsp;→
+    </button>
+    <a href={contactHref} class="mt-6 inline-block font-heading text-xs font-medium uppercase tracking-[0.15em] text-primary-dark/70 underline underline-offset-4 decoration-accent-gold/60 hover:text-primary-dark">
+      {txt.other}
+    </a>
+    <p class="mt-2 font-body text-xs font-light text-[var(--color-text-light)]">{txt.otherHint}</p>
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    var KEY = 'sbd-agence-ok';
+    var gate = document.getElementById('agence-gate');
+    if (!gate) return;
+    var ok = false;
+    try { ok = localStorage.getItem(KEY) === '1'; } catch (e) {}
+    if (ok) return;
+    gate.classList.remove('hidden');
+    gate.classList.add('flex');
+    document.documentElement.style.overflow = 'hidden';
+    var btn = document.getElementById('agence-gate-ok');
+    btn.focus();
+    btn.addEventListener('click', function () {
+      try { localStorage.setItem(KEY, '1'); } catch (e) {}
+      gate.classList.add('hidden');
+      gate.classList.remove('flex');
+      document.documentElement.style.overflow = '';
+    });
+    // garde le focus dans la fenêtre
+    gate.addEventListener('keydown', function (e) {
+      if (e.key !== 'Tab') return;
+      var f = gate.querySelectorAll('button, a[href]');
+      var first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
+  })();
+</script>

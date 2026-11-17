@@ -11,6 +11,7 @@ import Container from '@components/ui/Container.astro';
 import Button from '@components/ui/Button.astro';
 import HeroInner from '@components/react/HeroInner';
 import AgenceForm from '@components/sections/AgenceForm.astro';
+import AgenceGate from '@components/sections/AgenceGate.astro';
 import { agencesContent, agencesPaths, agencesEmail, type AgencesLang } from '@/data/partenaires-agences';
 import publication from '@/data/publication.json';
 
@@ -36,6 +37,8 @@ const tag = 'block font-heading text-[11px] font-semibold uppercase tracking-[0.
   alternates={agencesPaths}
   noindex={!publication.agencesClimPubliees}
 >
+
+  <AgenceGate lang={lang} />
 
   <div class="-mt-[var(--header-h)]">
     <HeroInner

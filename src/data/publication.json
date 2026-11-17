@@ -1,5 +1,12 @@
 {
-  "_note": "Pages agences et climatisation de SB en attente de validation par Savério (mail du 12/11/2026). Tant que agencesClimPubliees vaut false, ces pages restent accessibles par leur lien (aperçu) mais sont en noindex, hors sitemap et sans lien depuis le reste du site (pied de page, page Expertise). Passer à true pour les publier.",
-  "agencesClimPubliees": false,
-  "pagesEnAttente": ["/partenaires-agences-var/", "/en/real-estate-agents/", "/it/partner-agenzie-immobiliari/", "/climatisation-villa-var/", "/en/air-conditioning-villa-var/", "/it/climatizzazione-villa-var/"]
+  "_note": "Pages agences et climatisation de SB publiées le 17/11/2026 (décision de Dino). agencesClimPubliees = true : liens dans le pied de page, la page Expertise et les communes, pages indexées et dans le sitemap. Repasser à false pour les cacher à nouveau (pagesEnAttente = pages concernées).",
+  "agencesClimPubliees": true,
+  "pagesEnAttente": [
+    "/partenaires-agences-var/",
+    "/en/real-estate-agents/",
+    "/it/partner-agenzie-immobiliari/",
+    "/climatisation-villa-var/",
+    "/en/air-conditioning-villa-var/",
+    "/it/climatizzazione-villa-var/"
+  ]
 }
