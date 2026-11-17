@@ -42,7 +42,7 @@ const fr = {
     imageAlt:
       "Villa Aiguebelle au Lavandou : allée dallée entre palmiers et murets en pierre, piscine et vue sur la mer",
   },
-  cta: { submit: "Soumettre un bien", download: "Télécharger le dossier" },
+  cta: { submit: "Soumettre un bien", download: "Version PDF" },
   scenarios: {
     title1: "Trois scénarios",
     title2: "pour débloquer la vente",
@@ -96,17 +96,19 @@ const fr = {
     note: "Le premier dossier est offert à chaque nouvelle agence partenaire. Version anglaise sur demande.",
   },
   soumission: {
-    title1: "Le dossier",
-    title2: "de soumission",
+    title1: "La version",
+    title2: "PDF",
     intro:
-      "La fiche du bien et la liste des pièces à joindre. Ces pièces sont en général déjà dans votre dossier de mandat.",
+      "Vous préférez un document ? Téléchargez la fiche, remplissez-la à l’écran et renvoyez-la à info@sbdesign.fr avec vos pièces. Elle reprend les questions du formulaire ci-dessus : inutile de remplir les deux. Elle donne aussi la liste complète des pièces utiles, en général déjà dans votre dossier de mandat.",
+    button: "Télécharger le PDF",
     fileLabel: "Dossier de soumission SB Design Riviera",
     fileMeta:
-      "PDF · 2 pages · fiche du bien et liste des pièces (DPE complet, diagnostics, plans, photos, règlement de copropriété, PV d’AG…)",
+      "PDF à remplir à l’écran · 2 pages · fiche du bien et liste des pièces (DPE complet, diagnostics, plans, photos, règlement de copropriété, PV d’AG…)",
   },
   form: {
     title1: "Soumettre",
-    title2: "un bien",
+    title2: "un bien en ligne",
+    lead: "Le plus rapide : quelques minutes, votre DPE et deux photos. Premier avis sous 24 h ouvrées.",
     honeypot: "Ne pas remplir",
     legendAgence: "Votre agence",
     legendBien: "Le bien",
@@ -196,7 +198,7 @@ const en: typeof fr = {
     imageAlt:
       "Villa Aiguebelle in Le Lavandou: paved path between palm trees and dry-stone walls, swimming pool and sea view",
   },
-  cta: { submit: "Submit a property", download: "Download the pack" },
+  cta: { submit: "Submit a property", download: "PDF version" },
   scenarios: {
     title1: "Three scenarios",
     title2: "to unlock the sale",
@@ -250,17 +252,19 @@ const en: typeof fr = {
     note: "The first report is offered to every new partner agency. English version on request.",
   },
   soumission: {
-    title1: "The submission",
-    title2: "pack",
+    title1: "The PDF",
+    title2: "version",
     intro:
-      "The property sheet and the list of documents to attach. These documents are generally already in your instruction file.",
+      "Prefer a document? Download the form, fill it in on screen and send it back to info@sbdesign.fr with your documents. It asks the same questions as the online form above, so there is no need to complete both. It also lists every useful document, usually already in your instruction file.",
+    button: "Download the PDF",
     fileLabel: "SB Design Riviera submission pack",
     fileMeta:
-      "PDF, in French · 2 pages · property sheet and list of documents (full DPE, surveys, plans, photographs, co-ownership rules, general meeting minutes…)",
+      "Fillable PDF, in French · 2 pages · property sheet and list of documents (full DPE, surveys, plans, photographs, co-ownership rules, general meeting minutes…)",
   },
   form: {
     title1: "Submit",
-    title2: "a property",
+    title2: "a property online",
+    lead: "The quickest way: a few minutes, your DPE and two photographs. First opinion within one working day.",
     honeypot: "Do not fill in",
     legendAgence: "Your agency",
     legendBien: "The property",
@@ -350,7 +354,7 @@ const it: typeof fr = {
     imageAlt:
       "Villa Aiguebelle a Le Lavandou: vialetto lastricato tra palme e muretti in pietra, piscina e vista sul mare",
   },
-  cta: { submit: "Proporre un immobile", download: "Scaricare il dossier" },
+  cta: { submit: "Proporre un immobile", download: "Versione PDF" },
   scenarios: {
     title1: "Tre scenari",
     title2: "per sbloccare la vendita",
@@ -404,17 +408,19 @@ const it: typeof fr = {
     note: "Il primo dossier è offerto a ogni nuova agenzia partner. Versione inglese su richiesta.",
   },
   soumission: {
-    title1: "Il dossier",
-    title2: "di presentazione",
+    title1: "La versione",
+    title2: "PDF",
     intro:
-      "La scheda dell’immobile e l’elenco dei documenti da allegare. Questi documenti sono in genere già nel vostro dossier di mandato.",
+      "Preferite un documento? Scaricate la scheda, compilatela sullo schermo e rinviatela a info@sbdesign.fr con i vostri documenti. Riprende le domande del modulo qui sopra: non serve compilarli entrambi. Contiene anche l’elenco completo dei documenti utili, in genere già nel vostro dossier di mandato.",
+    button: "Scaricare il PDF",
     fileLabel: "Dossier di presentazione SB Design Riviera",
     fileMeta:
-      "PDF, in francese · 2 pagine · scheda dell’immobile ed elenco dei documenti (DPE completo, diagnosi, planimetrie, foto, regolamento di condominio, verbali di assemblea…)",
+      "PDF compilabile, in francese · 2 pagine · scheda dell’immobile ed elenco dei documenti (DPE completo, diagnosi, planimetrie, foto, regolamento di condominio, verbali di assemblea…)",
   },
   form: {
     title1: "Proporre",
-    title2: "un immobile",
+    title2: "un immobile online",
+    lead: "Il modo più rapido: pochi minuti, il DPE e due foto. Primo parere entro un giorno lavorativo.",
     honeypot: "Non compilare",
     legendAgence: "La vostra agenzia",
     legendBien: "L’immobile",

@@ -124,12 +124,21 @@ const tag = 'block font-heading text-[11px] font-semibold uppercase tracking-[0.
     </Container>
   </Section>
 
-  <!-- 03 — Dossier de soumission (PDF), puis formulaire -->
+  <!-- 03 — Formulaire en ligne (chemin principal), puis la version PDF (alternative) -->
   <Section padding="md" background="white">
     <Container>
       <div class="max-w-4xl">
-        <div id="dossier" class="scroll-mt-[calc(var(--header-h)+24px)]" data-reveal>
+        <div id="soumettre" class="scroll-mt-[calc(var(--header-h)+24px)]" data-reveal>
           <span class="subsection-number">04</span>
+          <h2 class={h2}>
+            {c.form.title1} <span class="font-heading font-light">{c.form.title2}</span>
+          </h2>
+          <p class={`${para} mb-10`}>{c.form.lead}</p>
+          <AgenceForm lang={lang} />
+        </div>
+
+        <div id="dossier" class="scroll-mt-[calc(var(--header-h)+24px)] mt-20 md:mt-28" data-reveal>
+          <span class="subsection-number">05</span>
           <h2 class={h2}>
             {c.soumission.title1} <span class="font-heading font-light">{c.soumission.title2}</span>
           </h2>
@@ -139,16 +148,8 @@ const tag = 'block font-heading text-[11px] font-semibold uppercase tracking-[0.
               <p class="font-display text-lg font-semibold uppercase text-primary-dark mb-2">{c.soumission.fileLabel}</p>
               <p class={small}>{c.soumission.fileMeta}</p>
             </div>
-            <Button href={agencesPdf} variant="primary" size="md" class="shrink-0 text-center" download>{c.cta.download}</Button>
+            <Button href={agencesPdf} variant="primary" size="md" class="shrink-0 text-center" download>{c.soumission.button}</Button>
           </div>
-        </div>
-
-        <div id="soumettre" class="scroll-mt-[calc(var(--header-h)+24px)] mt-20 md:mt-28" data-reveal>
-          <span class="subsection-number">05</span>
-          <h2 class={`${h2} !mb-10`}>
-            {c.form.title1} <span class="font-heading font-light">{c.form.title2}</span>
-          </h2>
-          <AgenceForm lang={lang} />
         </div>
       </div>
     </Container>
