@@ -12,7 +12,8 @@ export type AgencesLang = "fr" | "en" | "it";
 /** Adresse e-mail de contact affichée sur le site (pied de page, page contact). */
 export const agencesEmail = "info@sbdesign.fr";
 
-export const agencesPdf = "/docs/dossier-soumission-agences-sbdesign.pdf";
+/* Le PDF « dossier de soumission » n'est plus proposé sur la page (17/11/2026) : il reste dans
+   public/docs/dossier-soumission-agences-sbdesign.pdf (source : outils/pdf-agences/) pour un envoi à la demande. */
 
 /** Chemins réels des deux versions (slugs différents) : hreflang + sélecteur de langue. */
 export const agencesPaths: Record<AgencesLang, string> = {
@@ -42,7 +43,7 @@ const fr = {
     imageAlt:
       "Villa Aiguebelle au Lavandou : allée dallée entre palmiers et murets en pierre, piscine et vue sur la mer",
   },
-  cta: { submit: "Soumettre un bien", download: "Version PDF" },
+  cta: { submit: "Soumettre un bien" },
   scenarios: {
     title1: "Trois scénarios",
     title2: "pour débloquer la vente",
@@ -95,16 +96,6 @@ const fr = {
     ],
     note: "Le premier dossier est offert à chaque nouvelle agence partenaire. Version anglaise sur demande.",
   },
-  soumission: {
-    title1: "La version",
-    title2: "PDF",
-    intro:
-      "Vous préférez un document ? Téléchargez la fiche : les mêmes questions que le formulaire ci-dessus, à remplir à l’écran. Envoyez-la à info@sbdesign.fr avec vos documents en PDF et 4 photos maximum. Une seule des deux façons suffit.",
-    button: "Télécharger le PDF",
-    fileLabel: "Dossier de soumission SB Design Riviera",
-    fileMeta:
-      "PDF à remplir à l’écran · 2 pages · fiche du bien et liste des pièces (DPE complet, diagnostics, plans, photos, règlement de copropriété, PV d’AG…)",
-  },
   depot: {
     kicker: "Espace agences",
     title1: "Soumettre",
@@ -127,9 +118,6 @@ const fr = {
     question: "Une question ?",
   },
   form: {
-    title1: "Soumettre",
-    title2: "un bien en ligne",
-    lead: "Le plus rapide : quelques minutes, vos documents en PDF et jusqu’à 4 photos. Premier avis sous 24 h ouvrées.",
     honeypot: "Ne pas remplir",
     legendAgence: "Votre agence",
     legendBien: "Le bien",
@@ -157,7 +145,6 @@ const fr = {
     etage: "Étage (0 = rez-de-chaussée)",
     annee: "Année de construction",
     copropriete: "En copropriété ?",
-    documents: "Pièces que vous pouvez nous transmettre",
     fichiers: {
       legend: "Pièces jointes",
       intro: "Documents en PDF, photos en JPG ou directement depuis votre téléphone : elles sont réduites automatiquement avant l’envoi. 8 Mo au total.",
@@ -197,18 +184,6 @@ const fr = {
         "électricité": "Électricité",
         redistribution: "Redistribution des pièces",
       },
-      documents: {
-        dpe: "DPE complet",
-        diagnostics: "Diagnostics (amiante, plomb, électricité, gaz)",
-        plans: "Plans ou mesurage Carrez",
-        photos: "Photos de toutes les pièces",
-        reglement_copro: "Règlement de copropriété",
-        pv_ag: "PV des 3 dernières AG",
-        copro_fiche: "Carnet d’entretien / plan de travaux de la copropriété",
-        urbanisme_anterieur: "Permis ou déclarations antérieurs",
-        taxe_fonciere: "Taxe foncière",
-        factures_travaux: "Factures de travaux récents",
-      },
     },
   },
   merci: {
@@ -237,7 +212,7 @@ const en: typeof fr = {
     imageAlt:
       "Villa Aiguebelle in Le Lavandou: paved path between palm trees and dry-stone walls, swimming pool and sea view",
   },
-  cta: { submit: "Submit a property", download: "PDF version" },
+  cta: { submit: "Submit a property" },
   scenarios: {
     title1: "Three scenarios",
     title2: "to unlock the sale",
@@ -290,16 +265,6 @@ const en: typeof fr = {
     ],
     note: "The first report is offered to every new partner agency. English version on request.",
   },
-  soumission: {
-    title1: "The PDF",
-    title2: "version",
-    intro:
-      "Prefer a document? Download the form: the same questions as the online form above, to fill in on screen. Send it to info@sbdesign.fr with your documents as PDF and up to 4 photographs. One of the two is enough.",
-    button: "Download the PDF",
-    fileLabel: "SB Design Riviera submission pack",
-    fileMeta:
-      "Fillable PDF, in French · 2 pages · property sheet and list of documents (full DPE, surveys, plans, photographs, co-ownership rules, general meeting minutes…)",
-  },
   depot: {
     kicker: "Estate agent area",
     title1: "Submit",
@@ -322,9 +287,6 @@ const en: typeof fr = {
     question: "A question?",
   },
   form: {
-    title1: "Submit",
-    title2: "a property online",
-    lead: "The quickest way: a few minutes, your documents as PDF and up to 4 photographs. First opinion within one working day.",
     honeypot: "Do not fill in",
     legendAgence: "Your agency",
     legendBien: "The property",
@@ -352,7 +314,6 @@ const en: typeof fr = {
     etage: "Floor (0 = ground floor)",
     annee: "Year of construction",
     copropriete: "In co-ownership (copropriété)?",
-    documents: "Documents you are able to send us",
     fichiers: {
       legend: "Attachments",
       intro: "Documents as PDF, photographs as JPG or straight from your phone: they are reduced automatically before sending. 8 MB in total.",
@@ -392,18 +353,6 @@ const en: typeof fr = {
         "électricité": "Electrics",
         redistribution: "Reconfiguring the rooms",
       },
-      documents: {
-        dpe: "Full DPE report",
-        diagnostics: "Surveys (asbestos, lead, electrics, gas)",
-        plans: "Plans or certified floor area (Carrez)",
-        photos: "Photographs of every room",
-        reglement_copro: "Co-ownership rules",
-        pv_ag: "Minutes of the last 3 general meetings",
-        copro_fiche: "Building maintenance log / co-ownership works plan",
-        urbanisme_anterieur: "Earlier planning permissions or declarations",
-        taxe_fonciere: "Property tax notice (taxe foncière)",
-        factures_travaux: "Invoices for recent works",
-      },
     },
   },
   merci: {
@@ -432,7 +381,7 @@ const it: typeof fr = {
     imageAlt:
       "Villa Aiguebelle a Le Lavandou: vialetto lastricato tra palme e muretti in pietra, piscina e vista sul mare",
   },
-  cta: { submit: "Proporre un immobile", download: "Versione PDF" },
+  cta: { submit: "Proporre un immobile" },
   scenarios: {
     title1: "Tre scenari",
     title2: "per sbloccare la vendita",
@@ -485,16 +434,6 @@ const it: typeof fr = {
     ],
     note: "Il primo dossier è offerto a ogni nuova agenzia partner. Versione inglese su richiesta.",
   },
-  soumission: {
-    title1: "La versione",
-    title2: "PDF",
-    intro:
-      "Preferite un documento? Scaricate la scheda: le stesse domande del modulo qui sopra, da compilare sullo schermo. Inviatela a info@sbdesign.fr con i documenti in PDF e al massimo 4 foto. Basta uno dei due modi.",
-    button: "Scaricare il PDF",
-    fileLabel: "Dossier di presentazione SB Design Riviera",
-    fileMeta:
-      "PDF compilabile, in francese · 2 pagine · scheda dell’immobile ed elenco dei documenti (DPE completo, diagnosi, planimetrie, foto, regolamento di condominio, verbali di assemblea…)",
-  },
   depot: {
     kicker: "Area agenzie",
     title1: "Proporre",
@@ -517,9 +456,6 @@ const it: typeof fr = {
     question: "Una domanda?",
   },
   form: {
-    title1: "Proporre",
-    title2: "un immobile online",
-    lead: "Il modo più rapido: pochi minuti, i documenti in PDF e fino a 4 foto. Primo parere entro un giorno lavorativo.",
     honeypot: "Non compilare",
     legendAgence: "La vostra agenzia",
     legendBien: "L’immobile",
@@ -547,7 +483,6 @@ const it: typeof fr = {
     etage: "Piano (0 = piano terra)",
     annee: "Anno di costruzione",
     copropriete: "In condominio (copropriété)?",
-    documents: "Documenti che potete inviarci",
     fichiers: {
       legend: "Allegati",
       intro: "Documenti in PDF, foto in JPG o direttamente dal telefono: vengono ridotte automaticamente prima dell’invio. 8 MB in totale.",
@@ -586,18 +521,6 @@ const it: typeof fr = {
         sols: "Pavimenti",
         "électricité": "Impianto elettrico",
         redistribution: "Ridistribuzione degli spazi",
-      },
-      documents: {
-        dpe: "DPE completo",
-        diagnostics: "Diagnosi (amianto, piombo, elettricità, gas)",
-        plans: "Planimetrie o misurazione Carrez",
-        photos: "Foto di tutte le stanze",
-        reglement_copro: "Regolamento di condominio",
-        pv_ag: "Verbali delle ultime 3 assemblee",
-        copro_fiche: "Libretto di manutenzione / piano lavori del condominio",
-        urbanisme_anterieur: "Permessi o dichiarazioni precedenti",
-        taxe_fonciere: "Avviso della tassa fondiaria (taxe foncière)",
-        factures_travaux: "Fatture di lavori recenti",
       },
     },
   },
