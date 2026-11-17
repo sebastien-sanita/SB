@@ -36,7 +36,7 @@ const optionalCls = 'font-light normal-case tracking-normal text-[var(--color-te
 ---
 
 <form
-  class="space-y-12"
+  class="space-y-12 [&>fieldset:first-of-type]:!mt-0"
   id="agence-form"
   data-msg-toomany={fx.tooMany}
   data-msg-notpdf={fx.notPdf}
@@ -61,7 +61,7 @@ const optionalCls = 'font-light normal-case tracking-normal text-[var(--color-te
   </p>
 
   <fieldset class={fieldsetCls}>
-    <legend class={legendCls}>{f.legendAgence}</legend>
+    <legend class={legendCls}><span class="font-heading text-xs font-medium tracking-[0.2em] text-accent-gold mr-3 align-middle">1&nbsp;/&nbsp;4</span>{f.legendAgence}</legend>
     <div class={gridCls}>
       <div>
         <label for="agence" class={labelCls}>{f.agence}</label>
@@ -83,7 +83,7 @@ const optionalCls = 'font-light normal-case tracking-normal text-[var(--color-te
   </fieldset>
 
   <fieldset class={fieldsetCls}>
-    <legend class={legendCls}>{f.legendBien}</legend>
+    <legend class={legendCls}><span class="font-heading text-xs font-medium tracking-[0.2em] text-accent-gold mr-3 align-middle">2&nbsp;/&nbsp;4</span>{f.legendBien}</legend>
     <div class={gridCls}>
       <div class="sm:col-span-2">
         <label for="adresse" class={labelCls}>{f.adresse}</label>
@@ -135,7 +135,7 @@ const optionalCls = 'font-light normal-case tracking-normal text-[var(--color-te
   </fieldset>
 
   <fieldset class={fieldsetCls}>
-    <legend class={legendCls}>{f.legendAnalyse}</legend>
+    <legend class={legendCls}><span class="font-heading text-xs font-medium tracking-[0.2em] text-accent-gold mr-3 align-middle">3&nbsp;/&nbsp;4</span>{f.legendAnalyse}</legend>
     <p class="font-body text-sm font-light text-[var(--color-text-light)] leading-[1.75] mb-8">{f.analyseIntro}</p>
     <div class={gridCls}>
       <div>
@@ -169,16 +169,16 @@ const optionalCls = 'font-light normal-case tracking-normal text-[var(--color-te
   <!-- Pièces jointes : PDF pour les documents ; une seule zone photos (4 max), réduites dans le navigateur
        puis réparties dans photo1…photo4 (Netlify : un fichier par champ, 8 Mo par envoi). -->
   <fieldset class={fieldsetCls}>
-    <legend class={legendCls}>{fx.legend}</legend>
+    <legend class={legendCls}><span class="font-heading text-xs font-medium tracking-[0.2em] text-accent-gold mr-3 align-middle">4&nbsp;/&nbsp;4</span>{fx.legend}</legend>
     <p class="font-body text-sm font-light text-[var(--color-text-light)] leading-[1.75] mb-6 -mt-2">{fx.intro}</p>
-    <div class={gridCls}>
+    <div class="grid grid-cols-1 gap-6">
       {fx.docs.map((d) => (
         <div>
           <label for={d.name} class={labelCls}>{d.label} <span class={optionalCls}>(PDF, {f.optional})</span></label>
           <input type="file" id={d.name} name={d.name} accept="application/pdf,.pdf" data-pdf class={fileCls} />
         </div>
       ))}
-      <div class="sm:col-span-2">
+      <div>
         <label for="photos_choix" class={labelCls}>{fx.photos} <span class={optionalCls}>(JPG, {f.optional})</span></label>
         <p class="font-body text-sm font-light text-[var(--color-text-light)] mb-3">{fx.photosHint}</p>
         <input type="file" id="photos_choix" accept="image/jpeg,image/png,.jpg,.jpeg,.png" multiple class={fileCls} />
@@ -186,6 +186,11 @@ const optionalCls = 'font-light normal-case tracking-normal text-[var(--color-te
           <input type="file" name={`photo${i}`} class="hidden" tabindex="-1" aria-hidden="true" />
         ))}
         <ul id="photos_liste" class="mt-3 space-y-1 font-body text-sm text-primary-dark"></ul>
+      </div>
+      <div>
+        <label for="lien_fichiers" class={labelCls}>{f.lienFichiers} <span class={optionalCls}>({f.optional})</span></label>
+        <p class="font-body text-sm font-light text-[var(--color-text-light)] mb-3">{f.lienHint}</p>
+        <input type="url" id="lien_fichiers" name="lien_fichiers" placeholder="https://" inputmode="url" class={inputCls} />
       </div>
     </div>
     <p id="fichiers_total" class="font-body text-sm text-[var(--color-text-light)] mt-6" aria-live="polite"></p>
@@ -198,6 +203,7 @@ const optionalCls = 'font-light normal-case tracking-normal text-[var(--color-te
     <p class="font-body text-sm font-light text-[var(--color-text-light)] leading-[1.75] mt-6">
       {f.filesNote} <a href={`mailto:${agencesEmail}`} class="text-primary-dark underline underline-offset-4 decoration-accent-gold/60 hover:text-accent-brown transition-colors duration-300">{agencesEmail}</a>.
     </p>
+    <p class="font-body text-xs font-light text-[var(--color-text-light)] mt-3">{f.draftNote}</p>
   </div>
 </form>
 
@@ -249,7 +255,7 @@ const optionalCls = 'font-light normal-case tracking-normal text-[var(--color-te
     var refresh = function () {
       var t = total();
       if (!t) { totalEl.textContent = ''; return; }
-      totalEl.textContent = msg('total') + (fr ? '\u00a0: ' : ': ') + size(t) + ' / 8 ' + form.getAttribute('data-unit') + (t > LIMIT ? ' — ' + msg('toobig') + ' ' + form.getAttribute('data-email') + '.' : '');
+      totalEl.textContent = msg('total') + (fr ? '\u00a0: ' : ': ') + size(t) + ' / 8 ' + form.getAttribute('data-unit') + (t > LIMIT ? ' — ' + msg('toobig') : '');
       totalEl.style.color = t > LIMIT ? '#B4532A' : '';
     };
     var compress = function (file) {
@@ -317,6 +323,39 @@ const optionalCls = 'font-light normal-case tracking-normal text-[var(--color-te
         refresh();
         totalEl.scrollIntoView({ block: 'center' });
       }
+    });
+  })();
+</script>
+
+<!-- Brouillon : les réponses (hors fichiers) sont gardées dans ce navigateur jusqu'à l'envoi. -->
+<script is:inline>
+  (function () {
+    var form = document.getElementById('agence-form');
+    if (!form) return;
+    var KEY = 'sbd-agence-brouillon';
+    var fields = function () {
+      return Array.prototype.slice.call(form.querySelectorAll('input, select, textarea')).filter(function (el) {
+        return el.type !== 'file' && el.type !== 'hidden' && el.name !== 'bot-field' && (el.name || el.closest('#cases'));
+      });
+    };
+    var keyOf = function (el) { return el.name || ('case:' + el.value); };
+    try {
+      var saved = JSON.parse(localStorage.getItem(KEY) || 'null');
+      if (saved) fields().forEach(function (el) {
+        var k = keyOf(el);
+        if (!(k in saved)) return;
+        if (el.type === 'checkbox' || el.type === 'radio') el.checked = !!saved[k]; else el.value = saved[k];
+      });
+    } catch (e) {}
+    var save = function () {
+      var data = {};
+      fields().forEach(function (el) { data[keyOf(el)] = (el.type === 'checkbox' || el.type === 'radio') ? el.checked : el.value; });
+      try { localStorage.setItem(KEY, JSON.stringify(data)); } catch (e) {}
+    };
+    form.addEventListener('input', save);
+    form.addEventListener('change', save);
+    form.addEventListener('submit', function (e) {
+      if (!e.defaultPrevented) { try { localStorage.removeItem(KEY); } catch (err) {} }
     });
   })();
 </script>

@@ -11,7 +11,7 @@ import Container from '@components/ui/Container.astro';
 import Button from '@components/ui/Button.astro';
 import HeroInner from '@components/react/HeroInner';
 import AgenceForm from '@components/sections/AgenceForm.astro';
-import { agencesContent, agencesPaths, agencesPdf, type AgencesLang } from '@/data/partenaires-agences';
+import { agencesContent, agencesPaths, agencesEmail, type AgencesLang } from '@/data/partenaires-agences';
 import publication from '@/data/publication.json';
 
 interface Props { lang: AgencesLang; }
@@ -73,13 +73,12 @@ const tag = 'block font-heading text-[11px] font-semibold uppercase tracking-[0.
       </div>
       <div class="flex flex-wrap gap-4 mt-12" data-reveal>
         <Button href="#soumettre" variant="primary" size="lg">{c.cta.submit}</Button>
-        <Button href="#dossier" variant="outline" size="lg">{c.cta.download}</Button>
       </div>
     </Container>
   </Section>
 
-  <!-- 02 — Premier avis sous 24 h / dossier 72 h après la visite -->
-  <Section padding="md" background="warm">
+  <!-- 02 — Premier avis sous 24 h / dossier 72 h après la visite (fond blanc : seul l'espace 04 est sur fond chaud) -->
+  <Section padding="md" background="white" class="border-t border-border">
     <Container>
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-20 gap-y-16">
         <div data-reveal>
@@ -124,32 +123,51 @@ const tag = 'block font-heading text-[11px] font-semibold uppercase tracking-[0.
     </Container>
   </Section>
 
-  <!-- 03 — Formulaire en ligne (chemin principal), puis la version PDF (alternative) -->
-  <Section padding="md" background="white">
+  <!-- 04 — Espace « Soumettre un bien » : le seul point d'entrée (formulaire), mis en avant sur fond chaud.
+       Colonne « À préparer » à gauche (collante sur ordinateur), formulaire dans un cadre blanc à droite. -->
+  <Section id="soumettre" padding="md" background="warm" class="scroll-mt-[var(--header-h)] border-t border-accent-gold/30">
     <Container>
-      <div class="max-w-4xl">
-        <div id="soumettre" class="scroll-mt-[calc(var(--header-h)+24px)]" data-reveal>
-          <span class="subsection-number">04</span>
-          <h2 class={h2}>
-            {c.form.title1} <span class="font-heading font-light">{c.form.title2}</span>
-          </h2>
-          <p class={`${para} mb-10`}>{c.form.lead}</p>
-          <AgenceForm lang={lang} />
-        </div>
+      <div class="max-w-3xl" data-reveal>
+        <span class="subsection-number">04</span>
+        <span class={`${tag} mt-4`}>{c.depot.kicker}</span>
+        <h2 class={h2}>
+          {c.depot.title1} <span class="font-heading font-light">{c.depot.title2}</span>
+        </h2>
+        <p class={para}>{c.depot.lead}</p>
+      </div>
 
-        <div id="dossier" class="scroll-mt-[calc(var(--header-h)+24px)] mt-20 md:mt-28" data-reveal>
-          <span class="subsection-number">05</span>
-          <h2 class={h2}>
-            {c.soumission.title1} <span class="font-heading font-light">{c.soumission.title2}</span>
-          </h2>
-          <p class={para}>{c.soumission.intro}</p>
-          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 border border-accent-gold/40 bg-primary-warm p-6 md:p-8 mt-8">
-            <div class="min-w-0">
-              <p class="font-display text-lg font-semibold uppercase text-primary-dark mb-2">{c.soumission.fileLabel}</p>
-              <p class={small}>{c.soumission.fileMeta}</p>
+      <ol class="grid grid-cols-1 sm:grid-cols-3 gap-px bg-accent-gold/30 border border-accent-gold/30 mt-10 md:mt-12" data-reveal>
+        {c.depot.steps.map((s, i) => (
+          <li class="bg-primary-warm p-5 md:p-6">
+            <div class="flex items-baseline gap-3">
+              <span class="font-display text-2xl font-bold text-accent-gold leading-none [font-variant-numeric:lining-nums] relative -top-px">{String(i + 1).padStart(2, '0')}</span>
+              <p class="font-display text-base font-semibold uppercase text-primary-dark leading-none">{s.title}</p>
             </div>
-            <Button href={agencesPdf} variant="primary" size="md" class="shrink-0 text-center" download>{c.soumission.button}</Button>
+            <p class={`${small} mt-3`}>{s.text}</p>
+          </li>
+        ))}
+      </ol>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 mt-10 md:mt-14">
+        <aside class="lg:col-span-4">
+          <div class="lg:sticky lg:top-[calc(var(--header-h)+24px)] border border-accent-gold/40 bg-background p-6 md:p-8">
+            <p class="font-display text-lg font-semibold uppercase text-primary-dark mb-4">{c.depot.prepareTitle}</p>
+            <ul class="space-y-3">
+              {c.depot.prepare.map((x) => (
+                <li class="flex gap-3 font-body text-sm text-primary-dark leading-[1.6]">
+                  <span class="mt-[9px] h-px w-3 shrink-0 bg-accent-gold" aria-hidden="true"></span>{x}
+                </li>
+              ))}
+            </ul>
+            <p class={`${small} mt-5`}>{c.depot.prepareNote}</p>
+            <p class="font-body text-sm text-primary-dark mt-6 pt-5 border-t border-border">
+              {c.depot.question}{' '}
+              <a href={`mailto:${agencesEmail}`} class="underline underline-offset-4 decoration-accent-gold/60 hover:text-accent-brown transition-colors duration-300">{agencesEmail}</a>
+            </p>
           </div>
+        </aside>
+        <div class="lg:col-span-8 bg-background border border-border p-6 sm:p-8 md:p-12">
+          <AgenceForm lang={lang} />
         </div>
       </div>
     </Container>
