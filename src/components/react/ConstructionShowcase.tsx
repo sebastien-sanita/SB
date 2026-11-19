@@ -30,7 +30,7 @@ export default function ConstructionShowcase() {
         <div className="mb-12 md:mb-16">
           <div className="w-10 h-px bg-accent-gold/40 mb-6" />
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold uppercase text-primary-dark mb-4">
-            Chantiers <span className="font-heading font-light">en cours</span>
+            Chantiers <span className="font-display font-normal">en cours</span>
           </h2>
           <p className="font-body text-base font-light text-[var(--color-text-light)] max-w-2xl leading-[1.8]">
             Un aperçu du savoir-faire en gros œuvre : fondations, structures, finitions en pierre — les étapes invisibles qui construisent l'exception.

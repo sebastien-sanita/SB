@@ -29,7 +29,7 @@ const cards = c.realisations.cards
   .map(({ slug, alt }) => ({ project: projects.find((p) => p.slug === slug), alt }))
   .filter((x): x is { project: Project; alt: string } => Boolean(x.project));
 
-const heroTitle = `${c.hero.titleLine1}<br /><span class="font-heading font-light text-[0.4em]">${c.hero.titleLine2}</span>`;
+const heroTitle = `${c.hero.titleLine1}<br /><span class="font-display font-normal text-[0.4em]">${c.hero.titleLine2}</span>`;
 
 const h2 = 'font-display text-subsection font-bold uppercase text-primary-dark mt-4 mb-6';
 const para = 'font-body text-base font-light text-[var(--color-text-light)] leading-[1.75]';
@@ -66,7 +66,7 @@ import publication from '@/data/publication.json';
       <div class="max-w-3xl" data-reveal>
         <span class="subsection-number">01</span>
         <h2 class={h2}>
-          {c.commune.title1} <span class="font-heading font-light">{c.commune.title2}</span>
+          {c.commune.title1} <span class="font-display font-normal">{c.commune.title2}</span>
         </h2>
         <div class="space-y-5">
           {c.commune.paragraphs.map((text) => <p class={para}>{text}</p>)}
@@ -94,7 +94,7 @@ import publication from '@/data/publication.json';
       <div class="max-w-3xl" data-reveal>
         <span class="subsection-number">02</span>
         <h2 class={h2}>
-          {c.biens.title1} <span class="font-heading font-light">{c.biens.title2}</span>
+          {c.biens.title1} <span class="font-display font-normal">{c.biens.title2}</span>
         </h2>
         <div class="space-y-5 mb-8">
           {c.biens.paragraphs.map((text) => <p class={para}>{text}</p>)}
@@ -149,7 +149,7 @@ import publication from '@/data/publication.json';
       <div class="max-w-3xl" data-reveal>
         <span class="subsection-number">03</span>
         <h2 class={h2}>
-          {c.contraintes.title1} <span class="font-heading font-light">{c.contraintes.title2}</span>
+          {c.contraintes.title1} <span class="font-display font-normal">{c.contraintes.title2}</span>
         </h2>
         <p class={para}>{c.contraintes.intro}</p>
       </div>
@@ -173,7 +173,7 @@ import publication from '@/data/publication.json';
       <div class="max-w-3xl" data-reveal>
         <span class="subsection-number">04</span>
         <h2 class={h2}>
-          {c.methode.title1} <span class="font-heading font-light">{c.methode.title2}</span>
+          {c.methode.title1} <span class="font-display font-normal">{c.methode.title2}</span>
         </h2>
         <p class={para}>{c.methode.intro}</p>
       </div>
@@ -200,7 +200,7 @@ import publication from '@/data/publication.json';
         <div class="max-w-3xl mb-10" data-reveal>
           <span class="subsection-number">05</span>
           <h2 class={h2}>
-            {c.realisations.title1} <span class="font-heading font-light">{c.realisations.title2}</span>
+            {c.realisations.title1} <span class="font-display font-normal">{c.realisations.title2}</span>
           </h2>
           <p class={para}>{c.realisations.intro}</p>
         </div>
@@ -237,7 +237,7 @@ import publication from '@/data/publication.json';
       <div class="max-w-3xl" data-reveal>
         <span class="subsection-number">06</span>
         <h2 class={h2}>
-          {c.faq.title1} <span class="font-heading font-light">{c.faq.title2}</span>
+          {c.faq.title1} <span class="font-display font-normal">{c.faq.title2}</span>
         </h2>
         <div class="divide-y divide-border">
           {c.faq.items.map((item) => (
@@ -279,7 +279,7 @@ import publication from '@/data/publication.json';
     <Container>
       <div class="text-center max-w-2xl mx-auto" data-reveal>
         <h2 class="font-display text-section font-bold uppercase text-white mb-6">
-          {c.cta.title1} <span class="font-heading font-light">{c.cta.title2}</span>
+          {c.cta.title1} <span class="font-display font-normal">{c.cta.title2}</span>
         </h2>
         <p class="font-body text-lg font-light text-white/70 mb-10 leading-relaxed">{c.cta.text}</p>
         <Button href={getLocalizedPath('/contact', lang)} variant="primary" size="lg">
